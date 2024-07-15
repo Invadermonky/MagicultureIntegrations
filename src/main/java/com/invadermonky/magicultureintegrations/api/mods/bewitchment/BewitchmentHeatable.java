@@ -53,7 +53,6 @@ public class BewitchmentHeatable implements IHeatableTile {
 
     @Override
     public void updateTile() {
-        //TODO: Bewitchment burn time isn't updating correctly.
         BewitchmentUtils.updateOven(oven, getBurnTime() > 0);
     }
 }

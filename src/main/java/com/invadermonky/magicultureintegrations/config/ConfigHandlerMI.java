@@ -1,7 +1,10 @@
 package com.invadermonky.magicultureintegrations.config;
 
+import com.invadermonky.magicultureintegrations.MagicultureIntegrations;
 import com.invadermonky.magicultureintegrations.config.mods.*;
+import net.minecraftforge.common.config.Config;
 
+@Config(modid = MagicultureIntegrations.MOD_ID)
 public class ConfigHandlerMI {
     public static ConfigBloodMagic blood_magic = new ConfigBloodMagic();
     public static ConfigBotania botania = new ConfigBotania();

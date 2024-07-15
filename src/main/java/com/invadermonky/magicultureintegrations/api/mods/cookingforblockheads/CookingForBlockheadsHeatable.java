@@ -55,7 +55,5 @@ public class CookingForBlockheadsHeatable implements IHeatableTile {
     }
 
     @Override
-    public void updateTile() {
-        //TODO
-    }
+    public void updateTile() {}
 }

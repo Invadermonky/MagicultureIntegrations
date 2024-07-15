@@ -32,7 +32,6 @@ public class BMMysticalAgriculture implements IBMIntegration {
     public static class MysticalAgricultureHarvestHandler implements IHarvestHandler {
         @Override
         public boolean harvest(World world, BlockPos pos, IBlockState state, List<ItemStack> drops) {
-            //TODO: Doesn't seem to be working.
             NonNullList<ItemStack> currentDrops = NonNullList.create();
             BlockMysticalCrop crop = (BlockMysticalCrop) state.getBlock();
             crop.getDrops(currentDrops, world, pos, state, 0);
@@ -57,7 +56,7 @@ public class BMMysticalAgriculture implements IBMIntegration {
 
         @Override
         public boolean test(World world, BlockPos pos, IBlockState state) {
-            return state.getBlock() instanceof BlockMysticalCrop && ((BlockMysticalCrop) state.getBlock()).getMaxAge() == 7;
+            return state.getBlock() instanceof BlockMysticalCrop && ((BlockMysticalCrop) state.getBlock()).isMaxAge(state);
         }
     }
 }
