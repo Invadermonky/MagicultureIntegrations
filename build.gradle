@@ -1,0 +1,258 @@
+import org.jetbrains.gradle.ext.Gradle
+
+plugins {
+    id 'java'
+    id 'java-library'
+    id 'maven-publish'
+    id 'org.jetbrains.gradle.plugin.idea-ext' version '1.1.7'
+    id 'eclipse'
+    id 'com.gtnewhorizons.retrofuturagradle' version '1.3.16'
+    id 'com.matthewprenger.cursegradle' version '1.4.0'
+}
+
+version = project.mod_version
+group = project.maven_group
+archivesBaseName = project.archives_base_name
+
+// Set the toolchain version to decouple the Java we run Gradle with from the Java used to compile and run the mod
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(8))
+        // Azul covers the most platforms for Java 8 toolchains, crucially including MacOS arm64
+        vendor.set(org.gradle.jvm.toolchain.JvmVendorSpec.AZUL)
+    }
+    // Generate sources and javadocs jars when building and publishing
+    withSourcesJar()
+    // withJavadocJar()
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+configurations {
+    embed
+    implementation.extendsFrom(embed)
+}
+
+minecraft {
+    mcVersion = '1.12.2'
+
+    // MCP Mappings
+    mcpMappingChannel = 'stable'
+    mcpMappingVersion = '39'
+    
+    // Set username here, the UUID will be looked up automatically
+    username = 'Invadermonky'
+    
+    // Add any additional tweaker classes here
+    // extraTweakClasses.add('org.spongepowered.asm.launch.MixinTweaker')
+    
+    // Add various JVM arguments here for runtime
+    def args = ["-ea:${project.group}"]
+    if (project.use_coremod.toBoolean()) {
+        args << '-Dfml.coreMods.load=' + coremod_plugin_class_name
+    }
+    if (project.use_mixins.toBoolean()) {
+        args << '-Dmixin.hotSwap=true'
+        args << '-Dmixin.checks.interfaces=true'
+        args << '-Dmixin.debug.export=true'
+    }
+    extraRunJvmArguments.addAll(args)
+
+    // Include and use dependencies' Access Transformer files
+    useDependencyAccessTransformers = true
+    
+    // Add any properties you want to swap out for a dynamic value at build time here
+    // Any properties here will be added to a class at build time, the name can be configured below
+    // Example:
+    // injectedTags.put('VERSION', project.version)
+    // injectedTags.put('MOD_ID', project.archives_base_name)
+}
+
+// Generate a group.archives_base_name.Tags class
+tasks.injectTags.configure {
+    // Change Tags class' name here:
+    outputClassName.set("${project.group}.${project.archives_base_name}.Tags")
+}
+
+repositories {
+    maven {
+        name 'CleanroomMC Maven'
+        url 'https://maven.cleanroommc.com'
+    }
+    maven {
+        name 'SpongePowered Maven'
+        url 'https://repo.spongepowered.org/maven'
+    }
+    maven {
+        name 'CurseMaven'
+        url 'https://cursemaven.com'
+        content {
+            includeGroup 'curse.maven'
+        }
+    }
+    mavenLocal() // Must be last for caching to work
+}
+
+dependencies {
+    if (project.use_assetmover.toBoolean()) {
+        implementation 'com.cleanroommc:assetmover:2.5'
+    }
+    if (project.use_mixins.toBoolean()) {
+        implementation 'zone.rong:mixinbooter:7.1'
+    }
+
+    // Example of deobfuscating a dependency
+    implementation rfg.deobf('curse.maven:had-enough-items-557549:4543375')
+
+    // Mod Integrations
+    def modMap = [:]
+    def loadMap = [:]
+
+    modMap.put(["agricraft-225635:3317747", "infinitylib-251396:3317119"], project.agricraft)
+    modMap.put(["attained-drops-2-254294:2538349", "placebo-283644:4629597"], project.attaineddrops)
+    modMap.put(["bewitchment-legacy-285439:3256343", "baubles-227083:2518667", "patchouli-306770:3162874"], project.bewitchment)
+    modMap.put(["blood-magic-224791:2822288", "guide-api-228832:2645992"], project.bloodmagic)
+    modMap.put(["botania-225643:3330934", "baubles-227083:2518667"], project.botania)
+    modMap.put(["cooking-for-blockheads-231484:2862651"], project.cookingforblockheads)
+    modMap.put(["embers-rekindled-300777:3695248"], project.embers)
+    modMap.put(["future-mc-310059:5013081", "shadowfacts-forgelin-248453:2785465"], project.futuremc)
+    modMap.put(["pams-harvestcraft-221857:2904825"], project.harvestcraft)
+    modMap.put(["immersive-engineering-231951:2974106"], project.immersiveengineering)
+    modMap.put(["mystical-agriculture-246640:2704562", "cucumber-272335:2645867"], project.mysticalagriculture)
+    modMap.put(["mystical-world-282940:3460961", "mysticallib-277064:3483816", "patchouli-306770:3162874"], project.mysticalworld)
+    modMap.put(["natures-aura-306626:2882138", "patchouli-306770:3162874"], project.naturesaura)
+    modMap.put(["quality-tools-264756:2732994", "potion-core-242872:2905184"], project.qualitytools)
+    modMap.put(["roots-246183:5193525", "mystical-world-282940:3460961", "mysticallib-277064:3483816", "patchouli-306770:3162874"], project.roots)
+    modMap.put(["rustic-256141:3107974"], project.rustic)
+    modMap.put(["thaumcraft-223628:2629023", "baubles-227083:2518667"], project.thaumcraft)
+
+    modMap.each{mods, load -> {
+        boolean loadFlag = load.toBoolean()
+        mods.each{mod ->
+            if(!loadMap.containsValue(mod)) {
+                loadMap.put(mod,loadFlag)
+            } else {
+                if(loadFlag && !loadMap[mod]) {
+                    loadFlag[mod] = loadFlag
+                }
+            }
+        }
+    }}
+
+    loadMap.each{mod,load -> {
+        String mavenStr = 'curse.maven:' + mod
+        if(load) {
+            implementation(rfg.deobf(mavenStr))
+        } else {
+            compileOnly(rfg.deobf(mavenStr))
+        }
+    }}
+
+
+
+
+    if (project.use_mixins.toBoolean()) {
+        // Change your mixin refmap name here:
+        String mixin = modUtils.enableMixins('org.spongepowered:mixin:0.8.3', "mixins.${project.archives_base_name}.refmap.json")
+        api (mixin) {
+            transitive = false
+        }
+        annotationProcessor 'org.ow2.asm:asm-debug-all:5.2'
+        annotationProcessor 'com.google.guava:guava:24.1.1-jre'
+        annotationProcessor 'com.google.code.gson:gson:2.8.6'
+        annotationProcessor (mixin) {
+            transitive = false
+        }
+    }
+
+}
+
+// Adds Access Transformer files to tasks
+if (project.use_access_transformer.toBoolean()) {
+    for (File at : sourceSets.getByName("main").resources.files) {
+        if (at.name.toLowerCase().endsWith("_at.cfg")) {
+            tasks.deobfuscateMergedJarToSrg.accessTransformerFiles.from(at)
+            tasks.srgifyBinpatchedJar.accessTransformerFiles.from(at)
+        }
+    }
+}
+
+processResources {
+    // This will ensure that this task is redone when the versions change
+    inputs.property 'modid', project.mod_id
+    inputs.property 'name', project.mod_name
+    inputs.property 'version', project.version
+    inputs.property 'mcversion', project.minecraft.version
+    
+    // Replace various properties in mcmod.info and pack.mcmeta if applicable
+    filesMatching(['mcmod.info', 'pack.mcmeta']) { fcd ->
+        // Replace version and mcversion
+        fcd.expand (
+                'modid': project.mod_id,
+                'name': project.mod_name,
+                'version': project.version,
+                'mcversion': project.minecraft.version
+        )
+    }
+    
+    if (project.use_access_transformer.toBoolean()) {
+        rename '(.+_at.cfg)', 'META-INF/$1' // Make sure Access Transformer files are in META-INF folder
+    }
+}
+
+jar {
+    manifest {
+        def attribute_map = [:]
+        if (project.use_coremod.toBoolean()) {
+            attribute_map['FMLCorePlugin'] = project.coremod_plugin_class_name
+            if (project.include_mod.toBoolean()) {
+                attribute_map['FMLCorePluginContainsFMLMod'] = true
+                attribute_map['ForceLoadAsMod'] = project.gradle.startParameter.taskNames[0] == "build"
+            }
+        }
+        if (project.use_access_transformer.toBoolean()) {
+            attribute_map['FMLAT'] = project.archives_base_name + '_at.cfg'
+        }
+        attributes(attribute_map)
+    }
+    // Add all embedded dependencies into the jar
+    from(provider{ configurations.embed.collect {it.isDirectory() ? it : zipTree(it)} })
+}
+
+idea {
+    module {
+        inheritOutputDirs = true
+    }
+    project {
+        settings {
+            runConfigurations {
+                "1. Run Client"(Gradle) {
+                    taskNames = ["runClient"]
+                }
+                "2. Run Server"(Gradle) {
+                    taskNames = ["runServer"]
+                }
+                "3. Run Obfuscated Client"(Gradle) {
+                    taskNames = ["runObfClient"]
+                }
+                "4. Run Obfuscated Server"(Gradle) {
+                    taskNames = ["runObfServer"]
+                }
+            }
+            compiler.javac {
+                afterEvaluate {
+                    javacAdditionalOptions = "-encoding utf8"
+                    moduleJavacAdditionalOptions = [
+                            (project.name + ".main"): tasks.compileJava.options.compilerArgs.collect { '"' + it + '"' }.join(' ')
+                    ]
+                }
+            }
+        }
+    }
+}
+
+tasks.named("processIdeaSettings").configure {
+    dependsOn("injectTags")
+}
