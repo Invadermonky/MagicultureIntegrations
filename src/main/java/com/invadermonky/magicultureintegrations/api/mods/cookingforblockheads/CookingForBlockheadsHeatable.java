@@ -3,6 +3,8 @@ package com.invadermonky.magicultureintegrations.api.mods.cookingforblockheads;
 import com.invadermonky.magicultureintegrations.api.tile.IHeatableTile;
 import net.blay09.mods.cookingforblockheads.ModConfig;
 import net.blay09.mods.cookingforblockheads.tile.TileOven;
+import net.minecraft.nbt.NBTTagCompound;
+import org.apache.commons.lang3.ArrayUtils;
 
 public class CookingForBlockheadsHeatable implements IHeatableTile {
     protected TileOven oven;
@@ -55,5 +57,7 @@ public class CookingForBlockheadsHeatable implements IHeatableTile {
     }
 
     @Override
-    public void updateTile() {}
+    public void updateTile() {
+        //TODO: Oven is flickering.
+    }
 }

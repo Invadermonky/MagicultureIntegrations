@@ -10,6 +10,7 @@ import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
 public class IEMysticalAgriculture implements IIEIntegration {
     @Override
     public void registerExternalHeaterHandler() {
+        //TODO: This isn't working
         if(ConfigHandlerMI.immersive_engineering.externalHeater.mystical_agriculture)
             ExternalHeaterHandler.registerHeatableAdapter(TileEssenceFurnace.class, new MysticalAgricultureFurnaceAdapter());
     }

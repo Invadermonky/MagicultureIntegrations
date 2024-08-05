@@ -48,6 +48,7 @@ public class BewitchmentUtils {
     }
 
     public static void updateOven(TileEntityWitchesOven oven, boolean active) {
+        //TODO: Fix this not updating on servers.
         NBTTagCompound tagCompound = new NBTTagCompound();
         oven.writeToNBT(tagCompound);
         if(tagCompound.getBoolean("burning") != active) {

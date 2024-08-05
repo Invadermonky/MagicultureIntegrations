@@ -29,7 +29,7 @@ public class IEFutureMC implements IIEIntegration {
                     if(heat > 0) {
                         furnace.setField(0, burnTime + heat);
                         energyConsumed += heat * heatEnergyRatio;
-                        if(!furnace.isBurning()) {
+                        if(burnTime <= 0) {
                             TileFurnaceAdvanced.setState(true, furnace.getWorld(), furnace.getPos());
                         }
                     }

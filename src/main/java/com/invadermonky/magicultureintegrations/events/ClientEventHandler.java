@@ -11,7 +11,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.ArrayList;
 
-@SideOnly(Side.CLIENT)
 @Mod.EventBusSubscriber
 public class ClientEventHandler {
     private static ArrayList<IConfigChangedEvent> clientEventModules = new ArrayList<>();
@@ -24,6 +23,7 @@ public class ClientEventHandler {
         }
     }
 
+    @SideOnly(Side.CLIENT)
     @SubscribeEvent
     public static void onGuiDrawForeground(GuiContainerEvent.DrawForeground event) {
         for(IGuiScreenEvent guiEventModule : guiEventModules) {

@@ -6,16 +6,30 @@ import net.minecraft.tileentity.TileEntity;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Objects;
 
 public class ReflectionHelper {
+    private static THashMap<FieldKey, Field> cachedFields = new THashMap<>();
+
     public static Object getFieldObject(Object obj, String fieldName) throws NoSuchFieldException, IllegalAccessException {
+        FieldKey key1 = new FieldKey(obj.getClass(), fieldName);
+        FieldKey key2 = new FieldKey(obj.getClass().getSuperclass(), fieldName);
+
+        if(cachedFields.containsKey(key1)) {
+            return cachedFields.get(key1).get(obj);
+        } else if(cachedFields.containsKey(key2)) {
+            return cachedFields.get(key2).get(obj);
+        }
+        
         try {
             Field objField = obj.getClass().getDeclaredField(fieldName);
             objField.setAccessible(true);
+            cachedFields.put(key1, objField);
             return objField.get(obj);
         } catch (NoSuchFieldException e) {
             Field objField = obj.getClass().getSuperclass().getDeclaredField(fieldName);
             objField.setAccessible(true);
+            cachedFields.put(key2, objField);
             return objField.get(obj);
         }
     }
@@ -37,6 +51,29 @@ public class ReflectionHelper {
             return clazz.getConstructor(tile.getClass()).newInstance(tile);
         } catch (NoSuchMethodException e) {
             return clazz.getConstructor(tile.getClass().getSuperclass()).newInstance(tile);
+        }
+    }
+
+    private static class FieldKey {
+        private final Class<?> clazz;
+        private final String fieldName;
+
+        public FieldKey(Object obj, String fieldName) {
+            this.clazz = obj.getClass();
+            this.fieldName = fieldName;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            FieldKey fieldKey = (FieldKey) o;
+            return Objects.equals(clazz, fieldKey.clazz) && Objects.equals(fieldName, fieldKey.fieldName);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(clazz, fieldName);
         }
     }
 }

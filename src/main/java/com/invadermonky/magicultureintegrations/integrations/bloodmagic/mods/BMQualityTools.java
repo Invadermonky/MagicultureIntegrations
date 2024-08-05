@@ -31,6 +31,8 @@ public class BMQualityTools implements IBMIntegration {
                     if(QualityToolsHelper.hasQualityTag(oldArmor)) {
                         NBTTagCompound qualityTag = QualityToolsHelper.getQualityTag(oldArmor);
                         newArmor.setTagInfo(QualityToolsHelper.TAG_NAME_QUALITY, qualityTag);
+                    } else {
+                        newArmor.setTagInfo(QualityToolsHelper.TAG_NAME_QUALITY, new NBTTagCompound());
                     }
                 }
             }

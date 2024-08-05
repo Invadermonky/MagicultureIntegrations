@@ -15,6 +15,8 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.client.event.GuiContainerEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class InitQualityTools implements IModIntegration {
     @Override
@@ -43,6 +45,7 @@ public class InitQualityTools implements IModIntegration {
         /** This value controls the yOffset from the top of the gui. Increasing this value will shift the text down. */
         public static int yOffset = 23;
 
+        @SideOnly(Side.CLIENT)
         @Override
         public void onGuiScreenDrawForeground(GuiContainerEvent.DrawForeground event) {
             GuiScreen guiScreen = event.getGuiContainer();
