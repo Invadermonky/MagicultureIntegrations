@@ -1,0 +1,24 @@
+{
+  "flag": "magicultureintegrations:temperature_amulet",
+  "name": "Environmental Amulet",
+  "icon": "magicultureintegrations:temperature_amulet",
+  "category": "items",
+  "pages": [
+    {
+      "type": "text",
+      "text": "The $(item)Environmental Amulet$(), when equipped, regulates the body temperature of the wearer, allowing them to safely navigate all but the most extreme environments.$(p)While worn, the amulet will steadily drain $(aura) from an $(l:items/aura_cache)Aura Cache$() or similar."
+    },
+    {
+      "flag": "mod:simpledifficulty",
+      "type": "crafting",
+      "text": "Creating the $(item)Environmental Amulet$()",
+      "recipe": "magicultureintegrations:temperature_amulet_sd"
+    },
+    {
+      "flag": "mod:toughasnails",
+      "type": "crafting",
+      "text": "Creating the $(item)Environmental Amulet$()",
+      "recipe": "magicultureintegrations:temperature_amulet_tan"
+    }
+  ]
+}

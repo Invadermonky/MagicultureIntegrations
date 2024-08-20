@@ -13,7 +13,7 @@ import com.invadermonky.magicultureintegrations.util.ModIds;
 import java.util.ArrayList;
 
 public class InitIntegrations {
-    public static ArrayList<IModIntegration> modules = new ArrayList<>();
+    public static ArrayList<IModIntegration> integrationModules = new ArrayList<>();
 
     private static void buildModules() {
         loadModule(ModIds.bloodmagic, InitBloodMagic.class);
@@ -26,22 +26,22 @@ public class InitIntegrations {
 
     public static void preInit() {
         buildModules();
-        modules.forEach(IModIntegration::buildModules);
-        modules.forEach(IModIntegration::preInit);
+        integrationModules.forEach(IModIntegration::buildModules);
+        integrationModules.forEach(IModIntegration::preInit);
     }
 
     public static void init() {
-        modules.forEach(IModIntegration::init);
+        integrationModules.forEach(IModIntegration::init);
     }
 
     public static void postInit() {
-        modules.forEach(IModIntegration::postInit);
+        integrationModules.forEach(IModIntegration::postInit);
     }
 
     private static void loadModule(ModIds mod, Class<? extends IModIntegration> moduleClass) {
         try {
             if(mod.isLoaded) {
-                modules.add(moduleClass.newInstance());
+                integrationModules.add(moduleClass.newInstance());
                 LogHelper.info("Loaded integration module: " + mod.modId);
             }
         } catch (Exception e) {

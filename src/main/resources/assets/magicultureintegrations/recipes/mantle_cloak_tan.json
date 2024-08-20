@@ -1,0 +1,41 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "result": {
+    "item": "magicultureintegrations:mantle_cloak"
+  },
+  "pattern": [
+    "HWC",
+    "APA",
+    "A A"
+  ],
+  "key": {
+    "H": {
+      "item": "toughasnails:temperature_coil",
+      "data": 1
+    },
+    "C": {
+      "item": "toughasnails:temperature_coil",
+      "data": 0
+    },
+    "W": {
+      "item": "embers:ember_cluster"
+    },
+    "P": {
+      "type": "forge:ore_dict",
+      "ore": "plateDawnstone"
+    },
+    "A": {
+      "item": "embers:ashen_cloth"
+    }
+  },
+  "conditions": [
+    {
+      "type": "item_exists",
+      "item": "magicultureintegrations:mantle_cloak"
+    },
+    {
+      "type": "mod_loaded",
+      "mod": "toughasnails"
+    }
+  ]
+}

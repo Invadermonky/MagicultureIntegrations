@@ -92,6 +92,9 @@ repositories {
             includeGroup 'curse.maven'
         }
     }
+    maven {
+        url "https://maven.blamejared.com/"
+    }
     mavenLocal() // Must be last for caching to work
 }
 
@@ -104,10 +107,11 @@ dependencies {
     }
 
     // Example of deobfuscating a dependency
-    implementation rfg.deobf('curse.maven:had-enough-items-557549:4543375')
+    implementation(rfg.deobf('curse.maven:had-enough-items-557549:4543375'))
 
     // Mod Integrations
     def modMap = [:]
+    def customModMap = [:]
     def loadMap = [:]
 
     modMap.put(["agricraft-225635:3317747", "infinitylib-251396:3317119"], project.agricraft)
@@ -126,9 +130,27 @@ dependencies {
     modMap.put(["quality-tools-264756:2732994", "potion-core-242872:2905184"], project.qualitytools)
     modMap.put(["roots-246183:5193525", "mystical-world-282940:3460961", "mysticallib-277064:3483816", "patchouli-306770:3162874"], project.roots)
     modMap.put(["rustic-256141:3107974"], project.rustic)
+    modMap.put(["simpledifficulty-360779:3613814"], project.simpledifficulty)
     modMap.put(["thaumcraft-223628:2629023", "baubles-227083:2518667"], project.thaumcraft)
+    modMap.put(["tough-as-nails-246391:2639903"], project.toughasnails)
+
+    customModMap.put(["com.animania:animania-1.12.2-base:2.0.3.28", "curse.maven:animania-farm-407632:3213139"], project.animania)
 
     modMap.each{mods, load -> {
+        boolean loadFlag = load.toBoolean()
+        mods.each{mod ->
+            def modMaven = "curse.maven:" + mod
+            if(!loadMap.containsKey(modMaven)) {
+                loadMap.put(modMaven,loadFlag)
+            } else {
+                if(loadFlag && !loadMap[modMaven]) {
+                    loadFlag[modMaven] = loadFlag
+                }
+            }
+        }
+    }}
+
+    customModMap.each{mods, load -> {
         boolean loadFlag = load.toBoolean()
         mods.each{mod ->
             if(!loadMap.containsValue(mod)) {
@@ -141,12 +163,11 @@ dependencies {
         }
     }}
 
-    loadMap.each{mod,load -> {
-        String mavenStr = 'curse.maven:' + mod
+    loadMap.each{maven,load -> {
         if(load) {
-            implementation(rfg.deobf(mavenStr))
+            implementation(rfg.deobf(maven))
         } else {
-            compileOnly(rfg.deobf(mavenStr))
+            compileOnly(rfg.deobf(maven))
         }
     }}
 

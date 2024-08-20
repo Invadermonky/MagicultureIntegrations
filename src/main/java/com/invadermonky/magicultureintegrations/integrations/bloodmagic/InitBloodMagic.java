@@ -3,7 +3,7 @@ package com.invadermonky.magicultureintegrations.integrations.bloodmagic;
 import WayofTime.bloodmagic.tile.TileAlchemyArray;
 import com.invadermonky.magicultureintegrations.api.mods.IModIntegration;
 import com.invadermonky.magicultureintegrations.api.mods.bloodmagic.IBMIntegration;
-import com.invadermonky.magicultureintegrations.events.WorldEventHandler;
+import com.invadermonky.magicultureintegrations.events.CommonEventHandler;
 import com.invadermonky.magicultureintegrations.integrations.bloodmagic.events.BMFurnaceArrayHandler;
 import com.invadermonky.magicultureintegrations.integrations.bloodmagic.mods.*;
 import com.invadermonky.magicultureintegrations.util.LogHelper;
@@ -42,7 +42,7 @@ public class InitBloodMagic implements IModIntegration {
         });
 
         if(!BMFurnaceArrayHandler.furnaceArrayHeatableMap.isEmpty()) {
-            WorldEventHandler.registerTickableTile(TileAlchemyArray.class, new BMFurnaceArrayHandler());
+            CommonEventHandler.registerTileTickSubscriber(TileAlchemyArray.class, new BMFurnaceArrayHandler());
         }
     }
 

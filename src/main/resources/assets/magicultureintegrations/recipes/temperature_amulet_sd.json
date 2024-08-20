@@ -1,0 +1,42 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "result": {
+    "item": "magicultureintegrations:temperature_amulet"
+  },
+  "pattern": [
+    " E ",
+    "HGC",
+    "RTR"
+  ],
+  "key": {
+    "E": {
+      "item": "naturesaura:token_euphoria"
+    },
+    "H": {
+      "item": "simpledifficulty:heater"
+    },
+    "G": {
+      "item": "minecraft:golden_chestplate"
+    },
+    "C": {
+      "item": "simpledifficulty:chiller"
+    },
+    "R": {
+      "type": "forge:ore_dict",
+      "ore": "dustRedstone"
+    },
+    "T": {
+      "item": "simpledifficulty:thermometer"
+    }
+  },
+  "conditions": [
+    {
+      "type": "item_exists",
+      "item": "magicultureintegrations:temperature_amulet"
+    },
+    {
+      "type": "mod_loaded",
+      "mod": "simpledifficulty"
+    }
+  ]
+}

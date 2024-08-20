@@ -1,5 +1,6 @@
 package com.invadermonky.magicultureintegrations.config.mods;
 
+import com.invadermonky.magicultureintegrations.config.generics.SurvivalItem;
 import net.minecraftforge.common.config.Config.Comment;
 import net.minecraftforge.common.config.Config.RequiresMcRestart;
 
@@ -13,6 +14,9 @@ public class ConfigBloodMagic {
     public HarvestRitualIntegrations harvestRitual = new HarvestRitualIntegrations();
 
     public QualityTools quality_tools = new QualityTools();
+
+    @Comment("Integration for survival mods such as SimpleDifficulty or Tough As Nails.")
+    public SurvivalMods survival_mods = new SurvivalMods();
 
     public static class HarvestRitualIntegrations {
         public boolean agricraft = true;
@@ -42,5 +46,16 @@ public class ConfigBloodMagic {
     public static class QualityTools {
         @Comment("Sentient armor will copy the quality of any currently worn armor when equipped.")
         public boolean sentientArmorQualityCopy = true;
+    }
+
+    public static class SurvivalMods {
+        public SurvivalItem temperature_sigil = new SurvivalItem(150);
+        public SurvivalItem thirst_sigil = new SurvivalItem(150);
+        @RequiresMcRestart
+        public SurvivalRitual temperature_ritual = new SurvivalRitual();
+
+        public static class SurvivalRitual {
+            public boolean enableRitual = true;
+        }
     }
 }

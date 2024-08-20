@@ -2,6 +2,7 @@ package com.invadermonky.magicultureintegrations;
 
 import com.invadermonky.magicultureintegrations.proxy.CommonProxy;
 import com.invadermonky.magicultureintegrations.util.LogHelper;
+import com.invadermonky.magicultureintegrations.util.ModIds;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -12,13 +13,17 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
         modid = MagicultureIntegrations.MOD_ID,
         name = MagicultureIntegrations.MOD_NAME,
         version = MagicultureIntegrations.MOD_VERSION,
-        acceptedMinecraftVersions = MagicultureIntegrations.MC_VERSION
+        acceptedMinecraftVersions = MagicultureIntegrations.MC_VERSION,
+        dependencies = MagicultureIntegrations.DEPENDENCIES
 )
 public class MagicultureIntegrations {
     public static final String MOD_ID = "magicultureintegrations";
     public static final String MOD_NAME = "Magiculture Integrations";
-    public static final String MOD_VERSION = "1.12.2-1.1.0";
+    public static final String MOD_VERSION = "1.12.2-1.2.0";
     public static final String MC_VERSION = "[1.12.2]";
+    public static final String DEPENDENCIES =
+            "after:" + ModIds.ConstIds.bloodmagic +
+            ";after:" + ModIds.ConstIds.embers;
 
     public static final String ProxyClientClass = "com.invadermonky." + MOD_ID + ".proxy.ClientProxy";
     public static final String ProxyServerClass = "com.invadermonky." + MOD_ID + ".proxy.CommonProxy";

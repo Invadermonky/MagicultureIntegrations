@@ -1,0 +1,6 @@
+{
+  "conditions": {
+    "item_exists": "com.invadermonky.magicultureintegrations.util.factories.ConditionFactoryItemExists",
+    "mod_loaded": "com.invadermonky.magicultureintegrations.util.factories.ConditionFactoryModLoaded"
+  }
+}

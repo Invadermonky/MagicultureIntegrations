@@ -2,7 +2,7 @@ package com.invadermonky.magicultureintegrations.integrations.thaumcraft;
 
 import com.invadermonky.magicultureintegrations.api.mods.IModIntegration;
 import com.invadermonky.magicultureintegrations.api.mods.thaumcraft.ITCIntegration;
-import com.invadermonky.magicultureintegrations.events.WorldEventHandler;
+import com.invadermonky.magicultureintegrations.events.CommonEventHandler;
 import com.invadermonky.magicultureintegrations.integrations.thaumcraft.events.TCBellowsHandler;
 import com.invadermonky.magicultureintegrations.integrations.thaumcraft.mods.*;
 import com.invadermonky.magicultureintegrations.util.LogHelper;
@@ -31,7 +31,7 @@ public class InitThaumcraft implements IModIntegration {
         tcModules.forEach(ITCIntegration::registerBellowsHandler);
 
         if(!TCBellowsHandler.tcHeatableMap.isEmpty()) {
-            WorldEventHandler.registerTickableTile(TileBellows.class, new TCBellowsHandler());
+            CommonEventHandler.registerTileTickSubscriber(TileBellows.class, new TCBellowsHandler());
         }
     }
 

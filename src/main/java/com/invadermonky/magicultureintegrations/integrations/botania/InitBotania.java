@@ -2,7 +2,7 @@ package com.invadermonky.magicultureintegrations.integrations.botania;
 
 import com.invadermonky.magicultureintegrations.api.mods.IModIntegration;
 import com.invadermonky.magicultureintegrations.api.mods.botania.IBotIntegration;
-import com.invadermonky.magicultureintegrations.events.WorldEventHandler;
+import com.invadermonky.magicultureintegrations.events.CommonEventHandler;
 import com.invadermonky.magicultureintegrations.integrations.botania.events.BotExoflameHandler;
 import com.invadermonky.magicultureintegrations.integrations.botania.mods.BotCookingForBlockheads;
 import com.invadermonky.magicultureintegrations.integrations.botania.mods.BotFutureMC;
@@ -32,9 +32,9 @@ public class InitBotania implements IModIntegration {
     @Override
     public void init() {
         botModules.forEach(IBotIntegration::registerExoflameHandler);
-        if(BotExoflameHandler.exoflameHeatableMap.size() > 0) {
-            WorldEventHandler.tileTickMap.put(TileSpecialFlower.class, new BotExoflameHandler());
-            WorldEventHandler.tileTickMap.put(TileFloatingSpecialFlower.class, new BotExoflameHandler());
+        if(!BotExoflameHandler.exoflameHeatableMap.isEmpty()) {
+            CommonEventHandler.registerTileTickSubscriber(TileSpecialFlower.class, new BotExoflameHandler());
+            CommonEventHandler.registerTileTickSubscriber(TileFloatingSpecialFlower.class, new BotExoflameHandler());
         }
     }
 

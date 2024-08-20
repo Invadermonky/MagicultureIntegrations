@@ -1,5 +1,6 @@
 package com.invadermonky.magicultureintegrations.config.mods;
 
+import com.invadermonky.magicultureintegrations.config.generics.SurvivalItem;
 import net.minecraftforge.common.config.Config.Comment;
 import net.minecraftforge.common.config.Config.RequiresMcRestart;
 
@@ -10,6 +11,8 @@ public class ConfigNaturesAura {
     @RequiresMcRestart
     @Comment("Extraneous Firestarter integrations.")
     public ExtraneousFirestarterIntegrations extraneous_firestarter = new ExtraneousFirestarterIntegrations();
+    @Comment("Integration for survival mods such as SimpleDifficulty or Tough As Nails.")
+    public SurvivalMods survival_mods = new SurvivalMods();
 
     public static class NaturesAuraConfigExtended {
         @Comment("Additional conversion recipes for the Botanist's Pickaxe right click function. Each entry needs to be formatted as modid:input_block[prop1=value1,...]->modid:output_block[prop1=value1,...] where block state properties are optional")
@@ -31,5 +34,9 @@ public class ConfigNaturesAura {
         public boolean mystical_agriculture = true;
         @Comment("The Extraneous Firestarter will heat Rustic's Alchemic Condenser and Advanced Alchemic Condenser.")
         public boolean rustic = true;
+    }
+
+    public static class SurvivalMods {
+        public SurvivalItem environmental_ring = new SurvivalItem(400);
     }
 }
