@@ -17,6 +17,7 @@ public class ConfigHandlerMI {
     public static ConfigNaturesAura natures_aura = new ConfigNaturesAura();
     public static ConfigQualityTools quality_tools = new ConfigQualityTools();
     public static ConfigThaumcraft thaumcraft = new ConfigThaumcraft();
+    public static ConfigTheOneProbe the_one_probe = new ConfigTheOneProbe();
 
     @Mod.EventBusSubscriber(modid = MagicultureIntegrations.MOD_ID)
     public static class ConfigChangeListener {

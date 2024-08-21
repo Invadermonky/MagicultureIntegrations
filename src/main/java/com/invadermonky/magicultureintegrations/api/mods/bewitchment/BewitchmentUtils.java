@@ -4,13 +4,9 @@ import com.bewitchment.Util;
 import com.bewitchment.api.registry.OvenRecipe;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesOven;
 import com.invadermonky.magicultureintegrations.util.ReflectionHelper;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.items.ItemStackHandler;
-
-import java.lang.reflect.Method;
 
 public class BewitchmentUtils {
     public static boolean canOvenSmelt(TileEntityWitchesOven oven) {
@@ -35,28 +31,4 @@ public class BewitchmentUtils {
             return false;
         }
     }
-
-    public static boolean addOvenBurnTime(TileEntityWitchesOven oven, int burnTime) {
-        try {
-            Method burnFuelMethod = oven.getClass().getDeclaredMethod("burnFuel", int.class, boolean.class);
-            burnFuelMethod.setAccessible(true);
-            burnFuelMethod.invoke(oven, burnTime, false);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
-    public static void updateOven(TileEntityWitchesOven oven, boolean active) {
-        //TODO: Fix this not updating on servers.
-        NBTTagCompound tagCompound = new NBTTagCompound();
-        oven.writeToNBT(tagCompound);
-        if(tagCompound.getBoolean("burning") != active) {
-            tagCompound.setBoolean("burning", active);
-            oven.readFromNBT(tagCompound);
-            IBlockState state = oven.getWorld().getBlockState(oven.getPos());
-            oven.getWorld().notifyBlockUpdate(oven.getPos(), state, state, 3);
-        }
-    }
-
 }

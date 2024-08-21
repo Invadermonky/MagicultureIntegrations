@@ -5,7 +5,7 @@
   "description": "",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "",
+  "url": "https://www.curseforge.com/minecraft/mc-mods/magiculture-integrations",
   "updateUrl": "",
   "authorList": ["Invadermonky"],
   "credits": "Authors of this project",

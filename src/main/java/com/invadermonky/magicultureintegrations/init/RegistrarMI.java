@@ -1,7 +1,7 @@
 package com.invadermonky.magicultureintegrations.init;
 
 import com.invadermonky.magicultureintegrations.MagicultureIntegrations;
-import com.invadermonky.magicultureintegrations.api.mods.IModAddition;
+import com.invadermonky.magicultureintegrations.api.mods.IAddition;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -20,7 +20,7 @@ import java.util.List;
 public class RegistrarMI {
     public static final List<Item> ITEMS = new ArrayList<>();
 
-    public static <T extends Item & IModAddition> void registerItem(T toRegister) {
+    public static <T extends Item & IAddition> void registerItem(T toRegister) {
         if(toRegister != null && toRegister.isEnabled())
             ITEMS.add(toRegister);
     }

@@ -1,7 +1,9 @@
 package com.invadermonky.magicultureintegrations.api.mods.bewitchment;
 
+import com.bewitchment.common.block.BlockWitchesOven;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesOven;
 import com.invadermonky.magicultureintegrations.api.tile.IHeatableTile;
+import com.invadermonky.magicultureintegrations.util.ReflectionHelper;
 
 public class BewitchmentHeatable implements IHeatableTile {
     private TileEntityWitchesOven oven;
@@ -42,8 +44,8 @@ public class BewitchmentHeatable implements IHeatableTile {
 
     @Override
     public void boostBurnTime(int boostAmount) {
-        oven.burnTime += boostAmount;
-        setBurnTimeMax(getBurnTime());
+        oven.burnTime = getBurnTime() + boostAmount;
+        oven.fuelBurnTime = oven.burnTime;
     }
 
     @Override
@@ -53,6 +55,11 @@ public class BewitchmentHeatable implements IHeatableTile {
 
     @Override
     public void updateTile() {
-        BewitchmentUtils.updateOven(oven, getBurnTime() > 0);
+        try {
+            boolean isBurning = (boolean) ReflectionHelper.getFieldObject(oven, "burning");
+            if (!isBurning) {
+                ReflectionHelper.setField(oven, "burning", oven.getWorld().setBlockState(oven.getPos(), oven.getWorld().getBlockState(oven.getPos()).withProperty(BlockWitchesOven.LIT, true)));
+            }
+        } catch (Exception ignored) {}
     }
 }

@@ -1,52 +1,48 @@
 package com.invadermonky.magicultureintegrations.integrations.thaumcraft;
 
-import com.invadermonky.magicultureintegrations.api.mods.IModIntegration;
-import com.invadermonky.magicultureintegrations.api.mods.thaumcraft.ITCIntegration;
+import com.invadermonky.magicultureintegrations.api.mods.IIntegrationModule;
 import com.invadermonky.magicultureintegrations.events.CommonEventHandler;
+import com.invadermonky.magicultureintegrations.init.RegistrarMI;
+import com.invadermonky.magicultureintegrations.integrations.thaumcraft.compat.*;
 import com.invadermonky.magicultureintegrations.integrations.thaumcraft.events.TCBellowsHandler;
-import com.invadermonky.magicultureintegrations.integrations.thaumcraft.mods.*;
-import com.invadermonky.magicultureintegrations.util.LogHelper;
+import com.invadermonky.magicultureintegrations.integrations.thaumcraft.item.ItemThaumicRegulator;
+import com.invadermonky.magicultureintegrations.util.IntegrationList;
 import com.invadermonky.magicultureintegrations.util.ModIds;
 import thaumcraft.common.tiles.devices.TileBellows;
 
-import java.util.ArrayList;
-
-public class InitThaumcraft implements IModIntegration {
-    public static ArrayList<ITCIntegration> tcModules = new ArrayList<>();
+public class InitThaumcraft implements IIntegrationModule {
+    private final IntegrationList integrations = new IntegrationList("Thaumcraft");
 
     @Override
-    public void buildModules() {
-        addModModule(ModIds.bewitchment, TCBewitchment.class);
-        addModModule(ModIds.cooking_for_blockheads, TCCookingForBlockheads.class);
-        addModModule(ModIds.futuremc, TCFutureMC.class);
-        addModModule(ModIds.mystical_agriculture, TCMysticalAgriculture.class);
-        addModModule(ModIds.rustic, TCRustic.class);
+    public void buildModIntegrations() {
+        integrations.addIntegration(ModIds.bewitchment, TCBewitchment.class);
+        integrations.addIntegration(ModIds.cooking_for_blockheads, TCCookingForBlockheads.class);
+        integrations.addIntegration(ModIds.futuremc, TCFutureMC.class);
+        integrations.addIntegration(ModIds.mystical_agriculture, TCMysticalAgriculture.class);
+        integrations.addIntegration(ModIds.rustic, TCRustic.class);
     }
 
     @Override
-    public void preInit() {}
+    public IntegrationList getModIntegrations() {
+        return this.integrations;
+    }
+
+    @Override
+    public void preInit() {
+        if(ModIds.simpledifficulty.isLoaded || ModIds.tough_as_nails.isLoaded) {
+            RegistrarMI.registerItem(ItemThaumicRegulator.THAUMIC_REGULATOR);
+        }
+    }
 
     @Override
     public void init() {
-        tcModules.forEach(ITCIntegration::registerBellowsHandler);
-
         if(!TCBellowsHandler.tcHeatableMap.isEmpty()) {
             CommonEventHandler.registerTileTickSubscriber(TileBellows.class, new TCBellowsHandler());
         }
     }
 
     @Override
-    public void postInit() {}
+    public void postInit() {
 
-    private void addModModule(ModIds mod, Class<? extends ITCIntegration> moduleClass) {
-        final String modName = "Thaumcraft";
-        try {
-            if(mod.isLoaded) {
-                tcModules.add(moduleClass.newInstance());
-                LogHelper.info("Loaded " + modName + " integration module: " + mod.modId);
-            }
-        } catch (Exception e) {
-            LogHelper.error("Failed to load " + modName + " integration module: " + mod.modId);
-        }
     }
 }

@@ -40,11 +40,11 @@ public class BMFurnaceArrayHandler implements ITileTickEvent {
             try {
                 IHeatableTile heatable = ReflectionHelper.getIHeatableInstance(furnaceArrayHeatableMap, facingTile);
 
-                if(heatable.canSmelt() && heatable.getBurnTime() <= 0) {
+                if(heatable.canSmelt() && heatable.getBurnTime() <= 1) {
                     if(sacrifice == null || sacrifice.isDead)
                         return;
 
-                    heatable.boostBurnTime(400);
+                    heatable.boostBurnTime(401);
                     heatable.updateTile();
 
                     if(!sacrifice.isCreative()) {

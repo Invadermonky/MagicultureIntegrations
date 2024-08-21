@@ -11,6 +11,7 @@ import com.tmtravlr.qualitytools.QualityToolsMod;
 import de.ellpeck.naturesaura.NaturesAura;
 import epicsquid.mysticalworld.MysticalWorld;
 import epicsquid.roots.Roots;
+import mcjty.theoneprobe.TheOneProbe;
 import net.blay09.mods.cookingforblockheads.CookingForBlockheads;
 import rustic.core.Rustic;
 import shadows.attained.AttainedDrops2;
@@ -38,12 +39,15 @@ public enum ModIds {
     mystical_agriculture(ConstIds.mystical_agriculture),
     mystical_world(ConstIds.mystical_world),
     natures_aura(ConstIds.natures_aura),
+    ore_stages(ConstIds.ore_stages),
     patchouli(ConstIds.patchouli),
     quality_tools(ConstIds.quality_tools),
+    redstone_paste(ConstIds.redstone_paste),
     roots(ConstIds.roots),
     rustic(ConstIds.rustic),
     simpledifficulty(ConstIds.simpledifficulty),
     thaumcraft(ConstIds.thaumcraft),
+    the_one_probe(ConstIds.the_one_probe),
     tough_as_nails(ConstIds.toughasnails),
     ;
 
@@ -88,12 +92,15 @@ public enum ModIds {
         public static final String mystical_agriculture = MysticalAgriculture.MOD_ID;
         public static final String mystical_world = MysticalWorld.MODID;
         public static final String natures_aura = NaturesAura.MOD_ID;
+        public static final String ore_stages = "orestages";
         public static final String patchouli = Patchouli.MOD_ID;
         public static final String quality_tools = QualityToolsMod.MOD_ID;
+        public static final String redstone_paste = "redstonepaste";
         public static final String roots = Roots.MODID;
         public static final String rustic = Rustic.MODID;
         public static final String simpledifficulty = SimpleDifficulty.MODID;
         public static final String thaumcraft = Thaumcraft.MODID;
+        public static final String the_one_probe = TheOneProbe.MODID;
         public static final String toughasnails = ToughAsNails.MOD_ID;
     }
 

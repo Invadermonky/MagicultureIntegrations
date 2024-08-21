@@ -1,47 +1,37 @@
 package com.invadermonky.magicultureintegrations.integrations.immersiveengineering;
 
-import com.invadermonky.magicultureintegrations.api.mods.IModIntegration;
-import com.invadermonky.magicultureintegrations.api.mods.immersiveengineering.IIEIntegration;
+import com.invadermonky.magicultureintegrations.api.mods.IIntegrationModule;
 import com.invadermonky.magicultureintegrations.integrations.immersiveengineering.mods.IEBewitchment;
 import com.invadermonky.magicultureintegrations.integrations.immersiveengineering.mods.IEFutureMC;
 import com.invadermonky.magicultureintegrations.integrations.immersiveengineering.mods.IEMysticalAgriculture;
 import com.invadermonky.magicultureintegrations.integrations.immersiveengineering.mods.IERustic;
-import com.invadermonky.magicultureintegrations.util.LogHelper;
+import com.invadermonky.magicultureintegrations.util.IntegrationList;
 import com.invadermonky.magicultureintegrations.util.ModIds;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-
-public class InitImmersiveEngineering implements IModIntegration {
-    public static ArrayList<IIEIntegration> ieModules = new ArrayList<>();
+public class InitImmersiveEngineering implements IIntegrationModule {
+    private final IntegrationList integrations = new IntegrationList("Immersive Engineering");
 
     @Override
-    public void buildModules() {
-        registerModModule(ModIds.bewitchment, IEBewitchment.class);
-        registerModModule(ModIds.futuremc, IEFutureMC.class);
-        registerModModule(ModIds.mystical_agriculture, IEMysticalAgriculture.class);
-        registerModModule(ModIds.rustic, IERustic.class);
+    public void buildModIntegrations() {
+        integrations.addIntegration(ModIds.bewitchment, IEBewitchment.class);
+        integrations.addIntegration(ModIds.futuremc, IEFutureMC.class);
+        integrations.addIntegration(ModIds.mystical_agriculture, IEMysticalAgriculture.class);
+        integrations.addIntegration(ModIds.rustic, IERustic.class);
+    }
+
+    @Nullable
+    @Override
+    public IntegrationList getModIntegrations() {
+        return this.integrations;
     }
 
     @Override
     public void preInit() {}
 
     @Override
-    public void init() {
-        ieModules.forEach(IIEIntegration::registerExternalHeaterHandler);
-    }
+    public void init() {}
 
     @Override
     public void postInit() {}
-
-    private void registerModModule(ModIds mod, Class<? extends IIEIntegration> moduleClass) {
-        final String modName = "Immersive Engineering";
-        try {
-            if(mod.isLoaded) {
-                ieModules.add(moduleClass.newInstance());
-                LogHelper.info("Loaded " + modName + " integration module: " + mod.modId);
-            }
-        } catch (Exception e) {
-            LogHelper.error("Failed to load " + modName + " integration module: " + mod.modId);
-        }
-    }
 }

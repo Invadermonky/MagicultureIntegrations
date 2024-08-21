@@ -1,59 +1,59 @@
 package com.invadermonky.magicultureintegrations.integrations.naturesaura;
 
-import com.invadermonky.magicultureintegrations.api.mods.IModIntegration;
-import com.invadermonky.magicultureintegrations.api.mods.naturesaura.INAIntegration;
-import com.invadermonky.magicultureintegrations.events.ClientEventHandler;
+import com.invadermonky.magicultureintegrations.api.mods.IIntegrationModule;
 import com.invadermonky.magicultureintegrations.events.CommonEventHandler;
+import com.invadermonky.magicultureintegrations.init.RegistrarMI;
+import com.invadermonky.magicultureintegrations.integrations.naturesaura.compat.*;
 import com.invadermonky.magicultureintegrations.integrations.naturesaura.events.NACommonEventHandler;
-import com.invadermonky.magicultureintegrations.integrations.naturesaura.events.NAExtendedConfigHandler;
 import com.invadermonky.magicultureintegrations.integrations.naturesaura.events.NAExternalHeaterHandler;
-import com.invadermonky.magicultureintegrations.integrations.naturesaura.mods.*;
-import com.invadermonky.magicultureintegrations.util.LogHelper;
+import com.invadermonky.magicultureintegrations.integrations.naturesaura.item.ItemTemperatureAmulet;
+import com.invadermonky.magicultureintegrations.util.IntegrationList;
 import com.invadermonky.magicultureintegrations.util.ModIds;
 import de.ellpeck.naturesaura.blocks.tiles.TileEntityFurnaceHeater;
 import net.minecraftforge.event.entity.living.BabyEntitySpawnEvent;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-
-public class InitNaturesAura implements IModIntegration {
-    public static ArrayList<INAIntegration> naModules = new ArrayList<>();
+public class InitNaturesAura implements IIntegrationModule {
+    private final IntegrationList integrations = new IntegrationList("Nature's Aura");
 
     @Override
-    public void buildModules() {
-        loadModModule(ModIds.bewitchment, NABewitchment.class);
-        loadModModule(ModIds.cooking_for_blockheads, NACookingForBlockheads.class);
-        loadModModule(ModIds.futuremc, NAFutureMC.class);
-        loadModModule(ModIds.mystical_agriculture, NAMysticalAgriculture.class);
-        loadModModule(ModIds.rustic, NARustic.class);
+    public void buildModIntegrations() {
+        integrations.addIntegration(ModIds.bewitchment, NABewitchment.class);
+        integrations.addIntegration(ModIds.cooking_for_blockheads, NACookingForBlockheads.class);
+        integrations.addIntegration(ModIds.futuremc, NAFutureMC.class);
+        integrations.addIntegration(ModIds.mystical_agriculture, NAMysticalAgriculture.class);
+        integrations.addIntegration(ModIds.rustic, NARustic.class);
+    }
+
+    @Nullable
+    @Override
+    public IntegrationList getModIntegrations() {
+        return this.integrations;
     }
 
     @Override
     public void preInit() {
+        if((ModIds.simpledifficulty.isLoaded || ModIds.tough_as_nails.isLoaded) && ModIds.baubles.isLoaded) {
+            RegistrarMI.registerItem(ItemTemperatureAmulet.TEMPERATURE_AMULET);
+        }
+        /*
+        PatchouliAPI.instance.setConfigFlag("magicultureintegrations:temperature_amulet",
+                (ModIds.simpledifficulty.isLoaded || ModIds.tough_as_nails.isLoaded) &&
+                        ModIds.baubles.isLoaded &&
+                        ItemTemperatureAmulet.TEMPERATURE_AMULET.isEnabled()
+        );
+        */
     }
 
     @Override
     public void init() {
-        naModules.forEach(INAIntegration::registerExtraneousHeaterHandler);
         CommonEventHandler.registerEventSubscriber(BabyEntitySpawnEvent.class, new NACommonEventHandler());
 
         if(!NAExternalHeaterHandler.naHeaterHeatableMap.isEmpty()) {
             CommonEventHandler.registerTileTickSubscriber(TileEntityFurnaceHeater.class, new NAExternalHeaterHandler());
         }
-        ClientEventHandler.addConfigChangedEventModule(new NAExtendedConfigHandler());
     }
 
     @Override
     public void postInit() {}
-
-    private void loadModModule(ModIds mod, Class<? extends INAIntegration> moduleClass) {
-        final String modName = "Nature's Aura";
-        try {
-            if(mod.isLoaded) {
-                naModules.add(moduleClass.newInstance());
-                LogHelper.info("Loaded " + modName + " integration module: " + mod.modId);
-            }
-        } catch (Exception e) {
-            LogHelper.error("Failed to load " + modName + " integration module: " + mod.modId);
-        }
-    }
 }
