@@ -1,19 +1,27 @@
 package com.invadermonky.magicultureintegrations.config.mods;
 
-import com.invadermonky.magicultureintegrations.config.generics.SurvivalItem;
+import com.invadermonky.magicultureintegrations.config.generics.GenericCostConfig;
 import net.minecraftforge.common.config.Config.Comment;
 import net.minecraftforge.common.config.Config.RequiresMcRestart;
 
 public class ConfigBloodMagic {
     @RequiresMcRestart
     @Comment("Burning Furnace Alchemic Array integrations.")
-    public BurningFurnaceArray furnaceArray = new BurningFurnaceArray();
+    public BurningFurnaceArray furnace_array = new BurningFurnaceArray();
 
     @RequiresMcRestart
     @Comment("Reap of the Harvest Moon ritual integrations.")
-    public HarvestRitualIntegrations harvestRitual = new HarvestRitualIntegrations();
+    public HarvestRitualIntegrations harvest_ritual = new HarvestRitualIntegrations();
 
+    @RequiresMcRestart
+    @Comment("")
+    public Rituals ritual_configs = new Rituals();
+
+    @RequiresMcRestart
+    @Comment("Blood Magic Quality tools integration.")
     public QualityTools quality_tools = new QualityTools();
+
+
 
     @Comment("Integration for survival mods such as SimpleDifficulty or Tough As Nails.")
     public SurvivalMods survival_mods = new SurvivalMods();
@@ -49,13 +57,27 @@ public class ConfigBloodMagic {
     }
 
     public static class SurvivalMods {
-        public SurvivalItem temperature_sigil = new SurvivalItem(150);
-        public SurvivalItem thirst_sigil = new SurvivalItem(150);
-        @RequiresMcRestart
-        public SurvivalRitual temperature_ritual = new SurvivalRitual();
+        @Comment("")//TODO
+        public GenericCostConfig temperature_sigil = new GenericCostConfig(150);
+        @Comment("")//TODO
+        public GenericCostConfig thirst_sigil = new GenericCostConfig(150);
+    }
 
-        public static class SurvivalRitual {
-            public boolean enableRitual = true;
+    public static class Rituals {
+        @RequiresMcRestart
+        @Comment("Ritual of the Soothing Hearth configuration. Ritual enable/disable configuration can be found in the Blood Magic rituals.cfg.")
+        public RitualConfig soothing_hearth = new RitualConfig(10000, 10, 100);
+
+        public static class RitualConfig {
+            public int activationCost;
+            public int refreshCost;
+            public int refreshInterval;
+
+            public RitualConfig(int activationCost, int refreshCost, int refreshInterval) {
+                this.activationCost = activationCost;
+                this.refreshCost = refreshCost;
+                this.refreshInterval = refreshInterval;
+            }
         }
     }
 }

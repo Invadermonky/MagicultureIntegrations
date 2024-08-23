@@ -9,6 +9,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.BabyEntitySpawnEvent;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
@@ -62,4 +63,12 @@ public class CommonEventHandler {
         }
     }
 
+    @SubscribeEvent
+    public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
+        if(COMMON_EVENT_SUBSCRIBERS.containsKey(event.getClass())) {
+            for(ICommonEvents subscriber : COMMON_EVENT_SUBSCRIBERS.get(event.getClass())) {
+                subscriber.onRightClickBlock(event);
+            }
+        }
+    }
 }

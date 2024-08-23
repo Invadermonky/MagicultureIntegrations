@@ -11,6 +11,7 @@ import com.tmtravlr.qualitytools.QualityToolsMod;
 import de.ellpeck.naturesaura.NaturesAura;
 import epicsquid.mysticalworld.MysticalWorld;
 import epicsquid.roots.Roots;
+import hellfirepvp.astralsorcery.AstralSorcery;
 import mcjty.theoneprobe.TheOneProbe;
 import net.blay09.mods.cookingforblockheads.CookingForBlockheads;
 import rustic.core.Rustic;
@@ -26,6 +27,7 @@ import javax.annotation.Nullable;
 
 public enum ModIds {
     agricraft(ConstIds.agricraft),
+    astral_sorcery(ConstIds.astral_sorcery),
     attained_drops(ConstIds.attained_drops),
     baubles(ConstIds.baubles),
     bewitchment(ConstIds.bewitchment),
@@ -79,6 +81,7 @@ public enum ModIds {
 
     public static class ConstIds {
         public static final String agricraft = "agricraft";
+        public static final String astral_sorcery = AstralSorcery.MODID;
         public static final String attained_drops = AttainedDrops2.MODID;
         public static final String baubles = Baubles.MODID;
         public static final String bewitchment = Bewitchment.MODID;

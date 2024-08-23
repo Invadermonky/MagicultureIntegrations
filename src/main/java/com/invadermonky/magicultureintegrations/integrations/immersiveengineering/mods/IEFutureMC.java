@@ -11,7 +11,7 @@ import thedarkcolour.futuremc.tile.TileFurnaceAdvanced;
 public class IEFutureMC implements IModIntegration {
     @Override
     public void preInit() {
-        if(ConfigHandlerMI.immersive_engineering.externalHeater.future_mc) {
+        if(ConfigHandlerMI.immersive_engineering.external_heater.future_mc) {
             ExternalHeaterHandler.registerHeatableAdapter(TileFurnaceAdvanced.class, new FutureMCFurnaceAdapter());
         }
     }

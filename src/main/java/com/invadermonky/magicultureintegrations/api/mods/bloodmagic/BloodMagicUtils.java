@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 public class BloodMagicUtils {
-    public static final Map<String,Map<ResourceLocation, EntryAbstract>> bookAdditions = new LinkedHashMap<>();
+    private static final Map<String,Map<ResourceLocation, EntryAbstract>> guideAdditions = new LinkedHashMap<>();
 
     @Nullable
     public static EntityPlayer getSacrificeTarget(World world, BlockPos pos, double radius) {
@@ -42,9 +42,12 @@ public class BloodMagicUtils {
         String categoryName = "guide.bloodmagic.category." + category;
         String keyBase = "guide.bloodmagic.entry." + category + ".";
         List<IPage> pages = new ArrayList<>(PageHelper.pagesForLongText(TextHelper.localize(keyBase + guideEntryName + ".info"), 370));
-        if(!bookAdditions.containsKey(categoryName))
-            bookAdditions.put(categoryName, new LinkedHashMap<>());
-        bookAdditions.get(categoryName).put(new ResourceLocation(keyBase + guideEntryName), new EntryText(pages, TextHelper.localize(keyBase + guideEntryName), true));
+        if(!guideAdditions.containsKey(categoryName))
+            guideAdditions.put(categoryName, new LinkedHashMap<>());
+        guideAdditions.get(categoryName).put(new ResourceLocation(keyBase + guideEntryName), new EntryText(pages, TextHelper.localize(keyBase + guideEntryName), true));
     }
 
+    public static Map<String, Map<ResourceLocation, EntryAbstract>> getGuideAdditions() {
+        return guideAdditions;
+    }
 }

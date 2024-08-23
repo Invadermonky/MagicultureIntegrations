@@ -6,7 +6,7 @@ import net.minecraftforge.common.config.Config.RequiresMcRestart;
 public class ConfigImmersiveEngineering {
     @RequiresMcRestart
     @Comment("External Heater integrations.")
-    public ExternalHeaterIntegrations externalHeater = new ExternalHeaterIntegrations();
+    public ExternalHeaterIntegrations external_heater = new ExternalHeaterIntegrations();
 
     public static class ExternalHeaterIntegrations {
         @Comment("The External Heater will heat Bewitchment's Witches' Oven.")

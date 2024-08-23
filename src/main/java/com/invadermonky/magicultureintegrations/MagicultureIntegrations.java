@@ -23,6 +23,7 @@ public class MagicultureIntegrations {
     public static final String MC_VERSION = "[1.12.2]";
     public static final String DEPENDENCIES =
             "after:" + ModIds.ConstIds.bloodmagic +
+            ";after:" + ModIds.ConstIds.botania +
             ";after:" + ModIds.ConstIds.embers;
 
     public static final String ProxyClientClass = "com.invadermonky." + MOD_ID + ".proxy.ClientProxy";

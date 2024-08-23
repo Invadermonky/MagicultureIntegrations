@@ -11,7 +11,7 @@ import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
 public class IEMysticalAgriculture implements IModIntegration {
     @Override
     public void preInit() {
-        if(ConfigHandlerMI.immersive_engineering.externalHeater.mystical_agriculture) {
+        if(ConfigHandlerMI.immersive_engineering.external_heater.mystical_agriculture) {
             ExternalHeaterHandler.registerHeatableAdapter(TileEssenceFurnace.class, new MysticalAgricultureFurnaceAdapter());
         }
     }

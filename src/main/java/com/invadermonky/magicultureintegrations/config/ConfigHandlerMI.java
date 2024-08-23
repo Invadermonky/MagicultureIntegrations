@@ -10,6 +10,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Config(modid = MagicultureIntegrations.MOD_ID)
 public class ConfigHandlerMI {
+    public static ConfigAstralSorcery astral_sorcery = new ConfigAstralSorcery();
     public static ConfigBloodMagic blood_magic = new ConfigBloodMagic();
     public static ConfigBotania botania = new ConfigBotania();
     public static ConfigEmbers embers = new ConfigEmbers();

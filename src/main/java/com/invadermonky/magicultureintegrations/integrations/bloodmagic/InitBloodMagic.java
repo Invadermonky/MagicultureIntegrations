@@ -7,6 +7,7 @@ import amerifrance.guideapi.api.impl.Book;
 import amerifrance.guideapi.api.impl.abstraction.CategoryAbstract;
 import amerifrance.guideapi.api.impl.abstraction.EntryAbstract;
 import amerifrance.guideapi.page.PageText;
+import com.invadermonky.magicultureintegrations.api.mods.IAddition;
 import com.invadermonky.magicultureintegrations.api.mods.IIntegrationModule;
 import com.invadermonky.magicultureintegrations.api.mods.bloodmagic.BloodMagicUtils;
 import com.invadermonky.magicultureintegrations.events.CommonEventHandler;
@@ -16,16 +17,19 @@ import com.invadermonky.magicultureintegrations.integrations.bloodmagic.events.B
 import com.invadermonky.magicultureintegrations.integrations.bloodmagic.item.ItemReagent;
 import com.invadermonky.magicultureintegrations.integrations.bloodmagic.item.ItemSigilTemperature;
 import com.invadermonky.magicultureintegrations.integrations.bloodmagic.item.ItemSigilThirst;
+import com.invadermonky.magicultureintegrations.integrations.bloodmagic.ritual.RitualSoothingHearth;
 import com.invadermonky.magicultureintegrations.util.IntegrationList;
 import com.invadermonky.magicultureintegrations.util.ModIds;
 import net.minecraft.util.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class InitBloodMagic implements IIntegrationModule {
     private final IntegrationList integrations = new IntegrationList("Blood Magic");
+    private final List<IAddition> additions = new ArrayList<>();
 
     @Override
     public void buildModIntegrations() {
@@ -56,6 +60,8 @@ public class InitBloodMagic implements IIntegrationModule {
             RegistrarMI.registerItem(ItemReagent.THIRST_REAGENT);
             RegistrarMI.registerItem(ItemSigilTemperature.TEMPERATURE_SIGIL);
             RegistrarMI.registerItem(ItemSigilThirst.THIRST_SIGIL);
+
+            additions.add(new RitualSoothingHearth());
         }
     }
 
@@ -68,11 +74,16 @@ public class InitBloodMagic implements IIntegrationModule {
 
     @Override
     public void postInit() {
+        additions.forEach(addition -> {
+            if(addition.isEnabled()) {
+                addition.registerRecipe();
+            }
+        });
         buildGuideEntries();
     }
 
     private static void buildGuideEntries() {
-        BloodMagicUtils.bookAdditions.forEach((category, entries) -> {
+        BloodMagicUtils.getGuideAdditions().forEach((category, entries) -> {
             entries.forEach((loc, entry) -> {
                 for(IPage page : entry.pageList) {
                     ((PageText) page).setUnicodeFlag(true);
@@ -83,7 +94,7 @@ public class InitBloodMagic implements IIntegrationModule {
         Book guideBook = GuideBloodMagic.GUIDE_BOOK;
         List<CategoryAbstract> categoryList = guideBook.getCategoryList();
         for(CategoryAbstract category : categoryList) {
-            Map<ResourceLocation, EntryAbstract> entries = BloodMagicUtils.bookAdditions.get(category.name);
+            Map<ResourceLocation, EntryAbstract> entries = BloodMagicUtils.getGuideAdditions().get(category.name);
             if(entries != null && !entries.isEmpty()) {
                 category.addEntries(entries);
             }

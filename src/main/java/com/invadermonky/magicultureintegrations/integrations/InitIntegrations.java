@@ -2,6 +2,7 @@ package com.invadermonky.magicultureintegrations.integrations;
 
 import com.invadermonky.magicultureintegrations.api.mods.IIntegrationModule;
 import com.invadermonky.magicultureintegrations.api.mods.IModIntegration;
+import com.invadermonky.magicultureintegrations.integrations.astralsorcery.InitAstralSorcery;
 import com.invadermonky.magicultureintegrations.integrations.bloodmagic.InitBloodMagic;
 import com.invadermonky.magicultureintegrations.integrations.botania.InitBotania;
 import com.invadermonky.magicultureintegrations.integrations.embers.InitEmbers;
@@ -19,6 +20,7 @@ public class InitIntegrations {
     public static ArrayList<IIntegrationModule> integrationModules = new ArrayList<>();
 
     private static void buildModules() {
+        loadModule(ModIds.astral_sorcery, InitAstralSorcery.class);
         loadModule(ModIds.bloodmagic, InitBloodMagic.class);
         loadModule(ModIds.botania, InitBotania.class);
         loadModule(ModIds.embers, InitEmbers.class);

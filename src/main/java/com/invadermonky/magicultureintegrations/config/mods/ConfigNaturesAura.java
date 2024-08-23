@@ -1,6 +1,6 @@
 package com.invadermonky.magicultureintegrations.config.mods;
 
-import com.invadermonky.magicultureintegrations.config.generics.SurvivalItem;
+import com.invadermonky.magicultureintegrations.config.generics.GenericCostConfig;
 import net.minecraftforge.common.config.Config.Comment;
 import net.minecraftforge.common.config.Config.RequiresMcRestart;
 
@@ -37,6 +37,7 @@ public class ConfigNaturesAura {
     }
 
     public static class SurvivalMods {
-        public SurvivalItem environmental_ring = new SurvivalItem(400);
+        @Comment("")//TODO
+        public GenericCostConfig environmental_ring = new GenericCostConfig(400);
     }
 }

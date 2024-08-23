@@ -10,7 +10,7 @@ import rustic.common.tileentity.TileEntityCondenserBase;
 public class IERustic implements IModIntegration {
     @Override
     public void preInit() {
-        if(ConfigHandlerMI.immersive_engineering.externalHeater.rustic) {
+        if(ConfigHandlerMI.immersive_engineering.external_heater.rustic) {
             ExternalHeaterHandler.registerHeatableAdapter(TileEntityCondenserBase.class, new RusticFurnaceAdapter());
         }
     }

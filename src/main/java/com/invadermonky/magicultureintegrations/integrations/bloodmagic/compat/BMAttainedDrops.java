@@ -22,7 +22,7 @@ public class BMAttainedDrops implements IModIntegration, IHarvestHandler {
 
     @Override
     public void init() {
-        if(ConfigHandlerMI.blood_magic.harvestRitual.attained_drops) {
+        if(ConfigHandlerMI.blood_magic.harvest_ritual.attained_drops) {
             HarvestRegistry.registerHandler(this);
         }
     }

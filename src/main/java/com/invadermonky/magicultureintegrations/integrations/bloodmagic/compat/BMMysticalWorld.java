@@ -13,7 +13,7 @@ public class BMMysticalWorld implements IModIntegration {
 
     @Override
     public void init() {
-        if(ConfigHandlerMI.blood_magic.harvestRitual.mystical_world) {
+        if(ConfigHandlerMI.blood_magic.harvest_ritual.mystical_world) {
             HarvestRegistry.registerStandardCrop(ModBlocks.aubergine, ModBlocks.aubergine.getMaxAge());
         }
     }

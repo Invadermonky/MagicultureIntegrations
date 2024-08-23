@@ -9,7 +9,7 @@ import net.blay09.mods.cookingforblockheads.tile.TileOven;
 public class BMCookingForBlockheads implements IModIntegration {
     @Override
     public void preInit() {
-        if(ConfigHandlerMI.blood_magic.furnaceArray.cooking_for_blockheads) {
+        if(ConfigHandlerMI.blood_magic.furnace_array.cooking_for_blockheads) {
             BMFurnaceArrayHandler.registerFurnaceArrayHeatable(TileOven.class, CookingForBlockheadsHeatable.class);
         }
     }

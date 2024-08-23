@@ -21,7 +21,7 @@ public class BMAgricraft implements IModIntegration, IHarvestHandler {
 
     @Override
     public void init() {
-        if(ConfigHandlerMI.blood_magic.harvestRitual.agricraft) {
+        if(ConfigHandlerMI.blood_magic.harvest_ritual.agricraft) {
             HarvestRegistry.registerHandler(this);
         }
     }

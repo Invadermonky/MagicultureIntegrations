@@ -41,10 +41,10 @@ public class ItemTemperatureRing extends ItemBaubleMI implements IManaUsingItem,
         if(player.world.isRemote || !(player instanceof EntityPlayer) || ((EntityPlayer) player).isCreative())
             return;
 
-        int manaCost = ConfigHandlerMI.botania.survival_mods.mana_regulator.cost;
+        int manaCost = ConfigHandlerMI.botania.survival_mods.ring_of_seasons.cost;
         boolean hasMana = ManaItemHandler.requestManaExact(stack, (EntityPlayer) player, manaCost, false);
 
-        if(hasMana && player.ticksExisted % ConfigHandlerMI.botania.survival_mods.mana_regulator.delay == 0) {
+        if(hasMana && player.ticksExisted % ConfigHandlerMI.botania.survival_mods.ring_of_seasons.delay == 0) {
             if(ModIds.simpledifficulty.isLoaded) {
                 SimpleDifficultyUtils.stabilizePlayerTemperature((EntityPlayer) player);
             }
@@ -84,6 +84,6 @@ public class ItemTemperatureRing extends ItemBaubleMI implements IManaUsingItem,
 
     @Override
     public boolean isEnabled() {
-        return ConfigHandlerMI.botania.survival_mods.mana_regulator.enable;
+        return ConfigHandlerMI.botania.survival_mods.ring_of_seasons.enable;
     }
 }

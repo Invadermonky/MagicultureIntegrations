@@ -1,6 +1,6 @@
 package com.invadermonky.magicultureintegrations.config.mods;
 
-import com.invadermonky.magicultureintegrations.config.generics.SurvivalItem;
+import com.invadermonky.magicultureintegrations.config.generics.GenericCostConfig;
 import net.minecraftforge.common.config.Config.Comment;
 import net.minecraftforge.common.config.Config.RequiresMcRestart;
 
@@ -8,6 +8,7 @@ public class ConfigBotania {
     @RequiresMcRestart
     @Comment("Exoflame integrations.")
     public ExoflameIntegrations exoflame = new ExoflameIntegrations();
+    public Flowers flowers = new Flowers();
     public SurvivalMods survival_mods = new SurvivalMods();
 
     public static class ExoflameIntegrations {
@@ -21,7 +22,32 @@ public class ConfigBotania {
         public boolean rustic = true;
     }
 
+    public static class Flowers {
+        @Comment("")//TODO: Change config name and add comment
+        public GenericCostConfig gryllzalia = new GenericCostConfig(20);
+        @Comment("Thaumcraft vis/flux consuming flower settings.")//TODO: Change config name, test values, and comment
+        public Auromeria auromeria = new Auromeria();
+
+        public static class Auromeria {
+            //TODO: Change names. Search for "flux flower"
+            @RequiresMcRestart
+            @Comment("Enables the Auromeria flower and the Flux Lens.")
+            public boolean enableAuromeria = true;
+            @Comment("The amount of damage a flux mana burst deals when colliding with an entity.")
+            public float fluxBurstDamage = 12.0f;
+            @Comment("The amount of flux drained from the environment when the Auromeria drains flux when creating a mana burst. ")
+            public double fluxDrainAmount = 0.05;
+            @Comment("The base chance that the Auromeria will drain flux when generating a mana burst.")
+            public double fluxDrainChance = 0.05;
+            @Comment("The amount of flux generated when a flux mana burst explodes.")
+            public double pollutionAmount = 0.2;
+            @Comment("The chance of aura pollution when a flux mana burst explodes.")
+            public double pollutionChance = 0.5;
+        }
+    }
+
     public static class SurvivalMods {
-        public SurvivalItem mana_regulator = new SurvivalItem();
+        @Comment("SimpleDifficulty/Tough As Nails mana-powered temperature control ring settings.")
+        public GenericCostConfig ring_of_seasons = new GenericCostConfig();
     }
 }

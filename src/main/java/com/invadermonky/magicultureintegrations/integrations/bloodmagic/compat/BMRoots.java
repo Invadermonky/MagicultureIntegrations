@@ -13,7 +13,7 @@ public class BMRoots implements IModIntegration {
 
     @Override
     public void init() {
-        if(ConfigHandlerMI.blood_magic.harvestRitual.roots) {
+        if(ConfigHandlerMI.blood_magic.harvest_ritual.roots) {
             HarvestRegistry.registerStandardCrop(ModBlocks.cloud_berry, ModBlocks.cloud_berry.getMaxAge());
             HarvestRegistry.registerStandardCrop(ModBlocks.dewgonia, ModBlocks.dewgonia.getMaxAge());
             HarvestRegistry.registerStandardCrop(ModBlocks.infernal_bulb, ModBlocks.infernal_bulb.getMaxAge());

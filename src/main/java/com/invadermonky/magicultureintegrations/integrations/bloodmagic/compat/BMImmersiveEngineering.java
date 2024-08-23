@@ -22,7 +22,7 @@ public class BMImmersiveEngineering implements IModIntegration, IHarvestHandler 
 
     @Override
     public void init() {
-        if(ConfigHandlerMI.blood_magic.harvestRitual.immersive_engineering) {
+        if(ConfigHandlerMI.blood_magic.harvest_ritual.immersive_engineering) {
             HarvestRegistry.registerHandler(this);
         }
     }

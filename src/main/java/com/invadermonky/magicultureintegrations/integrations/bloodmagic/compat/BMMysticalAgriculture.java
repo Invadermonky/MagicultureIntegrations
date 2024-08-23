@@ -19,14 +19,14 @@ import java.util.List;
 public class BMMysticalAgriculture implements IModIntegration, IHarvestHandler {
     @Override
     public void preInit() {
-        if (ConfigHandlerMI.blood_magic.furnaceArray.mystical_agriculture) {
+        if (ConfigHandlerMI.blood_magic.furnace_array.mystical_agriculture) {
             BMFurnaceArrayHandler.registerFurnaceArrayHeatable(TileEssenceFurnace.class, MysticalAgricultureHeatable.class);
         }
     }
 
     @Override
     public void init() {
-        if (ConfigHandlerMI.blood_magic.harvestRitual.mystical_agriculture) {
+        if (ConfigHandlerMI.blood_magic.harvest_ritual.mystical_agriculture) {
             HarvestRegistry.registerHandler(this);
         }
     }

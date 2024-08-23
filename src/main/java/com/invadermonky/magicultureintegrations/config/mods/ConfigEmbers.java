@@ -1,6 +1,6 @@
 package com.invadermonky.magicultureintegrations.config.mods;
 
-import com.invadermonky.magicultureintegrations.config.generics.SurvivalItem;
+import com.invadermonky.magicultureintegrations.config.generics.GenericCostConfig;
 import net.minecraftforge.common.config.Config;
 
 public class ConfigEmbers {
@@ -8,6 +8,7 @@ public class ConfigEmbers {
     public SurvivalMods survival_mods = new SurvivalMods();
 
     public static class SurvivalMods {
-        public SurvivalItem mantle_cloak = new SurvivalItem(60, 1);
+        @Config.Comment("")//TODO
+        public GenericCostConfig mantle_cloak = new GenericCostConfig(60, 1);
     }
 }

@@ -11,14 +11,14 @@ import com.invadermonky.magicultureintegrations.integrations.bloodmagic.events.B
 public class BMBewitchment implements IModIntegration {
     @Override
     public void preInit() {
-        if(ConfigHandlerMI.blood_magic.furnaceArray.bewitchment) {
+        if(ConfigHandlerMI.blood_magic.furnace_array.bewitchment) {
             BMFurnaceArrayHandler.registerFurnaceArrayHeatable(TileEntityWitchesOven.class, BewitchmentHeatable.class);
         }
     }
 
     @Override
     public void init() {
-        if(ConfigHandlerMI.blood_magic.harvestRitual.bewitchment) {
+        if(ConfigHandlerMI.blood_magic.harvest_ritual.bewitchment) {
             HarvestRegistry.registerStandardCrop(ModObjects.crop_aconitum, (ModObjects.crop_aconitum).getMaxAge());
             HarvestRegistry.registerStandardCrop(ModObjects.crop_belladonna, (ModObjects.crop_belladonna).getMaxAge());
             HarvestRegistry.registerStandardCrop(ModObjects.crop_garlic, (ModObjects.crop_garlic).getMaxAge());

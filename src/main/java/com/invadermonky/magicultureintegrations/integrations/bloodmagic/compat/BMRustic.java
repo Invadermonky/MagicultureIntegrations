@@ -24,14 +24,14 @@ import java.util.List;
 public class BMRustic implements IModIntegration, IHarvestHandler {
     @Override
     public void preInit() {
-        if(ConfigHandlerMI.blood_magic.furnaceArray.rustic) {
+        if(ConfigHandlerMI.blood_magic.furnace_array.rustic) {
             BMFurnaceArrayHandler.registerFurnaceArrayHeatable(TileEntityCondenserBase.class, RusticHeatable.class);
         }
     }
 
     @Override
     public void init() {
-        if(ConfigHandlerMI.blood_magic.harvestRitual.rustic) {
+        if(ConfigHandlerMI.blood_magic.harvest_ritual.rustic) {
             HarvestRegistry.registerHandler(this);
         }
     }

@@ -11,7 +11,7 @@ import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
 public class IEBewitchment implements IModIntegration {
     @Override
     public void preInit() {
-        if(ConfigHandlerMI.immersive_engineering.externalHeater.bewitchment) {
+        if(ConfigHandlerMI.immersive_engineering.external_heater.bewitchment) {
             ExternalHeaterHandler.registerHeatableAdapter(TileEntityWitchesOven.class, new BewitchmentFurnaceAdapter());
         }
     }

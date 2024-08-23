@@ -2,7 +2,7 @@ package com.invadermonky.magicultureintegrations.config.generics;
 
 import net.minecraftforge.common.config.Config;
 
-public class SurvivalItem {
+public class GenericCostConfig {
     @Config.RequiresMcRestart
     @Config.Comment("Enables this tool.")
     public boolean enable = true;
@@ -14,7 +14,7 @@ public class SurvivalItem {
     /**
      * Creates a Survival Item config with specified cooldown and cost.
      */
-    public SurvivalItem(int delay, int cost) {
+    public GenericCostConfig(int delay, int cost) {
         this.delay = delay;
         this.cost = cost;
     }
@@ -22,14 +22,14 @@ public class SurvivalItem {
     /**
      * Creates a Survival Item config with a cooldown of 100 ticks.
      */
-    public SurvivalItem(int cost) {
+    public GenericCostConfig(int cost) {
         this(100, cost);
     }
 
     /**
      * Creates a Survival Item config with a cost of 150 per use and a cooldown of 100 ticks.
      */
-    public SurvivalItem() {
+    public GenericCostConfig() {
         this(150);
     }
 }
