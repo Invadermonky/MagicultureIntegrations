@@ -52,7 +52,7 @@ public class LensFlux extends Lens {
             if(living.hurtTime == 0) {
                 int mana = burst.getMana();
                 int toDrain = Math.min(48, mana);
-                burst.setMana(mana - toDrain);
+                burst.setMana(mana - 16);
                 if(!burst.isFake()) {
                     float damage = ConfigHandlerMI.botania.flowers.auromeria.fluxBurstDamage * toDrain / 48;
                     living.attackEntityFrom(DamageSourceThaumcraft.taint, damage);

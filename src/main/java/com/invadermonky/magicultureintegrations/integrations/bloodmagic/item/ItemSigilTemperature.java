@@ -21,7 +21,7 @@ public class ItemSigilTemperature extends ItemSigilToggleableBase implements IAd
     private static final String NAME = "sigil_temperature";
 
     public ItemSigilTemperature() {
-        super(NAME, ConfigHandlerMI.blood_magic.survival_mods.temperature_sigil.cost);
+        super(NAME, ConfigHandlerMI.blood_magic.survival_mods.sigil_of_temperate_lands.cost);
         this.setRegistryName(MagicultureIntegrations.MOD_ID, NAME);
         this.setTranslationKey(this.getRegistryName().toString());
         this.addPropertyOverride(new ResourceLocation(MagicultureIntegrations.MOD_ID, "enabled"), ((stack, world, entity) -> this.getActivated(stack) ? 1 : 0));
@@ -30,7 +30,7 @@ public class ItemSigilTemperature extends ItemSigilToggleableBase implements IAd
     @Override
     public void onSigilUpdate(ItemStack stack, World world, EntityPlayer player, int itemSlot, boolean isSelected) {
         if(!PlayerHelper.isFakePlayer(player)) {
-            if(player.ticksExisted % ConfigHandlerMI.blood_magic.survival_mods.temperature_sigil.delay != 0)
+            if(player.ticksExisted % ConfigHandlerMI.blood_magic.survival_mods.sigil_of_temperate_lands.delay != 0)
                 return;
 
             if(ModIds.simpledifficulty.isLoaded) {
@@ -57,6 +57,6 @@ public class ItemSigilTemperature extends ItemSigilToggleableBase implements IAd
 
     @Override
     public boolean isEnabled() {
-        return ConfigHandlerMI.blood_magic.survival_mods.temperature_sigil.enable;
+        return ConfigHandlerMI.blood_magic.survival_mods.sigil_of_temperate_lands.enable;
     }
 }

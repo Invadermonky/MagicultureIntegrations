@@ -12,11 +12,18 @@ import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.Nullable;
+import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.api.ThaumcraftApiHelper;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.crafting.InfusionRecipe;
+import thaumcraft.api.items.ItemsTC;
 import vazkii.botania.api.internal.IManaBurst;
 import vazkii.botania.api.mana.*;
 import vazkii.botania.common.Botania;
@@ -38,6 +45,8 @@ public class ItemLensFlux extends Item implements ILensControl, ICompositableLen
         this.setTranslationKey(getRegistryName().toString());
         this.setCreativeTab(BotaniaCreativeTab.INSTANCE);
         this.setMaxStackSize(1);
+
+        ThaumcraftApi.registerResearchLocation(new ResourceLocation(MagicultureIntegrations.MOD_ID, "research/flux_lens"));
     }
 
     public static Lens getLens() {
@@ -157,7 +166,6 @@ public class ItemLensFlux extends Item implements ILensControl, ICompositableLen
         if(sourceItem == compositeItem && sourceLens.getMetadata() == compositeLens.getMetadata()) {
             return false;
         } else if(sourceItem.isCombinable(sourceLens) && compositeItem.isCombinable(compositeLens)) {
-            boolean bl = isBlacklisted(sourceLens, compositeLens);
             return !isBlacklisted(sourceLens, compositeLens);
         }
         return false;
@@ -201,7 +209,19 @@ public class ItemLensFlux extends Item implements ILensControl, ICompositableLen
 
     @Override
     public void registerRecipe() {
-        //TODO: Register new recipe for attaching the lens to the mana gun.
+        InfusionRecipe fluxLensRecipe = new InfusionRecipe(
+                "FLUXLENS", //Research
+                new ItemStack(ItemLensFlux.FLUX_LENS),
+                2,
+                new AspectList().add(Aspect.FLUX, 60).add(Aspect.ENTROPY, 20).add(Aspect.AVERSION, 20),
+                new ItemStack(ModItems.lens, 1, 8),
+                //Inputs
+                ThaumcraftApiHelper.makeCrystal(Aspect.MAGIC),
+                new ItemStack(ItemsTC.salisMundus),
+                new ItemStack(ItemsTC.nuggets, 1, 10),
+                new ItemStack(ItemsTC.visResonator)
+        );
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(MagicultureIntegrations.MOD_ID, "FluxLens"), fluxLensRecipe);
     }
 
     @Override

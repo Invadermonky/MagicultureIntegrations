@@ -37,7 +37,7 @@ public class ConfigNaturesAura {
     }
 
     public static class SurvivalMods {
-        @Comment("")//TODO
+        @Comment("Nature's Aura SimpleDifficulty/Tough As Nails temperature regulation bauble settings.")
         public GenericCostConfig environmental_ring = new GenericCostConfig(400);
     }
 }

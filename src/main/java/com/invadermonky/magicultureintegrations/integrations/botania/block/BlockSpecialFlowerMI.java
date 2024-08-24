@@ -19,6 +19,7 @@ import vazkii.botania.api.recipe.RecipePetals;
 import vazkii.botania.api.subtile.SubTileEntity;
 import vazkii.botania.common.block.BlockSpecialFlower;
 import vazkii.botania.common.block.ModBlocks;
+import vazkii.botania.common.crafting.ModPetalRecipes;
 import vazkii.botania.common.item.block.ItemBlockSpecialFlower;
 import vazkii.botania.common.lexicon.BasicLexiconEntry;
 import vazkii.botania.common.lexicon.page.PagePetalRecipe;
@@ -49,9 +50,8 @@ public class BlockSpecialFlowerMI extends BlockSpecialFlower implements IAdditio
 
     @Override
     public void registerRecipe() {
-        //TODO:
         if(isAuromeriaEnabled) {
-            RecipePetals auromeriaRecipe = new RecipePetals(ItemBlockSpecialFlower.ofType(SubTileAuromeria.NAME), "petalPurple", "petalPurple", "petalRed", "petalWhite", "runeManaB", new ItemStack(ItemsTC.visResonator), "redstoneRoot");
+            RecipePetals auromeriaRecipe = new RecipePetals(ItemBlockSpecialFlower.ofType(SubTileAuromeria.NAME), ModPetalRecipes.green, ModPetalRecipes.red, ModPetalRecipes.red, ModPetalRecipes.purple, "runeManaB", new ItemStack(ItemsTC.visResonator), "redstoneRoot");
             BotaniaAPI.registerPetalRecipe(auromeriaRecipe.getOutput(), auromeriaRecipe.getInputs().toArray());
             SubTileAuromeria.AUROMERIA_ENTRY = new BasicLexiconEntry("auromeria", BotaniaAPI.categoryFunctionalFlowers);
             SubTileAuromeria.AUROMERIA_ENTRY.setLexiconPages(
@@ -63,10 +63,12 @@ public class BlockSpecialFlowerMI extends BlockSpecialFlower implements IAdditio
         }
 
         if(isGryllzaliaEnabled) {
-            RecipePetals gryllzaliaRecipe = new RecipePetals(ItemBlockSpecialFlower.ofType(SubTileGryllzalia.NAME), "petalWhite", "petalWhite", "petalRed", "petalRed", "runeSpringB", "redstoneRoot");
+            RecipePetals gryllzaliaRecipe = new RecipePetals(ItemBlockSpecialFlower.ofType(SubTileGryllzalia.NAME), ModPetalRecipes.white, ModPetalRecipes.white, ModPetalRecipes.red, ModPetalRecipes.red, "runeSpringB", "redstoneRoot");
             BotaniaAPI.registerPetalRecipe(gryllzaliaRecipe.getOutput(), gryllzaliaRecipe.getInputs().toArray());
             SubTileGryllzalia.GRYLLZALIA_ENTRY = new BasicLexiconEntry("gryllzalia", BotaniaAPI.categoryFunctionalFlowers);
-            SubTileGryllzalia.GRYLLZALIA_ENTRY.setLexiconPages(new PageText("0"), new PagePetalRecipe<>("1", gryllzaliaRecipe));
+            SubTileGryllzalia.GRYLLZALIA_ENTRY.setLexiconPages(
+                    new PageText("0"),
+                    new PagePetalRecipe<>("1", gryllzaliaRecipe));
         }
     }
 

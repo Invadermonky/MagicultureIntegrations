@@ -80,9 +80,9 @@ public class ItemReagent extends Item implements IAddition {
     public boolean isEnabled() {
         switch (this.type) {
             case TEMPERATURE:
-                return ConfigHandlerMI.blood_magic.survival_mods.temperature_sigil.enable;
+                return ConfigHandlerMI.blood_magic.survival_mods.sigil_of_temperate_lands.enable;
             case THIRST:
-                return ConfigHandlerMI.blood_magic.survival_mods.thirst_sigil.enable;
+                return ConfigHandlerMI.blood_magic.survival_mods.sigil_of_hydration.enable;
         }
         return false;
     }

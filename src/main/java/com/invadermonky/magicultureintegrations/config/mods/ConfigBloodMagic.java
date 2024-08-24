@@ -57,10 +57,10 @@ public class ConfigBloodMagic {
     }
 
     public static class SurvivalMods {
-        @Comment("")//TODO
-        public GenericCostConfig temperature_sigil = new GenericCostConfig(150);
-        @Comment("")//TODO
-        public GenericCostConfig thirst_sigil = new GenericCostConfig(150);
+        @Comment("Blood Magic SimpleDifficulty/Tough As Nails temperature regulation sigil settings.")
+        public GenericCostConfig sigil_of_temperate_lands = new GenericCostConfig(150);
+        @Comment("Blood Magic SimpleDifficulty/Tough As Nails hyration sigil settings.")
+        public GenericCostConfig sigil_of_hydration = new GenericCostConfig(150);
     }
 
     public static class Rituals {

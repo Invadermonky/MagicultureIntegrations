@@ -1,0 +1,24 @@
+{
+  "entries": [
+    {
+      "key": "FLUXLENS",
+      "name": "research.FLUXLENS.title",
+      "icons": ["magicultureintegrations:lens_flux"],
+      "category": "ARTIFICE",
+      "parents": ["BASEARTIFICE", "FLUX"],
+      "location": [0,4],
+      "stages": [
+        {
+          "text": "research.FLUXLENS.stage.0",
+          "required_knowledge": ["OBSERVATION;AUROMANCY;1"],
+          "required_item": ["botania:lens;0"]
+        },
+        {
+          "text": "research.FLUXLENS.stage.1",
+          "recipes": ["magicultureintegration:FluxLens"],
+          "warp": 1
+        }
+      ]
+    }
+  ]
+}

@@ -47,7 +47,7 @@ public class SubTileAuromeria extends SubTileFunctional implements IConfigurable
                 this.visPower += 100;
             }
 
-            if(this.mana >= 10 && this.visPower > 0) {
+            if(this.mana >= manaCost && this.visPower > 0) {
                 if(flux > 0 && world.rand.nextFloat() < (ConfigHandlerMI.botania.flowers.auromeria.fluxDrainChance + fluxPercent)) {
                     AuraHelper.drainFlux(world, flowerPos, (float) ConfigHandlerMI.botania.flowers.auromeria.fluxDrainAmount, false);
                     drainedFlux = true;
@@ -67,10 +67,10 @@ public class SubTileAuromeria extends SubTileFunctional implements IConfigurable
     public void spawnFluxBurst(World world, BlockPos pos, boolean drainedFlux) {
         EntityManaBurst burst = new EntityManaBurst(world);
         burst.setBurstSourceCoords(pos);
-        burst.setPosition(pos.getX(), pos.getY(), pos.getZ());
+        burst.setPosition(pos.getX() + 0.5, pos.getY() + 0.8, pos.getZ() + 0.5);
         float motionModifier = 0.5f;
         burst.setColor(16711808);
-        burst.setMana(120);
+        burst.setMana(120 * (drainedFlux ? 2 : 1));
         burst.setStartingMana(340);
         burst.setMinManaLoss(50);
         burst.setManaLossPerTick(1.0f);

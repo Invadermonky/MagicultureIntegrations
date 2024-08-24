@@ -25,15 +25,12 @@ public class SubTileGryllzalia extends SubTileFunctional implements IConfigurabl
     @Override
     public void onUpdate() {
         super.onUpdate();
-        if(!this.supertile.getWorld().isRemote && this.redstoneSignal <= 0) {
+        int delay = ConfigHandlerMI.botania.flowers.gryllzalia.delay;
+        if(!this.supertile.getWorld().isRemote && this.redstoneSignal <= 0 && this.ticksExisted % delay == 0) {
             boolean did = false;
             int cost = ConfigHandlerMI.botania.flowers.gryllzalia.cost;
-            int delay = ConfigHandlerMI.botania.flowers.gryllzalia.delay;
             List<EntityPlayer> players = this.supertile.getWorld().getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(this.supertile.getPos().add(-RANGE, -RANGE, -RANGE), this.supertile.getPos().add(RANGE,RANGE,RANGE)));
             for(EntityPlayer player : players) {
-                if(player.ticksExisted % delay != 0)
-                    continue;
-
                 if(ModIds.simpledifficulty.isLoaded && SimpleDifficultyUtils.stabilizePlayerTemperature(player)) {
                     this.mana -= cost;
                     did = true;

@@ -33,6 +33,7 @@ public class InitBotania implements IIntegrationModule {
         integrations.addIntegration(ModIds.rustic, BotRustic.class);
 
         additions.add(ItemTemperatureRing.TEMPERATURE_RING);
+        additions.add(ItemLensFlux.FLUX_LENS);
         additions.add(BlockSpecialFlowerMI.BLOCK_SPECIAL_FLOWER);
     }
 

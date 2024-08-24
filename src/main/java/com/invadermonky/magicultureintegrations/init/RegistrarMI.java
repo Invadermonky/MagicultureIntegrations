@@ -49,8 +49,9 @@ public class RegistrarMI {
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
         IForgeRegistry<Block> registry = event.getRegistry();
         BLOCKS.forEach((block, doRegister) -> {
-            if(doRegister)
+            if(doRegister) {
                 registry.register(block);
+            }
         });
     }
 

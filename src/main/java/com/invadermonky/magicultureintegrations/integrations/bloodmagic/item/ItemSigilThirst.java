@@ -21,7 +21,7 @@ public class ItemSigilThirst extends ItemSigilToggleableBase implements IAdditio
     private static final String NAME = "sigil_thirst";
 
     public ItemSigilThirst() {
-        super(NAME, ConfigHandlerMI.blood_magic.survival_mods.thirst_sigil.cost);
+        super(NAME, ConfigHandlerMI.blood_magic.survival_mods.sigil_of_hydration.cost);
         this.setRegistryName(MagicultureIntegrations.MOD_ID, NAME);
         this.setTranslationKey(this.getRegistryName().toString());
         this.addPropertyOverride(new ResourceLocation(MagicultureIntegrations.MOD_ID, "enabled"), (stack, world, entity) -> this.getActivated(stack) ? 1 : 0);
@@ -30,7 +30,7 @@ public class ItemSigilThirst extends ItemSigilToggleableBase implements IAdditio
     @Override
     public void onSigilUpdate(ItemStack stack, World world, EntityPlayer player, int itemSlot, boolean isSelected) {
         if(!PlayerHelper.isFakePlayer(player)) {
-            if(player.ticksExisted % ConfigHandlerMI.blood_magic.survival_mods.thirst_sigil.delay != 0)
+            if(player.ticksExisted % ConfigHandlerMI.blood_magic.survival_mods.sigil_of_hydration.delay != 0)
                 return;
 
             if(ModIds.simpledifficulty.isLoaded) {
@@ -58,6 +58,6 @@ public class ItemSigilThirst extends ItemSigilToggleableBase implements IAdditio
 
     @Override
     public boolean isEnabled() {
-        return ConfigHandlerMI.blood_magic.survival_mods.thirst_sigil.enable;
+        return ConfigHandlerMI.blood_magic.survival_mods.sigil_of_hydration.enable;
     }
 }

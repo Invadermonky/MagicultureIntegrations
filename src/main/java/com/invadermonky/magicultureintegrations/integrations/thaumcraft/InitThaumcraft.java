@@ -1,5 +1,6 @@
 package com.invadermonky.magicultureintegrations.integrations.thaumcraft;
 
+import com.invadermonky.magicultureintegrations.api.mods.IAddition;
 import com.invadermonky.magicultureintegrations.api.mods.IIntegrationModule;
 import com.invadermonky.magicultureintegrations.events.CommonEventHandler;
 import com.invadermonky.magicultureintegrations.init.RegistrarMI;
@@ -10,8 +11,12 @@ import com.invadermonky.magicultureintegrations.util.IntegrationList;
 import com.invadermonky.magicultureintegrations.util.ModIds;
 import thaumcraft.common.tiles.devices.TileBellows;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class InitThaumcraft implements IIntegrationModule {
     private final IntegrationList integrations = new IntegrationList("Thaumcraft");
+    private final List<IAddition> additions = new ArrayList<>();
 
     @Override
     public void buildModIntegrations() {
@@ -20,6 +25,10 @@ public class InitThaumcraft implements IIntegrationModule {
         integrations.addIntegration(ModIds.futuremc, TCFutureMC.class);
         integrations.addIntegration(ModIds.mystical_agriculture, TCMysticalAgriculture.class);
         integrations.addIntegration(ModIds.rustic, TCRustic.class);
+
+        if(ModIds.simpledifficulty.isLoaded || ModIds.tough_as_nails.isLoaded) {
+            additions.add(ItemThaumicRegulator.THAUMIC_REGULATOR);
+        }
     }
 
     @Override
@@ -43,6 +52,9 @@ public class InitThaumcraft implements IIntegrationModule {
 
     @Override
     public void postInit() {
-
+        additions.forEach(addition -> {
+            if(addition.isEnabled())
+                addition.registerRecipe();
+        });
     }
 }

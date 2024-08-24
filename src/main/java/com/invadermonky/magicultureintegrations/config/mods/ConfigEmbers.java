@@ -8,7 +8,7 @@ public class ConfigEmbers {
     public SurvivalMods survival_mods = new SurvivalMods();
 
     public static class SurvivalMods {
-        @Config.Comment("")//TODO
+        @Config.Comment("Embers SimpleDifficulty/Tough As Nails temperature regulation bauble settings.")
         public GenericCostConfig mantle_cloak = new GenericCostConfig(60, 1);
     }
 }

@@ -23,13 +23,12 @@ public class ConfigBotania {
     }
 
     public static class Flowers {
-        @Comment("")//TODO: Change config name and add comment
-        public GenericCostConfig gryllzalia = new GenericCostConfig(20);
-        @Comment("Thaumcraft vis/flux consuming flower settings.")//TODO: Change config name, test values, and comment
+        @Comment("Botania functional flower. Uses Thaumcraft vis and mana to generate mana bursts. See Lexicon entry for more details")
         public Auromeria auromeria = new Auromeria();
+        @Comment("Botania functional flower. Uses mana to regulate player temperature.")
+        public GenericCostConfig gryllzalia = new GenericCostConfig(20);
 
         public static class Auromeria {
-            //TODO: Change names. Search for "flux flower"
             @RequiresMcRestart
             @Comment("Enables the Auromeria flower and the Flux Lens.")
             public boolean enableAuromeria = true;

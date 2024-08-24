@@ -1,6 +1,6 @@
 {
-  "parent": "item/handheld",
+  "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "magicultureintegrations:item/sigil_temperature_enabled"
+    "layer0": "magicultureintegrations:items/sigil_temperature_enabled"
   }
 }

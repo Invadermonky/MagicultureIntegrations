@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "magicultureintegrations:item/reagent_thirst"
+    "layer0": "magicultureintegrations:items/reagent_thirst"
   }
 }

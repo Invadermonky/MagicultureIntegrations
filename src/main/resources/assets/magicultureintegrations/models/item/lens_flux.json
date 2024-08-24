@@ -1,6 +1,7 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "magicultureintegrations:item/lens_flux"
+    "layer0": "botania:items/lens",
+    "layer1": "magicultureintegrations:items/lens_flux"
   }
 }

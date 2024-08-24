@@ -1,14 +1,14 @@
 {
-  "parent": "item/handheld",
+  "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "magicultureintegrations:item/sigil_temperature_disabled"
+    "layer0": "magicultureintegrations:items/sigil_temperature_disabled"
   },
   "overrides": [
     {
       "predicate": {
         "magicultureintegrations:enabled": 1
       },
-      "model": "magicultureintegrations:item/sigil_temperature_enabled"
+      "model": "magicultureintegrations:items/sigil_temperature_enabled"
     }
   ]
 }

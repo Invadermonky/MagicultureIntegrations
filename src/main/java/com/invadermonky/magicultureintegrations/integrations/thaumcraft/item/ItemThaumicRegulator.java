@@ -37,6 +37,9 @@ public class ItemThaumicRegulator extends ItemBaubleMI implements IRechargable, 
         this.setTranslationKey(this.getRegistryName().toString());
         this.setCreativeTab(ConfigItems.TABTC);
         this.setMaxStackSize(1);
+
+        //Thaumcraft Research needs to be registered asap.
+        ThaumcraftApi.registerResearchLocation(new ResourceLocation(MagicultureIntegrations.MOD_ID, "research/thaumic_regulator"));
     }
 
     /*
@@ -103,7 +106,6 @@ public class ItemThaumicRegulator extends ItemBaubleMI implements IRechargable, 
 
     @Override
     public void registerRecipe() {
-        ThaumcraftApi.registerResearchLocation(new ResourceLocation(MagicultureIntegrations.MOD_ID, "research/INFUSION"));
 
         ItemStack cooler = new ItemStack(Blocks.ICE);
         ItemStack heater = new ItemStack(Blocks.MAGMA);
