@@ -1,9 +1,11 @@
 # Changelog
 ## 1.12.2-1.3.0
 <span style="font-size:1.2em;color:red;"><b>The configuration has changed. A number of config options have been renamed or moved. Be sure to regenerate your config file after updating from previous versions.</b></span>
+<br><br>
 ### Features
 - Astral Sorcery
   - Right clicking on a block at night with an Ichosic Resonator will display the fluid reservoir contained in that chunk
+<br><br>
 ### Integrations
 - Botania
   - Added Auromeria - new Functional Flora that uses Vis/Flux to generate mana bursts
@@ -13,6 +15,7 @@
 - The One Probe
   - Added Ore Stages support, staged blocks no longer display error probe tooltips
   - Added Redstone Paste support, devices now show standard redstone information
+<br><br>
 ### Fixes
 - Fixed Bewitchment Witch's Oven not lighting up on servers
 - Fixed Botania new lexicon entries occasionally not displaying
