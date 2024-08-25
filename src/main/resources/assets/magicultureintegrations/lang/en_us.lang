@@ -17,7 +17,9 @@ item.magicultureintegrations:thaumic_regulator.name=Thaumic Regulator
 
 # Blocks
 tile.botania:flower.auromeria.name=Auromeria
+tile.botania:flower.auromeria.reference=#BlameBeel
 tile.botania:flower.gryllzalia.name=Gryllzalia
+tile.botania:flower.gryllzalia.reference=Man vs. Wild
 
 # Rituals
 ritual.magicultureintegrations:soothing_hearth=Ritual of the Soothing Hearth
@@ -44,12 +46,12 @@ botania.page.auromeria0=The &1Auromeria&0 is an interesting flower with a comple
 botania.page.auromeria1=produce &4Mana Bursts&0. Each time a mana burst is generated, there is a chance that a small amount of &4Flux&0 will be pulled into the burst, removing it from the local environment. This removal chance increases proportionally to the amount of &4Flux&0 polluting the aura.<br>This process is not without some risks as the &4Mana Bursts&0 generated with this method are incredibly
 botania.page.auromeria2=unstable, exploding on contact with any solid surface. Even worse, the explosion destabilizes the &4Vis&0 contained in the burst, generating a massive amount of &4Flux&0. However, this instability has the side effect of significantly increasing the amount of mana contained in the burst.<br>Though capturing the burst may be a daunting prospect, the &4Influence Lens&0 could be
 botania.page.auromeria3=very helpful in redirecting the &4Mana Bursts&0, similar to its use in a manastorm reactor.<br>...Or you can just let it run and turn everything into a tainted hellscape.
-botania.page.auromeria4=#&oBlameBeel&r
+botania.page.auromeria4=&oThaumaturge's Delight&r
 
 botania.entry.gryllzalia=Gryllzalia
 botania.tagline.gryllzalia=Regulates player temperature
 botania.page.gryllzalia0=More down to earth than the &1Fallen Kanade&0, the &1Gryllzalia&0 uses &4Mana&0 to regulate the body temperature of all nearby players.
-botania.page.gryllzalia1=&oMan vs. Wild&r
+botania.page.gryllzalia1=&oNow without bleeding pipes&r!
 
 embers.research.page.mantle_cloak=Mantle Cloak
 embers.research.page.mantle_cloak.title=Into the Fire

@@ -43,6 +43,12 @@ public class InitBotania implements IIntegrationModule {
         return this.integrations;
     }
 
+    @Nullable
+    @Override
+    public List<IAddition> getAdditions() {
+        return this.additions;
+    }
+
     @Override
     public void preInit() {
         if(ModIds.simpledifficulty.isLoaded || ModIds.tough_as_nails.isLoaded) {
@@ -69,5 +75,10 @@ public class InitBotania implements IIntegrationModule {
                 addition.registerRecipe();
             }
         });
+    }
+
+    @Override
+    public void registerCustomRenders() {
+        IIntegrationModule.super.registerCustomRenders();
     }
 }

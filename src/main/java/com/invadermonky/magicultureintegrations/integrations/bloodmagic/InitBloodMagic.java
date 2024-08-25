@@ -45,6 +45,13 @@ public class InitBloodMagic implements IIntegrationModule {
         integrations.addIntegration(ModIds.quality_tools, BMQualityTools.class);
         integrations.addIntegration(ModIds.roots, BMRoots.class);
         integrations.addIntegration(ModIds.rustic, BMRustic.class);
+
+        if(ModIds.simpledifficulty.isLoaded || ModIds.tough_as_nails.isLoaded) {
+            additions.add(ItemReagent.TEMPERATURE_REAGENT);
+            additions.add(ItemSigilTemperature.TEMPERATURE_SIGIL);
+            additions.add(ItemReagent.THIRST_REAGENT);
+            additions.add(ItemSigilThirst.THIRST_SIGIL);
+        }
     }
 
     @Nullable

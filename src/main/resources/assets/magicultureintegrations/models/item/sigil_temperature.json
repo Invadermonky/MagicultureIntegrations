@@ -8,7 +8,7 @@
       "predicate": {
         "magicultureintegrations:enabled": 1
       },
-      "model": "magicultureintegrations:items/sigil_temperature_enabled"
+      "model": "magicultureintegrations:item/sigil_temperature_enabled"
     }
   ]
 }

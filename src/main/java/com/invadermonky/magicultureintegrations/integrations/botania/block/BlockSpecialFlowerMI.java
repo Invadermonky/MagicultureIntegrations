@@ -16,7 +16,6 @@ import thaumcraft.api.items.ItemsTC;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.BotaniaAPIClient;
 import vazkii.botania.api.recipe.RecipePetals;
-import vazkii.botania.api.subtile.SubTileEntity;
 import vazkii.botania.common.block.BlockSpecialFlower;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.crafting.ModPetalRecipes;
@@ -63,7 +62,7 @@ public class BlockSpecialFlowerMI extends BlockSpecialFlower implements IAdditio
         }
 
         if(isGryllzaliaEnabled) {
-            RecipePetals gryllzaliaRecipe = new RecipePetals(ItemBlockSpecialFlower.ofType(SubTileGryllzalia.NAME), ModPetalRecipes.white, ModPetalRecipes.white, ModPetalRecipes.red, ModPetalRecipes.red, "runeSpringB", "redstoneRoot");
+            RecipePetals gryllzaliaRecipe = new RecipePetals(ItemBlockSpecialFlower.ofType(SubTileGryllzalia.NAME), ModPetalRecipes.brown, ModPetalRecipes.brown, ModPetalRecipes.red, ModPetalRecipes.yellow, "runeSpringB", "redstoneRoot");
             BotaniaAPI.registerPetalRecipe(gryllzaliaRecipe.getOutput(), gryllzaliaRecipe.getInputs().toArray());
             SubTileGryllzalia.GRYLLZALIA_ENTRY = new BasicLexiconEntry("gryllzalia", BotaniaAPI.categoryFunctionalFlowers);
             SubTileGryllzalia.GRYLLZALIA_ENTRY.setLexiconPages(
@@ -78,22 +77,25 @@ public class BlockSpecialFlowerMI extends BlockSpecialFlower implements IAdditio
         if(isAuromeriaEnabled) {
             BotaniaAPI.addSubTileToCreativeMenu(SubTileAuromeria.NAME);
             BotaniaAPI.registerSubTile(SubTileAuromeria.NAME, SubTileAuromeria.class);
-            registerRenders(SubTileAuromeria.class, SubTileAuromeria.NAME);
             enabled = true;
         }
 
         if(SubTileGryllzalia.GRYLLZALIA.isEnabled()) {
             BotaniaAPI.addSubTileToCreativeMenu(SubTileGryllzalia.NAME);
             BotaniaAPI.registerSubTile(SubTileGryllzalia.NAME, SubTileGryllzalia.class);
-            registerRenders(SubTileGryllzalia.class, SubTileGryllzalia.NAME);
             enabled = true;
         }
         return enabled;
     }
 
     @SideOnly(Side.CLIENT)
-    public void registerRenders(Class<? extends SubTileEntity> clazz, String name) {
-        BotaniaAPIClient.registerSubtileModel(clazz, new ModelResourceLocation(MagicultureIntegrations.MOD_ID + ":" + name));
+    @Override
+    public void registerCustomRenders() {
+        if(isAuromeriaEnabled) {
+            BotaniaAPIClient.registerSubtileModel(SubTileAuromeria.class, new ModelResourceLocation(MagicultureIntegrations.MOD_ID + ":" + SubTileAuromeria.NAME));
+        }
+        if(isGryllzaliaEnabled) {
+            BotaniaAPIClient.registerSubtileModel(SubTileGryllzalia.class, new ModelResourceLocation(MagicultureIntegrations.MOD_ID + ":" + SubTileGryllzalia.NAME));
+        }
     }
-
 }

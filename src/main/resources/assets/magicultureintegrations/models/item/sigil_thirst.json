@@ -8,7 +8,7 @@
       "predicate": {
         "magicultureintegrations:enabled": 1
       },
-      "model": "magicultureintegrations:items/sigil_thirst_enabled"
+      "model": "magicultureintegrations:item/sigil_thirst_enabled"
     }
   ]
 }

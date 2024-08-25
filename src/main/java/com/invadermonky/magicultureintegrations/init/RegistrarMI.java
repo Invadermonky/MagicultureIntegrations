@@ -2,6 +2,7 @@ package com.invadermonky.magicultureintegrations.init;
 
 import com.invadermonky.magicultureintegrations.MagicultureIntegrations;
 import com.invadermonky.magicultureintegrations.api.mods.IAddition;
+import com.invadermonky.magicultureintegrations.integrations.InitIntegrations;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -66,7 +67,13 @@ public class RegistrarMI {
         });
 
         BLOCKS.forEach((block,doRegister) -> {
-            //TODO:
+
+        });
+
+        InitIntegrations.integrationModules.forEach(module -> {
+            if(module.getAdditions() != null) {
+                module.getAdditions().forEach(IAddition::registerCustomRenders);
+            }
         });
     }
 }
