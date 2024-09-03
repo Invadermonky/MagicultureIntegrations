@@ -3,11 +3,22 @@ package com.invadermonky.magicultureintegrations;
 import com.invadermonky.magicultureintegrations.proxy.CommonProxy;
 import com.invadermonky.magicultureintegrations.util.LogHelper;
 import com.invadermonky.magicultureintegrations.util.ModIds;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import vazkii.patchouli.client.book.BookCategory;
+import vazkii.patchouli.client.book.BookEntry;
+import vazkii.patchouli.common.book.Book;
+import vazkii.patchouli.common.book.BookRegistry;
+
+import java.util.List;
+import java.util.Objects;
 
 @Mod(
         modid = MagicultureIntegrations.MOD_ID,
@@ -24,7 +35,9 @@ public class MagicultureIntegrations {
     public static final String DEPENDENCIES =
             "after:" + ModIds.ConstIds.bloodmagic +
             ";after:" + ModIds.ConstIds.botania +
-            ";after:" + ModIds.ConstIds.embers;
+            ";after:" + ModIds.ConstIds.embers +
+            ";after:" + ModIds.ConstIds.natures_aura +
+            ";after:" + ModIds.ConstIds.patchouli;
 
     public static final String ProxyClientClass = "com.invadermonky." + MOD_ID + ".proxy.ClientProxy";
     public static final String ProxyServerClass = "com.invadermonky." + MOD_ID + ".proxy.CommonProxy";

@@ -34,7 +34,6 @@ public abstract class ItemBaubleMI extends Item implements IBauble {
                         baubles.setStackInSlot(i, toEquip);
                         ((IBauble) toEquip.getItem()).onEquipped(toEquip, player);
                         stack.shrink(1);
-                        PlayerHelper.grantCriterion((EntityPlayerMP) player, new ResourceLocation("botania", "main/bauble_wear"), "code_triggered");
                         if (!stackInSlot.isEmpty()) {
                             if (baubleInSlot != null) {
                                 baubleInSlot.onUnequipped(stackInSlot, player);
