@@ -1,4 +1,12 @@
 # Changelog
+## 1.12.2-1.3.1
+- Fix crash with Auromeria when Botania installed but Thaumcraft not installed
+- Fix crash when right-clicking baubles when Botania not installed
+- Fix crash with embers when Baubles not installed
+- Fixed Gryllzalia render issue when Thaumcraft not installed
+- Fixed Gryllzalia loading errored botania flower when TAN/SimpleDifficulty not installed
+<br><br>
+
 ## 1.12.2-1.3.0
 <span style="font-size:1.2em;color:red;"><b>The configuration has changed. A number of config options have been renamed or moved. Be sure to regenerate your config file after updating from previous versions.</b></span>
 <br><br>
@@ -21,7 +29,7 @@
 - Fixed Botania new lexicon entries occasionally not displaying
 - Fixed Cooking for Blockheads oven flickering
 - Fixed Immersive Engineering External Heater inconsistencies
-
+<br><br>
 
 ## 1.12.2-1.2.0
 ### Additions:
@@ -44,13 +52,13 @@
 
 ### Fixes
 - Config menu can now be accessed and modified through the in-game Gui
-
+  <br><br>
 
 ## 1.12.2-1.1.0
 - Fixed Immersive Engineering External Heater not updating Future MC's Blast Furnace and Smoker
 - Fixed crash on servers
 - Improved performance when accessing Bewitchment's Witches' Oven and Rustic's Alchemic Condensers
-
+  <br><br>
 
 ## 1.12.2-1.0.0
 - Initial Release

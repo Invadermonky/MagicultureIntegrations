@@ -119,7 +119,7 @@ dependencies {
     def loadMap = [:]
 
     modMap.put(["agricraft-225635:3317747", "infinitylib-251396:3317119"], project.agricraft)
-    modMap.put(["astral-sorcery-241721:3044416"], project.astralsorcery)
+    modMap.put(["astral-sorcery-241721:3044416", "baubles-227083:2518667"], project.astralsorcery)
     modMap.put(["attained-drops-2-254294:2538349", "placebo-283644:4629597"], project.attaineddrops)
     modMap.put(["bewitchment-legacy-285439:3256343", "baubles-227083:2518667", "patchouli-306770:3162874"], project.bewitchment)
     modMap.put(["blood-magic-224791:2822288", "guide-api-228832:2645992"], project.bloodmagic)
@@ -152,7 +152,7 @@ dependencies {
                 loadMap.put(modMaven,loadFlag)
             } else {
                 if(loadFlag && !loadMap[modMaven]) {
-                    loadFlag[modMaven] = loadFlag
+                    loadMap[modMaven] = loadFlag
                 }
             }
         }

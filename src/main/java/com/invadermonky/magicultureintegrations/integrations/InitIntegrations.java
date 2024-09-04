@@ -63,7 +63,9 @@ public class InitIntegrations {
                 integrationModules.add(moduleClass.newInstance());
                 LogHelper.info("Loaded integration module: " + mod.modId);
             }
-        } catch (Exception e) {
+            //TODO: This is a workaround fix for mods loading without baubles. I need to figure out a better way to handle this.
+            //  The crash is caused by loading embers module without Baubles being present.
+        } catch (NoClassDefFoundError e1) {} catch (Exception e) {
             LogHelper.error("Failed to load integration module: " + mod.modId);
         }
     }

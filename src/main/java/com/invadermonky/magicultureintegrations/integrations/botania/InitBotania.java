@@ -55,6 +55,7 @@ public class InitBotania implements IIntegrationModule {
     public void preInit() {
         if(ModIds.simpledifficulty.isLoaded || ModIds.tough_as_nails.isLoaded) {
             RegistrarMI.registerItem(ItemTemperatureRing.TEMPERATURE_RING);
+            RegistrarMI.registerBlock(BlockSpecialFlowerMI.BLOCK_SPECIAL_FLOWER, false);
         }
         if(ModIds.thaumcraft.isLoaded) {
             RegistrarMI.registerItem(ItemLensFlux.FLUX_LENS);

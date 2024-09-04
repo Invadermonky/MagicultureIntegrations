@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
@@ -80,7 +81,7 @@ public class BlockSpecialFlowerMI extends BlockSpecialFlower implements IAdditio
             enabled = true;
         }
 
-        if(SubTileGryllzalia.GRYLLZALIA.isEnabled()) {
+        if(isGryllzaliaEnabled) {
             BotaniaAPI.addSubTileToCreativeMenu(SubTileGryllzalia.NAME);
             BotaniaAPI.registerSubTile(SubTileGryllzalia.NAME, SubTileGryllzalia.class);
             enabled = true;
@@ -92,10 +93,10 @@ public class BlockSpecialFlowerMI extends BlockSpecialFlower implements IAdditio
     @Override
     public void registerCustomRenders() {
         if(isAuromeriaEnabled) {
-            BotaniaAPIClient.registerSubtileModel(SubTileAuromeria.class, new ModelResourceLocation(MagicultureIntegrations.MOD_ID + ":" + SubTileAuromeria.NAME));
+            BotaniaAPIClient.registerSubtileModel(SubTileAuromeria.class, new ModelResourceLocation(new ResourceLocation(MagicultureIntegrations.MOD_ID, SubTileAuromeria.NAME), "normal"));
         }
         if(isGryllzaliaEnabled) {
-            BotaniaAPIClient.registerSubtileModel(SubTileGryllzalia.class, new ModelResourceLocation(MagicultureIntegrations.MOD_ID + ":" + SubTileGryllzalia.NAME));
+            BotaniaAPIClient.registerSubtileModel(SubTileGryllzalia.class, new ModelResourceLocation(new ResourceLocation(MagicultureIntegrations.MOD_ID, SubTileGryllzalia.NAME), "normal"));
         }
     }
 }

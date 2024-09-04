@@ -21,7 +21,7 @@ public class InitEmbers implements IIntegrationModule {
 
     @Override
     public void preInit() {
-        if((ModIds.simpledifficulty.isLoaded || ModIds.tough_as_nails.isLoaded) && ModIds.baubles.isLoaded) {
+        if ((ModIds.simpledifficulty.isLoaded || ModIds.tough_as_nails.isLoaded) && ModIds.baubles.isLoaded) {
             RegistrarMI.registerItem(ItemMantleCloak.MANTLE_CLOAK);
         }
     }
