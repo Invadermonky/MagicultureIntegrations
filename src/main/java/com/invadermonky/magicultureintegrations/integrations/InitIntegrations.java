@@ -5,14 +5,16 @@ import com.invadermonky.magicultureintegrations.api.mods.IModIntegration;
 import com.invadermonky.magicultureintegrations.integrations.astralsorcery.InitAstralSorcery;
 import com.invadermonky.magicultureintegrations.integrations.bloodmagic.InitBloodMagic;
 import com.invadermonky.magicultureintegrations.integrations.botania.InitBotania;
-import com.invadermonky.magicultureintegrations.integrations.embers.InitEmbers;
 import com.invadermonky.magicultureintegrations.integrations.immersiveengineering.InitImmersiveEngineering;
 import com.invadermonky.magicultureintegrations.integrations.naturesaura.InitNaturesAura;
 import com.invadermonky.magicultureintegrations.integrations.qualitytools.InitQualityTools;
+import com.invadermonky.magicultureintegrations.integrations.quark.InitQuark;
 import com.invadermonky.magicultureintegrations.integrations.thaumcraft.InitThaumcraft;
 import com.invadermonky.magicultureintegrations.integrations.theoneprobe.InitTheOneProbe;
 import com.invadermonky.magicultureintegrations.util.LogHelper;
 import com.invadermonky.magicultureintegrations.util.ModIds;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.ArrayList;
 
@@ -23,10 +25,10 @@ public class InitIntegrations {
         loadModule(ModIds.astral_sorcery, InitAstralSorcery.class);
         loadModule(ModIds.bloodmagic, InitBloodMagic.class);
         loadModule(ModIds.botania, InitBotania.class);
-        loadModule(ModIds.embers, InitEmbers.class);
         loadModule(ModIds.immersive_engineering, InitImmersiveEngineering.class);
         loadModule(ModIds.natures_aura, InitNaturesAura.class);
         loadModule(ModIds.quality_tools, InitQualityTools.class);
+        loadModule(ModIds.quark, InitQuark.class);
         loadModule(ModIds.thaumcraft, InitThaumcraft.class);
         loadModule(ModIds.the_one_probe, InitTheOneProbe.class);
     }
@@ -41,11 +43,30 @@ public class InitIntegrations {
         });
     }
 
+    @SideOnly(Side.CLIENT)
+    public static void preInitClient() {
+        integrationModules.forEach(module -> {
+            module.preInitClient();
+            if(module.getModIntegrations() != null) {
+                module.getModIntegrations().forEach(IModIntegration::preInitClient);
+            }
+        });
+    }
+
     public static void init() {
         integrationModules.forEach(module -> {
             module.init();
             if(module.getModIntegrations() != null)
                 module.getModIntegrations().forEach(IModIntegration::init);
+        });
+    }
+
+    @SideOnly(Side.CLIENT)
+    public static void initClient() {
+        integrationModules.forEach(module -> {
+            module.initClient();
+            if(module.getModIntegrations() != null)
+                module.getModIntegrations().forEach(IModIntegration::initClient);
         });
     }
 
@@ -57,15 +78,22 @@ public class InitIntegrations {
         });
     }
 
+    @SideOnly(Side.CLIENT)
+    public static void postInitClient() {
+        integrationModules.forEach(module -> {
+            module.postInitClient();
+            if(module.getModIntegrations() != null)
+                module.getModIntegrations().forEach(IModIntegration::postInitClient);
+        });
+    }
+
     private static void loadModule(ModIds mod, Class<? extends IIntegrationModule> moduleClass) {
         try {
             if(mod.isLoaded) {
                 integrationModules.add(moduleClass.newInstance());
                 LogHelper.info("Loaded integration module: " + mod.modId);
             }
-            //TODO: This is a workaround fix for mods loading without baubles. I need to figure out a better way to handle this.
-            //  The crash is caused by loading embers module without Baubles being present.
-        } catch (NoClassDefFoundError e1) {} catch (Exception e) {
+        } catch (Exception e) {
             LogHelper.error("Failed to load integration module: " + mod.modId);
         }
     }

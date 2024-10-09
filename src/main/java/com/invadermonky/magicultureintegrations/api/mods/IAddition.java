@@ -5,9 +5,14 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public interface IAddition extends IConfigurable {
     /**
-     * Register any recipes or compatibilities here. Guidebook entries are also initialized in this method.
+     * Any new guidebook entries are registered here.
      */
-    void registerRecipe();
+    default void registerGuideEntry() {}
+
+    /**
+     * Register any recipes or compatibilities here..
+     */
+    default void registerRecipe() {}
 
     @SideOnly(Side.CLIENT)
     default void registerCustomRenders() {}

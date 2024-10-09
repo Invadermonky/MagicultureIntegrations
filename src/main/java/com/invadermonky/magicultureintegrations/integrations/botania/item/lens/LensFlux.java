@@ -54,7 +54,7 @@ public class LensFlux extends Lens {
                 int toDrain = Math.min(48, mana);
                 burst.setMana(mana - 16);
                 if(!burst.isFake()) {
-                    float damage = ConfigHandlerMI.botania.flowers.auromeria.fluxBurstDamage * toDrain / 48;
+                    float damage = ConfigHandlerMI.integrations.botania.auromeria.fluxBurstDamage * toDrain / 48;
                     living.attackEntityFrom(DamageSourceThaumcraft.taint, damage);
                     living.addPotionEffect(new PotionEffect(PotionFluxTaint.instance, 160));
                     if(burst.getMana() <= 0) {
@@ -72,7 +72,7 @@ public class LensFlux extends Lens {
     }
 
     public void createFluxExplosion(EntityThrowable entity, float explosionStrength, boolean damageTerrain) {
-        float flux = (float) (entity.world.rand.nextDouble() < ConfigHandlerMI.botania.flowers.auromeria.pollutionChance ? ConfigHandlerMI.botania.flowers.auromeria.pollutionAmount : 0);
+        float flux = (float) (entity.world.rand.nextDouble() < ConfigHandlerMI.integrations.botania.auromeria.pollutionChance ? ConfigHandlerMI.integrations.botania.auromeria.pollutionAmount : 0);
         entity.world.createExplosion(entity, entity.posX, entity.posY, entity.posZ, explosionStrength, damageTerrain);
         if(flux > 0) {
             BlockPos pos = entity.getPosition();

@@ -36,7 +36,7 @@ public class InitQualityTools implements IIntegrationModule {
 
     @Override
     public void init() {
-        if(ConfigHandlerMI.quality_tools.enableGuiQualityText) {
+        if(ConfigHandlerMI.integrations.quality_tools.enableGuiQualityText) {
             ClientEventHandler.registerEventSubscriber(GuiContainerEvent.DrawForeground.class, new QTGuiEvent());
         }
     }

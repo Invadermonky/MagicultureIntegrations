@@ -53,7 +53,7 @@ public class TOPOreStages implements Function<ITheOneProbe, Void>, IConfigurable
 
     @Override
     public boolean isEnabled() {
-        return ConfigHandlerMI.the_one_probe.ore_stages;
+        return ConfigHandlerMI.integrations.the_one_probe.ore_stages;
     }
 
     private static class ProbeHitDataWrapper implements IProbeHitData {

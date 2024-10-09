@@ -1,26 +1,16 @@
 package com.invadermonky.magicultureintegrations.integrations.botania.mods;
 
 import com.invadermonky.magicultureintegrations.api.mods.IModIntegration;
-import com.invadermonky.magicultureintegrations.api.mods.rustic.RusticHeatable;
+import com.invadermonky.magicultureintegrations.api.tile.HeatableUtils;
 import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
-import com.invadermonky.magicultureintegrations.integrations.botania.events.BotExoflameHandler;
 import rustic.common.tileentity.TileEntityCondenserBase;
+import vazkii.botania.common.block.subtile.functional.SubTileExoflame;
 
 public class BotRustic implements IModIntegration {
     @Override
     public void preInit() {
-        if(ConfigHandlerMI.botania.exoflame.rustic) {
-            BotExoflameHandler.registerExoflameHeatable(TileEntityCondenserBase.class, RusticHeatable.class);
+        if(!ConfigHandlerMI.heatables.rustic.exoflame) {
+            HeatableUtils.blacklistHeatable(SubTileExoflame.class, TileEntityCondenserBase.class);
         }
-    }
-
-    @Override
-    public void init() {
-
-    }
-
-    @Override
-    public void postInit() {
-
     }
 }

@@ -3,33 +3,23 @@ package com.invadermonky.magicultureintegrations.integrations.immersiveengineeri
 import blusunrize.immersiveengineering.api.tool.ExternalHeaterHandler;
 import blusunrize.immersiveengineering.api.tool.ExternalHeaterHandler.HeatableAdapter;
 import com.invadermonky.magicultureintegrations.api.mods.IModIntegration;
-import com.invadermonky.magicultureintegrations.api.mods.futuremc.FutureMCHeatable;
 import com.invadermonky.magicultureintegrations.api.mods.immersiveengineering.ImmersiveEngineeringUtils;
+import com.invadermonky.magicultureintegrations.api.tile.IHeatableTile;
 import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
 import thedarkcolour.futuremc.tile.TileFurnaceAdvanced;
 
 public class IEFutureMC implements IModIntegration {
     @Override
     public void preInit() {
-        if(ConfigHandlerMI.immersive_engineering.external_heater.future_mc) {
+        if(ConfigHandlerMI.heatables.future_mc.external_heater) {
             ExternalHeaterHandler.registerHeatableAdapter(TileFurnaceAdvanced.class, new FutureMCFurnaceAdapter());
         }
-    }
-
-    @Override
-    public void init() {
-
-    }
-
-    @Override
-    public void postInit() {
-
     }
 
     public static class FutureMCFurnaceAdapter extends HeatableAdapter<TileFurnaceAdvanced> {
         @Override
         public int doHeatTick(TileFurnaceAdvanced furnace, int energy, boolean redstone) {
-            return ImmersiveEngineeringUtils.doHeatableHeatTick(new FutureMCHeatable(furnace), energy, redstone);
+            return furnace instanceof IHeatableTile ? ImmersiveEngineeringUtils.doHeatableHeatTick((IHeatableTile) furnace, energy, redstone) : 0;
         }
     }
 }

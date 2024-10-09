@@ -3,7 +3,6 @@ package com.invadermonky.magicultureintegrations.integrations.botania.block;
 import com.invadermonky.magicultureintegrations.MagicultureIntegrations;
 import com.invadermonky.magicultureintegrations.api.mods.IAddition;
 import com.invadermonky.magicultureintegrations.integrations.botania.block.subtile.SubTileAuromeria;
-import com.invadermonky.magicultureintegrations.integrations.botania.block.subtile.SubTileGryllzalia;
 import com.invadermonky.magicultureintegrations.util.ModIds;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
@@ -28,11 +27,9 @@ import vazkii.botania.common.lexicon.page.PageText;
 public class BlockSpecialFlowerMI extends BlockSpecialFlower implements IAddition {
     public static final BlockSpecialFlowerMI BLOCK_SPECIAL_FLOWER = new BlockSpecialFlowerMI();
     public boolean isAuromeriaEnabled;
-    public boolean isGryllzaliaEnabled;
 
     public BlockSpecialFlowerMI() {
         isAuromeriaEnabled = ModIds.thaumcraft.isLoaded && SubTileAuromeria.AUROMERIA.isEnabled();
-        isGryllzaliaEnabled = (ModIds.simpledifficulty.isLoaded || ModIds.tough_as_nails.isLoaded) && SubTileGryllzalia.GRYLLZALIA.isEnabled();
     }
 
     @Override
@@ -40,11 +37,6 @@ public class BlockSpecialFlowerMI extends BlockSpecialFlower implements IAdditio
         if(isAuromeriaEnabled) {
             stacks.add(ItemBlockSpecialFlower.ofType(SubTileAuromeria.NAME));
             stacks.add(ItemBlockSpecialFlower.ofType(new ItemStack(ModBlocks.floatingSpecialFlower), SubTileAuromeria.NAME));
-        }
-
-        if(isGryllzaliaEnabled) {
-            stacks.add(ItemBlockSpecialFlower.ofType(SubTileGryllzalia.NAME));
-            stacks.add(ItemBlockSpecialFlower.ofType(new ItemStack(ModBlocks.floatingSpecialFlower), SubTileGryllzalia.NAME));
         }
     }
 
@@ -61,15 +53,6 @@ public class BlockSpecialFlowerMI extends BlockSpecialFlower implements IAdditio
                     new PageText("3"),
                     new PagePetalRecipe<>("4", auromeriaRecipe));
         }
-
-        if(isGryllzaliaEnabled) {
-            RecipePetals gryllzaliaRecipe = new RecipePetals(ItemBlockSpecialFlower.ofType(SubTileGryllzalia.NAME), ModPetalRecipes.brown, ModPetalRecipes.brown, ModPetalRecipes.red, ModPetalRecipes.yellow, "runeSpringB", "redstoneRoot");
-            BotaniaAPI.registerPetalRecipe(gryllzaliaRecipe.getOutput(), gryllzaliaRecipe.getInputs().toArray());
-            SubTileGryllzalia.GRYLLZALIA_ENTRY = new BasicLexiconEntry("gryllzalia", BotaniaAPI.categoryFunctionalFlowers);
-            SubTileGryllzalia.GRYLLZALIA_ENTRY.setLexiconPages(
-                    new PageText("0"),
-                    new PagePetalRecipe<>("1", gryllzaliaRecipe));
-        }
     }
 
     @Override
@@ -80,12 +63,6 @@ public class BlockSpecialFlowerMI extends BlockSpecialFlower implements IAdditio
             BotaniaAPI.registerSubTile(SubTileAuromeria.NAME, SubTileAuromeria.class);
             enabled = true;
         }
-
-        if(isGryllzaliaEnabled) {
-            BotaniaAPI.addSubTileToCreativeMenu(SubTileGryllzalia.NAME);
-            BotaniaAPI.registerSubTile(SubTileGryllzalia.NAME, SubTileGryllzalia.class);
-            enabled = true;
-        }
         return enabled;
     }
 
@@ -94,9 +71,6 @@ public class BlockSpecialFlowerMI extends BlockSpecialFlower implements IAdditio
     public void registerCustomRenders() {
         if(isAuromeriaEnabled) {
             BotaniaAPIClient.registerSubtileModel(SubTileAuromeria.class, new ModelResourceLocation(new ResourceLocation(MagicultureIntegrations.MOD_ID, SubTileAuromeria.NAME), "normal"));
-        }
-        if(isGryllzaliaEnabled) {
-            BotaniaAPIClient.registerSubtileModel(SubTileGryllzalia.class, new ModelResourceLocation(new ResourceLocation(MagicultureIntegrations.MOD_ID, SubTileGryllzalia.NAME), "normal"));
         }
     }
 }

@@ -6,40 +6,12 @@ chat.magicultureintegrations:astral_sorcery_reservoir=A Reservoir of %s
 item.magicultureintegrations:lens_flux.name=Mana Lens: Flux
 item.magicultureintegrations:lens_flux.short=Flux
 item.botania:magicultureintegrations:lens_flux.short=Flux
-item.magicultureintegrations:mantle_cloak.name=Mantle Cloak
-item.magicultureintegrations:reagent_temperature.name=Temperate Reagent
-item.magicultureintegrations:reagent_thirst.name=Hydration Reagent
-item.magicultureintegrations:sigil_temperature.name=Sigil of Temperate Lands
-item.magicultureintegrations:sigil_thirst.name=Sigil of Hydration
-item.magicultureintegrations:temperature_amulet.name=Environmental Amulet
-item.magicultureintegrations:temperature_ring.name=Ring of Seasons
-item.magicultureintegrations:thaumic_regulator.name=Thaumic Regulator
 
 # Blocks
 tile.botania:flower.auromeria.name=Auromeria
 tile.botania:flower.auromeria.reference=#BlameBeel
-tile.botania:flower.gryllzalia.name=Gryllzalia
-tile.botania:flower.gryllzalia.reference=Man vs. Wild
-
-# Rituals
-ritual.magicultureintegrations:soothing_hearth=Ritual of the Soothing Hearth
-ritual.magicultureintegrations:soothing_hearth.info=Regulates the body temperature of all players in an area around the ritual.
-ritual.magicultureintegrations:soothing_hearth.tempControlRange.info=(Temperature) The area the ritual will affect players.
-
 
 # Research
-guide.bloodmagic.entry.ritual.soothing_hearth=Ritual of the Soothing Hearth
-guide.bloodmagic.entry.ritual.soothing_hearth.info=The Ritual of the Soothing Hearth is a necessity for anyone who struggles against the constant cold or heat of their living environment. When activated, the ritual regulates the body temperature of all players with its area of effect at a greatly reduced cost compared to other such devices.\n\tNo longer will the aspiring homesteader have to seek shelter at the sight of a mere drizzle for fear of frostbite!
-guide.bloodmagic.entry.architect.sigil_temperature=Sigil of Temperate Lands
-guide.bloodmagic.entry.architect.sigil_temperature.info=Taking inspiration from the Sigil of Elemental Affinity, I have fashioned a low-powered version of the device. While not able to directly protect against environmental hazards, its use lies more in the creation of a small climate-controlled bubble surrounding the user.\n\tWith a bit of gold as a heat sync, the device uses the consistent temperature of the LP within one's Soul Network to regulate the temperature of the bubble, ensuring a comfortable temperature in all but the most extreme environments.\n\tUnfortunately, the comparatively weaker effect of this device compared to the Sigil of Elemental Affinity does not reduce the demand on a Soul Network. Anyone wishing to use this device for extended periods should ensure that they have either a sizable buffer or a consistent supply of LP.
-guide.bloodmagic.entry.architect.sigil_thirst=Sigil of Hydration
-guide.bloodmagic.entry.architect.sigil_thirst.info=If the Water Sigil is capable of using moisture in the air to create sources of water, it should be easy enough to adapt the device to instead create small amounts of purified water safe for drinking.
-
-botania.entry.temperatureRing=Ring of Seasons
-botania.tagline.temperatureRing=Keeping cool and staying warm
-botania.page.temperatureRing0=The &1Band of Seasons&0 attempts to regulate the body temperature of the wearer. While it is worn, the ring will heat or cool the wearer depending on the environment. &4Mana&0 will be slowly drained for as long as the ring is equipped.
-botania.page.temperatureRing1=Creating the ring
-
 botania.entry.auromeria=Auromeria
 botania.tagline.auromeria=Consumes Vis to generate mana bursts
 botania.page.auromeria0=The &1Auromeria&0 is an interesting flower with a complex interaction with the environment. &4Thaumaturges&0 are known to cause a great deal of environmental pollution, often intentionally opening spatial rifts in pursuit of power.<br>However, certain natural practices have been known to offset this pollution. The &1Auromeria&0 uses Vis and a small amount of &4Mana&0 to
@@ -48,20 +20,6 @@ botania.page.auromeria2=unstable, exploding on contact with any solid surface. E
 botania.page.auromeria3=very helpful in redirecting the &4Mana Bursts&0, similar to its use in a manastorm reactor.<br>...Or you can just let it run and turn everything into a tainted hellscape.
 botania.page.auromeria4=&oThaumaturge's Delight&r
 
-botania.entry.gryllzalia=Gryllzalia
-botania.tagline.gryllzalia=Regulates player temperature
-botania.page.gryllzalia0=More down to earth than the &1Fallen Kanade&0, the &1Gryllzalia&0 uses &4Mana&0 to regulate the body temperature of all nearby players.
-botania.page.gryllzalia1=&oNow without bleeding pipes&r!
-
-embers.research.page.mantle_cloak=Mantle Cloak
-embers.research.page.mantle_cloak.title=Into the Fire
-embers.research.page.mantle_cloak.tags=Tough As Nails;SimpleDifficulty;Tan;Temperature;Bauble;Armor;
-embers.research.page.mantle_cloak.desc=Working close to the planet's mantle is a grueling business. This cloak will help regulate your body temperature, protecting you from all but the most extreme environments. However, it will require an accessible source of Ember in your inventory.
-
 research.FLUXLENS.title=Mana Lens: Flux
 research.FLUXLENS.stage.0=Though botanists may spout claims of clean renewable power, but on several occasions I have observed a fascinating interaction between mana and vis. The two forces appear to destabilize one another, the mana dissipating harmlessly into the environment and the vis become something much more... ominous.<br>To further this research I will need some sort of mana focus and an environment with a ready supply of vis.
 research.FLUXLENS.stage.1=Infusing a lens with a small amount of flux causes any mana pushed through the foci to become incredibly unstable, exploding on contact with any solid surface. Though the flux contained in the burst might be released into the environment during the explosion, the risk is well worth the lens' potential as a powerful weapon.<br>By infusing a lens that has been calibrated to harm living beings, a new foci is created, capable of tearing through living tissue unimpeded while still retaining the bursts explosive capability.
-
-research.THAUMICREGULATOR.title=Thaumic Regulator
-research.THAUMICREGULATOR.stage.1=As I travel throughout the world seeking knowledge, I have encountered an issue that, while mundane, has proven to be rather problematic. I often find myself traveling through Seasons one day and scaling mountains the next. The constant variation of ambient temperature has resulted in no small amount of discomfort.<BR>Perhaps journeying to the most extreme regions of the world will grant me some insight as how to remedy this problem.
-research.THAUMICREGULATOR.stage.2=I have created a design for an device, that, when placed on my person, will generate a temperate bubble around myself. While I am still exposed to the environment and any dangers therein, I estimate it should be more than sufficient to protect me from all but the most extreme temperatures.<BR>However, the bubble formed by the device will prevent it from drawing from the aura directly, necessitating an internal store of vis that must be refilled at a charging pedestal or similar item. Luckily, I estimate that once fully charged, the device should protect me for several days.

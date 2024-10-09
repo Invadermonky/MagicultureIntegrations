@@ -2,21 +2,21 @@ package com.invadermonky.magicultureintegrations.api.tile;
 
 public interface IHeatableTile {
     /** Whether the tile entity will ignite if provided with fuel. */
-    boolean canSmelt();
+    boolean canSmeltHeatable();
     /** The remaining fuel burn duration. */
-    int getBurnTime();
+    int getBurnTimeHeatable();
     /** The current fuel max burn time. */
-    int getBurnTimeMax();
+    int getBurnTimeMaxHeatable();
     /** The current item cook time */
-    int getCookTime();
+    int getCookTimeHeatable();
     /** The maximum cook time for the item. Used for progress bar. */
-    int getCookTimeMax();
+    int getCookTimeMaxHeatable();
     /** */
-    void setBurnTimeMax(int burnTimeMax);
-    /** Increase fuel burn duration. */
-    void boostBurnTime(int boostAmount);
-    /** Increase speed of items being smelted/cooked. */
-    void boostCookTime(int boostAmount);
+    void setBurnTimeMaxHeatable(int burnTimeMax);
+    /** Increase fuel burn duration. Returns true if operation was successful. */
+    void boostBurnTimeHeatable(int boostAmount);
+    /** Increase speed of items being smelted/cooked. Returns true if operation was successful. */
+    void boostCookTimeHeatable(int boostAmount);
     /** Updates the tile in necessary. */
-    void updateTile();
+    void updateTileHeatable();
 }

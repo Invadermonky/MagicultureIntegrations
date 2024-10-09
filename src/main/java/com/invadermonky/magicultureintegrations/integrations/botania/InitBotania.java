@@ -2,21 +2,13 @@ package com.invadermonky.magicultureintegrations.integrations.botania;
 
 import com.invadermonky.magicultureintegrations.api.mods.IAddition;
 import com.invadermonky.magicultureintegrations.api.mods.IIntegrationModule;
-import com.invadermonky.magicultureintegrations.events.CommonEventHandler;
-import com.invadermonky.magicultureintegrations.init.RegistrarMI;
 import com.invadermonky.magicultureintegrations.integrations.botania.block.BlockSpecialFlowerMI;
-import com.invadermonky.magicultureintegrations.integrations.botania.events.BotExoflameHandler;
 import com.invadermonky.magicultureintegrations.integrations.botania.item.ItemLensFlux;
-import com.invadermonky.magicultureintegrations.integrations.botania.item.ItemTemperatureRing;
-import com.invadermonky.magicultureintegrations.integrations.botania.mods.BotCookingForBlockheads;
-import com.invadermonky.magicultureintegrations.integrations.botania.mods.BotFutureMC;
-import com.invadermonky.magicultureintegrations.integrations.botania.mods.BotMysticalAgriculture;
-import com.invadermonky.magicultureintegrations.integrations.botania.mods.BotRustic;
+import com.invadermonky.magicultureintegrations.integrations.botania.mods.*;
+import com.invadermonky.magicultureintegrations.registry.RegistrarMI;
 import com.invadermonky.magicultureintegrations.util.IntegrationList;
 import com.invadermonky.magicultureintegrations.util.ModIds;
 import org.jetbrains.annotations.Nullable;
-import vazkii.botania.common.block.tile.TileFloatingSpecialFlower;
-import vazkii.botania.common.block.tile.TileSpecialFlower;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,15 +20,20 @@ public class InitBotania implements IIntegrationModule {
     @Override
     public void buildModIntegrations() {
         integrations.addIntegration(ModIds.cooking_for_blockheads, BotCookingForBlockheads.class);
+        integrations.addIntegration(ModIds.engineers_decor, BotEngineersDecor.class);
         integrations.addIntegration(ModIds.futuremc, BotFutureMC.class);
+        integrations.addIntegration(ModIds.immersive_engineering, BotImmersiveEngineering.class);
+        integrations.addIntegration(ModIds.industrial_craft, BotIndustrialCraft.class);
         integrations.addIntegration(ModIds.mystical_agriculture, BotMysticalAgriculture.class);
         integrations.addIntegration(ModIds.rustic, BotRustic.class);
+        integrations.addIntegration(ModIds.thaumcraft, BotThaumcraft.class);
+        integrations.addIntegration(ModIds.thaumadditions, BotThaumicAdditions.class);
+        integrations.addIntegration(ModIds.tinkers_construct, BotTinkersConstruct.class);
 
-        additions.add(ItemTemperatureRing.TEMPERATURE_RING);
         if(ModIds.thaumcraft.isLoaded) {
             additions.add(ItemLensFlux.FLUX_LENS);
+            additions.add(BlockSpecialFlowerMI.BLOCK_SPECIAL_FLOWER);
         }
-        additions.add(BlockSpecialFlowerMI.BLOCK_SPECIAL_FLOWER);
     }
 
     @Nullable
@@ -53,21 +50,9 @@ public class InitBotania implements IIntegrationModule {
 
     @Override
     public void preInit() {
-        if(ModIds.simpledifficulty.isLoaded || ModIds.tough_as_nails.isLoaded) {
-            RegistrarMI.registerItem(ItemTemperatureRing.TEMPERATURE_RING);
-            RegistrarMI.registerBlock(BlockSpecialFlowerMI.BLOCK_SPECIAL_FLOWER, false);
-        }
         if(ModIds.thaumcraft.isLoaded) {
             RegistrarMI.registerItem(ItemLensFlux.FLUX_LENS);
             RegistrarMI.registerBlock(BlockSpecialFlowerMI.BLOCK_SPECIAL_FLOWER, false);
-        }
-    }
-
-    @Override
-    public void init() {
-        if(!BotExoflameHandler.exoflameHeatableMap.isEmpty()) {
-            CommonEventHandler.registerTileTickSubscriber(TileSpecialFlower.class, new BotExoflameHandler());
-            CommonEventHandler.registerTileTickSubscriber(TileFloatingSpecialFlower.class, new BotExoflameHandler());
         }
     }
 

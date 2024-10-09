@@ -24,18 +24,8 @@ public class InitAstralSorcery implements IIntegrationModule {
 
     @Override
     public void preInit() {
-        if(ConfigHandlerMI.astral_sorcery.features.show_reservoir) {
+        if(ConfigHandlerMI.integrations.astral_sorcery.features.show_reservoir) {
             CommonEventHandler.registerEventSubscriber(PlayerInteractEvent.RightClickBlock.class, new ASCommonEvents());
         }
-    }
-
-    @Override
-    public void init() {
-
-    }
-
-    @Override
-    public void postInit() {
-
     }
 }

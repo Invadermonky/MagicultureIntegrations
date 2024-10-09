@@ -155,7 +155,7 @@ public class ItemLensFlux extends Item implements ILensControl, ICompositableLen
         if (storedColor == -1) {
             return 16777215;
         } else {
-            return storedColor == 16 ? Color.HSBtoRGB((float)(Botania.proxy.getWorldElapsedTicks() * 2L % 360L) / 360.0F, 1.0F, 1.0F) : EnumDyeColor.byMetadata(storedColor).colorValue;
+            return storedColor == 16 ? Color.HSBtoRGB((float)(Botania.proxy.getWorldElapsedTicks() * 2L % 360L) / 360.0F, 1.0F, 1.0F) : EnumDyeColor.byMetadata(storedColor).getColorValue();
         }
     }
 
@@ -226,7 +226,7 @@ public class ItemLensFlux extends Item implements ILensControl, ICompositableLen
 
     @Override
     public boolean isEnabled() {
-        return ConfigHandlerMI.botania.flowers.auromeria.enableAuromeria;
+        return ConfigHandlerMI.integrations.botania.auromeria.enableAuromeria;
     }
 
 }

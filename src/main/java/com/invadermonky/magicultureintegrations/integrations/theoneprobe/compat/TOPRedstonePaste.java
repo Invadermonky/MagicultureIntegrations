@@ -42,6 +42,6 @@ public class TOPRedstonePaste implements Function<ITheOneProbe,Void>, IConfigura
 
     @Override
     public boolean isEnabled() {
-        return ConfigHandlerMI.the_one_probe.redstone_paste;
+        return ConfigHandlerMI.integrations.the_one_probe.redstone_paste;
     }
 }

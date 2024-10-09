@@ -1,4 +1,40 @@
 # Changelog
+## 1.12.2-2.0.0
+### Changes
+<span style="font-size:1.2em;color:red;"><b>
+As of version 2.0.0, Magiculture Integrations requires MixinBooter. This change was made to fix a number of bugs as well as significantly increase performance.
+</b></span><br><br>
+<span style="font-size:1.2em;color:red;"><b>
+The survival tools module Magiculture Integrations has been split into its own mod. This was done in order to keep this mod focused on coded integrations and one-off additions.
+</b></span>
+<br><br>
+<span style="font-size:1.2em;color:red;"><b>
+The config has changed again (sorry last time I swear) so be sure to regenerate your config as many of the options have been re-organized for easier enabling/disabling of similar features.
+</b></span>
+<br><br>
+### Removals
+- Removed Survival Tools Module. All tools, blocks and machines have been shifted into their own mod
+<br><br>
+
+### Integrations
+- Botantia Kekimurus can now eat Twilight Forest's Experiment 115 (block destruction configurable)
+- Engineer's Decor Small Laboratory Furnace can now be heated by all supported heaters/boosters
+- Immersive Engineering Coke Oven, Alloy Smelter, and Blast Furnace can now be boosted (but not fueled) by all supported boosters (disabled by default)
+- Industrial Craft Blast Furnace, Coke Kiln, and Fermenter can now be boosted (but not fueled) by all supported boosters (disabled by default)
+- Quark's Foxhound can now boost the cook speed of all supported furnaces
+- Thaumcraft Essentia Smelters can now be heated/boosted by all supported heaters/boosters
+- Thaumic Additions crops can now be harvested/boosted by Blood Magic's Reap of the Harvest Moon ritual
+- Thaumic Additions Essentia Smelters can now be heated by all supported heaters/boosters
+- Tinker's Construct Smeltery and Seared Furnace now can now be boosted (but not fueled) by all supported heaters/boosters
+<br><br>
+
+### Fixes
+- Fixed Bewitchment's Witches' Oven consuming consuming container items (such as BM's Lava Crystal)
+- Fixed Botania's Exoflame causing Future MC's Smoker and Blast Furnace to occasionally flicker
+- Fixed Cooking for Blockhead's Oven consuming container items (such as BM's Lava Crystal)
+- Fixed Cooking for Blockhead's Oven desync when boosting cook time
+<br><br>
+
 ## 1.12.2-1.3.1
 - Fix crash with Auromeria when Botania installed but Thaumcraft not installed
 - Fix crash when right-clicking baubles when Botania not installed

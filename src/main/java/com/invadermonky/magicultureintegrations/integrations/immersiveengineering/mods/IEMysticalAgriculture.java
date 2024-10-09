@@ -5,13 +5,13 @@ import blusunrize.immersiveengineering.api.tool.ExternalHeaterHandler.HeatableAd
 import com.blakebr0.mysticalagriculture.tileentity.furnace.TileEssenceFurnace;
 import com.invadermonky.magicultureintegrations.api.mods.IModIntegration;
 import com.invadermonky.magicultureintegrations.api.mods.immersiveengineering.ImmersiveEngineeringUtils;
-import com.invadermonky.magicultureintegrations.api.mods.mysticalagriculture.MysticalAgricultureHeatable;
+import com.invadermonky.magicultureintegrations.api.tile.IHeatableTile;
 import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
 
 public class IEMysticalAgriculture implements IModIntegration {
     @Override
     public void preInit() {
-        if(ConfigHandlerMI.immersive_engineering.external_heater.mystical_agriculture) {
+        if(ConfigHandlerMI.heatables.mystical_agriculture.external_heater) {
             ExternalHeaterHandler.registerHeatableAdapter(TileEssenceFurnace.class, new MysticalAgricultureFurnaceAdapter());
         }
     }
@@ -29,7 +29,7 @@ public class IEMysticalAgriculture implements IModIntegration {
     public static class MysticalAgricultureFurnaceAdapter extends HeatableAdapter<TileEssenceFurnace> {
         @Override
         public int doHeatTick(TileEssenceFurnace furnace, int energy, boolean redstone) {
-            return ImmersiveEngineeringUtils.doHeatableHeatTick(new MysticalAgricultureHeatable(furnace), energy, redstone);
+            return furnace instanceof IHeatableTile ? ImmersiveEngineeringUtils.doHeatableHeatTick((IHeatableTile) furnace, energy, redstone) : 0;
         }
     }
 }

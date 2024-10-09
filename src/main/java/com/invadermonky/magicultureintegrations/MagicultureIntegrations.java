@@ -19,10 +19,11 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 public class MagicultureIntegrations {
     public static final String MOD_ID = "magicultureintegrations";
     public static final String MOD_NAME = "Magiculture Integrations";
-    public static final String MOD_VERSION = "1.12.2-1.3.1";
+    public static final String MOD_VERSION = "1.12.2-2.0.0";
     public static final String MC_VERSION = "[1.12.2]";
     public static final String DEPENDENCIES =
-            "after:" + ModIds.ConstIds.bloodmagic +
+            "required-after:mixinbooter@[9.0,)" +
+            ";after:" + ModIds.ConstIds.bloodmagic +
             ";after:" + ModIds.ConstIds.botania +
             ";after:" + ModIds.ConstIds.embers +
             ";after:" + ModIds.ConstIds.natures_aura +
