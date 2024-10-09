@@ -1,5 +1,6 @@
 package com.invadermonky.magicultureintegrations.core.mixins.bewitchment;
 
+import com.bewitchment.api.registry.OvenRecipe;
 import com.bewitchment.common.block.BlockWitchesOven;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesOven;
 import com.bewitchment.common.block.tile.entity.util.ModTileEntity;
@@ -23,8 +24,10 @@ public abstract class TileEntityWitchesOvenMixin extends ModTileEntity implement
     @Shadow public int fuelBurnTime;
     @Shadow public int progress;
     @Shadow private boolean burning;
+    @Shadow private OvenRecipe recipe;
     @Shadow @Final private ItemStackHandler inventory_up;
-    @Shadow public abstract boolean canSmelt();
+    @Shadow @Final private ItemStackHandler inventory_down;
+    @Shadow protected abstract boolean isFurnaceRecipe();
 
     @Inject(method = "burnFuel", at = @At("HEAD"), remap = false, cancellable = true)
     private void burnFuelMixin(int time, boolean consume, CallbackInfo ci) {
@@ -50,7 +53,7 @@ public abstract class TileEntityWitchesOvenMixin extends ModTileEntity implement
 
     @Override
     public boolean canSmeltHeatable() {
-        return this.canSmelt();
+        return !this.inventory_up.getStackInSlot(2).isEmpty() && (this.recipe != null && this.recipe.isValid(this.inventory_up, this.inventory_down) || this.isFurnaceRecipe());
     }
 
     @Override
