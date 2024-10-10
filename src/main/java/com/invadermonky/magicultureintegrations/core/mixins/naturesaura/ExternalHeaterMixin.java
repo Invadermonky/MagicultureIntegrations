@@ -25,7 +25,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class ExternalHeaterMixin extends TileEntityImpl implements ITickable {
     @Shadow public boolean isActive;
 
-    @Inject(method = "update", at = @At("TAIL"))
+    @Inject(method = "update", at = @At("TAIL"), remap = true)
     private void updateMixin(CallbackInfo ci) {
         if(this.world.isRemote || world.getTotalWorldTime() % 5L != 0)
             return;
