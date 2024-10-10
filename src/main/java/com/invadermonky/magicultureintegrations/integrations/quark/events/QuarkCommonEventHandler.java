@@ -15,8 +15,6 @@ import vazkii.quark.world.entity.EntityFoxhound;
 import java.util.List;
 
 public class QuarkCommonEventHandler implements ICommonEvents {
-    public final int foxFurnaceBoost = ConfigHandlerMI.integrations.quark.foxButtSpeedup;
-
     @Override
     public void onEntityUpdate(LivingEvent.LivingUpdateEvent event) {
         World world = event.getEntity().world;
@@ -34,7 +32,7 @@ public class QuarkCommonEventHandler implements ICommonEvents {
                     if(heatable.canSmeltHeatable() && burnTime > 0 && world.getTotalWorldTime() % 3L == 0L) {
                         List<EntityFoxhound> foxhounds = world.getEntitiesWithinAABB(EntityFoxhound.class, new AxisAlignedBB(foxhound.getPosition()), fox -> fox != null && fox.isTamed());
                         if(!foxhounds.isEmpty() && foxhounds.get(0) == foxhound) {
-                            heatable.boostCookTimeHeatable(this.foxFurnaceBoost);
+                            heatable.boostCookTimeHeatable(ConfigHandlerMI.integrations.quark.foxButtSpeedup);
                             heatable.updateTileHeatable();
                         }
                     }
@@ -44,7 +42,7 @@ public class QuarkCommonEventHandler implements ICommonEvents {
                     if(boostable.canSmeltBoostable() && smeltTime > 0 && world.getTotalWorldTime() % 3L == 0) {
                         List<EntityFoxhound> foxhounds = world.getEntitiesWithinAABB(EntityFoxhound.class, new AxisAlignedBB(foxhound.getPosition()), fox -> fox != null && fox.isTamed());
                         if(!foxhounds.isEmpty() && foxhounds.get(0) == foxhound) {
-                            boostable.boostCookTimeBoostable(this.foxFurnaceBoost);
+                            boostable.boostCookTimeBoostable(ConfigHandlerMI.integrations.quark.foxButtSpeedup);
                             boostable.updateTileBoostable();
                         }
                     }

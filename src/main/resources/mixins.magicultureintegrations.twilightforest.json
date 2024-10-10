@@ -1,7 +1,7 @@
 {
   "package": "com.invadermonky.magicultureintegrations.core.mixins.botania",
   "required": false,
-  "refmap": "mixins.${mod_id}.refmap.json",
+  "refmap": "magicultureintegrations.refmap.json",
   "target": "@env(DEFAULT)",
   "minVersion": "0.8.5",
   "compatibilityLevel": "JAVA_8",

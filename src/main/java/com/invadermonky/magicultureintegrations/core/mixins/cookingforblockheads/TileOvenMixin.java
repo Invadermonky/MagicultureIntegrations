@@ -46,7 +46,7 @@ public abstract class TileOvenMixin extends TileEntity implements ITickable, IKi
     @Shadow @Final private RangedWrapper itemHandlerFuel;
     @Shadow protected abstract boolean shouldConsumeFuel();
 
-    @Inject(method = "update", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "update", at = @At("HEAD"), cancellable = true, remap = true)
     private void updateMixin(CallbackInfo ci) {
         if(!ConfigHandlerMI.fixes.fixCfbOven)
             return;

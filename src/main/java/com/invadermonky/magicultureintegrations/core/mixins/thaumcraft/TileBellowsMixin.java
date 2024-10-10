@@ -16,7 +16,7 @@ import thaumcraft.common.tiles.devices.TileBellows;
 @Mixin(value = TileBellows.class, remap = false)
 public abstract class TileBellowsMixin extends TileThaumcraft implements ITickable {
 
-    @Inject(method = "update", at = @At("TAIL"))
+    @Inject(method = "update", at = @At("TAIL"), remap = true)
     private void updateMixin(CallbackInfo ci) {
         if(!this.world.isRemote && BlockStateUtils.isEnabled(this.getBlockMetadata())) {
             TileEntity tile = world.getTileEntity(this.pos.offset(BlockStateUtils.getFacing(this.getBlockMetadata())));

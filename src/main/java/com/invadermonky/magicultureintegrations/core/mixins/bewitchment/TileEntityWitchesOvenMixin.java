@@ -29,7 +29,7 @@ public abstract class TileEntityWitchesOvenMixin extends ModTileEntity implement
     @Shadow @Final private ItemStackHandler inventory_down;
     @Shadow protected abstract boolean isFurnaceRecipe();
 
-    @Inject(method = "burnFuel", at = @At("HEAD"), remap = false, cancellable = true)
+    @Inject(method = "burnFuel", at = @At("HEAD"), cancellable = true)
     private void burnFuelMixin(int time, boolean consume, CallbackInfo ci) {
         if(!ConfigHandlerMI.fixes.fixWitchesOven)
             return;
