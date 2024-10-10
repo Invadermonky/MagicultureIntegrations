@@ -68,9 +68,9 @@ public abstract class SubTileExoflameMixin extends SubTileFunctional {
                             IBoostableTile boostable = (IBoostableTile) tile;
                             if(boostable.canSmeltBoostable() && this.mana > 2) {
                                 if(this.ticksExisted % 2 == 0) {
-                                    boostable.boostCookTimeBoostable(3);
+                                    boostable.boostCookTimeBoostable(1);
                                 }
-                                this.mana -= 1;
+                                this.mana = Math.max(0, this.mana - 2);
                                 did = true;
                             }
                             if(did) {
