@@ -1,7 +1,6 @@
 package com.invadermonky.magicultureintegrations.core.mixins.industrialcraft;
 
 import com.invadermonky.magicultureintegrations.api.tile.IBoostableTile;
-import com.invadermonky.magicultureintegrations.api.tile.IHeatableTile;
 import ic2.api.energy.tile.IHeatSource;
 import ic2.api.recipe.IFermenterRecipeManager;
 import ic2.api.recipe.Recipes;

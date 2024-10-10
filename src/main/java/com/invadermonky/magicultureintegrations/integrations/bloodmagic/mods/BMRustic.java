@@ -6,7 +6,6 @@ import WayofTime.bloodmagic.ritual.harvest.IHarvestHandler;
 import com.invadermonky.magicultureintegrations.api.mods.IModIntegration;
 import com.invadermonky.magicultureintegrations.api.tile.HeatableUtils;
 import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
-import epicsquid.roots.block.BlockElementalSoil;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
