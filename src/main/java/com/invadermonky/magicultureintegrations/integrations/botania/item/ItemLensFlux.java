@@ -1,7 +1,7 @@
 package com.invadermonky.magicultureintegrations.integrations.botania.item;
 
 import com.invadermonky.magicultureintegrations.MagicultureIntegrations;
-import com.invadermonky.magicultureintegrations.api.mods.IAddition;
+import com.invadermonky.magicultureintegrations.api.IAddition;
 import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
 import com.invadermonky.magicultureintegrations.integrations.botania.item.lens.LensFlux;
 import com.invadermonky.magicultureintegrations.util.StringHelper;
@@ -11,12 +11,14 @@ import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.registries.IForgeRegistry;
 import org.jetbrains.annotations.Nullable;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.ThaumcraftApiHelper;
@@ -208,7 +210,12 @@ public class ItemLensFlux extends Item implements ILensControl, ICompositableLen
     */
 
     @Override
-    public void registerRecipe() {
+    public boolean isEnabled() {
+        return ConfigHandlerMI.integrations.botania.auromeria.enableAuromeria;
+    }
+
+    @Override
+    public void registerRecipes(IForgeRegistry<IRecipe> registry) {
         InfusionRecipe fluxLensRecipe = new InfusionRecipe(
                 "FLUXLENS", //Research
                 new ItemStack(ItemLensFlux.FLUX_LENS),
@@ -222,11 +229,6 @@ public class ItemLensFlux extends Item implements ILensControl, ICompositableLen
                 new ItemStack(ItemsTC.visResonator)
         );
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(MagicultureIntegrations.MOD_ID, "FluxLens"), fluxLensRecipe);
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return ConfigHandlerMI.integrations.botania.auromeria.enableAuromeria;
     }
 
 }

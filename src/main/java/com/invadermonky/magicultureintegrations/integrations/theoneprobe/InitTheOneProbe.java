@@ -1,6 +1,6 @@
 package com.invadermonky.magicultureintegrations.integrations.theoneprobe;
 
-import com.invadermonky.magicultureintegrations.api.mods.IConfigurable;
+import com.invadermonky.magicultureintegrations.api.IConfigurable;
 import com.invadermonky.magicultureintegrations.api.mods.IIntegrationModule;
 import com.invadermonky.magicultureintegrations.integrations.theoneprobe.compat.TOPOreStages;
 import com.invadermonky.magicultureintegrations.integrations.theoneprobe.compat.TOPRedstonePaste;
@@ -39,16 +39,6 @@ public class InitTheOneProbe implements IIntegrationModule {
                 FMLInterModComms.sendFunctionMessage("theoneprobe", "getTheOneProbe", module.getClass().getName());
             }
         });
-    }
-
-    @Override
-    public void init() {
-
-    }
-
-    @Override
-    public void postInit() {
-
     }
 
     private void registerTOPModule(ModIds mod, Class<? extends Function<ITheOneProbe, Void>> moduleClass) {

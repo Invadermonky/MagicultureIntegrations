@@ -4,7 +4,7 @@ import com.invadermonky.magicultureintegrations.api.mods.IIntegrationModule;
 import com.invadermonky.magicultureintegrations.integrations.immersiveengineering.mods.*;
 import com.invadermonky.magicultureintegrations.util.IntegrationList;
 import com.invadermonky.magicultureintegrations.util.ModIds;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 
 public class InitImmersiveEngineering implements IIntegrationModule {
     private final IntegrationList integrations = new IntegrationList("Immersive Engineering");
@@ -22,9 +22,8 @@ public class InitImmersiveEngineering implements IIntegrationModule {
         integrations.addIntegration(ModIds.tinkers_construct, IETinkersConstruct.class);
     }
 
-    @Nullable
     @Override
-    public IntegrationList getModIntegrations() {
+    public @NotNull IntegrationList getModIntegrations() {
         return this.integrations;
     }
 }

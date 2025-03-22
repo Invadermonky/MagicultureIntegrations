@@ -1,13 +1,15 @@
 package com.invadermonky.magicultureintegrations.util;
 
-import com.invadermonky.magicultureintegrations.api.mods.IModIntegration;
+import com.invadermonky.magicultureintegrations.api.IProxy;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
 public class IntegrationList {
-    private final List<IModIntegration> modIntegrations;
+    public static final IntegrationList EMPTY = new IntegrationList(null);
+
+    private final List<IProxy> modIntegrations;
     private final String moduleName;
 
     public IntegrationList(String moduleName) {
@@ -15,7 +17,7 @@ public class IntegrationList {
         this.moduleName = moduleName;
     }
 
-    public void addIntegration(ModIds owner, Class<? extends IModIntegration> integrationClass, ModIds... dependencies) {
+    public void addIntegration(ModIds owner, Class<? extends IProxy> integrationClass, ModIds... dependencies) {
         try {
             if(owner.isLoaded) {
                 boolean toLoad = true;
@@ -35,11 +37,11 @@ public class IntegrationList {
         }
     }
 
-    public List<IModIntegration> getModIntegrations() {
+    public List<IProxy> getModIntegrations() {
         return this.modIntegrations;
     }
 
-    public void forEach(Consumer<? super IModIntegration> action) {
+    public void forEach(Consumer<? super IProxy> action) {
         modIntegrations.forEach(action);
     }
 }

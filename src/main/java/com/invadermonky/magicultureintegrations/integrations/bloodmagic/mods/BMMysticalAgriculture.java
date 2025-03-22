@@ -5,7 +5,7 @@ import WayofTime.bloodmagic.ritual.harvest.HarvestRegistry;
 import WayofTime.bloodmagic.ritual.harvest.IHarvestHandler;
 import com.blakebr0.mysticalagriculture.blocks.crop.BlockMysticalCrop;
 import com.blakebr0.mysticalagriculture.tileentity.furnace.TileEssenceFurnace;
-import com.invadermonky.magicultureintegrations.api.mods.IModIntegration;
+import com.invadermonky.magicultureintegrations.api.IProxy;
 import com.invadermonky.magicultureintegrations.api.tile.HeatableUtils;
 import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
 import net.minecraft.block.state.IBlockState;
@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class BMMysticalAgriculture implements IModIntegration, IHarvestHandler {
+public class BMMysticalAgriculture implements IProxy, IHarvestHandler {
     @Override
     public void preInit() {
         if (!ConfigHandlerMI.heatables.mystical_agriculture.furnace_heater_array) {

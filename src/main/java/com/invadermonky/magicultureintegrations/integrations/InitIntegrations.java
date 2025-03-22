@@ -1,7 +1,7 @@
 package com.invadermonky.magicultureintegrations.integrations;
 
+import com.invadermonky.magicultureintegrations.api.IProxy;
 import com.invadermonky.magicultureintegrations.api.mods.IIntegrationModule;
-import com.invadermonky.magicultureintegrations.api.mods.IModIntegration;
 import com.invadermonky.magicultureintegrations.integrations.astralsorcery.InitAstralSorcery;
 import com.invadermonky.magicultureintegrations.integrations.bloodmagic.InitBloodMagic;
 import com.invadermonky.magicultureintegrations.integrations.botania.InitBotania;
@@ -39,7 +39,7 @@ public class InitIntegrations {
             module.buildModIntegrations();
             module.preInit();
             if(module.getModIntegrations() != null)
-                module.getModIntegrations().forEach(IModIntegration::preInit);
+                module.getModIntegrations().forEach(IProxy::preInit);
         });
     }
 
@@ -48,7 +48,7 @@ public class InitIntegrations {
         integrationModules.forEach(module -> {
             module.preInitClient();
             if(module.getModIntegrations() != null) {
-                module.getModIntegrations().forEach(IModIntegration::preInitClient);
+                module.getModIntegrations().forEach(IProxy::preInitClient);
             }
         });
     }
@@ -57,7 +57,7 @@ public class InitIntegrations {
         integrationModules.forEach(module -> {
             module.init();
             if(module.getModIntegrations() != null)
-                module.getModIntegrations().forEach(IModIntegration::init);
+                module.getModIntegrations().forEach(IProxy::init);
         });
     }
 
@@ -66,7 +66,7 @@ public class InitIntegrations {
         integrationModules.forEach(module -> {
             module.initClient();
             if(module.getModIntegrations() != null)
-                module.getModIntegrations().forEach(IModIntegration::initClient);
+                module.getModIntegrations().forEach(IProxy::initClient);
         });
     }
 
@@ -74,7 +74,7 @@ public class InitIntegrations {
         integrationModules.forEach(module -> {
             module.postInit();
             if(module.getModIntegrations() != null)
-                module.getModIntegrations().forEach(IModIntegration::postInit);
+                module.getModIntegrations().forEach(IProxy::postInit);
         });
     }
 
@@ -83,7 +83,7 @@ public class InitIntegrations {
         integrationModules.forEach(module -> {
             module.postInitClient();
             if(module.getModIntegrations() != null)
-                module.getModIntegrations().forEach(IModIntegration::postInitClient);
+                module.getModIntegrations().forEach(IProxy::postInitClient);
         });
     }
 

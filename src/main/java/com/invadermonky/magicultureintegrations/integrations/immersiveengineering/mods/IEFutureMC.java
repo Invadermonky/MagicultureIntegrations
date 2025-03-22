@@ -2,13 +2,13 @@ package com.invadermonky.magicultureintegrations.integrations.immersiveengineeri
 
 import blusunrize.immersiveengineering.api.tool.ExternalHeaterHandler;
 import blusunrize.immersiveengineering.api.tool.ExternalHeaterHandler.HeatableAdapter;
-import com.invadermonky.magicultureintegrations.api.mods.IModIntegration;
+import com.invadermonky.magicultureintegrations.api.IProxy;
 import com.invadermonky.magicultureintegrations.api.mods.immersiveengineering.ImmersiveEngineeringUtils;
 import com.invadermonky.magicultureintegrations.api.tile.IHeatableTile;
 import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
 import thedarkcolour.futuremc.tile.TileFurnaceAdvanced;
 
-public class IEFutureMC implements IModIntegration {
+public class IEFutureMC implements IProxy {
     @Override
     public void preInit() {
         if(ConfigHandlerMI.heatables.future_mc.external_heater) {

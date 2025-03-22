@@ -1,6 +1,5 @@
 package com.invadermonky.magicultureintegrations.integrations.naturesaura.events;
 
-import com.invadermonky.magicultureintegrations.api.events.ICommonEvents;
 import de.ellpeck.naturesaura.api.aura.chunk.IAuraChunk;
 import de.ellpeck.naturesaura.items.ModItems;
 import net.minecraft.entity.EntityLivingBase;
@@ -8,9 +7,10 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.event.entity.living.BabyEntitySpawnEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class NACommonEventHandler implements ICommonEvents {
-    @Override
+public class NAEventHandler {
+    @SubscribeEvent
     public void onBabyBorn(BabyEntitySpawnEvent event) {
         EntityLivingBase parent = event.getParentA();
         if(!parent.world.isRemote && event.getCausedByPlayer() == null) {

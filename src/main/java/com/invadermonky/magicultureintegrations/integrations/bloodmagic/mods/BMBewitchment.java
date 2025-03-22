@@ -4,11 +4,11 @@ import WayofTime.bloodmagic.alchemyArray.AlchemyArrayEffectFurnaceFuel;
 import WayofTime.bloodmagic.ritual.harvest.HarvestRegistry;
 import com.bewitchment.common.block.tile.entity.TileEntityWitchesOven;
 import com.bewitchment.registry.ModObjects;
-import com.invadermonky.magicultureintegrations.api.mods.IModIntegration;
+import com.invadermonky.magicultureintegrations.api.IProxy;
 import com.invadermonky.magicultureintegrations.api.tile.HeatableUtils;
 import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
 
-public class BMBewitchment implements IModIntegration {
+public class BMBewitchment implements IProxy {
     @Override
     public void preInit() {
         if(!ConfigHandlerMI.heatables.bewitchment.furnace_heater_array) {

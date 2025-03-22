@@ -1,13 +1,13 @@
 package com.invadermonky.magicultureintegrations.integrations.immersiveengineering.mods;
 
 import blusunrize.immersiveengineering.api.tool.ExternalHeaterHandler;
-import com.invadermonky.magicultureintegrations.api.mods.IModIntegration;
+import com.invadermonky.magicultureintegrations.api.IProxy;
 import com.invadermonky.magicultureintegrations.api.mods.immersiveengineering.ImmersiveEngineeringUtils;
 import com.invadermonky.magicultureintegrations.api.tile.IBoostableTile;
 import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
 import slimeknights.tconstruct.smeltery.tileentity.TileHeatingStructure;
 
-public class IETinkersConstruct implements IModIntegration {
+public class IETinkersConstruct implements IProxy {
     @Override
     public void preInit() {
         if(ConfigHandlerMI.heatables.tinkers_construct.external_heater) {

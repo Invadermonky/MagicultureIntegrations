@@ -1,72 +1,104 @@
 package com.invadermonky.magicultureintegrations.integrations.botania;
 
-import com.invadermonky.magicultureintegrations.api.mods.IAddition;
+import blusunrize.immersiveengineering.common.blocks.stone.TileEntityAlloySmelter;
+import blusunrize.immersiveengineering.common.blocks.stone.TileEntityBlastFurnace;
+import blusunrize.immersiveengineering.common.blocks.stone.TileEntityCokeOven;
+import com.blakebr0.mysticalagriculture.tileentity.furnace.TileEssenceFurnace;
 import com.invadermonky.magicultureintegrations.api.mods.IIntegrationModule;
+import com.invadermonky.magicultureintegrations.api.tile.HeatableUtils;
+import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
 import com.invadermonky.magicultureintegrations.integrations.botania.block.BlockSpecialFlowerMI;
 import com.invadermonky.magicultureintegrations.integrations.botania.item.ItemLensFlux;
-import com.invadermonky.magicultureintegrations.integrations.botania.mods.*;
 import com.invadermonky.magicultureintegrations.registry.RegistrarMI;
 import com.invadermonky.magicultureintegrations.util.IntegrationList;
 import com.invadermonky.magicultureintegrations.util.ModIds;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.ArrayList;
-import java.util.List;
+import ic2.core.block.machine.tileentity.TileEntityFermenter;
+import ic2.core.block.steam.TileEntityCokeKiln;
+import net.blay09.mods.cookingforblockheads.tile.TileOven;
+import org.jetbrains.annotations.NotNull;
+import org.zeith.thaumicadditions.tiles.TileAbstractSmelter;
+import rustic.common.tileentity.TileEntityCondenserBase;
+import slimeknights.tconstruct.smeltery.tileentity.TileHeatingStructure;
+import thaumcraft.common.tiles.essentia.TileSmelter;
+import thedarkcolour.futuremc.tile.TileFurnaceAdvanced;
+import vazkii.botania.common.block.subtile.functional.SubTileExoflame;
+import wile.engineersdecor.blocks.BlockDecorFurnace;
 
 public class InitBotania implements IIntegrationModule {
     private final IntegrationList integrations = new IntegrationList("Botania");
-    private final List<IAddition> additions = new ArrayList<>();
 
     @Override
-    public void buildModIntegrations() {
-        integrations.addIntegration(ModIds.cooking_for_blockheads, BotCookingForBlockheads.class);
-        integrations.addIntegration(ModIds.engineers_decor, BotEngineersDecor.class);
-        integrations.addIntegration(ModIds.futuremc, BotFutureMC.class);
-        integrations.addIntegration(ModIds.immersive_engineering, BotImmersiveEngineering.class);
-        integrations.addIntegration(ModIds.industrial_craft, BotIndustrialCraft.class);
-        integrations.addIntegration(ModIds.mystical_agriculture, BotMysticalAgriculture.class);
-        integrations.addIntegration(ModIds.rustic, BotRustic.class);
-        integrations.addIntegration(ModIds.thaumcraft, BotThaumcraft.class);
-        integrations.addIntegration(ModIds.thaumadditions, BotThaumicAdditions.class);
-        integrations.addIntegration(ModIds.tinkers_construct, BotTinkersConstruct.class);
+    public void buildModIntegrations() {}
 
-        if(ModIds.thaumcraft.isLoaded) {
-            additions.add(ItemLensFlux.FLUX_LENS);
-            additions.add(BlockSpecialFlowerMI.BLOCK_SPECIAL_FLOWER);
-        }
-    }
-
-    @Nullable
     @Override
-    public IntegrationList getModIntegrations() {
+    public @NotNull IntegrationList getModIntegrations() {
         return this.integrations;
-    }
-
-    @Nullable
-    @Override
-    public List<IAddition> getAdditions() {
-        return this.additions;
     }
 
     @Override
     public void preInit() {
+        this.initHeatables();
         if(ModIds.thaumcraft.isLoaded) {
-            RegistrarMI.registerItem(ItemLensFlux.FLUX_LENS);
-            RegistrarMI.registerBlock(BlockSpecialFlowerMI.BLOCK_SPECIAL_FLOWER, false);
+            RegistrarMI.registerAddition(ItemLensFlux.FLUX_LENS);
+            RegistrarMI.registerAddition(BlockSpecialFlowerMI.BLOCK_SPECIAL_FLOWER);
         }
     }
 
-    @Override
-    public void postInit() {
-        additions.forEach(addition -> {
-            if(addition.isEnabled()) {
-                addition.registerRecipe();
-            }
-        });
-    }
+    private void initHeatables() {
+        if(ModIds.cooking_for_blockheads.isLoaded && !ConfigHandlerMI.heatables.cooking_for_blockheads.exoflame) {
+            HeatableUtils.blacklistHeatable(SubTileExoflame.class, TileOven.class);
+        }
 
-    @Override
-    public void registerCustomRenders() {
-        IIntegrationModule.super.registerCustomRenders();
+        if(ModIds.engineers_decor.isLoaded && !ConfigHandlerMI.heatables.engineers_decor.exoflame) {
+            HeatableUtils.blacklistHeatable(SubTileExoflame.class, BlockDecorFurnace.BTileEntity.class);
+        }
+
+        if(ModIds.futuremc.isLoaded && !ConfigHandlerMI.heatables.future_mc.exoflame) {
+            HeatableUtils.blacklistHeatable(SubTileExoflame.class, TileFurnaceAdvanced.class);
+        }
+
+        if(ModIds.immersive_engineering.isLoaded) {
+            if(!ConfigHandlerMI.heatables.immersive_engineering.alloy_smelter.exoflame) {
+                HeatableUtils.blacklistHeatable(SubTileExoflame.class, TileEntityAlloySmelter.class);
+            }
+            if(!ConfigHandlerMI.heatables.immersive_engineering.blast_furnace.exoflame) {
+                HeatableUtils.blacklistHeatable(SubTileExoflame.class, TileEntityBlastFurnace.class);
+            }
+            if(!ConfigHandlerMI.heatables.immersive_engineering.coke_oven.exoflame) {
+                HeatableUtils.blacklistHeatable(SubTileExoflame.class, TileEntityCokeOven.class);
+            }
+        }
+
+        if(ModIds.mystical_agriculture.isLoaded && !ConfigHandlerMI.heatables.mystical_agriculture.exoflame) {
+            HeatableUtils.blacklistHeatable(SubTileExoflame.class, TileEssenceFurnace.class);
+        }
+
+        if(ModIds.industrial_craft.isLoaded) {
+            if(!ConfigHandlerMI.heatables.industrial_craft.blast_furnace.exoflame) {
+                HeatableUtils.blacklistHeatable(SubTileExoflame.class, ic2.core.block.machine.tileentity.TileEntityBlastFurnace.class);
+            }
+            if(!ConfigHandlerMI.heatables.industrial_craft.coke_kiln.exoflame) {
+                HeatableUtils.blacklistHeatable(SubTileExoflame.class, TileEntityCokeKiln.class);
+            }
+            if(!ConfigHandlerMI.heatables.industrial_craft.fermenter.exoflame) {
+                HeatableUtils.blacklistHeatable(SubTileExoflame.class, TileEntityFermenter.class);
+            }
+        }
+
+        if(ModIds.rustic.isLoaded && !ConfigHandlerMI.heatables.rustic.exoflame) {
+            HeatableUtils.blacklistHeatable(SubTileExoflame.class, TileEntityCondenserBase.class);
+        }
+
+        if(ModIds.thaumcraft.isLoaded && !ConfigHandlerMI.heatables.thaumcraft.exoflame) {
+            HeatableUtils.blacklistHeatable(SubTileExoflame.class, TileSmelter.class);
+        }
+
+        if(ModIds.thaumadditions.isLoaded && !ConfigHandlerMI.heatables.thaumic_additions.exoflame) {
+            HeatableUtils.blacklistHeatable(SubTileExoflame.class, TileAbstractSmelter.class);
+        }
+
+        if(ModIds.tinkers_construct.isLoaded && !ConfigHandlerMI.heatables.tinkers_construct.exoflame) {
+            HeatableUtils.blacklistHeatable(SubTileExoflame.class, TileHeatingStructure.class);
+        }
     }
 }

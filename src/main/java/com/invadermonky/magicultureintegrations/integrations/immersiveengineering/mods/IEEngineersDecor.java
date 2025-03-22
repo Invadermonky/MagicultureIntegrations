@@ -1,13 +1,13 @@
 package com.invadermonky.magicultureintegrations.integrations.immersiveengineering.mods;
 
 import blusunrize.immersiveengineering.api.tool.ExternalHeaterHandler;
-import com.invadermonky.magicultureintegrations.api.mods.IModIntegration;
+import com.invadermonky.magicultureintegrations.api.IProxy;
 import com.invadermonky.magicultureintegrations.api.mods.immersiveengineering.ImmersiveEngineeringUtils;
 import com.invadermonky.magicultureintegrations.api.tile.IHeatableTile;
 import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
 import wile.engineersdecor.blocks.BlockDecorFurnace;
 
-public class IEEngineersDecor implements IModIntegration {
+public class IEEngineersDecor implements IProxy {
     @Override
     public void preInit() {
         if(ConfigHandlerMI.heatables.engineers_decor.external_heater) {

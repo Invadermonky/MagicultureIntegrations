@@ -21,10 +21,6 @@ public abstract class TileHeatingStructureMixin<T extends MultiblockDetection> e
         super(name, inventorySize);
     }
 
-    public TileHeatingStructureMixin(String name, int inventorySize, int maxStackSize) {
-        super(name, inventorySize, maxStackSize);
-    }
-
     @Override
     public boolean isTrueBoostable() {
         return true;

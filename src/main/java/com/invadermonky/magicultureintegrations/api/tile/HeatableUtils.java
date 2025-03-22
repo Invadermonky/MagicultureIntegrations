@@ -8,9 +8,7 @@ public class HeatableUtils {
     private static final THashMap<Class<?>, THashSet<Class<? extends TileEntity>>> HEATABLE_BLACKLIST = new THashMap<>();
 
     public static void blacklistHeatable(Class<?> providerClass, Class<? extends TileEntity> heatable) {
-        if(!HEATABLE_BLACKLIST.containsKey(providerClass)) {
-            HEATABLE_BLACKLIST.put(providerClass, new THashSet<>());
-        }
+        HEATABLE_BLACKLIST.putIfAbsent(providerClass, new THashSet<>());
         HEATABLE_BLACKLIST.get(providerClass).add(heatable);
     }
 

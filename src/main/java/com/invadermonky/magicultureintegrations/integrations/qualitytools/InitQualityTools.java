@@ -1,9 +1,7 @@
 package com.invadermonky.magicultureintegrations.integrations.qualitytools;
 
-import com.invadermonky.magicultureintegrations.api.events.IClientEvents;
 import com.invadermonky.magicultureintegrations.api.mods.IIntegrationModule;
 import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
-import com.invadermonky.magicultureintegrations.events.ClientEventHandler;
 import com.invadermonky.magicultureintegrations.util.IntegrationList;
 import com.invadermonky.magicultureintegrations.util.ReflectionHelper;
 import com.tmtravlr.qualitytools.QualityToolsHelper;
@@ -15,44 +13,38 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.client.event.GuiContainerEvent;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 
 public class InitQualityTools implements IIntegrationModule {
-    @Override
-    public void buildModIntegrations() {
+    private final IntegrationList integrations = new IntegrationList("Quality Tools");
 
+    @Override
+    public void buildModIntegrations() {}
+
+    @Override
+    public @NotNull IntegrationList getModIntegrations() {
+        return this.integrations;
     }
 
-    @Nullable
     @Override
-    public IntegrationList getModIntegrations() {
-        return null;
-    }
-
-    @Override
-    public void preInit() {}
-
-    @Override
-    public void init() {
+    public void preInit() {
         if(ConfigHandlerMI.integrations.quality_tools.enableGuiQualityText) {
-            ClientEventHandler.registerEventSubscriber(GuiContainerEvent.DrawForeground.class, new QTGuiEvent());
+            MinecraftForge.EVENT_BUS.register(new QTGuiEvent());
         }
     }
 
-    @Override
-    public void postInit() {}
-
-
-    public static class QTGuiEvent implements IClientEvents {
+    public static class QTGuiEvent {
         /** This value controls the xOffset from center of the quality name text. Increasing this value will shift the text right. */
         public static int xOffset = 15;
         /** This value controls the yOffset from the top of the gui. Increasing this value will shift the text down. */
         public static int yOffset = 23;
 
         @SideOnly(Side.CLIENT)
-        @Override
+        @SubscribeEvent
         public void onGuiScreenDrawForeground(GuiContainerEvent.DrawForeground event) {
             GuiScreen guiScreen = event.getGuiContainer();
             if(guiScreen instanceof GuiReforgingStation) {

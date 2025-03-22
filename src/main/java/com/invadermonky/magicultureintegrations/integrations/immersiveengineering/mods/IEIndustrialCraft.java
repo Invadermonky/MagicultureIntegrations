@@ -1,7 +1,7 @@
 package com.invadermonky.magicultureintegrations.integrations.immersiveengineering.mods;
 
 import blusunrize.immersiveengineering.api.tool.ExternalHeaterHandler;
-import com.invadermonky.magicultureintegrations.api.mods.IModIntegration;
+import com.invadermonky.magicultureintegrations.api.IProxy;
 import com.invadermonky.magicultureintegrations.api.mods.immersiveengineering.ImmersiveEngineeringUtils;
 import com.invadermonky.magicultureintegrations.api.tile.IBoostableTile;
 import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
@@ -9,7 +9,7 @@ import ic2.core.block.machine.tileentity.TileEntityBlastFurnace;
 import ic2.core.block.machine.tileentity.TileEntityFermenter;
 import ic2.core.block.steam.TileEntityCokeKiln;
 
-public class IEIndustrialCraft implements IModIntegration {
+public class IEIndustrialCraft implements IProxy {
     @Override
     public void preInit() {
         if(!ConfigHandlerMI.heatables.industrial_craft.blast_furnace._globalDisable && ConfigHandlerMI.heatables.industrial_craft.blast_furnace.external_heater) {

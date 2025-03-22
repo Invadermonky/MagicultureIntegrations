@@ -1,6 +1,5 @@
 package com.invadermonky.magicultureintegrations.integrations.astralsorcery.events;
 
-import com.invadermonky.magicultureintegrations.api.events.ICommonEvents;
 import com.invadermonky.magicultureintegrations.util.StringHelper;
 import hellfirepvp.astralsorcery.common.base.FluidRarityRegistry;
 import hellfirepvp.astralsorcery.common.constellation.distribution.ConstellationSkyHandler;
@@ -12,9 +11,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class ASCommonEvents implements ICommonEvents {
-    @Override
+public class ASEventSubscriber {
+    @SubscribeEvent
     public void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
         World world = event.getWorld();
         double dstr = ConstellationSkyHandler.getInstance().getCurrentDaytimeDistribution(event.getWorld());

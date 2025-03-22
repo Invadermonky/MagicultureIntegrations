@@ -1,6 +1,17 @@
 # Changelog
+## 1.12.2-2.1.0
+### Added
+- Added new Astral Sorcery Crystal Sorter block, used to help automate crystal purity splitting
+### Changed
+- Rewrote Bewitchment Witches' Oven mixins so they're not horrible
+- Rewrote CFB Oven mixins so they're not horrible
+- Cleaned up and merged a huge amount of unnecessary code
+### Fixed
+- Fixed Tinker's Construct mixin logging constructor warning message
+<br><br>
+
 ## 1.12.2-2.0.0
-### Changes
+### Changed
 <span style="font-size:1.2em;color:red;"><b>
 As of version 2.0.0, Magiculture Integrations requires MixinBooter. This change was made to fix a number of bugs as well as significantly increase performance.
 </b></span><br><br>
@@ -12,7 +23,7 @@ The survival tools module Magiculture Integrations has been split into its own m
 The config has changed again (sorry last time I swear) so be sure to regenerate your config as many of the options have been re-organized for easier enabling/disabling of similar features.
 </b></span>
 <br><br>
-### Removals
+### Removed
 - Removed Survival Tools Module. All tools, blocks and machines have been shifted into their own mod
 <br><br>
 

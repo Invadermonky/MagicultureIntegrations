@@ -10,6 +10,7 @@ item.botania:magicultureintegrations:lens_flux.short=Flux
 # Blocks
 tile.botania:flower.auromeria.name=Auromeria
 tile.botania:flower.auromeria.reference=#BlameBeel
+tile.magicultureintegrations:crystal_sorter.name=Resonance Analyzer
 
 # Research
 botania.entry.auromeria=Auromeria

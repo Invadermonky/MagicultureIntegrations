@@ -1,13 +1,13 @@
 package com.invadermonky.magicultureintegrations.integrations.immersiveengineering.mods;
 
 import blusunrize.immersiveengineering.api.tool.ExternalHeaterHandler;
-import com.invadermonky.magicultureintegrations.api.mods.IModIntegration;
+import com.invadermonky.magicultureintegrations.api.IProxy;
 import com.invadermonky.magicultureintegrations.api.mods.immersiveengineering.ImmersiveEngineeringUtils;
 import com.invadermonky.magicultureintegrations.api.tile.IHeatableTile;
 import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
 import thaumcraft.common.tiles.essentia.TileSmelter;
 
-public class IEThaumcraft implements IModIntegration {
+public class IEThaumcraft implements IProxy {
     @Override
     public void preInit() {
         if(ConfigHandlerMI.heatables.thaumcraft.external_heater) {

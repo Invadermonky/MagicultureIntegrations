@@ -1,4 +1,4 @@
-package com.invadermonky.magicultureintegrations.api.mods;
+package com.invadermonky.magicultureintegrations.api;
 
 public interface IConfigurable {
     /**

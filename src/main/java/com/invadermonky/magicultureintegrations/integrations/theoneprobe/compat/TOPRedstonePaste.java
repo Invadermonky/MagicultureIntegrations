@@ -1,7 +1,7 @@
 package com.invadermonky.magicultureintegrations.integrations.theoneprobe.compat;
 
 import com.invadermonky.magicultureintegrations.MagicultureIntegrations;
-import com.invadermonky.magicultureintegrations.api.mods.IConfigurable;
+import com.invadermonky.magicultureintegrations.api.IConfigurable;
 import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
 import com.invadermonky.magicultureintegrations.util.ModIds;
 import mcjty.theoneprobe.Tools;

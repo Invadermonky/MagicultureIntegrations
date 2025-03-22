@@ -33,7 +33,6 @@ public abstract class TileEntityFermenterMixin extends TileEntityInventory imple
 
     @Shadow @Final private FluidTank inputTank;
     @Shadow @Final private FluidTank outputTank;
-
     @Shadow private int heatBuffer;
 
     @Override

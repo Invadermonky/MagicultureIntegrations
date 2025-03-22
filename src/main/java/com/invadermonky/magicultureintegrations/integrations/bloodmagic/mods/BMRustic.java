@@ -3,7 +3,7 @@ package com.invadermonky.magicultureintegrations.integrations.bloodmagic.mods;
 import WayofTime.bloodmagic.alchemyArray.AlchemyArrayEffectFurnaceFuel;
 import WayofTime.bloodmagic.ritual.harvest.HarvestRegistry;
 import WayofTime.bloodmagic.ritual.harvest.IHarvestHandler;
-import com.invadermonky.magicultureintegrations.api.mods.IModIntegration;
+import com.invadermonky.magicultureintegrations.api.IProxy;
 import com.invadermonky.magicultureintegrations.api.tile.HeatableUtils;
 import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
 import net.minecraft.block.Block;
@@ -21,7 +21,7 @@ import rustic.common.tileentity.TileEntityCondenserBase;
 
 import java.util.List;
 
-public class BMRustic implements IModIntegration, IHarvestHandler {
+public class BMRustic implements IProxy, IHarvestHandler {
     @Override
     public void preInit() {
         if(!ConfigHandlerMI.heatables.rustic.furnace_heater_array) {

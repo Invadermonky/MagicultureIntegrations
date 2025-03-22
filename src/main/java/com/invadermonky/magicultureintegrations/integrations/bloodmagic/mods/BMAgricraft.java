@@ -4,7 +4,7 @@ import WayofTime.bloodmagic.ritual.harvest.HarvestRegistry;
 import WayofTime.bloodmagic.ritual.harvest.IHarvestHandler;
 import com.infinityraider.agricraft.tiles.TileEntityCrop;
 import com.infinityraider.infinitylib.utility.WorldHelper;
-import com.invadermonky.magicultureintegrations.api.mods.IModIntegration;
+import com.invadermonky.magicultureintegrations.api.IProxy;
 import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class BMAgricraft implements IModIntegration, IHarvestHandler {
+public class BMAgricraft implements IProxy, IHarvestHandler {
     @Override
     public void init() {
         if(ConfigHandlerMI.integrations.blood_magic.harvest_ritual.agricraft) {

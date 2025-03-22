@@ -2,7 +2,7 @@ package com.invadermonky.magicultureintegrations.integrations.bloodmagic.mods;
 
 import WayofTime.bloodmagic.ritual.harvest.HarvestRegistry;
 import WayofTime.bloodmagic.ritual.harvest.IHarvestHandler;
-import com.invadermonky.magicultureintegrations.api.mods.IModIntegration;
+import com.invadermonky.magicultureintegrations.api.IProxy;
 import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
 import com.pam.harvestcraft.blocks.growables.BlockPamFruit;
 import com.pam.harvestcraft.blocks.growables.BlockPamFruitLog;
@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class BMHarvestcraft implements IModIntegration, IHarvestHandler {
+public class BMHarvestcraft implements IProxy, IHarvestHandler {
     @Override
     public void init() {
         if(ConfigHandlerMI.integrations.blood_magic.harvest_ritual.harvestcraft) {

@@ -1,6 +1,6 @@
 package com.invadermonky.magicultureintegrations.integrations.botania.block.subtile;
 
-import com.invadermonky.magicultureintegrations.api.mods.IConfigurable;
+import com.invadermonky.magicultureintegrations.api.IConfigurable;
 import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
 import com.invadermonky.magicultureintegrations.integrations.botania.item.ItemLensFlux;
 import net.minecraft.item.ItemStack;
@@ -8,6 +8,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import thaumcraft.api.aura.AuraHelper;
 import vazkii.botania.api.lexicon.LexiconEntry;
+import vazkii.botania.api.recipe.RecipePetals;
 import vazkii.botania.api.subtile.SubTileFunctional;
 import vazkii.botania.common.core.helper.Vector3;
 import vazkii.botania.common.entity.EntityManaBurst;
@@ -16,6 +17,7 @@ public class SubTileAuromeria extends SubTileFunctional implements IConfigurable
     public static final SubTileAuromeria AUROMERIA = new SubTileAuromeria();
     public static final String NAME = "auromeria";
     public static LexiconEntry AUROMERIA_ENTRY;
+    public static RecipePetals auromeriaRecipe;
 
     //If you want to change these values you can do so with Groovyscript
     public static int visPowerCost = 10;

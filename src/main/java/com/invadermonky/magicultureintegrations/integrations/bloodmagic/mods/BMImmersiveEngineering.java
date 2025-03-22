@@ -3,7 +3,7 @@ package com.invadermonky.magicultureintegrations.integrations.bloodmagic.mods;
 import WayofTime.bloodmagic.ritual.harvest.HarvestRegistry;
 import WayofTime.bloodmagic.ritual.harvest.IHarvestHandler;
 import blusunrize.immersiveengineering.common.blocks.plant.BlockIECrop;
-import com.invadermonky.magicultureintegrations.api.mods.IModIntegration;
+import com.invadermonky.magicultureintegrations.api.IProxy;
 import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class BMImmersiveEngineering implements IModIntegration, IHarvestHandler {
+public class BMImmersiveEngineering implements IProxy, IHarvestHandler {
     @Override
     public void init() {
         if(ConfigHandlerMI.integrations.blood_magic.harvest_ritual.immersive_engineering) {

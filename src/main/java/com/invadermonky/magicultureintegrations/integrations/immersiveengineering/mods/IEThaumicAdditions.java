@@ -1,13 +1,13 @@
 package com.invadermonky.magicultureintegrations.integrations.immersiveengineering.mods;
 
 import blusunrize.immersiveengineering.api.tool.ExternalHeaterHandler;
-import com.invadermonky.magicultureintegrations.api.mods.IModIntegration;
+import com.invadermonky.magicultureintegrations.api.IProxy;
 import com.invadermonky.magicultureintegrations.api.mods.immersiveengineering.ImmersiveEngineeringUtils;
 import com.invadermonky.magicultureintegrations.api.tile.IHeatableTile;
 import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
 import org.zeith.thaumicadditions.tiles.TileAbstractSmelter;
 
-public class IEThaumicAdditions implements IModIntegration {
+public class IEThaumicAdditions implements IProxy {
     @Override
     public void preInit() {
         if(ConfigHandlerMI.heatables.thaumic_additions.external_heater) {
