@@ -67,9 +67,6 @@ public class BlockCrystalSorter extends BlockContainer implements IAddition, IPr
 
     public static ConstellationRecipe crystalSorterRecipe;
 
-    //TODO:
-    //  Book Entry
-
     public BlockCrystalSorter() {
         super(Material.IRON, MapColor.GOLD);
         this.setRegistryName(new ResourceLocation(MagicultureIntegrations.MOD_ID, "crystal_sorter"));
