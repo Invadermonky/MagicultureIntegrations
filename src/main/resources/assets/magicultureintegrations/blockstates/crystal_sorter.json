@@ -1,13 +1,13 @@
 {
-  "forge_marker": 1,
-  "defaults": {
-    "model": "magicultureintegrations:crystal_sorter"
-  },
+  "forge_marker": 0,
   "variants": {
-    "inventory": [{}],
-    "facing=north": { "model": "magicultureintegrations:crystal_sorter" },
-    "facing=south": { "model": "magicultureintegrations:crystal_sorter", "y": 180 },
-    "facing=west":  { "model": "magicultureintegrations:crystal_sorter", "y": 270 },
-    "facing=east":  { "model": "magicultureintegrations:crystal_sorter", "y": 90 }
+    "facing=north,inverted=false": { "model": "magicultureintegrations:crystal_sorter" },
+    "facing=south,inverted=false": { "model": "magicultureintegrations:crystal_sorter", "y": 180 },
+    "facing=west,inverted=false":  { "model": "magicultureintegrations:crystal_sorter", "y": 270 },
+    "facing=east,inverted=false":  { "model": "magicultureintegrations:crystal_sorter", "y": 90 },
+    "facing=north,inverted=true": { "model": "magicultureintegrations:crystal_sorter_inverted" },
+    "facing=south,inverted=true": { "model": "magicultureintegrations:crystal_sorter_inverted", "y": 180 },
+    "facing=west,inverted=true":  { "model": "magicultureintegrations:crystal_sorter_inverted", "y": 270 },
+    "facing=east,inverted=true":  { "model": "magicultureintegrations:crystal_sorter_inverted", "y": 90 }
   }
 }

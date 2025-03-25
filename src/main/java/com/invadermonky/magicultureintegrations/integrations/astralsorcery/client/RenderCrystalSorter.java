@@ -39,7 +39,7 @@ public class RenderCrystalSorter extends TileEntitySpecialRenderer<TileCrystalSo
     }
 
     private void renderCraftingParticles(World world, BlockPos pos) {
-        if (world.getTotalWorldTime() % 10L == 0) {
+        if (world.getTotalWorldTime() % 5L == 0) {
             EntityFXFacingParticle p = EffectHelper.genericFlareParticle(
                     pos.getX() + 0.5 + (double) world.rand.nextFloat() * 0.2 * (double) (world.rand.nextBoolean() ? 1 : -1),
                     pos.getY() + 1.25 + (double) world.rand.nextFloat() * 0.2 * (double) (world.rand.nextBoolean() ? 1 : -1),

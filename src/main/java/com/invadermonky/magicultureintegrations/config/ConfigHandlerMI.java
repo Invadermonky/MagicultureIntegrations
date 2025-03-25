@@ -23,8 +23,10 @@ public class ConfigHandlerMI {
         public ConfigAstralSorcery astral_sorcery = new ConfigAstralSorcery();
         public ConfigBloodMagic blood_magic = new ConfigBloodMagic();
         public ConfigBotania botania = new ConfigBotania();
+        public ConfigEnderIO ender_io = new ConfigEnderIO();
         public ConfigQualityTools quality_tools = new ConfigQualityTools();
         public ConfigQuark quark = new ConfigQuark();
+        public ConfigThaumcraft thaumcraft = new ConfigThaumcraft();
         public ConfigTheOneProbe the_one_probe = new ConfigTheOneProbe();
     }
 

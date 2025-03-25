@@ -37,6 +37,8 @@ public class InitBotania implements IIntegrationModule {
 
     @Override
     public void preInit() {
+        //TODO: OreBerry block needs the IHornHarvestable interface added to it.
+
         this.initHeatables();
         if(ModIds.thaumcraft.isLoaded) {
             RegistrarMI.registerAddition(ItemLensFlux.FLUX_LENS);

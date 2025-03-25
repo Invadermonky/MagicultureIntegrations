@@ -3,6 +3,8 @@ package com.invadermonky.magicultureintegrations.config.modules;
 import net.minecraftforge.common.config.Config;
 
 public class ConfigMixins {
+    @Config.Comment("Force disables Attained Drops mixins. Only use this if you are encountering crashes.")
+    public boolean disableAttainedDropsMixins = false;
     @Config.Comment("Force disables Bewitchment mixins. Only use this if you are encountering crashes.")
     public boolean disableBewitchmentMixins = false;
     @Config.Comment("Force disables Blood Magic mixins. Only use this if you are encountering crashes.")

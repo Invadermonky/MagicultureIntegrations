@@ -8,11 +8,13 @@ import com.blakebr0.mysticalagriculture.MysticalAgriculture;
 import com.charles445.simpledifficulty.SimpleDifficulty;
 import com.pam.harvestcraft.Reference;
 import com.tmtravlr.qualitytools.QualityToolsMod;
+import crazypants.enderio.base.EnderIO;
 import de.ellpeck.naturesaura.NaturesAura;
 import epicsquid.mysticalworld.MysticalWorld;
 import epicsquid.roots.Roots;
 import hellfirepvp.astralsorcery.AstralSorcery;
 import ic2.core.IC2;
+import josephcsible.oreberries.OreberriesMod;
 import knightminer.tcomplement.TinkersComplement;
 import mcjty.theoneprobe.TheOneProbe;
 import net.blay09.mods.cookingforblockheads.CookingForBlockheads;
@@ -41,6 +43,7 @@ public enum ModIds {
     botania(ConstIds.botania),
     cooking_for_blockheads(ConstIds.cooking_for_blockheads),
     embers(ConstIds.embers),
+    enderio(ConstIds.enderio),
     engineers_decor(ConstIds.engineers_decor),
     futuremc(ConstIds.futuremc),
     harvestcraft(ConstIds.harvestcraft),
@@ -49,6 +52,7 @@ public enum ModIds {
     mystical_agriculture(ConstIds.mystical_agriculture),
     mystical_world(ConstIds.mystical_world),
     natures_aura(ConstIds.natures_aura),
+    oreberries(ConstIds.oreberries),
     ore_stages(ConstIds.ore_stages),
     patchouli(ConstIds.patchouli),
     quality_tools(ConstIds.quality_tools),
@@ -102,6 +106,7 @@ public enum ModIds {
         public static final String botania = LibMisc.MOD_ID;
         public static final String cooking_for_blockheads = CookingForBlockheads.MOD_ID;
         public static final String embers = Embers.MODID;
+        public static final String enderio = EnderIO.MODID;
         public static final String engineers_decor = ModEngineersDecor.MODID;
         public static final String futuremc = FutureMC.ID;
         public static final String harvestcraft = Reference.MODID;
@@ -110,6 +115,7 @@ public enum ModIds {
         public static final String mystical_agriculture = MysticalAgriculture.MOD_ID;
         public static final String mystical_world = MysticalWorld.MODID;
         public static final String natures_aura = NaturesAura.MOD_ID;
+        public static final String oreberries = OreberriesMod.MODID;
         public static final String ore_stages = "orestages";
         public static final String patchouli = Patchouli.MOD_ID;
         public static final String quality_tools = QualityToolsMod.MOD_ID;

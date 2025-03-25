@@ -5,6 +5,8 @@ import com.invadermonky.magicultureintegrations.integrations.astralsorcery.block
 import com.invadermonky.magicultureintegrations.integrations.astralsorcery.block.capability.CrystalStackHandler;
 import hellfirepvp.astralsorcery.common.item.crystal.CrystalProperties;
 import hellfirepvp.astralsorcery.common.item.crystal.CrystalPropertyItem;
+import hellfirepvp.astralsorcery.common.lib.Sounds;
+import hellfirepvp.astralsorcery.common.util.SoundHelper;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.inventory.InventoryHelper;
@@ -40,11 +42,18 @@ public class TileCrystalSorter extends TileEntity implements ITickable {
     }
 
     public ItemStack insertProcessingCrystal(ItemStack stack, boolean simulate) {
-        return this.input.insertItem(0, stack, simulate);
+        ItemStack remainder = this.input.insertItem(0, stack, simulate);
+        if(!simulate) {
+            this.markDirty();
+        }
+        return remainder;
     }
 
     public ItemStack removeProcessingCrystal(boolean simulate) {
-        return this.input.extractItem(0, this.input.getSlotLimit(0), simulate);
+        ItemStack extract = this.input.extractItem(0, this.input.getSlotLimit(0), simulate);
+        if(!simulate)
+            this.markDirty();
+        return extract;
     }
 
     @Override
@@ -53,6 +62,11 @@ public class TileCrystalSorter extends TileEntity implements ITickable {
         ++this.ticksExisted;
         if(!this.world.isRemote) {
             EnumFacing impureFacing = this.getWorld().getBlockState(this.getPos()).getValue(BlockCrystalSorter.FACING).rotateY();
+            //Swapping sides for inverted side output
+            if(this.getWorld().getBlockState(this.getPos()).getValue(BlockCrystalSorter.INVERTED)) {
+                impureFacing = impureFacing.getOpposite();
+            }
+
             did = this.handleOutputTransfer(this.output_impure, impureFacing) || this.handleOutputTransfer(this.output_pure, impureFacing.getOpposite());
             //Handle Crystal Processing
             ItemStack crystal = this.input.getStackInSlot(0);
@@ -68,6 +82,7 @@ public class TileCrystalSorter extends TileEntity implements ITickable {
                         IItemHandler outputHandler = purityFlag && sizeFlag ? this.output_pure : this.output_impure;
                         //Transfer into pure slot
                         if (ItemHandlerHelper.insertItem(outputHandler, crystal, true).isEmpty()) {
+                            SoundHelper.playSoundAround(Sounds.craftFinish, this.world, this.getPos(), 1.0f, 1.7f);
                             ItemHandlerHelper.insertItem(outputHandler, this.input.extractItem(0, this.input.getSlotLimit(0), false), false);
                             //Resetting processing time if crystal was transferred out
                             this.processingTime = 0;
@@ -130,7 +145,7 @@ public class TileCrystalSorter extends TileEntity implements ITickable {
 
     public int getPurityThreshold() {
         int power = this.getWorld().getRedstonePowerFromNeighbors(this.getPos());
-        return 100 - (int) ((double) power * 6.25);
+        return 100 - (int) ((double) (15 - power) * 6.25);
     }
 
     @Override
@@ -186,13 +201,14 @@ public class TileCrystalSorter extends TileEntity implements ITickable {
     @Override
     public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
         EnumFacing front = this.getWorld().getBlockState(this.getPos()).getValue(BlockCrystalSorter.FACING);
+        boolean inverted = this.getWorld().getBlockState(this.getPos()).getValue(BlockCrystalSorter.INVERTED);
         if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && facing != null) {
             if(facing == front.getOpposite() || facing == EnumFacing.UP) {
                 return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(this.input);
             } else if(facing == front.rotateY()) {
-                return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(this.output_impure);
+                return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(inverted ? this.output_pure : this.output_impure);
             } else if(facing == front.getOpposite().rotateY()) {
-                return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(this.output_pure);
+                return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(inverted ? this.output_impure : this.output_pure);
             }
         }
         return super.getCapability(capability, facing);

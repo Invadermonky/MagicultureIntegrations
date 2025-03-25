@@ -6,8 +6,10 @@
   "minVersion": "0.8.5" ,
   "compatibilityLevel": "JAVA_8" ,
   "mixins": [
-    "FurnaceArrayMixin"
-  ],
-  "server": [],
+    "FurnaceArrayMixin" ,
+    "RitualCrushingMixin" ,
+    "RitualMagneticMixin"
+  ] ,
+  "server": [] ,
   "client": []
 }

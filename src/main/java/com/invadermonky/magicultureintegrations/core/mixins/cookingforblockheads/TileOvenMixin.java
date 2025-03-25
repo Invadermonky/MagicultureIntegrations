@@ -1,6 +1,5 @@
 package com.invadermonky.magicultureintegrations.core.mixins.cookingforblockheads;
 
-import blusunrize.immersiveengineering.api.tool.ExternalHeaterHandler;
 import com.invadermonky.magicultureintegrations.api.tile.IHeatableTile;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.blay09.mods.cookingforblockheads.ModConfig;
@@ -22,7 +21,7 @@ import java.util.Arrays;
 import java.util.IntSummaryStatistics;
 
 @Mixin(value = TileOven.class, remap = false)
-public abstract class TileOvenMixin extends TileEntity implements ITickable, IKitchenSmeltingProvider, ExternalHeaterHandler.IExternalHeatable, IHeatableTile {
+public abstract class TileOvenMixin extends TileEntity implements ITickable, IKitchenSmeltingProvider, IHeatableTile {
     private ItemStack fuelStack;
     @Shadow public int furnaceBurnTime;
     @Shadow public int currentItemBurnTime;

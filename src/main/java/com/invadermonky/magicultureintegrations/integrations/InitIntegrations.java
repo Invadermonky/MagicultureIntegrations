@@ -5,6 +5,7 @@ import com.invadermonky.magicultureintegrations.api.mods.IIntegrationModule;
 import com.invadermonky.magicultureintegrations.integrations.astralsorcery.InitAstralSorcery;
 import com.invadermonky.magicultureintegrations.integrations.bloodmagic.InitBloodMagic;
 import com.invadermonky.magicultureintegrations.integrations.botania.InitBotania;
+import com.invadermonky.magicultureintegrations.integrations.enderio.InitEnderIO;
 import com.invadermonky.magicultureintegrations.integrations.immersiveengineering.InitImmersiveEngineering;
 import com.invadermonky.magicultureintegrations.integrations.naturesaura.InitNaturesAura;
 import com.invadermonky.magicultureintegrations.integrations.qualitytools.InitQualityTools;
@@ -25,6 +26,7 @@ public class InitIntegrations {
         loadModule(ModIds.astral_sorcery, InitAstralSorcery.class);
         loadModule(ModIds.bloodmagic, InitBloodMagic.class);
         loadModule(ModIds.botania, InitBotania.class);
+        loadModule(ModIds.enderio, InitEnderIO.class);
         loadModule(ModIds.immersive_engineering, InitImmersiveEngineering.class);
         loadModule(ModIds.natures_aura, InitNaturesAura.class);
         loadModule(ModIds.quality_tools, InitQualityTools.class);

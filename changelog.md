@@ -1,12 +1,25 @@
 # Changelog
+<br><br>
+
 ## 1.12.2-2.1.0
 ### Added
-- Added new Astral Sorcery Crystal Sorter block, used to help automate crystal purity splitting
+- Added new Astral Sorcery Crystal Sorter block, used to help automate crystal purity splitting (block texture and model courtesy of [Kombee](https://www.curseforge.com/members/kombee))
+- Fixed crash when Ender IO's Farming Station harvested Agricraft crops
+- Thaumcraft Golems can now harvest Agricraft crops
+- Blood Magic Ritual of the Crusher now has OreStages support based on player stage
+- Blood Magic Ritual of Magnetism now correctly fires the BlockHarvestEvent, allowing drop tweaker mods to access the drops
+- Ender IO Farming Station can now harvest Attained Drops 2 crops
+- Botania Drum of the Wild can now harvest Attained Drops 2 crops
+<br><br>
+
 ### Changed
 - Rewrote Bewitchment Witches' Oven mixins so they're not horrible
-- Rewrote CFB Oven mixins so they're not horrible
+- Rewrote Cooking For Blockheads Oven mixins so they're not horrible
 - Cleaned up and merged a huge amount of unnecessary code
+<br><br>
+
 ### Fixed
+- Fixed Cooking For Blockheads mixin throwing a non-fatal NoClassDefFoundError error
 - Fixed Tinker's Construct mixin logging constructor warning message
 <br><br>
 

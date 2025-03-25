@@ -8,6 +8,12 @@ public class ConfigBloodMagic {
     @Comment("Reap of the Harvest Moon ritual integrations.")
     public HarvestRitualIntegrations harvest_ritual = new HarvestRitualIntegrations();
 
+    @Comment("The Ritual of the Crusher will now fire the BlockDropsEvent, allowing drops to be modified by tweaker mods.")
+    public boolean crusherRitualDropEventFix = true;
+
+    @Comment("Enables OreStage support for the Ritual of Magnetism.")
+    public boolean magnetismRitualStageSupport = true;
+
     @RequiresMcRestart
     @Comment("Blood Magic Quality tools integration.")
     public QualityTools quality_tools = new QualityTools();

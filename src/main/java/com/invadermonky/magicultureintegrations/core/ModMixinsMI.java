@@ -28,7 +28,7 @@ public class ModMixinsMI implements ILateMixinLoader {
             }
         }
         if(toLoad) {
-            this.MIXINS.add("mixins." + MagicultureIntegrations.MOD_ID + "." + mod.modId + ".json");
+            this.MIXINS.add("mixins.mi." + mod.modId + ".json");
         }
     }
 
@@ -46,7 +46,7 @@ public class ModMixinsMI implements ILateMixinLoader {
             }
         }
         if(toLoad) {
-            this.MIXINS.add("mixins." + MagicultureIntegrations.MOD_ID + "." + mod.modId + "." + customName + ".json");
+            this.MIXINS.add("mixins.mi." + mod.modId + "." + customName + ".json");
         }
     }
 
@@ -56,6 +56,7 @@ public class ModMixinsMI implements ILateMixinLoader {
 
         ConfigManager.sync(MagicultureIntegrations.MOD_ID, Config.Type.INSTANCE);
 
+        loadMixin(ModIds.attained_drops, ConfigHandlerMI.mixins.disableAttainedDropsMixins, ModIds.botania);
         loadMixin(ModIds.bewitchment, ConfigHandlerMI.mixins.disableBewitchmentMixins);
         loadMixin(ModIds.bloodmagic, ConfigHandlerMI.mixins.disableBloodMagicMixins);
         loadMixin(ModIds.botania, ConfigHandlerMI.mixins.disableBotaniaMixins);

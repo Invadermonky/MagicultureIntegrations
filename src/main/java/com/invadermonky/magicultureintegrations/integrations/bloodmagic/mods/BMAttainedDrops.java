@@ -9,6 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import shadows.attained.blocks.BlockBulb;
 import shadows.attained.blocks.BlockPlant;
 import shadows.attained.init.ModRegistry;
 
@@ -25,7 +26,7 @@ public class BMAttainedDrops implements IProxy, IHarvestHandler {
     @Override
     public boolean harvest(World world, BlockPos pos, IBlockState state, List<ItemStack> drops) {
         IBlockState up = world.getBlockState(pos.up());
-        if(up == ModRegistry.BULB.getDefaultState()) {
+        if(up.getBlock() instanceof BlockBulb) {
             NonNullList<ItemStack> blockDrops = NonNullList.create();
             up.getBlock().getDrops(blockDrops, world, pos.up(), up, 0);
             drops.addAll(blockDrops);
@@ -37,6 +38,9 @@ public class BMAttainedDrops implements IProxy, IHarvestHandler {
 
     @Override
     public boolean test(World world, BlockPos pos, IBlockState state) {
-        return state.getBlock() instanceof BlockPlant && state.getValue(BlockPlant.AGE) == ((BlockPlant) ModRegistry.PLANT).getMaxAge();
+        IBlockState stateUp = world.getBlockState(pos.up());
+        return state.getBlock() instanceof BlockPlant
+                && state.getValue(BlockPlant.AGE) == ((BlockPlant) ModRegistry.PLANT).getMaxAge()
+                && stateUp.getBlock() == ModRegistry.BULB;
     }
 }
