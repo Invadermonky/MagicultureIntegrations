@@ -1,6 +1,7 @@
 package com.invadermonky.magicultureintegrations.config;
 
 import com.invadermonky.magicultureintegrations.MagicultureIntegrations;
+import com.invadermonky.magicultureintegrations.config.tags.ModTags;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
@@ -61,6 +62,7 @@ public class MIConfigFixes {
         public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
             if(event.getModID().equals(MagicultureIntegrations.MOD_ID)) {
                 ConfigManager.sync(MagicultureIntegrations.MOD_ID, Config.Type.INSTANCE);
+                ModTags.syncConfig();
             }
         }
     }

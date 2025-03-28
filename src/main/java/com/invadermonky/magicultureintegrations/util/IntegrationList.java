@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class IntegrationList {
-    public static final IntegrationList EMPTY = new IntegrationList(null);
-
     private final List<IProxy> modIntegrations;
     private final String moduleName;
 

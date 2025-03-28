@@ -27,6 +27,7 @@ public class ModMixinsMI implements ILateMixinLoader {
         put(StringHelper.getMixinString(ModIds.bloodmagic, "cuttingfluid"), () -> ModIds.bloodmagic.isLoaded && MIConfigTweaks.blood_magic.cutting_fluid_tweak);
         put(StringHelper.getMixinString(ModIds.bloodmagic, "ritualcrusher"),() -> ModIds.bloodmagic.isLoaded && MIConfigTweaks.blood_magic.ritual_crusher);
         put(StringHelper.getMixinString(ModIds.bloodmagic, "ritualharvest"), () -> ModIds.bloodmagic.isLoaded && MIConfigTweaks.blood_magic.ritual_harvest);
+        put(StringHelper.getMixinString(ModIds.bloodmagic, "ritualmagnetic", "tweak"), () -> ModIds.bloodmagic.isLoaded && MIConfigTweaks.blood_magic.ritual_magnetic_replace);
         put(StringHelper.getMixinString(ModIds.bloodmagic, "ritualmagnetic", ModIds.ore_stages.modId), () -> ModIds.bloodmagic.isLoaded && ModIds.ore_stages.isLoaded && MIConfigIntegrations.blood_magic.ore_stages_magnetism);
         put(StringHelper.getMixinString(ModIds.botania, "exoflame"), () -> ModIds.botania.isLoaded && MIConfigIntegrations.botania.exoflame_mixin);
         put(StringHelper.getMixinString(ModIds.botania, "kekimurus"), () -> ModIds.botania.isLoaded && MIConfigIntegrations.botania.kekimurus_mixin);

@@ -105,5 +105,6 @@ While built for Magiculture 2, Magiculture Integrations features a robust config
 - **Cutting Fluid/Explosive Powder:** Cutting Fluid and Explosive Powder can have their max uses modified
 - **Ritual of the Crusher:** Ritual now fires the BlockHarvestEvent, exposing block drops to tweaker mods
 - **Reap of the Harvest Moon:** Ritual now fires the BlockHarvestEvent, exposing block drops to tweaker mods
+- **Ritual of Magnetism:** Ritual no longer leaves empty cavities in the stone when pulling up ores
 ### **Nature's Aura**
 - **Lax Spirit of Birthing:** Reduces the requirements needed to spawn a Spirit of Birthing, fixing an issue that prevented some modded animals from spawning them when giving birth in high aura chunks

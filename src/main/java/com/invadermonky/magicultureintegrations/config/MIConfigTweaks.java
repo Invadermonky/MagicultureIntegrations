@@ -1,6 +1,7 @@
 package com.invadermonky.magicultureintegrations.config;
 
 import com.invadermonky.magicultureintegrations.MagicultureIntegrations;
+import com.invadermonky.magicultureintegrations.config.tags.ModTags;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
@@ -48,12 +49,38 @@ public class MIConfigTweaks {
         public int explosivePowderMaxUses = 64;
 
         @Config.RequiresMcRestart
+        @Config.Name("Ritual of the Crusher")
         @Config.Comment("Ritual of the Crusher will now fire the HarvestBlockEvent, allowing drop modification through tweaker mods.")
         public boolean ritual_crusher = true;
 
         @Config.RequiresMcRestart
+        @Config.Name("Reap of the Harvest Moon")
         @Config.Comment("Reap of the Harvest Moon ritual will now fire the HarvestBlockEvent, allowing drop modification through tweaker mods.")
         public boolean ritual_harvest = true;
+
+        @Config.RequiresMcRestart
+        @Config.Name("Ritual of Magnetism")
+        @Config.Comment
+                ({
+                        "The Ritual of Magnetism will now replace the blocks it pulls from the ground with stone. This will improve",
+                        "performance in areas that have been stripped by the ritual by preventing the ritual from leaving empty cavities",
+                        "in the stone."
+                })
+        public boolean ritual_magnetic_replace = true;
+
+        @Config.Name("Ritual of Magnetism Block Replacements")
+        @Config.Comment
+                ({
+                        "Dimension specific block overrides. The default stone block will be replaced by these values in the configured",
+                        "dimension.",
+                        "  Format: dimensionId=modid:blockid:meta",
+                        "  0=minecraft:stone:0"
+                })
+        public String[] ritual_magnetic_replacements = {
+                "-1=minecraft:netherrack:0",
+                "1=minecraft:end_stone:0"
+        };
+
     }
 
     public static class NaturesAuraTweaks {
@@ -83,6 +110,7 @@ public class MIConfigTweaks {
         public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
             if(event.getModID().equals(MagicultureIntegrations.MOD_ID)) {
                 ConfigManager.sync(MagicultureIntegrations.MOD_ID, Config.Type.INSTANCE);
+                ModTags.syncConfig();
             }
         }
     }

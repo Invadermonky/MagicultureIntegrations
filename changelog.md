@@ -16,6 +16,7 @@
 #### Integrations/Tweaks
 - Blood Magic Bound Tools right-click harvest has been rewritten to significantly increase performance and fire BlockHarvestEvent
 - Blood Magic Ritual of the Crusher now has OreStages support based on player stage
+- Blood Magic Ritual of Magnetism no longer leaves empty cavities in the stone
 - Blood Magic Ritual of Magnetism now correctly fires the BlockHarvestEvent, allowing access to drop tweaker mods
 - Blood Magic Reap of the Harvest Moon now correctly fires the BlockHarvestEvent, allowing access to drop tweaker mods
 - Blood Magic Reap of the Harvest Moon can now harvest Oreberries Oreberry Bushes
