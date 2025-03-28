@@ -4,11 +4,15 @@ Magiculture Integrations is mod built for the [Magiculture 2](https://www.cursef
 
 While built for Magiculture 2, Magiculture Integrations features a robust configuration, allowing nearly every feature to be disabled.
 
+---
+
 ## **➕ Additions**
 ### **Astral Sorcery**
 - **Resonance Analyzer:** New simple machine used to sort Rock Crystals based on crystal purity (block texture and model courtesy of [Kombee](https://www.curseforge.com/members/kombee))
 ### **Botania**
 - **Auromeria:** New functional flower that drains vis, flux, and mana to generate mana bursts, see Lexicon entry for more details
+
+---
 
 ## **🐞 Bugfixes**
 ### **Agricraft**
@@ -20,6 +24,8 @@ While built for Magiculture 2, Magiculture Integrations features a robust config
 ### **Pam's Harvestcraft**
 - **Bark Harvest:** Fixes bark harvesting launching harvested drops in random directions
 - **Machines:** Pam's Harvestcraft machines (grinder, market, et cetera) are no longer registered as burnable furnace fuel
+
+---
 
 ## **⚙ Integrations**
 ### **Blood Magic**
@@ -71,7 +77,9 @@ While built for Magiculture 2, Magiculture Integrations features a robust config
 - **Ore Stages:** Fixes error tooltip when looking at staged ores on servers
 - **Redstone Paste:** Redstone Paste redstone now displays correct redstone power level
 ### **Tinker's Construct**
-- **Smeltery:** (*default disabled*) Tinker's Construct Smeltery can be boosted, but not heated, by all supported furnace heaters
+- **Smeltery:** (*disabled by default*) Tinker's Construct Smeltery can be boosted, but not heated, by all supported furnace heaters
+
+---
 
 ## **🔥 Supported Furnace Heaters**
 
@@ -87,11 +95,13 @@ While built for Magiculture 2, Magiculture Integrations features a robust config
 - **Heaters:** features that can ignite and provide burn time to furnaces.
 - **Boosters:** features that can increase the smelting speed of furnaces.
 
+---
+
 ## **🔧 Tweaks**
 ### **Astral Sorcery**
 - **Ichosic Resonator:** Right-clicking the ground at night with an Ichosic Resonator will display the fluid reservoir contained in that chunk
 ### **Blood Magic**
-- **Bound Tools:** Right click harvest has been overhauled, significantly increasing performance and firing the BlockHarvestEvent, exposing block drops to tweaker mods
+- **Bound Tools:** Bound Tooll right click harvest has been overhauled, significantly increasing performance and firing the BlockHarvestEvent, exposing block drops to tweaker mods
 - **Cutting Fluid/Explosive Powder:** Cutting Fluid and Explosive Powder can have their max uses modified
 - **Ritual of the Crusher:** Ritual now fires the BlockHarvestEvent, exposing block drops to tweaker mods
 - **Reap of the Harvest Moon:** Ritual now fires the BlockHarvestEvent, exposing block drops to tweaker mods
