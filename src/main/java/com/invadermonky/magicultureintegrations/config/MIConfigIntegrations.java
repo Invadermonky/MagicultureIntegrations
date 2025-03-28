@@ -43,6 +43,8 @@ public class MIConfigIntegrations {
     public static NaturesAuraIntegrations natures_aura = new NaturesAuraIntegrations();
     @Config.Name("Oreberries")
     public static OreberriesIntegrations oreberries = new OreberriesIntegrations();
+    @Config.Name("Roots")
+    public static RootsIntegrations roots = new RootsIntegrations();
     @Config.Name("Rustic")
     public static RusticIntegrations rustic = new RusticIntegrations();
     @Config.Name("Thaumcraft")
@@ -115,7 +117,6 @@ public class MIConfigIntegrations {
         public static class RitualHarvestIntegrations {
             public boolean bewitchment = true;
             public boolean harvestcraft = true;
-            public boolean immersive_engineering = true;
             public boolean mystical_agriculture = true;
             public boolean mystical_world = true;
             public boolean roots = true;
@@ -243,6 +244,15 @@ public class MIConfigIntegrations {
         @Config.Name("External Heater Integrations")
         public ExternalHeaterIntegrations external_heater_integrations = new ExternalHeaterIntegrations();
 
+        @Config.RequiresMcRestart
+        @Config.Name("Harvestable Hemp")
+        @Config.Comment
+                ({
+                        "Enables the IHarvestableCrop mixin injection, allowing IE Hemp to be harvested by a number of",
+                        "modded harvesters."
+                })
+        public boolean harvestable_mixin = true;
+
         public static class ExternalHeaterIntegrations {
             @Config.RequiresMcRestart
             @Config.Name("Bewitchment Witches' Oven")
@@ -334,6 +344,13 @@ public class MIConfigIntegrations {
 
         @Config.Comment("The cook time boost a sitting Foxhound provides a heatable tile. Processing time will be reduced by this amount every 3 ticks.")
         public int foxButtSpeedup = 1;
+    }
+
+    public static class RootsIntegrations {
+        @Config.RequiresMcRestart
+        @Config.Name("Elemental Soil Integrations")
+        @Config.Comment("Enables the expanded elemental soil harvest integration.")
+        public boolean elemental_soil_mixins = true;
     }
 
     public static class RusticIntegrations {

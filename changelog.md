@@ -27,6 +27,7 @@
 - Ender IO Farming Station can now harvest Attained Drops 2 crops
 - Ender IO Farming Station can now harvest Oreberries Oreberry Bushes
   Ender IO Farming Station can now harvest Pam's Harvestcraft fruit and bark
+- Roots Soils can now handle Agricraft crops (requires manual json soil settings)
 - Thaumcraft Golems can now harvest Agricraft crops
 - Thaumcraft Golems can now harvest Attained Drops 2 crops
 - Thaumcraft Golems can now harvest Oreberries Oreberry Bushes

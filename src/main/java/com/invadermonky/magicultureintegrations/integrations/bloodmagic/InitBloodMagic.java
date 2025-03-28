@@ -26,7 +26,6 @@ public class InitBloodMagic implements IIntegrationModule {
     @Override
     public void buildModIntegrations() {
         this.integrations.addIntegration(ModIds.bewitchment, BMBewitchment.class);
-        this.integrations.addIntegration(ModIds.immersive_engineering, BMImmersiveEngineering.class);
         this.integrations.addIntegration(ModIds.mystical_agriculture, BMMysticalAgriculture.class);
         this.integrations.addIntegration(ModIds.mystical_world, BMMysticalWorld.class);
         this.integrations.addIntegration(ModIds.quality_tools, BMQualityTools.class);

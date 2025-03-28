@@ -45,10 +45,11 @@ public abstract class ItemBoundToolMixin {
      * </p><br>
      *
      * <p>This rewrite does two things differently:</p>
-     * <u1>
+     *
+     * <o1>
      *     <li>It fires the BlockHarvestEvent granting block tweaker mods access to the harvested materials</li>
      *     <li>It stores all drops in an external list, merges the similar items, and only then inserts them into the player's inventory.</li>
-     * </u1>
+     * </o1>
      */
     @Overwrite
     protected void sharedHarvest(ItemStack stack, World world, EntityPlayer player, BlockPos pos, IBlockState state, boolean silkTouch, int fortune) {

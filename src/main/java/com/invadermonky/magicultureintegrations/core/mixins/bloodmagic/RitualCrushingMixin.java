@@ -23,7 +23,6 @@ import java.util.List;
 public abstract class RitualCrushingMixin {
     @Shadow protected abstract FakePlayer getFakePlayer(WorldServer world);
 
-    //TODO: Check in obfuscated environment to ensure this is applying correctly with the remap = true
     /**
      * @author Invadermonky
      * @reason Adding harvest event support to Blood Magic's Ritual of Crushing.<br>

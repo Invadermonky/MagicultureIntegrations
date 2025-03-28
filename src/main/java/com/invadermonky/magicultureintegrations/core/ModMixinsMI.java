@@ -41,12 +41,14 @@ public class ModMixinsMI implements ILateMixinLoader {
         put(StringHelper.getMixinString(ModIds.immersive_engineering, "alloysmelter", "boostable"), () -> ModIds.immersive_engineering.isLoaded && MIConfigIntegrations.immersive_engineering.boostable_alloy_smelter);
         put(StringHelper.getMixinString(ModIds.immersive_engineering, "blastfurnace", "boostable"), () -> ModIds.immersive_engineering.isLoaded && MIConfigIntegrations.immersive_engineering.boostable_blast_furnace);
         put(StringHelper.getMixinString(ModIds.immersive_engineering, "cokeoven", "boostable"), () -> ModIds.immersive_engineering.isLoaded && MIConfigIntegrations.immersive_engineering.boostable_coke_oven);
+        put(StringHelper.getMixinString(ModIds.immersive_engineering, "hemp", "harvestable"), () -> ModIds.immersive_engineering.isLoaded && MIConfigIntegrations.immersive_engineering.harvestable_mixin);
         put(StringHelper.getMixinString(ModIds.industrial_craft, "blastfurnace", "boostable"), () -> ModIds.industrial_craft.isLoaded && MIConfigIntegrations.industrial_craft.boostable_blast_furnace);
         put(StringHelper.getMixinString(ModIds.industrial_craft, "cokekiln", "boostable"), () -> ModIds.industrial_craft.isLoaded && MIConfigIntegrations.industrial_craft.boostable_coke_kiln);
         put(StringHelper.getMixinString(ModIds.mystical_agriculture, "condenser", "heatable"), () -> ModIds.mystical_agriculture.isLoaded && MIConfigIntegrations.mystical_agriculture.heatable_furnace);
         put(StringHelper.getMixinString(ModIds.natures_aura, "externalheater"), () -> ModIds.natures_aura.isLoaded && MIConfigIntegrations.natures_aura.external_heater_mixins);
         put(StringHelper.getMixinString(ModIds.oreberries, "blockoreberrybush", "harvestable"), () -> ModIds.oreberries.isLoaded && MIConfigIntegrations.oreberries.harvestable_oreberries);
         put(StringHelper.getMixinString(ModIds.oreberries, "blockoreberrybush", "hornharvestable"), () -> ModIds.oreberries.isLoaded && ModIds.botania.isLoaded && MIConfigIntegrations.botania.wild_horn.oreberries);
+        put(StringHelper.getMixinString(ModIds.roots, "elementalsoil"), () -> ModIds.roots.isLoaded && MIConfigIntegrations.roots.elemental_soil_mixins);
         put(StringHelper.getMixinString(ModIds.rustic, "condenser", "heatable"), () -> ModIds.rustic.isLoaded && MIConfigIntegrations.rustic.heatable_condenser);
         put(StringHelper.getMixinString(ModIds.thaumcraft, "bellows"), () -> ModIds.thaumcraft.isLoaded && MIConfigIntegrations.thaumcraft.bellows_mixins);
         put(StringHelper.getMixinString(ModIds.thaumcraft, "golemharvest"), () -> ModIds.thaumcraft.isLoaded && MIConfigIntegrations.thaumcraft.golem_mixins);

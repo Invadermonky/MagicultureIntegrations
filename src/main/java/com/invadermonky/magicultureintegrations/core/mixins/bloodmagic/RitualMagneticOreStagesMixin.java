@@ -19,7 +19,6 @@ import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(value = RitualMagnetic.class, remap = false)
 public abstract class RitualMagneticOreStagesMixin {
-    //TODO: Check in obfuscated environment to ensure this is applying correctly with the remap = true
     @ModifyExpressionValue(
             method = "performRitual",
             at = @At(

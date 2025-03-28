@@ -32,11 +32,11 @@ While built for Magiculture 2, Magiculture Integrations features a robust config
 - **Agricraft:** Reap of the Harvest Moon ritual can now harvest Agricraft crops
 - **Attained Drops 2:** Reap of the Harvest Moon ritual can now harvest Attained Drops 2 crops
 - **Bewitchment:** Reap of the Harvest Moon ritual can now harvest Bewitchment crops
-- **Harvestcraft:** Reap of the Harvest Moon ritual can now harvest Harvestcraft fruits and bark
 - **Immersive Engineering:** Reap of the Harvest Moon ritual can now harvest Immersive Engineering hemp
 - **Mystical Agriculture:** Reap of the Harvest Moon ritual can now harvest Mystical Agriculture crops (as well as most Mystical Agriculture addons)
 - **Oreberries:** Reap of the Harvest Moon ritual can now harvest Oreberries Oreberry bushes
 - **Ore Stages:** Ritual of Magnetism now ignores staged ores the player does not have access to
+- **Pam's Harvestcraft:** Reap of the Harvest Moon ritual can now harvest Harvestcraft fruits and bark
 - **Roots:** Reap of the Harvest Moon ritual can now harvest Roots herbs
 - **Rustic:** Reap of the Harvest Moon ritual can now harvest Rustic herbs
 - **Thaumic Additions:** Reap of the Harvest Moon ritual can now harvest Thaumic Additions crops
@@ -63,6 +63,10 @@ While built for Magiculture 2, Magiculture Integrations features a robust config
 - **Coke Kiln:** (*disabled by default*) Industrial Craft's Coke Kiln can be boosted, but not heated, by all supported furnace heaters
 ### **Mystical Agriculture**
 - **Essence Furnace:** Mystical Agriculture's Essence Furnaces can be heated and boosted by all supported furnace heaters
+### **Roots**
+- **Agricraft:** Roots elemental soils can now handle Agricraft crops (requires manual Agricraft soil json settings)
+- **Attained Drops 2:** Roots elemental soils can now handle Attained Drops 2 crops (Magmatic and Terran Soils do not effect drops due to soil implementation limitations)
+- **Oreberries:** Roots elemental soils can now handle Oreberries oreberry bushes
 ### **Rustic**
 - **Alchemic Condenser:** Rustics Basic and Advanced Alchemic Condensers can be heated and boosted by all supported furnace heaters
 ### **Thaumcraft**
@@ -101,7 +105,7 @@ While built for Magiculture 2, Magiculture Integrations features a robust config
 ### **Astral Sorcery**
 - **Ichosic Resonator:** Right-clicking the ground at night with an Ichosic Resonator will display the fluid reservoir contained in that chunk
 ### **Blood Magic**
-- **Bound Tools:** Bound Tooll right click harvest has been overhauled, significantly increasing performance and firing the BlockHarvestEvent, exposing block drops to tweaker mods
+- **Bound Tools:** Bound Tool right click harvest has been overhauled, significantly increasing performance and firing the BlockHarvestEvent, exposing block drops to tweaker mods
 - **Cutting Fluid/Explosive Powder:** Cutting Fluid and Explosive Powder can have their max uses modified
 - **Ritual of the Crusher:** Ritual now fires the BlockHarvestEvent, exposing block drops to tweaker mods
 - **Reap of the Harvest Moon:** Ritual now fires the BlockHarvestEvent, exposing block drops to tweaker mods
