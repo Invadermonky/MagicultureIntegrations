@@ -1,5 +1,6 @@
 package com.invadermonky.magicultureintegrations.config;
 
+import com.cleanroommc.configanytime.ConfigAnytime;
 import com.invadermonky.magicultureintegrations.MagicultureIntegrations;
 import com.invadermonky.magicultureintegrations.config.tags.ModTags;
 import net.minecraftforge.common.config.Config;
@@ -63,5 +64,9 @@ public class MIConfigAdditions {
                 ModTags.syncConfig();
             }
         }
+    }
+
+    static {
+        ConfigAnytime.register(MIConfigAdditions.class);
     }
 }

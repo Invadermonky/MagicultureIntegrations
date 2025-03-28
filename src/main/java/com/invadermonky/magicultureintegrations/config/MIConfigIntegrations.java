@@ -1,5 +1,6 @@
 package com.invadermonky.magicultureintegrations.config;
 
+import com.cleanroommc.configanytime.ConfigAnytime;
 import com.invadermonky.magicultureintegrations.MagicultureIntegrations;
 import com.invadermonky.magicultureintegrations.config.generics.ConfigHeatables;
 import com.invadermonky.magicultureintegrations.config.tags.ModTags;
@@ -427,5 +428,9 @@ public class MIConfigIntegrations {
                 ModTags.syncConfig();
             }
         }
+    }
+
+    static {
+        ConfigAnytime.register(MIConfigIntegrations.class);
     }
 }

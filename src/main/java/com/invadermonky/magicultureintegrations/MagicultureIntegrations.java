@@ -22,7 +22,8 @@ public class MagicultureIntegrations {
     public static final String MOD_VERSION = "1.12.2-2.1.0";
     public static final String MC_VERSION = "[1.12.2]";
     public static final String DEPENDENCIES =
-            "required-after:mixinbooter@[9.0,)" +
+            ";required-after:mixinbooter@[9.0,)" +
+            ";required-after:configanytime@[3.0,)" +
             ";after:" + ModIds.ConstIds.bloodmagic +
             ";after:" + ModIds.ConstIds.botania +
             ";after:" + ModIds.ConstIds.embers +
