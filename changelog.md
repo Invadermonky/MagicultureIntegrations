@@ -3,17 +3,40 @@
 
 ## 1.12.2-2.1.0
 ### Added
+#### Additions
 - Added new Astral Sorcery Crystal Sorter block, used to help automate crystal purity splitting (block texture and model courtesy of [Kombee](https://www.curseforge.com/members/kombee))
+  <br><br>
+
+#### Fixes
 - Fixed crash when Ender IO's Farming Station harvested Agricraft crops
-- Thaumcraft Golems can now harvest Agricraft crops
+- Fixed Pam's Harvestcraft machines being registered as furnace fuel
+- Fixed Pam's Harvestcraft bark harvesting launching drops in random directions
+<br><br>
+
+#### Integrations/Tweaks
+- Blood Magic Bound Tools right-click harvest has been rewritten to significantly increase performance and fire BlockHarvestEvent
 - Blood Magic Ritual of the Crusher now has OreStages support based on player stage
-- Blood Magic Ritual of Magnetism now correctly fires the BlockHarvestEvent, allowing drop tweaker mods to access the drops
+- Blood Magic Ritual of Magnetism now correctly fires the BlockHarvestEvent, allowing access to drop tweaker mods
+- Blood Magic Reap of the Harvest Moon now correctly fires the BlockHarvestEvent, allowing access to drop tweaker mods
+- Blood Magic Reap of the Harvest Moon can now harvest Oreberries Oreberry Bushes
+- Botania's Drum and Horn of the Wild can now harvest Attained Drops 2 crops
+- Botania's Drum and Horn of the Wild can now harvest Oreberry Oreberry bushes
+- Botania's Drum and Horn of the Wild can now harvest Pam's Harvestcraft fruit and bark
+- Ender IO Farming Station can now harvest Agricraft crops
 - Ender IO Farming Station can now harvest Attained Drops 2 crops
-- Botania Drum of the Wild can now harvest Attained Drops 2 crops
+- Ender IO Farming Station can now harvest Oreberries Oreberry Bushes
+  Ender IO Farming Station can now harvest Pam's Harvestcraft fruit and bark
+- Thaumcraft Golems can now harvest Agricraft crops
+- Thaumcraft Golems can now harvest Attained Drops 2 crops
+- Thaumcraft Golems can now harvest Oreberries Oreberry Bushes
+- Thaumcraft Golems can now harvest Pam's Harvestcraft fruit and bark
 <br><br>
 
 ### Changed
 - Rewrote Bewitchment Witches' Oven mixins so they're not horrible
+- Rewrote Blood Magic Burning Furnace Array mixins for improved compatibility
+- Rewrote Botania Exoflame mixins for improved compatibility
+- Rewrote Botania Kekimurus mixins for improved compatibility
 - Rewrote Cooking For Blockheads Oven mixins so they're not horrible
 - Cleaned up and merged a huge amount of unnecessary code
 <br><br>

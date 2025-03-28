@@ -18,7 +18,7 @@ public class InitImmersiveEngineering implements IIntegrationModule {
         integrations.addIntegration(ModIds.mystical_agriculture, IEMysticalAgriculture.class);
         integrations.addIntegration(ModIds.rustic, IERustic.class);
         integrations.addIntegration(ModIds.thaumcraft, IEThaumcraft.class);
-        integrations.addIntegration(ModIds.thaumadditions, IEThaumicAdditions.class);
+        integrations.addIntegration(ModIds.thaumic_additions, IEThaumicAdditions.class);
         integrations.addIntegration(ModIds.tinkers_construct, IETinkersConstruct.class);
     }
 

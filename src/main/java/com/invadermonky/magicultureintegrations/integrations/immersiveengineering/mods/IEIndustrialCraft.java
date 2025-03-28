@@ -4,22 +4,18 @@ import blusunrize.immersiveengineering.api.tool.ExternalHeaterHandler;
 import com.invadermonky.magicultureintegrations.api.IProxy;
 import com.invadermonky.magicultureintegrations.api.mods.immersiveengineering.ImmersiveEngineeringUtils;
 import com.invadermonky.magicultureintegrations.api.tile.IBoostableTile;
-import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
+import com.invadermonky.magicultureintegrations.config.MIConfigIntegrations;
 import ic2.core.block.machine.tileentity.TileEntityBlastFurnace;
-import ic2.core.block.machine.tileentity.TileEntityFermenter;
 import ic2.core.block.steam.TileEntityCokeKiln;
 
 public class IEIndustrialCraft implements IProxy {
     @Override
     public void preInit() {
-        if(!ConfigHandlerMI.heatables.industrial_craft.blast_furnace._globalDisable && ConfigHandlerMI.heatables.industrial_craft.blast_furnace.external_heater) {
+        if(MIConfigIntegrations.industrial_craft.boostable_blast_furnace && MIConfigIntegrations.immersive_engineering.external_heater_integrations.ic2_blast_furnace) {
             ExternalHeaterHandler.registerHeatableAdapter(TileEntityBlastFurnace.class, new IndustrialCraftBlastFurnaceAdapter());
         }
-        if(!ConfigHandlerMI.heatables.industrial_craft.coke_kiln._globalDisable && ConfigHandlerMI.heatables.industrial_craft.coke_kiln.external_heater) {
+        if(MIConfigIntegrations.industrial_craft.boostable_coke_kiln && MIConfigIntegrations.immersive_engineering.external_heater_integrations.ic2_coke_kiln) {
             ExternalHeaterHandler.registerHeatableAdapter(TileEntityCokeKiln.class, new IndustrialCraftCokeKilnAdapter());
-        }
-        if(!ConfigHandlerMI.heatables.industrial_craft.fermenter._globalDisable && ConfigHandlerMI.heatables.industrial_craft.fermenter.external_heater) {
-            ExternalHeaterHandler.registerHeatableAdapter(TileEntityFermenter.class, new IndustrialCraftFermenterAdapter());
         }
     }
 
@@ -33,13 +29,6 @@ public class IEIndustrialCraft implements IProxy {
     public static class IndustrialCraftCokeKilnAdapter extends ExternalHeaterHandler.HeatableAdapter<TileEntityCokeKiln> {
         @Override
         public int doHeatTick(TileEntityCokeKiln furnace, int energy, boolean redstone) {
-            return furnace instanceof IBoostableTile ? ImmersiveEngineeringUtils.doBoostableTick((IBoostableTile) furnace, energy, redstone) : 0;
-        }
-    }
-
-    public static class IndustrialCraftFermenterAdapter extends ExternalHeaterHandler.HeatableAdapter<TileEntityFermenter> {
-        @Override
-        public int doHeatTick(TileEntityFermenter furnace, int energy, boolean redstone) {
             return furnace instanceof IBoostableTile ? ImmersiveEngineeringUtils.doBoostableTick((IBoostableTile) furnace, energy, redstone) : 0;
         }
     }

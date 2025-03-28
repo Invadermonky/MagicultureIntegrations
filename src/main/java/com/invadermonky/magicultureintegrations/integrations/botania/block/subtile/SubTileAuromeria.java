@@ -1,7 +1,7 @@
 package com.invadermonky.magicultureintegrations.integrations.botania.block.subtile;
 
 import com.invadermonky.magicultureintegrations.api.IConfigurable;
-import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
+import com.invadermonky.magicultureintegrations.config.MIConfigAdditions;
 import com.invadermonky.magicultureintegrations.integrations.botania.item.ItemLensFlux;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
@@ -50,8 +50,8 @@ public class SubTileAuromeria extends SubTileFunctional implements IConfigurable
             }
 
             if(this.mana >= manaCost && this.visPower > 0) {
-                if(flux > 0 && world.rand.nextFloat() < (ConfigHandlerMI.integrations.botania.auromeria.fluxDrainChance + fluxPercent)) {
-                    AuraHelper.drainFlux(world, flowerPos, (float) ConfigHandlerMI.integrations.botania.auromeria.fluxDrainAmount, false);
+                if(flux > 0 && world.rand.nextFloat() < (MIConfigAdditions.botania.auromeria.fluxDrainChance + fluxPercent)) {
+                    AuraHelper.drainFlux(world, flowerPos, (float) MIConfigAdditions.botania.auromeria.fluxDrainAmount, false);
                     drainedFlux = true;
                 }
                 this.mana -= manaCost;
@@ -106,6 +106,6 @@ public class SubTileAuromeria extends SubTileFunctional implements IConfigurable
 
     @Override
     public boolean isEnabled() {
-        return ConfigHandlerMI.integrations.botania.auromeria.enableAuromeria;
+        return MIConfigAdditions.botania.auromeria.enableAuromeria;
     }
 }

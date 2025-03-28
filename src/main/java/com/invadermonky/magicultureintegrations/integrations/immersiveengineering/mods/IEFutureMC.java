@@ -5,13 +5,13 @@ import blusunrize.immersiveengineering.api.tool.ExternalHeaterHandler.HeatableAd
 import com.invadermonky.magicultureintegrations.api.IProxy;
 import com.invadermonky.magicultureintegrations.api.mods.immersiveengineering.ImmersiveEngineeringUtils;
 import com.invadermonky.magicultureintegrations.api.tile.IHeatableTile;
-import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
+import com.invadermonky.magicultureintegrations.config.MIConfigIntegrations;
 import thedarkcolour.futuremc.tile.TileFurnaceAdvanced;
 
 public class IEFutureMC implements IProxy {
     @Override
     public void preInit() {
-        if(ConfigHandlerMI.heatables.future_mc.external_heater) {
+        if(MIConfigIntegrations.immersive_engineering.external_heater_integrations.fmc_advanced_furnaces) {
             ExternalHeaterHandler.registerHeatableAdapter(TileFurnaceAdvanced.class, new FutureMCFurnaceAdapter());
         }
     }

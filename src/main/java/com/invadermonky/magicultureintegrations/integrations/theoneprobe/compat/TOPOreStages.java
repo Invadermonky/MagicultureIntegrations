@@ -1,7 +1,7 @@
 package com.invadermonky.magicultureintegrations.integrations.theoneprobe.compat;
 
 import com.invadermonky.magicultureintegrations.api.IConfigurable;
-import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
+import com.invadermonky.magicultureintegrations.config.MIConfigIntegrations;
 import mcjty.theoneprobe.api.IProbeHitData;
 import mcjty.theoneprobe.api.ITheOneProbe;
 import mcjty.theoneprobe.apiimpl.providers.DefaultProbeInfoProvider;
@@ -53,7 +53,7 @@ public class TOPOreStages implements Function<ITheOneProbe, Void>, IConfigurable
 
     @Override
     public boolean isEnabled() {
-        return ConfigHandlerMI.integrations.the_one_probe.ore_stages;
+        return MIConfigIntegrations.the_one_probe.ore_stages;
     }
 
     private static class ProbeHitDataWrapper implements IProbeHitData {

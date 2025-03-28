@@ -62,7 +62,7 @@ public enum ModIds {
     rustic(ConstIds.rustic),
     simpledifficulty(ConstIds.simpledifficulty),
     thaumcraft(ConstIds.thaumcraft),
-    thaumadditions(ConstIds.thaumadditions),
+    thaumic_additions(ConstIds.thaumic_additions),
     the_one_probe(ConstIds.the_one_probe),
     tinkers_construct(ConstIds.tinkers_construct),
     tinkers_complement(ConstIds.tinkers_complement),
@@ -125,7 +125,7 @@ public enum ModIds {
         public static final String rustic = Rustic.MODID;
         public static final String simpledifficulty = SimpleDifficulty.MODID;
         public static final String thaumcraft = Thaumcraft.MODID;
-        public static final String thaumadditions = InfoTAR.MOD_ID;
+        public static final String thaumic_additions = InfoTAR.MOD_ID;
         public static final String the_one_probe = TheOneProbe.MODID;
         public static final String tinkers_construct = TConstruct.modID;
         public static final String tinkers_complement = TinkersComplement.modID;

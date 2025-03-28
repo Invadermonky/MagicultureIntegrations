@@ -1,7 +1,7 @@
 package com.invadermonky.magicultureintegrations.integrations.astralsorcery;
 
 import com.invadermonky.magicultureintegrations.api.mods.IIntegrationModule;
-import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
+import com.invadermonky.magicultureintegrations.config.MIConfigTweaks;
 import com.invadermonky.magicultureintegrations.integrations.astralsorcery.block.BlockCrystalSorter;
 import com.invadermonky.magicultureintegrations.integrations.astralsorcery.events.ASEventSubscriber;
 import com.invadermonky.magicultureintegrations.registry.RegistrarMI;
@@ -24,7 +24,7 @@ public class InitAstralSorcery implements IIntegrationModule {
 
     @Override
     public void preInit() {
-        if(ConfigHandlerMI.integrations.astral_sorcery.show_reservoir) {
+        if(MIConfigTweaks.astral_sorcery.show_reservoir) {
             MinecraftForge.EVENT_BUS.register(new ASEventSubscriber());
         }
 

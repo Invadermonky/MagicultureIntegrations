@@ -2,7 +2,7 @@ package com.invadermonky.magicultureintegrations.integrations.botania.item;
 
 import com.invadermonky.magicultureintegrations.MagicultureIntegrations;
 import com.invadermonky.magicultureintegrations.api.IAddition;
-import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
+import com.invadermonky.magicultureintegrations.config.MIConfigAdditions;
 import com.invadermonky.magicultureintegrations.integrations.botania.item.lens.LensFlux;
 import com.invadermonky.magicultureintegrations.util.StringHelper;
 import net.minecraft.client.resources.I18n;
@@ -211,7 +211,7 @@ public class ItemLensFlux extends Item implements ILensControl, ICompositableLen
 
     @Override
     public boolean isEnabled() {
-        return ConfigHandlerMI.integrations.botania.auromeria.enableAuromeria;
+        return MIConfigAdditions.botania.auromeria.enableAuromeria;
     }
 
     @Override

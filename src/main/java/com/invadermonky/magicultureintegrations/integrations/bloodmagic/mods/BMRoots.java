@@ -2,13 +2,13 @@ package com.invadermonky.magicultureintegrations.integrations.bloodmagic.mods;
 
 import WayofTime.bloodmagic.ritual.harvest.HarvestRegistry;
 import com.invadermonky.magicultureintegrations.api.IProxy;
-import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
+import com.invadermonky.magicultureintegrations.config.MIConfigIntegrations;
 import epicsquid.roots.init.ModBlocks;
 
 public class BMRoots implements IProxy {
     @Override
     public void init() {
-        if(ConfigHandlerMI.integrations.blood_magic.harvest_ritual.roots) {
+        if(MIConfigIntegrations.blood_magic.ritual_harvest.roots) {
             HarvestRegistry.registerStandardCrop(ModBlocks.cloud_berry, ModBlocks.cloud_berry.getMaxAge());
             HarvestRegistry.registerStandardCrop(ModBlocks.dewgonia, ModBlocks.dewgonia.getMaxAge());
             HarvestRegistry.registerStandardCrop(ModBlocks.infernal_bulb, ModBlocks.infernal_bulb.getMaxAge());

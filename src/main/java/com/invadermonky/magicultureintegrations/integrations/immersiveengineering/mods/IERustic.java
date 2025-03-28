@@ -4,13 +4,13 @@ import blusunrize.immersiveengineering.api.tool.ExternalHeaterHandler;
 import com.invadermonky.magicultureintegrations.api.IProxy;
 import com.invadermonky.magicultureintegrations.api.mods.immersiveengineering.ImmersiveEngineeringUtils;
 import com.invadermonky.magicultureintegrations.api.tile.IHeatableTile;
-import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
+import com.invadermonky.magicultureintegrations.config.MIConfigIntegrations;
 import rustic.common.tileentity.TileEntityCondenserBase;
 
 public class IERustic implements IProxy {
     @Override
     public void preInit() {
-        if(ConfigHandlerMI.heatables.rustic.external_heater) {
+        if(MIConfigIntegrations.immersive_engineering.external_heater_integrations.rustic_condenser) {
             ExternalHeaterHandler.registerHeatableAdapter(TileEntityCondenserBase.class, new RusticFurnaceAdapter());
         }
     }

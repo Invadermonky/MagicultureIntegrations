@@ -1,11 +1,9 @@
 package com.invadermonky.magicultureintegrations.integrations.bloodmagic.mods;
 
-import WayofTime.bloodmagic.alchemyArray.AlchemyArrayEffectFurnaceFuel;
 import WayofTime.bloodmagic.ritual.harvest.HarvestRegistry;
 import WayofTime.bloodmagic.ritual.harvest.IHarvestHandler;
 import com.invadermonky.magicultureintegrations.api.IProxy;
-import com.invadermonky.magicultureintegrations.api.tile.HeatableUtils;
-import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
+import com.invadermonky.magicultureintegrations.config.MIConfigIntegrations;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
@@ -17,21 +15,13 @@ import rustic.common.blocks.crops.BlockGrapeLeaves;
 import rustic.common.blocks.crops.BlockHerbBase;
 import rustic.common.blocks.crops.BlockLeavesApple;
 import rustic.common.blocks.crops.BlockStakeCrop;
-import rustic.common.tileentity.TileEntityCondenserBase;
 
 import java.util.List;
 
 public class BMRustic implements IProxy, IHarvestHandler {
     @Override
-    public void preInit() {
-        if(!ConfigHandlerMI.heatables.rustic.furnace_heater_array) {
-            HeatableUtils.blacklistHeatable(AlchemyArrayEffectFurnaceFuel.class, TileEntityCondenserBase.class);
-        }
-    }
-
-    @Override
     public void init() {
-        if(ConfigHandlerMI.integrations.blood_magic.harvest_ritual.rustic) {
+        if(MIConfigIntegrations.blood_magic.ritual_harvest.rustic) {
             HarvestRegistry.registerHandler(this);
         }
     }

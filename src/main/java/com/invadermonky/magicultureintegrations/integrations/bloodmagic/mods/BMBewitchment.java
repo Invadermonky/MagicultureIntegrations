@@ -1,24 +1,14 @@
 package com.invadermonky.magicultureintegrations.integrations.bloodmagic.mods;
 
-import WayofTime.bloodmagic.alchemyArray.AlchemyArrayEffectFurnaceFuel;
 import WayofTime.bloodmagic.ritual.harvest.HarvestRegistry;
-import com.bewitchment.common.block.tile.entity.TileEntityWitchesOven;
 import com.bewitchment.registry.ModObjects;
 import com.invadermonky.magicultureintegrations.api.IProxy;
-import com.invadermonky.magicultureintegrations.api.tile.HeatableUtils;
-import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
+import com.invadermonky.magicultureintegrations.config.MIConfigIntegrations;
 
 public class BMBewitchment implements IProxy {
     @Override
-    public void preInit() {
-        if(!ConfigHandlerMI.heatables.bewitchment.furnace_heater_array) {
-            HeatableUtils.blacklistHeatable(AlchemyArrayEffectFurnaceFuel.class, TileEntityWitchesOven.class);
-        }
-    }
-
-    @Override
     public void init() {
-        if(ConfigHandlerMI.integrations.blood_magic.harvest_ritual.bewitchment) {
+        if(MIConfigIntegrations.blood_magic.ritual_harvest.bewitchment) {
             HarvestRegistry.registerStandardCrop(ModObjects.crop_aconitum, (ModObjects.crop_aconitum).getMaxAge());
             HarvestRegistry.registerStandardCrop(ModObjects.crop_belladonna, (ModObjects.crop_belladonna).getMaxAge());
             HarvestRegistry.registerStandardCrop(ModObjects.crop_garlic, (ModObjects.crop_garlic).getMaxAge());

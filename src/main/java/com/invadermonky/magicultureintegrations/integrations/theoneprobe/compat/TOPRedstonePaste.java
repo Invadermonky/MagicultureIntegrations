@@ -2,7 +2,7 @@ package com.invadermonky.magicultureintegrations.integrations.theoneprobe.compat
 
 import com.invadermonky.magicultureintegrations.MagicultureIntegrations;
 import com.invadermonky.magicultureintegrations.api.IConfigurable;
-import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
+import com.invadermonky.magicultureintegrations.config.MIConfigIntegrations;
 import com.invadermonky.magicultureintegrations.util.ModIds;
 import mcjty.theoneprobe.Tools;
 import mcjty.theoneprobe.api.*;
@@ -42,6 +42,6 @@ public class TOPRedstonePaste implements Function<ITheOneProbe,Void>, IConfigura
 
     @Override
     public boolean isEnabled() {
-        return ConfigHandlerMI.integrations.the_one_probe.redstone_paste;
+        return MIConfigIntegrations.the_one_probe.redstone_paste;
     }
 }

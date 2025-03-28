@@ -2,6 +2,16 @@
 # Chat
 chat.magicultureintegrations:astral_sorcery_reservoir=A Reservoir of %s
 
+# Config
+config.magicultureintegrations:additions=Additions
+config.magicultureintegrations:additions.tooltip=Configuration for Blocks and Items added by Magiculture Integrations
+config.magicultureintegrations:fixes=Fixes
+config.magicultureintegrations:fixes.tooltip=Configuration for fixes added by Magiculture Integrations
+config.magicultureintegrations:integrations=Integrations
+config.magicultureintegrations:integrations.tooltip=Configuration for integrations added by Magiculture Integrations
+config.magicultureintegrations:tweaks=Tweaks
+config.magicultureintegrations:tweaks.tooltip=Configuration for tweaks added by Magiculture Integrations
+
 # Items
 item.magicultureintegrations:lens_flux.name=Mana Lens: Flux
 item.magicultureintegrations:lens_flux.short=Flux

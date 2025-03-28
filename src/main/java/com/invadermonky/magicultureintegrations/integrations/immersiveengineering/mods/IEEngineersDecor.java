@@ -4,13 +4,13 @@ import blusunrize.immersiveengineering.api.tool.ExternalHeaterHandler;
 import com.invadermonky.magicultureintegrations.api.IProxy;
 import com.invadermonky.magicultureintegrations.api.mods.immersiveengineering.ImmersiveEngineeringUtils;
 import com.invadermonky.magicultureintegrations.api.tile.IHeatableTile;
-import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
+import com.invadermonky.magicultureintegrations.config.MIConfigIntegrations;
 import wile.engineersdecor.blocks.BlockDecorFurnace;
 
 public class IEEngineersDecor implements IProxy {
     @Override
     public void preInit() {
-        if(ConfigHandlerMI.heatables.engineers_decor.external_heater) {
+        if(MIConfigIntegrations.immersive_engineering.external_heater_integrations.ed_laboratory_furnace) {
             ExternalHeaterHandler.registerHeatableAdapter(BlockDecorFurnace.BTileEntity.class, new EngineersDecorFurnaceAdapter());
         }
     }

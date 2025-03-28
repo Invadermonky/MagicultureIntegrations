@@ -3,7 +3,7 @@ package com.invadermonky.magicultureintegrations.integrations.astralsorcery.bloc
 import com.invadermonky.magicultureintegrations.MagicultureIntegrations;
 import com.invadermonky.magicultureintegrations.api.IAddition;
 import com.invadermonky.magicultureintegrations.api.IProxy;
-import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
+import com.invadermonky.magicultureintegrations.config.MIConfigAdditions;
 import com.invadermonky.magicultureintegrations.integrations.astralsorcery.InitAstralSorcery;
 import com.invadermonky.magicultureintegrations.integrations.astralsorcery.block.tile.TileCrystalSorter;
 import com.invadermonky.magicultureintegrations.integrations.astralsorcery.client.RenderCrystalSorter;
@@ -251,7 +251,7 @@ public class BlockCrystalSorter extends BlockContainer implements IAddition, IPr
 
     @Override
     public boolean isEnabled() {
-        return ConfigHandlerMI.integrations.astral_sorcery.crystal_sorter.enable;
+        return MIConfigAdditions.astral_sorcery.crystal_sorter.enable;
     }
 
     @Override

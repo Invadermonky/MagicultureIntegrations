@@ -1,6 +1,8 @@
 package com.invadermonky.magicultureintegrations.integrations.bloodmagic;
 
+import WayofTime.bloodmagic.alchemyArray.AlchemyArrayEffectFurnaceFuel;
 import WayofTime.bloodmagic.compat.guideapi.GuideBloodMagic;
+import WayofTime.bloodmagic.ritual.harvest.HarvestRegistry;
 import amerifrance.guideapi.api.IPage;
 import amerifrance.guideapi.api.impl.Book;
 import amerifrance.guideapi.api.impl.abstraction.CategoryAbstract;
@@ -8,6 +10,7 @@ import amerifrance.guideapi.api.impl.abstraction.EntryAbstract;
 import amerifrance.guideapi.page.PageText;
 import com.invadermonky.magicultureintegrations.api.mods.IIntegrationModule;
 import com.invadermonky.magicultureintegrations.api.mods.bloodmagic.BloodMagicUtils;
+import com.invadermonky.magicultureintegrations.config.MIConfigIntegrations;
 import com.invadermonky.magicultureintegrations.integrations.bloodmagic.mods.*;
 import com.invadermonky.magicultureintegrations.util.IntegrationList;
 import com.invadermonky.magicultureintegrations.util.ModIds;
@@ -22,21 +25,14 @@ public class InitBloodMagic implements IIntegrationModule {
 
     @Override
     public void buildModIntegrations() {
-        this.integrations.addIntegration(ModIds.agricraft, BMAgricraft.class);
-        this.integrations.addIntegration(ModIds.attained_drops, BMAttainedDrops.class);
         this.integrations.addIntegration(ModIds.bewitchment, BMBewitchment.class);
-        this.integrations.addIntegration(ModIds.cooking_for_blockheads, BMCookingForBlockheads.class);
-        this.integrations.addIntegration(ModIds.engineers_decor, BMEngineersDecor.class);
-        this.integrations.addIntegration(ModIds.futuremc, BMFutureMC.class);
-        this.integrations.addIntegration(ModIds.harvestcraft, BMHarvestcraft.class);
         this.integrations.addIntegration(ModIds.immersive_engineering, BMImmersiveEngineering.class);
         this.integrations.addIntegration(ModIds.mystical_agriculture, BMMysticalAgriculture.class);
         this.integrations.addIntegration(ModIds.mystical_world, BMMysticalWorld.class);
         this.integrations.addIntegration(ModIds.quality_tools, BMQualityTools.class);
         this.integrations.addIntegration(ModIds.roots, BMRoots.class);
         this.integrations.addIntegration(ModIds.rustic, BMRustic.class);
-        this.integrations.addIntegration(ModIds.thaumcraft, BMThaumcraft.class);
-        this.integrations.addIntegration(ModIds.thaumadditions, BMThaumicAdditions.class);
+        this.integrations.addIntegration(ModIds.thaumic_additions, BMThaumicAdditions.class);
     }
 
     @Override
@@ -45,7 +41,13 @@ public class InitBloodMagic implements IIntegrationModule {
     }
 
     @Override
+    public void init() {
+        HarvestRegistry.registerHandler(new BMHarvestableCrop());
+    }
+
+    @Override
     public void postInit() {
+        MIConfigIntegrations.blood_magic.furnace_array.registerHeatableBlacklists(AlchemyArrayEffectFurnaceFuel.class);
         buildGuideEntries();
     }
 

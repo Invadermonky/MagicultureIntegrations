@@ -10,4 +10,13 @@ public class StringHelper {
         }
         return s.toString();
     }
+
+    public static String getMixinString(ModIds modId, String... params) {
+        StringBuilder s = new StringBuilder("mixins.mi." + modId.modId);
+        for(String param : params) {
+            s.append(".").append(param);
+        }
+        s.append(".json");
+        return s.toString();
+    }
 }

@@ -1,6 +1,6 @@
 package com.invadermonky.magicultureintegrations.integrations.astralsorcery.block.tile;
 
-import com.invadermonky.magicultureintegrations.config.ConfigHandlerMI;
+import com.invadermonky.magicultureintegrations.config.MIConfigAdditions;
 import com.invadermonky.magicultureintegrations.integrations.astralsorcery.block.BlockCrystalSorter;
 import com.invadermonky.magicultureintegrations.integrations.astralsorcery.block.capability.CrystalStackHandler;
 import hellfirepvp.astralsorcery.common.item.crystal.CrystalProperties;
@@ -77,7 +77,7 @@ public class TileCrystalSorter extends TileEntity implements ITickable {
                 } else {
                     CrystalProperties properties = this.getCrystalProperties(crystal);
                     if (properties != null) {
-                        boolean sizeFlag = !ConfigHandlerMI.integrations.astral_sorcery.crystal_sorter.sortSize || properties.getSize() >= CrystalProperties.getMaxSize(crystal);
+                        boolean sizeFlag = !MIConfigAdditions.astral_sorcery.crystal_sorter.sortSize || properties.getSize() >= CrystalProperties.getMaxSize(crystal);
                         boolean purityFlag  = properties.getPurity() >= this.getPurityThreshold();
                         IItemHandler outputHandler = purityFlag && sizeFlag ? this.output_pure : this.output_impure;
                         //Transfer into pure slot
