@@ -83,6 +83,8 @@ While built for Magiculture 2, Magiculture Integrations features a robust config
 
 ## **🔥 Supported Furnace Heaters**
 
+<div style="text-align: center;">
+
 |          Mod          |        Feature        | Heater | Booster |
 |:---------------------:|:---------------------:|:------:|:-------:|
 |      Blood Magic      | Burning Furnace Array |   ✔    |         |
@@ -91,6 +93,8 @@ While built for Magiculture 2, Magiculture Integrations features a robust config
 |     Nature's Aura     |   Extraneous Heater   |   ✔    |    ✔    |
 |         Quark         |       Foxhound        |        |    ✔    |
 |      Thaumcraft       |    Arcane Bellows     |        |    ✔    |
+
+</div>
 
 - **Heaters:** features that can ignite and provide burn time to furnaces.
 - **Boosters:** features that can increase the smelting speed of furnaces.
