@@ -61,6 +61,7 @@ dependencies {
     modMap.put(["redstone-paste-67508:2477676"], project.redstonepaste)
     modMap.put(["roots-246183:5193525", "mystical-world-282940:3460961", "mysticallib-277064:3483816", "patchouli-306770:3162874"], project.roots)
     modMap.put(["rustic-256141:3107974"], project.rustic)
+    modMap.put(["spartan-weaponry-278141:5564836"], project.spartanweaponry)
     modMap.put(["simpledifficulty-360779:3613814"], project.simpledifficulty)
     modMap.put(["tinkers-construct-74072:2902483", "mantle-74924:2713386"], project.tinkersconstruct)
     modMap.put(["tinkers-complement-272671:2843439", "tinkers-construct-74072:2902483", "mantle-74924:2713386"], project.tinkerscomplement)

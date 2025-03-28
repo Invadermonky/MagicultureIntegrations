@@ -6,6 +6,7 @@ import blusunrize.immersiveengineering.ImmersiveEngineering;
 import com.bewitchment.Bewitchment;
 import com.blakebr0.mysticalagriculture.MysticalAgriculture;
 import com.charles445.simpledifficulty.SimpleDifficulty;
+import com.oblivioussp.spartanweaponry.ModSpartanWeaponry;
 import com.pam.harvestcraft.Reference;
 import com.tmtravlr.qualitytools.QualityToolsMod;
 import crazypants.enderio.base.EnderIO;
@@ -60,6 +61,7 @@ public enum ModIds {
     redstone_paste(ConstIds.redstone_paste),
     roots(ConstIds.roots),
     rustic(ConstIds.rustic),
+    spartan_weaponry(ConstIds.spartan_weaponry),
     simpledifficulty(ConstIds.simpledifficulty),
     thaumcraft(ConstIds.thaumcraft),
     thaumic_additions(ConstIds.thaumic_additions),
@@ -124,6 +126,7 @@ public enum ModIds {
         public static final String roots = Roots.MODID;
         public static final String rustic = Rustic.MODID;
         public static final String simpledifficulty = SimpleDifficulty.MODID;
+        public static final String spartan_weaponry = ModSpartanWeaponry.ID;
         public static final String thaumcraft = Thaumcraft.MODID;
         public static final String thaumic_additions = InfoTAR.MOD_ID;
         public static final String the_one_probe = TheOneProbe.MODID;

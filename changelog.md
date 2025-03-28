@@ -16,6 +16,7 @@
 <br><br>
 
 #### Integrations/Tweaks
+- Astral Sorcery grindstone can sharpen Spartan Weaponry thrown weapons
 - Blood Magic Bound Tools right-click harvest has been rewritten to significantly increase performance and fire BlockHarvestEvent
 - Blood Magic Ritual of the Crusher now has OreStages support based on player stage
 - Blood Magic Ritual of Magnetism no longer leaves empty cavities in the stone

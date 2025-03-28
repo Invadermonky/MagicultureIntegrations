@@ -15,17 +15,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 @Mod.EventBusSubscriber(modid = MagicultureIntegrations.MOD_ID)
 public class RegistrarMI {
     public static final List<Block> MOD_BLOCKS = new ArrayList<>();
     public static final List<Item> MOD_ITEMS = new ArrayList<>();
     public static final List<IProxy> PROXY_ADDITIONS = new ArrayList<>();
-
-    public static final Map<Block,Boolean> BLOCKS = new LinkedHashMap<>();
 
     public static <T extends IAddition> void registerAddition(T toRegister) {
         if(toRegister != null && toRegister.isEnabled()) {

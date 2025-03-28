@@ -18,6 +18,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class MIConfigIntegrations {
     @Config.Name("Agricraft")
     public static AgricraftIntegrations agricraft = new AgricraftIntegrations();
+    @Config.Name("Astral Sorcery")
+    public static AstralSorceryIntegrations astral_sorcery = new AstralSorceryIntegrations();
     @Config.Name("Attained Drops 2")
     public static AttainedDropsIntegrations attained_drops = new AttainedDropsIntegrations();
     @Config.Name("Bewitchment")
@@ -44,6 +46,8 @@ public class MIConfigIntegrations {
     public static NaturesAuraIntegrations natures_aura = new NaturesAuraIntegrations();
     @Config.Name("Oreberries")
     public static OreberriesIntegrations oreberries = new OreberriesIntegrations();
+    @Config.Name("Quark")
+    public static QuarkIntegrations quark = new QuarkIntegrations();
     @Config.Name("Roots")
     public static RootsIntegrations roots = new RootsIntegrations();
     @Config.Name("Rustic")
@@ -57,9 +61,6 @@ public class MIConfigIntegrations {
     @Config.Name("Tinker's Construct")
     public static TinkersConstructIntegrations tinkers_construct = new TinkersConstructIntegrations();
 
-    @Config.Name("Quark")
-    public static QuarkIntegrations quark = new QuarkIntegrations();
-
     public static class AgricraftIntegrations {
         @Config.RequiresMcRestart
         @Config.Name("Harvestable Agricraft Crops")
@@ -69,6 +70,13 @@ public class MIConfigIntegrations {
                         "of modded harvesters."
                 })
         public boolean harvestable_mixin = true;
+    }
+
+    public static class AstralSorceryIntegrations {
+        @Config.RequiresMcRestart
+        @Config.Name("Spartan Thrown Weapon Sharpening")
+        @Config.Comment("Allows Spartan Weaponry thrown weapons to be sharped at the grindstone.")
+        public boolean spartan_weaponry_thrown = true;
     }
 
     public static class AttainedDropsIntegrations {
