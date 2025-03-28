@@ -44,6 +44,7 @@
 ### Fixed
 - Fixed Cooking For Blockheads mixin throwing a non-fatal NoClassDefFoundError error
 - Fixed Tinker's Construct mixin logging constructor warning message
+- Fixed The One Probe OreStages integration lagging servers when looking at staged blocks
 <br><br>
 
 ## 1.12.2-2.0.0

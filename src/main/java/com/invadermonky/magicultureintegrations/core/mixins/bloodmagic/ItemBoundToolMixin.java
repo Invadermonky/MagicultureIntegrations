@@ -21,10 +21,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(value = ItemBoundTool.class, remap = false)
 public abstract class ItemBoundToolMixin {
-    @Shadow public abstract float getDestroySpeed(ItemStack stack, IBlockState state);
+    @Shadow(remap = true)
+    public abstract float getDestroySpeed(ItemStack stack, IBlockState state);
 
     @Unique
-    private final NonNullList<ItemStack> magicultureIntegrations$harvestedStacks = NonNullList.create();
+    private NonNullList<ItemStack> magicultureIntegrations$harvestedStacks = NonNullList.create();
 
     /**
      * @author Invadermonky
@@ -80,7 +81,8 @@ public abstract class ItemBoundToolMixin {
                     value = "INVOKE",
                     target = "LWayofTime/bloodmagic/item/ItemBoundTool;onBoundRelease(Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/player/EntityPlayer;I)V",
                     shift = At.Shift.AFTER
-            )
+            ),
+            remap = true
     )
     private void givePlayerHarvestedBlocks(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft, CallbackInfo ci, @Local EntityPlayer player) {
         NonNullList<ItemStack> mergedStacks = NonNullList.create();
