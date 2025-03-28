@@ -19,6 +19,8 @@ While built for Magiculture 2, Magiculture Integrations features a robust config
 - **Ender IO:**  Fixes crash caused by Agricraft's Ender IO Farming Station integration
 ### **Bewitchment**
 - **Witches' Oven:** Fixes Bewitchment's Witches' Oven consuming container items
+### **Blood Magic**
+- **Fluid Routing:** Fixes Routing Node fluid routing being unable to support multiple liquids and soft-locking when encountering a full tank
 ### **Cooking for Blockheads**
 - **Oven:** Fixes Cooking for Blockheads Oven consuming container items
 ### **Pam's Harvestcraft**

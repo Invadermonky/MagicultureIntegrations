@@ -18,6 +18,8 @@ public class MIConfigFixes {
     public static AgricraftFixes agricraft = new AgricraftFixes();
     @Config.Name("Bewitchment")
     public static BewitchemntFixes bewitchment = new BewitchemntFixes();
+    @Config.Name("Blood Magic")
+    public static BloodMagicFixes blood_magic = new BloodMagicFixes();
     @Config.Name("Cooking for Blockheads")
     public static CookingForBlockheadsFixes cooking_for_blockheads = new CookingForBlockheadsFixes();
     @Config.Name("Harvestcraft")
@@ -35,6 +37,17 @@ public class MIConfigFixes {
         @Config.Name("Witches' Oven Fix")
         @Config.Comment("Fixes Witches' Oven consuming container fuel items.")
         public boolean fix_witches_oven = true;
+    }
+
+    public static class BloodMagicFixes {
+        @Config.RequiresMcRestart
+        @Config.Name("Fluid Routing Node Fix")
+        @Config.Comment
+                ({
+                        "Fixes Routing Node fluid routing unable to support multiple fluids and fixes fluid routing getting",
+                        "stuck on the first full fluid tank encountered."
+                })
+        public boolean fix_fluid_routing = true;
     }
 
     public static class CookingForBlockheadsFixes {

@@ -8,6 +8,8 @@
   <br><br>
 
 #### Fixes
+- Fixed Blood Magic fluid routing unable to support multiple liquids
+- Fixed Blood Magic fluid routing locking up when encountering a full fluid tank
 - Fixed crash when Ender IO's Farming Station harvested Agricraft crops
 - Fixed Pam's Harvestcraft machines being registered as furnace fuel
 - Fixed Pam's Harvestcraft bark harvesting launching drops in random directions
