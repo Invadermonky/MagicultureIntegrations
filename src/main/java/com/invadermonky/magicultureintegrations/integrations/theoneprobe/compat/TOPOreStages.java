@@ -24,8 +24,6 @@ import java.util.function.Function;
 public class TOPOreStages implements Function<ITheOneProbe, Void>, IConfigurable {
     @Override
     public Void apply(ITheOneProbe input) {
-        //TODO: Harvest level still does not display correctly.
-
         input.registerBlockDisplayOverride((mode, probeInfo, player, world, state, data) -> {
             IBlockState checkState = state;
             Tuple<String, IBlockState> stageInfo = OreTiersAPI.getStageInfo(checkState);

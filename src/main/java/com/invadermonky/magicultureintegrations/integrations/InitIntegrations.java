@@ -97,6 +97,9 @@ public class InitIntegrations {
                 integrationModules.add(moduleClass.newInstance());
                 LogHelper.info("Loaded integration module: " + mod.modId);
             }
+        } catch(NoClassDefFoundError e) {
+            LogHelper.error("Critical error occurred in " + mod.modId + " report this bug to the Magiculture Integrations issue tracker.");
+            LogHelper.error(e);
         } catch (Exception e) {
             LogHelper.error("Failed to load integration module: " + mod.modId);
         }

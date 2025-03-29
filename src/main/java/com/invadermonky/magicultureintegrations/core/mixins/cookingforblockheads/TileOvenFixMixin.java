@@ -1,6 +1,8 @@
 package com.invadermonky.magicultureintegrations.core.mixins.cookingforblockheads;
 
 import com.llamalad7.mixinextras.sugar.Local;
+import com.llamalad7.mixinextras.sugar.Share;
+import com.llamalad7.mixinextras.sugar.ref.LocalRef;
 import net.blay09.mods.cookingforblockheads.api.capability.IKitchenSmeltingProvider;
 import net.blay09.mods.cookingforblockheads.tile.TileOven;
 import net.minecraft.item.Item;
@@ -18,9 +20,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(value = TileOven.class, remap = false)
 public abstract class TileOvenFixMixin extends TileEntity implements ITickable, IKitchenSmeltingProvider {
-    @Unique
-    private ItemStack fuelStack;
-
     @Shadow public abstract void update();
 
     /**
@@ -39,8 +38,8 @@ public abstract class TileOvenFixMixin extends TileEntity implements ITickable, 
      * ItemStack before the shrink.</p>
      */
     @Inject(method = "update", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;shrink(I)V"))
-    private void updateCaptureFuelItem(CallbackInfo ci, @Local(ordinal = 0) ItemStack fuelItem) {
-        this.fuelStack = fuelItem.copy();
+    private void updateCaptureFuelItem(CallbackInfo ci, @Local(ordinal = 0) ItemStack fuelItem, @Share("fuelStackCopy") LocalRef<ItemStack> localRef) {
+        localRef.set(fuelItem.copy());
     }
 
     /**
@@ -62,7 +61,10 @@ public abstract class TileOvenFixMixin extends TileEntity implements ITickable, 
             method = "update",
             at = @At(value = "INVOKE", target = "Lnet/minecraftforge/items/wrapper/RangedWrapper;setStackInSlot(ILnet/minecraft/item/ItemStack;)V", ordinal = 0)
     )
-    private void updateRedirectFuelConsumption(RangedWrapper instance, int i, ItemStack itemStack) {
-        instance.setStackInSlot(i, this.fuelStack.getItem().getContainerItem(this.fuelStack));
+    private void updateRedirectFuelConsumption(RangedWrapper instance, int i, ItemStack itemStack, @Share("fuelStackCopy") LocalRef<ItemStack> localRef) {
+        ItemStack copy = localRef.get();
+        if(copy.getItem().hasContainerItem(copy)) {
+            instance.setStackInSlot(i, copy.getItem().getContainerItem(copy));
+        }
     }
 }

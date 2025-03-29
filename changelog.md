@@ -1,6 +1,15 @@
 # Changelog
 <br><br>
 
+## 1.12.2-2.1.1
+### Changed
+- Rewrote CFB Oven mixin to use threadsafe `@Share` tag
+
+### Fixed
+- Fixed crash when Ender IO installed without Oreberries
+
+---
+
 ## 1.12.2-2.1.0
 ### Added
 #### Additions
@@ -44,13 +53,13 @@
 - Rewrote Botania Kekimurus mixins for improved compatibility
 - Rewrote Cooking For Blockheads Oven mixins so they're not horrible
 - Cleaned up and merged a huge amount of unnecessary code
-<br><br>
 
 ### Fixed
 - Fixed Cooking For Blockheads mixin throwing a non-fatal NoClassDefFoundError error
 - Fixed Tinker's Construct mixin logging constructor warning message
 - Fixed The One Probe OreStages integration lagging servers when looking at staged blocks
-<br><br>
+
+---
 
 ## 1.12.2-2.0.0
 ### Changed
@@ -64,10 +73,9 @@ The survival tools module Magiculture Integrations has been split into its own m
 <span style="font-size:1.2em;color:red;"><b>
 The config has changed again (sorry last time I swear) so be sure to regenerate your config as many of the options have been re-organized for easier enabling/disabling of similar features.
 </b></span>
-<br><br>
+
 ### Removed
 - Removed Survival Tools Module. All tools, blocks and machines have been shifted into their own mod
-<br><br>
 
 ### Integrations
 - Botantia Kekimurus can now eat Twilight Forest's Experiment 115 (block destruction configurable)
@@ -79,14 +87,14 @@ The config has changed again (sorry last time I swear) so be sure to regenerate 
 - Thaumic Additions crops can now be harvested/boosted by Blood Magic's Reap of the Harvest Moon ritual
 - Thaumic Additions Essentia Smelters can now be heated by all supported heaters/boosters
 - Tinker's Construct Smeltery and Seared Furnace now can now be boosted (but not fueled) by all supported heaters/boosters
-<br><br>
 
 ### Fixes
 - Fixed Bewitchment's Witches' Oven consuming consuming container items (such as BM's Lava Crystal)
 - Fixed Botania's Exoflame causing Future MC's Smoker and Blast Furnace to occasionally flicker
 - Fixed Cooking for Blockhead's Oven consuming container items (such as BM's Lava Crystal)
 - Fixed Cooking for Blockhead's Oven desync when boosting cook time
-<br><br>
+
+---
 
 ## 1.12.2-1.3.1
 - Fix crash with Auromeria when Botania installed but Thaumcraft not installed
@@ -94,15 +102,16 @@ The config has changed again (sorry last time I swear) so be sure to regenerate 
 - Fix crash with embers when Baubles not installed
 - Fixed Gryllzalia render issue when Thaumcraft not installed
 - Fixed Gryllzalia loading errored botania flower when TAN/SimpleDifficulty not installed
-<br><br>
+
+---
 
 ## 1.12.2-1.3.0
 <span style="font-size:1.2em;color:red;"><b>The configuration has changed. A number of config options have been renamed or moved. Be sure to regenerate your config file after updating from previous versions.</b></span>
-<br><br>
+
 ### Features
 - Astral Sorcery
   - Right clicking on a block at night with an Ichosic Resonator will display the fluid reservoir contained in that chunk
-<br><br>
+
 ### Integrations
 - Botania
   - Added Auromeria - new Functional Flora that uses Vis/Flux to generate mana bursts
@@ -112,13 +121,14 @@ The config has changed again (sorry last time I swear) so be sure to regenerate 
 - The One Probe
   - Added Ore Stages support, staged blocks no longer display error probe tooltips
   - Added Redstone Paste support, devices now show standard redstone information
-<br><br>
+
 ### Fixes
 - Fixed Bewitchment Witch's Oven not lighting up on servers
 - Fixed Botania new lexicon entries occasionally not displaying
 - Fixed Cooking for Blockheads oven flickering
 - Fixed Immersive Engineering External Heater inconsistencies
-<br><br>
+
+---
 
 ## 1.12.2-1.2.0
 ### Additions:
@@ -134,20 +144,22 @@ The config has changed again (sorry last time I swear) so be sure to regenerate 
   - Added Nature's Aura aura-powered temperature regulation necklace (Environmental Amulet)
   - Added Thaumcraft vis-powered temperature regulation charm (Thaumic Regulator)
     - Includes new Thaumonomicon entry
-    - 
+
 ### Integrations
 - Nature's Aura
   - Spirit of Birthing can now spawn on birth events caused by most modded creatures (Animania Compat)
 
 ### Fixes
 - Config menu can now be accessed and modified through the in-game Gui
-  <br><br>
+
+---
 
 ## 1.12.2-1.1.0
 - Fixed Immersive Engineering External Heater not updating Future MC's Blast Furnace and Smoker
 - Fixed crash on servers
 - Improved performance when accessing Bewitchment's Witches' Oven and Rustic's Alchemic Condensers
-  <br><br>
+
+---
 
 ## 1.12.2-1.0.0
 - Initial Release
