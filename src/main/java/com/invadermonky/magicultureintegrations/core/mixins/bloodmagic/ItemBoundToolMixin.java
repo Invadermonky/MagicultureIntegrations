@@ -76,7 +76,11 @@ public abstract class ItemBoundToolMixin {
         }
     }
 
-    @Inject(
+    /**
+     * @author Invadermonky
+     * @reason Handles player inventory insertion after the shared harvest loop fires.
+     */
+     @Inject(
             method = "onPlayerStoppedUsing",
             at = @At(
                     value = "INVOKE",

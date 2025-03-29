@@ -103,6 +103,8 @@ While built for Magiculture 2, Magiculture Integrations features a robust config
 |         Quark         |       Foxhound        |        |    ✔    |
 |      Thaumcraft       |    Arcane Bellows     |        |    ✔    |
 
+<br>
+
 - **Heaters:** features that can ignite and provide burn time to furnaces.
 - **Boosters:** features that can increase the smelting speed of furnaces.
 

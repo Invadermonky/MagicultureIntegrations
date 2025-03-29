@@ -63,6 +63,37 @@ if (propertyBool('publish_to_curseforge')) {
                         requiredDependency 'assetmover'
                     }
                 }
+                relations {
+                    requiredDependency 'configanytime'
+
+                    optionalDependency 'agricraft'
+                    optionalDependency 'astral-sorcery'
+                    optionalDependency 'attained-drops-2'
+                    optionalDependency 'bewitchment-legacy'
+                    optionalDependency 'blood-magic'
+                    optionalDependency 'botania'
+                    optionalDependency 'cooking-for-blockheads'
+                    optionalDependency 'ender-io'
+                    optionalDependency 'engineers-decor'
+                    optionalDependency 'future-mc'
+                    optionalDependency 'pams-harvestcraft'
+                    optionalDependency 'immersive-engineering'
+                    optionalDependency 'industrial-craft'
+                    optionalDependency 'mystical-agriculture'
+                    optionalDependency 'natures-aura'
+                    optionalDependency 'oreberries'
+                    optionalDependency 'ore-stages'
+                    optionalDependency 'quality-tools'
+                    optionalDependency 'quark-rotn-edition'
+                    optionalDependency 'roots'
+                    optionalDependency 'rustic'
+                    optionalDependency 'spartan-weaponry'
+                    optionalDependency 'thuamcraft'
+                    optionalDependency 'thaumic-additions'
+                    optionalDependency 'the-one-probe'
+                    optionalDependency 'tinkers-construct'
+                    optionalDependency 'the-twilight-forest'
+                }
             }
             options {
                 debug = propertyBool('curseforge_debug')

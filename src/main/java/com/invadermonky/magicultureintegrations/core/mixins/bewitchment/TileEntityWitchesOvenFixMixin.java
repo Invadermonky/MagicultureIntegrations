@@ -17,6 +17,20 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class TileEntityWitchesOvenFixMixin extends ModTileEntity {
     @Shadow @Final private ItemStackHandler inventory_up;
 
+    /**
+     * @author Invadermonky
+     * @reason Fixes Bewitchment Witches' Oven consuming fuel container items.
+     *
+     * <p>
+     *     The {@link TileEntityWitchesOven#burnFuel(int, boolean)} method extracts 1 item from the inventory and
+     *     checks if it is a Lava Bucket. Any non-lava bucket item are destroyed.
+     * </p>
+     *
+     * <p>
+     *     This mixin performs a checks on the removed stack and re-inserts it into the fuel inventory if it is a
+     *     container item.
+     * </p>
+     */
     @Inject(
             method = "burnFuel",
             at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraftforge/items/ItemStackHandler;extractItem(IIZ)Lnet/minecraft/item/ItemStack;")

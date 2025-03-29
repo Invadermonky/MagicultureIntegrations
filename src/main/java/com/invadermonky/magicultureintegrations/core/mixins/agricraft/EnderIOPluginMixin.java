@@ -14,10 +14,19 @@ public class EnderIOPluginMixin {
      * @author Invadermonky
      * @reason Fixes crash when Ender IO's Farming Station attempts to harvest Agricraft crops.
      *
-     * <p>The {@link com.infinityraider.agricraft.compat.enderio.AgriFarmerJoe} for some reason populates and returns
-     * list of EntityItems to the Farming Station on harvest. This causes a crash when the Farming Station code
-     * attempts uses the getItem() method, and assumes it is retrieving an {@link net.minecraft.item.Item} when it is
-     * actually retrieving an {@link net.minecraft.item.ItemStack}.</p>
+     * <p>
+     *     The {@link com.infinityraider.agricraft.compat.enderio.AgriFarmerJoe} for some reason populates and returns
+     *     list of EntityItems to the Farming Station on harvest. This causes a crash when the Farming Station code
+     *     uses the getItem() method, and assumes it is retrieving an {@link net.minecraft.item.Item} when it is actually
+     *     retrieving an {@link net.minecraft.item.ItemStack}.
+     * </p>
+     *
+     * <p>
+     *     This is just a fix for the crash, the re-implementation of the Farming Station integration is handled in
+     *     Magiculture Integrations via injection of the {@link WayofTime.bloodmagic.ritual.harvest.IHarvestHandler}
+     *     to the {@link com.infinityraider.agricraft.blocks.BlockCrop} and the registration of the
+     *     {@link com.invadermonky.magicultureintegrations.integrations.enderio.mods.EIOHarvestableCrop}.
+     * </p>
      */
     @SubscribeEvent
     @Overwrite
