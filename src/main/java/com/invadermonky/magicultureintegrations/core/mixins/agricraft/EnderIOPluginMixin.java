@@ -23,7 +23,7 @@ public class EnderIOPluginMixin {
      *
      * <p>
      *     This is just a fix for the crash, the re-implementation of the Farming Station integration is handled in
-     *     Magiculture Integrations via injection of the {@link WayofTime.bloodmagic.ritual.harvest.IHarvestHandler}
+     *     Magiculture Integrations via injection of the {@link com.invadermonky.magicultureintegrations.api.block.IHarvestableCrop}
      *     to the {@link com.infinityraider.agricraft.blocks.BlockCrop} and the registration of the
      *     {@link com.invadermonky.magicultureintegrations.integrations.enderio.mods.EIOHarvestableCrop}.
      * </p>
