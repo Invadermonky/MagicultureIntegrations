@@ -26,16 +26,22 @@ public abstract class TileOvenFixMixin extends TileEntity implements ITickable, 
      * @author Invadermonky
      * @reason Fixing Cooking For Blockheads Oven consuming fuel container items.<br>
      *
-     * <p>Cooking for Blockheads Oven pulls items from the {@link RangedWrapper#getStackInSlot(int)} and modifies
-     * them directtly, which the javadocs specificallly say not to do.</p>
+     * <p>
+     *     Cooking for Blockheads Oven pulls items from the {@link RangedWrapper#getStackInSlot(int)} and modifies
+     *     them directtly, which the javadocs specificallly say not to do.
+     * </p>
      *
-     * <p>When the oven consumes a fuel item, it first shrinks the ItemStack by 1, then, if the new stack count is
-     * 0, attempts to pull the container item via {@link Item#getContainerItem(ItemStack)}. The order of these
-     * operations means that if the item count is 1 prior to the shrink, it will always be trying to get the
-     * container item from an empty ItemStack.</p>
+     * <p>
+     *     When the oven consumes a fuel item, it first shrinks the ItemStack by 1, then, if the new stack count is
+     *     0, attempts to pull the container item via {@link Item#getContainerItem(ItemStack)}. The order of these
+     *     operations means that if the item count is 1 prior to the shrink, it will always be trying to get the
+     *     container item from an empty ItemStack.
+     * </p>
      *
-     * <p>The {@link TileOvenFixMixin#updateCaptureFuelItem(CallbackInfo, ItemStack)} mixin captures and copies the
-     * ItemStack before the shrink.</p>
+     * <p>
+     *     The {@link TileOvenFixMixin#updateCaptureFuelItem(CallbackInfo, ItemStack)} mixin captures and copies the
+     *     ItemStack before the shrink.
+     * </p>
      */
     @Inject(method = "update", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;shrink(I)V"))
     private void updateCaptureFuelItem(CallbackInfo ci, @Local(ordinal = 0) ItemStack fuelItem, @Share("fuelStackCopy") LocalRef<ItemStack> localRef) {

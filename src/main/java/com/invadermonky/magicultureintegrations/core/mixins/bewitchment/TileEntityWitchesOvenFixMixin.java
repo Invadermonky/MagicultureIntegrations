@@ -23,12 +23,12 @@ public abstract class TileEntityWitchesOvenFixMixin extends ModTileEntity {
      *
      * <p>
      *     The {@link TileEntityWitchesOven#burnFuel(int, boolean)} method extracts 1 item from the inventory and
-     *     checks if it is a Lava Bucket. Any non-lava bucket item are destroyed.
+     *     checks if it is a Lava Bucket. Any non-lava bucket items are destroyed.
      * </p>
      *
      * <p>
      *     This mixin performs a checks on the removed stack and re-inserts it into the fuel inventory if it is a
-     *     container item.
+     *     container item and not a Lava Bucket.
      * </p>
      */
     @Inject(
