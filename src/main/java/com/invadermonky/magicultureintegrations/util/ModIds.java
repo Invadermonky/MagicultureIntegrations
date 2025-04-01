@@ -69,7 +69,8 @@ public enum ModIds {
     tinkers_construct(ConstIds.tinkers_construct),
     tinkers_complement(ConstIds.tinkers_complement),
     tough_as_nails(ConstIds.toughasnails),
-    twilight_forest(ConstIds.twilight_forest)
+    twilight_forest(ConstIds.twilight_forest),
+    universal_tweaks(ConstIds.universal_tweaks, ConstVersions.universal_tweaks, true, false)
     ;
 
     public final String modId;
@@ -134,8 +135,10 @@ public enum ModIds {
         public static final String tinkers_complement = TinkersComplement.modID;
         public static final String toughasnails = ToughAsNails.MOD_ID;
         public static final String twilight_forest = TwilightForestMod.ID;
+        public static final String universal_tweaks = "universaltweaks";
     }
 
     public static class ConstVersions {
+        public static final String universal_tweaks = "1.15.0";
     }
 }

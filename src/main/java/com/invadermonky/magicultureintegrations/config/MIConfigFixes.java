@@ -29,14 +29,22 @@ public class MIConfigFixes {
     public static class AgricraftFixes {
         @Config.RequiresMcRestart
         @Config.Name("Fix Ender IO Plugin")
-        @Config.Comment("Fixes broken Ender IO integration that causes Farming Station crash.")
+        @Config.Comment
+                ({
+                        "Fixes broken Ender IO integration that causes Farming Station crash. This fix is included in Universal",
+                        "Tweaks 1.15.0 and will disable itself if UT is present."
+                })
         public boolean fix_enderio_plugin = true;
     }
 
     public static class BewitchemntFixes {
         @Config.RequiresMcRestart
         @Config.Name("Witches' Oven Fix")
-        @Config.Comment("Fixes Witches' Oven consuming container fuel items.")
+        @Config.Comment
+                ({
+                        "Fixes Witches' Oven consuming container fuel items.  This fix is included in Universal Tweaks 1.15.0",
+                        "and will disable itself if UT is present."
+                })
         public boolean fix_witches_oven = true;
     }
 
@@ -46,15 +54,29 @@ public class MIConfigFixes {
         @Config.Comment
                 ({
                         "Fixes Routing Node fluid routing unable to support multiple fluids and fixes fluid routing getting",
-                        "stuck on the first full fluid tank encountered."
+                        "stuck on the first full fluid tank encountered. This fix is included in Universal Tweaks 1.15.0 and",
+                        "will disable itself if UT is present."
                 })
         public boolean fix_fluid_routing = true;
+
+        @Config.RequiresMcRestart
+        @Config.Name("Fix Ritual")
+        @Config.Comment
+                ({
+                        "Fixes Blood Magic Rituals resetting on world/chunk unload. This fix is included in Universal Tweaks",
+                        "1.15.0 and will disable itself if UT is present."
+                })
+        public boolean fix_ritual = true;
     }
 
     public static class CookingForBlockheadsFixes {
         @Config.RequiresMcRestart
         @Config.Name("Oven Fix")
-        @Config.Comment("Fixes Oven consuming container fuel items.")
+        @Config.Comment
+                ({
+                        "Fixes Oven consuming container fuel items. This fix is included in Universal Tweaks 1.15.0 and will",
+                        "disable itself if UT is present."
+                })
         public boolean fix_oven = true;
     }
 

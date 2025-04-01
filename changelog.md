@@ -1,5 +1,12 @@
 # Changelog
-<br><br>
+
+## 1.12.2-2.1.2
+### Added
+- Added Blood Magic ritual fix, fixing the bug that caused rituals to reset on chunk/world reload
+### Changed
+- Fixes and Tweaks that have been merged into Universal Tweaks will automatically disable themselves when the correct version of UT is loaded
+### Fixed
+- Fixed mixin remap issue that sometimes caused Rustic condenser mixin to not load
 
 ## 1.12.2-2.1.1
 ### Changed

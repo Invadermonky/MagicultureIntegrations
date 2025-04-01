@@ -19,13 +19,16 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Mixin(value = ItemBoundTool.class, remap = false)
 public abstract class ItemBoundToolMixin {
     @Shadow(remap = true)
     public abstract float getDestroySpeed(ItemStack stack, IBlockState state);
 
     @Unique
-    private NonNullList<ItemStack> magicultureIntegrations$harvestedStacks = NonNullList.create();
+    private NonNullList<ItemStack> harvestedStacks = NonNullList.create();
 
     /**
      * @author Invadermonky
@@ -35,14 +38,14 @@ public abstract class ItemBoundToolMixin {
      *     The default implementation of this event is very performance unfriendly. When it is called by the individual tools,
      *     it will iterate over this event equal to a number of blocks based on the charge time. At its maximum, this can result
      *     in harvesting upwards of 810 blocks at once.
-     * </p><br>
+     * </p>
      *
      * <p>
      *     While the harvesting itself isn't really an issue, the problem is that the default {@link ItemBoundTool#sharedHarvest(ItemStack, World, EntityPlayer, BlockPos, IBlockState, boolean, int)}
      *     method attempts to insert every one of these items into the player's inventory individually, which can result
      *     in thousands of attempts to insert items into a player's inventory based on the blocks harvested. This causes
      *     a significant lag spike whenever this method fires, often freezing the game for a second or two.
-     * </p><br>
+     * </p>
      *
      * <p>This rewrite does two things differently:</p>
      *
@@ -68,7 +71,7 @@ public abstract class ItemBoundToolMixin {
                     }
                     float chance = ForgeEventFactory.fireBlockHarvesting(drops, world, pos, state, fortune, 1.0f, silkTouch, player);
                     drops.removeIf(drop -> drop.isEmpty() || chance < world.rand.nextFloat());
-                    this.magicultureIntegrations$harvestedStacks.addAll(drops);
+                    this.harvestedStacks.addAll(drops);
                 }
 
                 state.getBlock().removedByPlayer(world.getBlockState(pos), world, pos, player, false);
@@ -78,7 +81,8 @@ public abstract class ItemBoundToolMixin {
 
     /**
      * @author Invadermonky
-     * @reason Handles player inventory insertion after the shared harvest loop fires.
+     * @reason Handles player inventory insertion after the shared harvest loop fires. This was previously handled by the
+     * {@link ItemBoundTool#sharedHarvest(ItemStack, World, EntityPlayer, BlockPos, IBlockState, boolean, int)} method.
      */
      @Inject(
             method = "onPlayerStoppedUsing",
@@ -90,14 +94,19 @@ public abstract class ItemBoundToolMixin {
             remap = true
     )
     private void givePlayerHarvestedBlocks(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft, CallbackInfo ci, @Local EntityPlayer player) {
-        NonNullList<ItemStack> mergedStacks = NonNullList.create();
+        List<ItemStack> mergedStacks = new ArrayList<>();
 
-        this.magicultureIntegrations$harvestedStacks.stream()
+        this.harvestedStacks.stream()
                 .filter(drop -> !drop.isEmpty())
                 .forEach(drop -> {
-                    mergedStacks.stream()
-                            .filter(merged -> ItemHandlerHelper.canItemStacksStack(drop, merged))
-                            .forEach(merged -> merged.grow(drop.splitStack(drop.getCount()).getCount()));
+                    for (ItemStack merged : mergedStacks) {
+                        if (ItemHandlerHelper.canItemStacksStack(drop, merged)) {
+                            merged.grow(drop.splitStack(drop.getCount()).getCount());
+                        }
+                        if(drop.isEmpty()) {
+                            break;
+                        }
+                    }
 
                     if(!drop.isEmpty()) {
                         mergedStacks.add(drop.copy());
@@ -105,6 +114,6 @@ public abstract class ItemBoundToolMixin {
         });
 
         mergedStacks.forEach(mergedDrop -> ItemHandlerHelper.giveItemToPlayer(player, mergedDrop));
-        this.magicultureIntegrations$harvestedStacks.clear();
+        this.harvestedStacks.clear();
     }
 }

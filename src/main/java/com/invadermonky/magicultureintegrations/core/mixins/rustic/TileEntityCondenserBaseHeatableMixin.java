@@ -23,8 +23,8 @@ public abstract class TileEntityCondenserBaseHeatableMixin extends TileFluidHand
     @Shadow protected abstract boolean canBrew();
     @Shadow protected abstract void refreshCurrentRecipe();
     @Shadow public abstract int getAmount();
-    @Shadow public abstract NBTTagCompound writeToNBT(NBTTagCompound tag);
-    @Shadow public abstract void readFromNBT(NBTTagCompound tag);
+    @Shadow(remap = true) public abstract NBTTagCompound writeToNBT(NBTTagCompound tag);
+    @Shadow(remap = true) public abstract void readFromNBT(NBTTagCompound tag);
 
     @Override
     public boolean canSmeltHeatable() {

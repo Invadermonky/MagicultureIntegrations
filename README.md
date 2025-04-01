@@ -24,6 +24,7 @@ While built for Magiculture 2, Magiculture Integrations features a robust config
 - **Witches' Oven:** Fixes Bewitchment's Witches' Oven consuming container items
 ### **Blood Magic**
 - **Fluid Routing:** Fixes Routing Node fluid routing being unable to support multiple liquids and soft-locking when encountering a full tank
+- **Ritual Fix:** Fixes Blood Magic ritual resetting on world/chunk unload
 ### **Cooking for Blockheads**
 - **Oven:** Fixes Cooking for Blockheads Oven consuming container items
 ### **Pam's Harvestcraft**

@@ -16,23 +16,24 @@ import java.util.function.BooleanSupplier;
 
 public class ModMixinsMI implements ILateMixinLoader {
     private static final Map<String, BooleanSupplier> mixinConfigs = ImmutableMap.copyOf(new HashMap<String, BooleanSupplier>() {{
-        put(StringHelper.getMixinString(ModIds.agricraft, "enderioplugin", "fix"), () -> ModIds.agricraft.isLoaded && ModIds.enderio.isLoaded && MIConfigFixes.agricraft.fix_enderio_plugin);
+        put(StringHelper.getMixinString(ModIds.agricraft, "enderioplugin", "fix"), () -> ModIds.agricraft.isLoaded && ModIds.enderio.isLoaded && !ModIds.universal_tweaks.isLoaded && MIConfigFixes.agricraft.fix_enderio_plugin);
         put(StringHelper.getMixinString(ModIds.agricraft, "blockcrop", "harvestable"), () -> ModIds.agricraft.isLoaded && MIConfigIntegrations.agricraft.harvestable_mixin);
         put(StringHelper.getMixinString(ModIds.attained_drops, "blockplant", "harvestable"), () -> ModIds.attained_drops.isLoaded && MIConfigIntegrations.attained_drops.harvestable_mixin);
         put(StringHelper.getMixinString(ModIds.attained_drops, "blockplant", "hornharvestable"), () -> ModIds.attained_drops.isLoaded && ModIds.botania.isLoaded && MIConfigIntegrations.botania.wild_horn.attained_drops);
-        put(StringHelper.getMixinString(ModIds.bewitchment, "oven", "fix"), () -> ModIds.bewitchment.isLoaded && MIConfigFixes.bewitchment.fix_witches_oven);
+        put(StringHelper.getMixinString(ModIds.bewitchment, "oven", "fix"), () -> ModIds.bewitchment.isLoaded && !ModIds.universal_tweaks.isLoaded && MIConfigFixes.bewitchment.fix_witches_oven);
         put(StringHelper.getMixinString(ModIds.bewitchment, "oven", "heatable"), () -> ModIds.bewitchment.isLoaded && MIConfigIntegrations.bewitchment.heatable_oven);
         put(StringHelper.getMixinString(ModIds.bloodmagic, "burningfurnacearray"), () -> ModIds.bloodmagic.isLoaded && MIConfigIntegrations.blood_magic.furnace_array_mixins);
-        put(StringHelper.getMixinString(ModIds.bloodmagic, "boundtool"), () -> ModIds.bloodmagic.isLoaded && MIConfigTweaks.blood_magic.bound_tool_tweak);
+        put(StringHelper.getMixinString(ModIds.bloodmagic, "boundtool"), () -> ModIds.bloodmagic.isLoaded && !ModIds.universal_tweaks.isLoaded && MIConfigTweaks.blood_magic.bound_tool_tweak);
         put(StringHelper.getMixinString(ModIds.bloodmagic, "cuttingfluid"), () -> ModIds.bloodmagic.isLoaded && MIConfigTweaks.blood_magic.cutting_fluid_tweak);
+        put(StringHelper.getMixinString(ModIds.bloodmagic, "ritual"), () -> ModIds.bloodmagic.isLoaded&& !ModIds.universal_tweaks.isLoaded && MIConfigFixes.blood_magic.fix_ritual);
         put(StringHelper.getMixinString(ModIds.bloodmagic, "ritualcrusher"),() -> ModIds.bloodmagic.isLoaded && MIConfigTweaks.blood_magic.ritual_crusher);
         put(StringHelper.getMixinString(ModIds.bloodmagic, "ritualharvest"), () -> ModIds.bloodmagic.isLoaded && MIConfigTweaks.blood_magic.ritual_harvest);
         put(StringHelper.getMixinString(ModIds.bloodmagic, "ritualmagnetic", "tweak"), () -> ModIds.bloodmagic.isLoaded && MIConfigTweaks.blood_magic.ritual_magnetic_replace);
         put(StringHelper.getMixinString(ModIds.bloodmagic, "ritualmagnetic", ModIds.ore_stages.modId), () -> ModIds.bloodmagic.isLoaded && ModIds.ore_stages.isLoaded && MIConfigIntegrations.blood_magic.ore_stages_magnetism);
-        put(StringHelper.getMixinString(ModIds.bloodmagic, "fluidrouting"), () -> ModIds.bloodmagic.isLoaded && MIConfigFixes.blood_magic.fix_fluid_routing);
+        put(StringHelper.getMixinString(ModIds.bloodmagic, "fluidrouting"), () -> ModIds.bloodmagic.isLoaded && !ModIds.universal_tweaks.isLoaded && MIConfigFixes.blood_magic.fix_fluid_routing);
         put(StringHelper.getMixinString(ModIds.botania, "exoflame"), () -> ModIds.botania.isLoaded && MIConfigIntegrations.botania.exoflame_mixin);
         put(StringHelper.getMixinString(ModIds.botania, "kekimurus"), () -> ModIds.botania.isLoaded && MIConfigIntegrations.botania.kekimurus_mixin);
-        put(StringHelper.getMixinString(ModIds.cooking_for_blockheads, "oven", "fix"), () -> ModIds.cooking_for_blockheads.isLoaded && MIConfigFixes.cooking_for_blockheads.fix_oven);
+        put(StringHelper.getMixinString(ModIds.cooking_for_blockheads, "oven", "fix"), () -> ModIds.cooking_for_blockheads.isLoaded && !ModIds.universal_tweaks.isLoaded && MIConfigFixes.cooking_for_blockheads.fix_oven);
         put(StringHelper.getMixinString(ModIds.cooking_for_blockheads, "oven", "heatable"), () -> ModIds.cooking_for_blockheads.isLoaded && MIConfigIntegrations.cooking_for_blockheads.heatable_oven);
         put(StringHelper.getMixinString(ModIds.engineers_decor, "decorfurnace", "heatable"), () -> ModIds.engineers_decor.isLoaded && MIConfigIntegrations.engineers_decor.heatable_furnace);
         put(StringHelper.getMixinString(ModIds.futuremc, "advancedfurnace", "heatable"), () -> ModIds.futuremc.isLoaded && MIConfigIntegrations.future_mc.heatable_advanced_furnaces);

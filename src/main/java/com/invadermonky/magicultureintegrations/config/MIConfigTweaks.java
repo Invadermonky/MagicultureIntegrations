@@ -36,7 +36,8 @@ public class MIConfigTweaks {
         @Config.Comment
                 ({
                         "Overhauls bound tool right-click harvest, significantly improving performance and firing the HarvestBlockEvent,",
-                        "allowing drop modification through tweaker mods."
+                        "allowing drop modification through tweaker mods.  This fix is included in Universal Tweaks 1.15.0 and will",
+                        "disable itself if UT is present."
                 })
         public boolean bound_tool_tweak = true;
 
