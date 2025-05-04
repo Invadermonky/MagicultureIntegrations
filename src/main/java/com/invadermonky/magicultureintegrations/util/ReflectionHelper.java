@@ -15,9 +15,9 @@ public class ReflectionHelper {
         FieldKey key1 = new FieldKey(obj.getClass(), fieldName);
         FieldKey key2 = new FieldKey(obj.getClass().getSuperclass(), fieldName);
 
-        if(cachedFields.containsKey(key1)) {
+        if (cachedFields.containsKey(key1)) {
             return cachedFields.get(key1).get(obj);
-        } else if(cachedFields.containsKey(key2)) {
+        } else if (cachedFields.containsKey(key2)) {
             return cachedFields.get(key2).get(obj);
         }
 
@@ -32,9 +32,9 @@ public class ReflectionHelper {
         FieldKey key1 = new FieldKey(obj.getClass(), fieldName);
         FieldKey key2 = new FieldKey(obj.getClass().getSuperclass(), fieldName);
 
-        if(cachedFields.containsKey(key1)) {
+        if (cachedFields.containsKey(key1)) {
             return cachedFields.get(key1);
-        } else if(cachedFields.containsKey(key2)) {
+        } else if (cachedFields.containsKey(key2)) {
             return cachedFields.get(key2);
         }
 
@@ -57,7 +57,7 @@ public class ReflectionHelper {
     }
 
     public static IHeatableTile getIHeatableInstance(THashMap<Class<? extends TileEntity>, Class<? extends IHeatableTile>> heatableMap, TileEntity tile) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        Class <? extends IHeatableTile> clazz = heatableMap.containsKey(tile.getClass()) ? heatableMap.get(tile.getClass()) : heatableMap.get(tile.getClass().getSuperclass());
+        Class<? extends IHeatableTile> clazz = heatableMap.containsKey(tile.getClass()) ? heatableMap.get(tile.getClass()) : heatableMap.get(tile.getClass().getSuperclass());
         try {
             return clazz.getConstructor(tile.getClass()).newInstance(tile);
         } catch (NoSuchMethodException e) {
@@ -75,16 +75,18 @@ public class ReflectionHelper {
         }
 
         @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            FieldKey fieldKey = (FieldKey) o;
-            return Objects.equals(clazz, fieldKey.clazz) && Objects.equals(fieldName, fieldKey.fieldName);
+        public int hashCode() {
+            return Objects.hash(clazz, fieldName);
         }
 
         @Override
-        public int hashCode() {
-            return Objects.hash(clazz, fieldName);
+        public boolean equals(Object o) {
+            if (this == o)
+                return true;
+            if (o == null || getClass() != o.getClass())
+                return false;
+            FieldKey fieldKey = (FieldKey) o;
+            return Objects.equals(clazz, fieldKey.clazz) && Objects.equals(fieldName, fieldKey.fieldName);
         }
     }
 }

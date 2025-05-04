@@ -12,14 +12,25 @@ import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(value = TileEntityWitchesOven.class, remap = false)
 public abstract class TileEntityWitchesOvenHeatableMixin extends ModTileEntity implements IHeatableTile {
-    @Shadow public int burnTime;
-    @Shadow public int fuelBurnTime;
-    @Shadow public int progress;
-    @Shadow private boolean burning;
-    @Shadow private OvenRecipe recipe;
-    @Shadow @Final private ItemStackHandler inventory_up;
-    @Shadow @Final private ItemStackHandler inventory_down;
-    @Shadow protected abstract boolean isFurnaceRecipe();
+    @Shadow
+    public int burnTime;
+    @Shadow
+    public int fuelBurnTime;
+    @Shadow
+    public int progress;
+    @Shadow
+    private boolean burning;
+    @Shadow
+    private OvenRecipe recipe;
+    @Shadow
+    @Final
+    private ItemStackHandler inventory_up;
+    @Shadow
+    @Final
+    private ItemStackHandler inventory_down;
+
+    @Shadow
+    protected abstract boolean isFurnaceRecipe();
 
 
     @Override
@@ -38,6 +49,11 @@ public abstract class TileEntityWitchesOvenHeatableMixin extends ModTileEntity i
     }
 
     @Override
+    public void setBurnTimeMaxHeatable(int burnTimeMax) {
+        this.fuelBurnTime = burnTimeMax;
+    }
+
+    @Override
     public int getCookTimeHeatable() {
         return this.progress;
     }
@@ -45,11 +61,6 @@ public abstract class TileEntityWitchesOvenHeatableMixin extends ModTileEntity i
     @Override
     public int getCookTimeMaxHeatable() {
         return 200;
-    }
-
-    @Override
-    public void setBurnTimeMaxHeatable(int burnTimeMax) {
-        this.fuelBurnTime = burnTimeMax;
     }
 
     @Override
@@ -65,7 +76,7 @@ public abstract class TileEntityWitchesOvenHeatableMixin extends ModTileEntity i
 
     @Override
     public void updateTileHeatable() {
-        if(!this.burning)
+        if (!this.burning)
             this.burning = this.getWorld().setBlockState(this.getPos(), this.getWorld().getBlockState(this.getPos()).withProperty(BlockWitchesOven.LIT, true));
     }
 }

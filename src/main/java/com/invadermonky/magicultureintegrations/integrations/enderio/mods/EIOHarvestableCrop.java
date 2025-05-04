@@ -27,18 +27,18 @@ public class EIOHarvestableCrop extends AbstractFarmerJoe {
     }
 
     @Override
-    public Result tryPrepareBlock(@NotNull IFarmer farm, @NotNull BlockPos pos, @NotNull IBlockState state) {
-        return Result.NEXT;
-    }
-
-    @Override
     public boolean canPlant(@NotNull ItemStack stack) {
         return false;
     }
 
     @Override
+    public Result tryPrepareBlock(@NotNull IFarmer farm, @NotNull BlockPos pos, @NotNull IBlockState state) {
+        return Result.NEXT;
+    }
+
+    @Override
     public boolean canHarvest(@NotNull IFarmer farmer, @NotNull BlockPos pos, @NotNull IBlockState state) {
-        if(state.getBlock() instanceof IHarvestableCrop) {
+        if (state.getBlock() instanceof IHarvestableCrop) {
             IHarvestableCrop.HarvestResult harvestResult = ((IHarvestableCrop) state.getBlock()).getHarvestResult(farmer.getWorld(), pos);
             return harvestResult == IHarvestableCrop.HarvestResult.HARVEST || harvestResult == IHarvestableCrop.HarvestResult.CLAIM;
         }
@@ -48,10 +48,10 @@ public class EIOHarvestableCrop extends AbstractFarmerJoe {
     @Override
     public @Nullable IHarvestResult harvestBlock(@NotNull IFarmer farm, @NotNull BlockPos pos, @NotNull IBlockState state) {
         World world = farm.getWorld();
-        if(state.getBlock() instanceof IHarvestableCrop) {
+        if (state.getBlock() instanceof IHarvestableCrop) {
             IHarvestableCrop harvestable = (IHarvestableCrop) state.getBlock();
-            if(harvestable.getHarvestResult(world, pos) == IHarvestableCrop.HarvestResult.HARVEST && farm.checkAction(FarmingAction.HARVEST, FarmingTool.HOE)) {
-                if(!farm.hasTool(FarmingTool.HOE)) {
+            if (harvestable.getHarvestResult(world, pos) == IHarvestableCrop.HarvestResult.HARVEST && farm.checkAction(FarmingAction.HARVEST, FarmingTool.HOE)) {
+                if (!farm.hasTool(FarmingTool.HOE)) {
                     farm.setNotification(FarmNotification.NO_HOE);
                     return null;
                 } else {
@@ -65,7 +65,7 @@ public class EIOHarvestableCrop extends AbstractFarmerJoe {
                     NonNullList<ItemStack> drops = harvestable.harvestCrop(joe, world, pos, silkTouch, fortune);
                     float chance = ForgeEventFactory.fireBlockHarvesting(drops, world, harvestPos, harvestState, fortune, 1.0F, silkTouch, farm.getFakePlayer());
                     drops.removeIf(stack -> chance < world.rand.nextFloat());
-                    for(ItemStack drop : drops) {
+                    for (ItemStack drop : drops) {
                         result.addDrop(harvestPos, drop.copy());
                     }
 

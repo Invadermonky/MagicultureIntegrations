@@ -10,7 +10,7 @@ import wile.engineersdecor.blocks.BlockDecorFurnace;
 public class IEEngineersDecor implements IProxy {
     @Override
     public void preInit() {
-        if(MIConfigIntegrations.immersive_engineering.external_heater_integrations.ed_laboratory_furnace) {
+        if (MIConfigIntegrations.immersive_engineering.external_heater_integrations.ed_laboratory_furnace) {
             ExternalHeaterHandler.registerHeatableAdapter(BlockDecorFurnace.BTileEntity.class, new EngineersDecorFurnaceAdapter());
         }
     }

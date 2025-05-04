@@ -16,16 +16,23 @@ import javax.annotation.Nullable;
 
 @Mixin(value = TileEntityBlastFurnace.class, remap = false)
 public abstract class TileEntityBlastFurnaceBoostableMixin extends TileEntityMultiblockPart<TileEntityBlastFurnace> implements IIEInventory, IEBlockInterfaces.IActiveState, IEBlockInterfaces.IGuiTile, IEBlockInterfaces.IProcessTile, IBoostableTile {
-    @Shadow public int process;
-    @Shadow public int processMax;
-    @Shadow public abstract boolean isDummy();
-    @Shadow @Nullable public abstract BlastFurnaceRecipe getRecipe();
-
-    @Shadow public int burnTime;
+    @Shadow
+    public int process;
+    @Shadow
+    public int processMax;
+    @Shadow
+    public int burnTime;
 
     protected TileEntityBlastFurnaceBoostableMixin(int[] structureDimensions) {
         super(structureDimensions);
     }
+
+    @Shadow
+    public abstract boolean isDummy();
+
+    @Shadow
+    @Nullable
+    public abstract BlastFurnaceRecipe getRecipe();
 
     @Override
     public boolean isTrueBoostable() {
@@ -40,7 +47,7 @@ public abstract class TileEntityBlastFurnaceBoostableMixin extends TileEntityMul
 
     @Override
     public boolean canSmeltBoostable() {
-        if(!MIConfigIntegrations.immersive_engineering.boostable_blast_furnace_improved && this.master() instanceof TileEntityBlastFurnaceAdvanced)
+        if (!MIConfigIntegrations.immersive_engineering.boostable_blast_furnace_improved && this.master() instanceof TileEntityBlastFurnaceAdvanced)
             return false;
         return this.formed && this.getRecipe() != null && this.burnTime > 0 && this.process > 0;
     }
@@ -61,5 +68,6 @@ public abstract class TileEntityBlastFurnaceBoostableMixin extends TileEntityMul
     }
 
     @Override
-    public void updateTileBoostable() {}
+    public void updateTileBoostable() {
+    }
 }

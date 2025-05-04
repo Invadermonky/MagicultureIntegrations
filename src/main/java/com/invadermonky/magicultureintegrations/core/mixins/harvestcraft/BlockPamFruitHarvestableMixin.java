@@ -17,11 +17,15 @@ import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(value = BlockPamFruit.class, remap = false)
 public abstract class BlockPamFruitHarvestableMixin implements IHarvestableCrop {
-    @Shadow public abstract int getMatureAge();
+    @Shadow
+    @Final
+    private Item fruitItem;
 
-    @Shadow @Final private Item fruitItem;
+    @Shadow
+    public abstract int getMatureAge();
 
-    @Shadow public abstract Item getFruitItem();
+    @Shadow
+    public abstract Item getFruitItem();
 
     @Override
     public BlockPos getHarvestPosition(World world, BlockPos cropPos) {
@@ -31,7 +35,7 @@ public abstract class BlockPamFruitHarvestableMixin implements IHarvestableCrop 
     @Override
     public @NotNull HarvestResult getHarvestResult(World world, BlockPos pos) {
         IBlockState state = world.getBlockState(pos);
-        if(state.getBlock() instanceof BlockPamFruit) {
+        if (state.getBlock() instanceof BlockPamFruit) {
             return state.getValue(BlockPamFruit.AGE) >= this.getMatureAge() ? HarvestResult.HARVEST : HarvestResult.CLAIM;
         }
         return HarvestResult.PASS;
@@ -40,11 +44,11 @@ public abstract class BlockPamFruitHarvestableMixin implements IHarvestableCrop 
     @Override
     public @NotNull NonNullList<ItemStack> harvestCrop(@Nullable EntityPlayer player, World world, BlockPos pos, boolean silkTouch, int fortune) {
         NonNullList<ItemStack> drops = NonNullList.create();
-        if(this.getHarvestResult(world, pos) == HarvestResult.HARVEST) {
+        if (this.getHarvestResult(world, pos) == HarvestResult.HARVEST) {
             BlockPos harvestPos = this.getHarvestPosition(world, pos);
             IBlockState harvestState = world.getBlockState(harvestPos);
             harvestState.getBlock().getDrops(drops, world, harvestPos, harvestState, fortune);
-            if(BlockPamFruit.fruitRemoval) {
+            if (BlockPamFruit.fruitRemoval) {
                 world.setBlockToAir(harvestPos);
             } else {
                 world.setBlockState(harvestPos, harvestState.withProperty(BlockPamFruit.AGE, 0));

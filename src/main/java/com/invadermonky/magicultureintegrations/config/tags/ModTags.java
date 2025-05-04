@@ -21,13 +21,13 @@ public class ModTags {
     private static void parseRitualMagneticReplacements() {
         RITUAL_MAGNETIC_REPLACEMENTS.clear();
         Pattern pattern = Pattern.compile("^(-?\\d+)=([^=\\s]+?):(\\d+)$");
-        for(String str : MIConfigTweaks.blood_magic.ritual_magnetic_replacements) {
+        for (String str : MIConfigTweaks.blood_magic.ritual_magnetic_replacements) {
             Matcher matcher = pattern.matcher(str);
-            if(matcher.find()) {
+            if (matcher.find()) {
                 int dimension = Integer.parseInt(matcher.group(1));
                 Block block = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(matcher.group(2)));
                 int meta = Integer.parseInt(matcher.group(3));
-                if(block != null && block != Blocks.AIR) {
+                if (block != null && block != Blocks.AIR) {
                     RITUAL_MAGNETIC_REPLACEMENTS.put(dimension, block.getStateFromMeta(meta));
                 }
             }

@@ -13,7 +13,7 @@ public class NAEventHandler {
     @SubscribeEvent
     public void onBabyBorn(BabyEntitySpawnEvent event) {
         EntityLivingBase parent = event.getParentA();
-        if(!parent.world.isRemote && event.getCausedByPlayer() == null) {
+        if (!parent.world.isRemote && event.getCausedByPlayer() == null) {
             BlockPos pos = parent.getPosition();
             int aura = IAuraChunk.getAuraInArea(parent.world, pos, 30);
             if (aura < 1200000) {

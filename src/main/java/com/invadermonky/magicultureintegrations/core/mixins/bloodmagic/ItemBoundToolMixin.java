@@ -24,46 +24,46 @@ import java.util.List;
 
 @Mixin(value = ItemBoundTool.class, remap = false)
 public abstract class ItemBoundToolMixin {
-    @Shadow(remap = true)
-    public abstract float getDestroySpeed(ItemStack stack, IBlockState state);
-
     @Unique
     private NonNullList<ItemStack> harvestedStacks = NonNullList.create();
+
+    @Shadow(remap = true)
+    public abstract float getDestroySpeed(ItemStack stack, IBlockState state);
 
     /**
      * @author Invadermonky
      * @reason The default implementation of this method causes significant lag when harvesting large numbers of blocks.<br>
      *
      * <p>
-     *     The default implementation of this event is very performance unfriendly. When it is called by the individual tools,
-     *     it will iterate over this event equal to a number of blocks based on the charge time. At its maximum, this can result
-     *     in harvesting upwards of 810 blocks at once.
+     * The default implementation of this event is very performance unfriendly. When it is called by the individual tools,
+     * it will iterate over this event equal to a number of blocks based on the charge time. At its maximum, this can result
+     * in harvesting upwards of 810 blocks at once.
      * </p>
      *
      * <p>
-     *     While the harvesting itself isn't really an issue, the problem is that the default {@link ItemBoundTool#sharedHarvest(ItemStack, World, EntityPlayer, BlockPos, IBlockState, boolean, int)}
-     *     method attempts to insert every one of these items into the player's inventory individually, which can result
-     *     in thousands of attempts to insert items into a player's inventory based on the blocks harvested. This causes
-     *     a significant lag spike whenever this method fires, often freezing the game for a second or two.
+     * While the harvesting itself isn't really an issue, the problem is that the default {@link ItemBoundTool#sharedHarvest(ItemStack, World, EntityPlayer, BlockPos, IBlockState, boolean, int)}
+     * method attempts to insert every one of these items into the player's inventory individually, which can result
+     * in thousands of attempts to insert items into a player's inventory based on the blocks harvested. This causes
+     * a significant lag spike whenever this method fires, often freezing the game for a second or two.
      * </p>
      *
      * <p>This rewrite does two things differently:</p>
      *
      * <o1>
-     *     <li>It fires the BlockHarvestEvent granting block tweaker mods access to the harvested materials</li>
-     *     <li>It stores all drops in an external list, merges the similar items, and only then inserts them into the player's inventory.</li>
+     * <li>It fires the BlockHarvestEvent granting block tweaker mods access to the harvested materials</li>
+     * <li>It stores all drops in an external list, merges the similar items, and only then inserts them into the player's inventory.</li>
      * </o1>
      */
     @Overwrite
     protected void sharedHarvest(ItemStack stack, World world, EntityPlayer player, BlockPos pos, IBlockState state, boolean silkTouch, int fortune) {
-        if(state.getBlockHardness(world, pos) != -1.0f) {
+        if (state.getBlockHardness(world, pos) != -1.0f) {
             float destroySpeed = this.getDestroySpeed(stack, state);
-            if(destroySpeed > 1.1f && world.canMineBlockBody(player, pos)) {
-                if(!player.isCreative()) {
+            if (destroySpeed > 1.1f && world.canMineBlockBody(player, pos)) {
+                if (!player.isCreative()) {
                     NonNullList<ItemStack> drops = NonNullList.create();
-                    if(silkTouch && state.getBlock().canSilkHarvest(world, pos, world.getBlockState(pos), player)) {
+                    if (silkTouch && state.getBlock().canSilkHarvest(world, pos, world.getBlockState(pos), player)) {
                         ItemStack silkDrop = state.getBlock().getSilkTouchDrop(state);
-                        if(!silkDrop.isEmpty()) {
+                        if (!silkDrop.isEmpty()) {
                             drops.add(silkDrop);
                         }
                     } else {
@@ -84,12 +84,13 @@ public abstract class ItemBoundToolMixin {
      * @reason Handles player inventory insertion after the shared harvest loop fires. This was previously handled by the
      * {@link ItemBoundTool#sharedHarvest(ItemStack, World, EntityPlayer, BlockPos, IBlockState, boolean, int)} method.
      */
-     @Inject(
+    @Inject(
             method = "onPlayerStoppedUsing",
             at = @At(
                     value = "INVOKE",
                     target = "LWayofTime/bloodmagic/item/ItemBoundTool;onBoundRelease(Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/player/EntityPlayer;I)V",
-                    shift = At.Shift.AFTER
+                    shift = At.Shift.AFTER,
+                    remap = false
             ),
             remap = true
     )
@@ -103,15 +104,15 @@ public abstract class ItemBoundToolMixin {
                         if (ItemHandlerHelper.canItemStacksStack(drop, merged)) {
                             merged.grow(drop.splitStack(drop.getCount()).getCount());
                         }
-                        if(drop.isEmpty()) {
+                        if (drop.isEmpty()) {
                             break;
                         }
                     }
 
-                    if(!drop.isEmpty()) {
+                    if (!drop.isEmpty()) {
                         mergedStacks.add(drop.copy());
                     }
-        });
+                });
 
         mergedStacks.forEach(mergedDrop -> ItemHandlerHelper.giveItemToPlayer(player, mergedDrop));
         this.harvestedStacks.clear();

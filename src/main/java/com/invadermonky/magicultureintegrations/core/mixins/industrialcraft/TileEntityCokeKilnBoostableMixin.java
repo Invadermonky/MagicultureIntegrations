@@ -11,10 +11,15 @@ import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(value = TileEntityCokeKiln.class, remap = false)
 public abstract class TileEntityCokeKilnBoostableMixin extends TileEntityInventory implements IMultiBlockController, IHasGui, IGuiValueProvider, IBoostableTile {
-    @Shadow protected int progress;
-    @Shadow protected int operationLength;
-    @Shadow protected boolean isFormed;
-    @Shadow protected abstract boolean canWork();
+    @Shadow
+    protected int progress;
+    @Shadow
+    protected int operationLength;
+    @Shadow
+    protected boolean isFormed;
+
+    @Shadow
+    protected abstract boolean canWork();
 
     @Override
     public boolean isTrueBoostable() {

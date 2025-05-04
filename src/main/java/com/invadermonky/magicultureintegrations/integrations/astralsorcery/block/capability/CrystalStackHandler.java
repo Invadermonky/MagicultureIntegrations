@@ -12,13 +12,14 @@ public class CrystalStackHandler extends ItemStackHandler {
 
     @Override
     public @NotNull ItemStack insertItem(int slot, @NotNull ItemStack stack, boolean simulate) {
-        if(!this.isItemValid(slot, stack)) return stack;
+        if (!this.isItemValid(slot, stack))
+            return stack;
         return super.insertItem(slot, stack, simulate);
     }
 
     @Override
     public boolean isItemValid(int slot, @NotNull ItemStack stack) {
-        if(stack.getItem() instanceof CrystalPropertyItem) {
+        if (stack.getItem() instanceof CrystalPropertyItem) {
             return ((CrystalPropertyItem) stack.getItem()).provideCurrentPropertiesOrNull(stack) != null;
         }
         return false;

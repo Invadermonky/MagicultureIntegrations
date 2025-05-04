@@ -11,7 +11,7 @@ import com.invadermonky.magicultureintegrations.config.MIConfigIntegrations;
 public class IEBewitchment implements IProxy {
     @Override
     public void preInit() {
-        if(MIConfigIntegrations.immersive_engineering.external_heater_integrations.witches_oven) {
+        if (MIConfigIntegrations.immersive_engineering.external_heater_integrations.witches_oven) {
             ExternalHeaterHandler.registerHeatableAdapter(TileEntityWitchesOven.class, new BewitchmentFurnaceAdapter());
         }
     }

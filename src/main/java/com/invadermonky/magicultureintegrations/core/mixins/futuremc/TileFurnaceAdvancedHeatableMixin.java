@@ -10,10 +10,17 @@ import thedarkcolour.futuremc.tile.TileFurnaceAdvanced;
 
 @Mixin(value = TileFurnaceAdvanced.class, remap = false)
 public abstract class TileFurnaceAdvancedHeatableMixin extends TileEntityLockable implements ITickable, ISidedInventory, IHeatableTile {
-    @Shadow public abstract int getField(int id);
-    @Shadow public abstract void setField(int id, int value);
-    @Shadow public abstract boolean isBurning();
-    @Shadow protected abstract boolean canSmelt();
+    @Shadow
+    public abstract int getField(int id);
+
+    @Shadow
+    public abstract void setField(int id, int value);
+
+    @Shadow
+    public abstract boolean isBurning();
+
+    @Shadow
+    protected abstract boolean canSmelt();
 
     @Override
     public boolean canSmeltHeatable() {
@@ -31,6 +38,11 @@ public abstract class TileFurnaceAdvancedHeatableMixin extends TileEntityLockabl
     }
 
     @Override
+    public void setBurnTimeMaxHeatable(int burnTimeMax) {
+        this.setField(1, burnTimeMax);
+    }
+
+    @Override
     public int getCookTimeHeatable() {
         return this.getField(2);
     }
@@ -38,11 +50,6 @@ public abstract class TileFurnaceAdvancedHeatableMixin extends TileEntityLockabl
     @Override
     public int getCookTimeMaxHeatable() {
         return 100;
-    }
-
-    @Override
-    public void setBurnTimeMaxHeatable(int burnTimeMax) {
-        this.setField(1, burnTimeMax);
     }
 
     @Override

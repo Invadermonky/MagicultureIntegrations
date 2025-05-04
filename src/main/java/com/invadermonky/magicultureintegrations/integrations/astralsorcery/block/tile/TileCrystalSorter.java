@@ -23,16 +23,16 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemHandlerHelper;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class TileCrystalSorter extends TileEntity implements ITickable {
     public final CrystalStackHandler input = new CrystalStackHandler();
     public final CrystalStackHandler output_impure = new CrystalStackHandler();
     public final CrystalStackHandler output_pure = new CrystalStackHandler();
-
+    public final int maxProcessingTime = 120;
     public int processingTime = 0;
     protected int ticksExisted = 0;
-    public final int maxProcessingTime = 120;
 
     /**
      * Gets the crystal in the processing slot. Will return emtpy ItemStack if no crystal is being processed. <b>DO NOT MODIFY THIS VALUE!</b>
@@ -43,7 +43,7 @@ public class TileCrystalSorter extends TileEntity implements ITickable {
 
     public ItemStack insertProcessingCrystal(ItemStack stack, boolean simulate) {
         ItemStack remainder = this.input.insertItem(0, stack, simulate);
-        if(!simulate) {
+        if (!simulate) {
             this.markDirty();
         }
         return remainder;
@@ -51,7 +51,7 @@ public class TileCrystalSorter extends TileEntity implements ITickable {
 
     public ItemStack removeProcessingCrystal(boolean simulate) {
         ItemStack extract = this.input.extractItem(0, this.input.getSlotLimit(0), simulate);
-        if(!simulate)
+        if (!simulate)
             this.markDirty();
         return extract;
     }
@@ -60,10 +60,10 @@ public class TileCrystalSorter extends TileEntity implements ITickable {
     public void update() {
         boolean did = false;
         ++this.ticksExisted;
-        if(!this.world.isRemote) {
+        if (!this.world.isRemote) {
             EnumFacing impureFacing = this.getWorld().getBlockState(this.getPos()).getValue(BlockCrystalSorter.FACING).rotateY();
             //Swapping sides for inverted side output
-            if(this.getWorld().getBlockState(this.getPos()).getValue(BlockCrystalSorter.INVERTED)) {
+            if (this.getWorld().getBlockState(this.getPos()).getValue(BlockCrystalSorter.INVERTED)) {
                 impureFacing = impureFacing.getOpposite();
             }
 
@@ -78,7 +78,7 @@ public class TileCrystalSorter extends TileEntity implements ITickable {
                     CrystalProperties properties = this.getCrystalProperties(crystal);
                     if (properties != null) {
                         boolean sizeFlag = !MIConfigAdditions.astral_sorcery.crystal_sorter.sortSize || properties.getSize() >= CrystalProperties.getMaxSize(crystal);
-                        boolean purityFlag  = properties.getPurity() >= this.getPurityThreshold();
+                        boolean purityFlag = properties.getPurity() >= this.getPurityThreshold();
                         IItemHandler outputHandler = purityFlag && sizeFlag ? this.output_pure : this.output_impure;
                         //Transfer into pure slot
                         if (ItemHandlerHelper.insertItem(outputHandler, crystal, true).isEmpty()) {
@@ -91,14 +91,14 @@ public class TileCrystalSorter extends TileEntity implements ITickable {
                     }
                 }
             } else {
-                if(this.processingTime > 0) {
+                if (this.processingTime > 0) {
                     this.processingTime = 0;
                     did = true;
                 }
             }
         }
 
-        if(did) {
+        if (did) {
             this.markDirty();
         }
     }
@@ -106,10 +106,10 @@ public class TileCrystalSorter extends TileEntity implements ITickable {
     private boolean handleOutputTransfer(IItemHandler outputHandler, EnumFacing outputSide) {
         ItemStack outputStack = outputHandler.getStackInSlot(0);
         BlockPos offsetPos = this.getPos().offset(outputSide);
-        if(!outputStack.isEmpty()) {
-            if(this.getWorld().isAirBlock(offsetPos)) {
+        if (!outputStack.isEmpty()) {
+            if (this.getWorld().isAirBlock(offsetPos)) {
                 outputStack = outputHandler.extractItem(0, outputStack.getCount(), false);
-                if(!this.world.isRemote) {
+                if (!this.world.isRemote) {
                     double x = offsetPos.getX() + 0.5;
                     double y = offsetPos.getY() + 0.1;
                     double z = offsetPos.getZ() + 0.5;
@@ -122,9 +122,9 @@ public class TileCrystalSorter extends TileEntity implements ITickable {
                 return true;
             } else {
                 TileEntity tile = this.getWorld().getTileEntity(offsetPos);
-                if(tile != null && tile.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, outputSide.getOpposite())) {
+                if (tile != null && tile.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, outputSide.getOpposite())) {
                     IItemHandler handler = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, outputSide.getOpposite());
-                    if(ItemHandlerHelper.insertItem(handler, outputStack, true).isEmpty()) {
+                    if (ItemHandlerHelper.insertItem(handler, outputStack, true).isEmpty()) {
                         outputStack = outputHandler.extractItem(0, outputStack.getCount(), false);
                         ItemHandlerHelper.insertItem(handler, outputStack, false);
                         return true;
@@ -137,7 +137,7 @@ public class TileCrystalSorter extends TileEntity implements ITickable {
 
     @Nullable
     public CrystalProperties getCrystalProperties(ItemStack stack) {
-        if(stack.getItem() instanceof CrystalPropertyItem) {
+        if (stack.getItem() instanceof CrystalPropertyItem) {
             return ((CrystalPropertyItem) stack.getItem()).provideCurrentPropertiesOrNull(stack);
         }
         return null;
@@ -149,7 +149,7 @@ public class TileCrystalSorter extends TileEntity implements ITickable {
     }
 
     @Override
-    public void readFromNBT(NBTTagCompound compound) {
+    public void readFromNBT(@NotNull NBTTagCompound compound) {
         super.readFromNBT(compound);
         this.ticksExisted = compound.getInteger("ticksExisted");
         this.processingTime = compound.getInteger("process");
@@ -159,7 +159,7 @@ public class TileCrystalSorter extends TileEntity implements ITickable {
     }
 
     @Override
-    public NBTTagCompound writeToNBT(NBTTagCompound compound) {
+    public @NotNull NBTTagCompound writeToNBT(@NotNull NBTTagCompound compound) {
         super.writeToNBT(compound);
         compound.setInteger("ticksExisted", this.ticksExisted);
         compound.setInteger("process", this.processingTime);
@@ -167,6 +167,59 @@ public class TileCrystalSorter extends TileEntity implements ITickable {
         compound.setTag("output_impure", output_impure.serializeNBT());
         compound.setTag("output_pure", output_pure.serializeNBT());
         return compound;
+    }
+
+    @Override
+    public void markDirty() {
+        this.world.notifyBlockUpdate(this.getPos(), this.world.getBlockState(this.getPos()), this.world.getBlockState(this.getPos()), 3);
+        super.markDirty();
+    }
+
+    @Override
+    public @Nullable SPacketUpdateTileEntity getUpdatePacket() {
+        return new SPacketUpdateTileEntity(this.getPos(), 0, this.writeToNBT(new NBTTagCompound()));
+    }
+
+    @Override
+    public @NotNull NBTTagCompound getUpdateTag() {
+        return this.writeToNBT(new NBTTagCompound());
+    }
+
+    @Override
+    public void onDataPacket(@NotNull NetworkManager net, SPacketUpdateTileEntity pkt) {
+        this.readFromNBT(pkt.getNbtCompound());
+    }
+
+    @Override
+    public boolean shouldRefresh(@NotNull World world, @NotNull BlockPos pos, IBlockState oldState, IBlockState newSate) {
+        return oldState.getBlock() != newSate.getBlock();
+    }
+
+    @Override
+    public boolean hasCapability(@NotNull Capability<?> capability, @Nullable EnumFacing facing) {
+        EnumFacing front = this.getWorld().getBlockState(this.getPos()).getValue(BlockCrystalSorter.FACING);
+        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY
+                && (facing == front.getOpposite()               //Input
+                || facing == EnumFacing.UP                      //Alt Input
+                || facing == front.rotateY()                    //Impure Output
+                || facing == front.rotateY().getOpposite());    //Pure Output
+    }
+
+    @Nullable
+    @Override
+    public <T> T getCapability(@NotNull Capability<T> capability, @Nullable EnumFacing facing) {
+        EnumFacing front = this.getWorld().getBlockState(this.getPos()).getValue(BlockCrystalSorter.FACING);
+        boolean inverted = this.getWorld().getBlockState(this.getPos()).getValue(BlockCrystalSorter.INVERTED);
+        if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && facing != null) {
+            if (facing == front.getOpposite() || facing == EnumFacing.UP) {
+                return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(this.input);
+            } else if (facing == front.rotateY()) {
+                return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(inverted ? this.output_pure : this.output_impure);
+            } else if (facing == front.getOpposite().rotateY()) {
+                return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(inverted ? this.output_impure : this.output_pure);
+            }
+        }
+        return super.getCapability(capability, facing);
     }
 
     public boolean isProcessing() {
@@ -185,58 +238,5 @@ public class TileCrystalSorter extends TileEntity implements ITickable {
 
     private void spawnItemStack(ItemStack stack) {
         InventoryHelper.spawnItemStack(this.getWorld(), this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(), stack);
-    }
-
-    @Override
-    public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
-        EnumFacing front = this.getWorld().getBlockState(this.getPos()).getValue(BlockCrystalSorter.FACING);
-        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY
-                && (facing == front.getOpposite()               //Input
-                || facing == EnumFacing.UP                      //Alt Input
-                || facing == front.rotateY()                    //Impure Output
-                || facing == front.rotateY().getOpposite());    //Pure Output
-    }
-
-    @Nullable
-    @Override
-    public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
-        EnumFacing front = this.getWorld().getBlockState(this.getPos()).getValue(BlockCrystalSorter.FACING);
-        boolean inverted = this.getWorld().getBlockState(this.getPos()).getValue(BlockCrystalSorter.INVERTED);
-        if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && facing != null) {
-            if(facing == front.getOpposite() || facing == EnumFacing.UP) {
-                return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(this.input);
-            } else if(facing == front.rotateY()) {
-                return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(inverted ? this.output_pure : this.output_impure);
-            } else if(facing == front.getOpposite().rotateY()) {
-                return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(inverted ? this.output_impure : this.output_pure);
-            }
-        }
-        return super.getCapability(capability, facing);
-    }
-
-    @Override
-    public void markDirty() {
-        this.world.notifyBlockUpdate(this.getPos(), this.world.getBlockState(this.getPos()), this.world.getBlockState(this.getPos()), 3);
-        super.markDirty();
-    }
-
-    @Override
-    public @Nullable SPacketUpdateTileEntity getUpdatePacket() {
-        return new SPacketUpdateTileEntity(this.getPos(), 0, this.writeToNBT(new NBTTagCompound()));
-    }
-
-    @Override
-    public NBTTagCompound getUpdateTag() {
-        return this.writeToNBT(new NBTTagCompound());
-    }
-
-    @Override
-    public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
-        this.readFromNBT(pkt.getNbtCompound());
-    }
-
-    @Override
-    public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newSate) {
-        return oldState.getBlock() != newSate.getBlock();
     }
 }

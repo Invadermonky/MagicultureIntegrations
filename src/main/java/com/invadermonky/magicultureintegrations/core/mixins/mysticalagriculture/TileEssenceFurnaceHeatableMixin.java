@@ -10,9 +10,14 @@ import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(value = TileEssenceFurnace.class, remap = false)
 public abstract class TileEssenceFurnaceHeatableMixin extends TileEntityLockable implements ITickable, ISidedInventory, IHeatableTile {
-    @Shadow public abstract int getField(int id);
-    @Shadow public abstract void setField(int id, int value);
-    @Shadow protected abstract boolean canSmelt();
+    @Shadow
+    public abstract int getField(int id);
+
+    @Shadow
+    public abstract void setField(int id, int value);
+
+    @Shadow
+    protected abstract boolean canSmelt();
 
     @Override
     public boolean canSmeltHeatable() {
@@ -30,6 +35,11 @@ public abstract class TileEssenceFurnaceHeatableMixin extends TileEntityLockable
     }
 
     @Override
+    public void setBurnTimeMaxHeatable(int burnTimeMax) {
+        this.setField(1, burnTimeMax);
+    }
+
+    @Override
     public int getCookTimeHeatable() {
         return this.getField(2);
     }
@@ -37,11 +47,6 @@ public abstract class TileEssenceFurnaceHeatableMixin extends TileEntityLockable
     @Override
     public int getCookTimeMaxHeatable() {
         return this.getField(3);
-    }
-
-    @Override
-    public void setBurnTimeMaxHeatable(int burnTimeMax) {
-        this.setField(1, burnTimeMax);
     }
 
     @Override

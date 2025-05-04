@@ -19,7 +19,9 @@ import vazkii.botania.api.item.IHornHarvestable;
 @Optional.Interface(modid = ModIds.ConstIds.botania, iface = "vazkii.botania.api.item.IHornHarvestable")
 @Mixin(value = BlockOreberryBush.class, remap = false)
 public class BlockOreberryBushHornHarvestableMixin extends Block implements IHornHarvestable {
-    @Shadow @Final public static PropertyInteger AGE;
+    @Shadow
+    @Final
+    public static PropertyInteger AGE;
 
     public BlockOreberryBushHornHarvestableMixin(Material materialIn) {
         super(materialIn);
@@ -41,8 +43,8 @@ public class BlockOreberryBushHornHarvestableMixin extends Block implements IHor
     @Override
     public void harvestByHorn(World world, BlockPos pos, ItemStack itemStack, EnumHornType enumHornType) {
         IBlockState state = world.getBlockState(pos);
-        if(state.getBlock() instanceof BlockOreberryBush && enumHornType == EnumHornType.WILD) {
-            if(state.getValue(AGE) >= 3) {
+        if (state.getBlock() instanceof BlockOreberryBush && enumHornType == EnumHornType.WILD) {
+            if (state.getValue(AGE) >= 3) {
                 world.setBlockState(pos, state.withProperty(BlockOreberryBush.AGE, 2));
                 world.playEvent(Constants.WorldEvents.BREAK_BLOCK_EFFECTS, pos, Block.getStateId(state));
                 ItemStack drop = ((BlockOreberryBush) state.getBlock()).getBerriesStack(world.rand);

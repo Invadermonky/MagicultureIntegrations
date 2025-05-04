@@ -19,7 +19,8 @@ import java.util.List;
 
 @Mixin(value = BlockElementalSoil.class, remap = false)
 public abstract class BlockElementalSoilMixin {
-    @Shadow protected abstract void handleDrops(World world, BlockPos pos, List<ItemStack> drops);
+    @Shadow
+    protected abstract void handleDrops(World world, BlockPos pos, List<ItemStack> drops);
 
     @Inject(
             method = "doHarvest(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/state/IBlockState;Lnet/minecraft/block/state/IBlockState;)V",
@@ -27,11 +28,11 @@ public abstract class BlockElementalSoilMixin {
             cancellable = true
     )
     private void doHarvestMixin(World world, BlockPos pos, IBlockState soil, IBlockState plant, CallbackInfo ci) {
-        if(soil.getBlock() == ModBlocks.elemental_soil_water) {
-            if(plant.getBlock() instanceof IHarvestableCrop && ((IHarvestableCrop) plant.getBlock()).getHarvestResult(world, pos) == IHarvestableCrop.HarvestResult.HARVEST) {
+        if (soil.getBlock() == ModBlocks.elemental_soil_water) {
+            if (plant.getBlock() instanceof IHarvestableCrop && ((IHarvestableCrop) plant.getBlock()).getHarvestResult(world, pos) == IHarvestableCrop.HarvestResult.HARVEST) {
                 IHarvestableCrop harvestable = (IHarvestableCrop) plant.getBlock();
                 int speed = soil.getValue(BlockElementalSoil.WATER_SPEED);
-                if(speed > 0) {
+                if (speed > 0) {
                     NonNullList<ItemStack> drops = harvestable.harvestCrop(null, world, pos, false, 0);
                     BlockPos harvestPos = harvestable.getHarvestPosition(world, pos);
                     float chance = ForgeEventFactory.fireBlockHarvesting(drops, world, harvestPos, world.getBlockState(harvestPos), 0, 1.0f, false, null);

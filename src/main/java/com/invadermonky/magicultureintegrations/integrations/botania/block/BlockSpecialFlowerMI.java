@@ -36,7 +36,7 @@ public class BlockSpecialFlowerMI extends BlockSpecialFlower implements IAdditio
 
     @Override
     public void getSubBlocks(CreativeTabs tab, @NotNull NonNullList<ItemStack> stacks) {
-        if(isAuromeriaEnabled) {
+        if (isAuromeriaEnabled) {
             stacks.add(ItemBlockSpecialFlower.ofType(SubTileAuromeria.NAME));
             stacks.add(ItemBlockSpecialFlower.ofType(new ItemStack(ModBlocks.floatingSpecialFlower), SubTileAuromeria.NAME));
         }
@@ -46,7 +46,7 @@ public class BlockSpecialFlowerMI extends BlockSpecialFlower implements IAdditio
     @Override
     public boolean isEnabled() {
         boolean enabled = false;
-        if(isAuromeriaEnabled) {
+        if (isAuromeriaEnabled) {
             BotaniaAPI.addSubTileToCreativeMenu(SubTileAuromeria.NAME);
             BotaniaAPI.registerSubTile(SubTileAuromeria.NAME, SubTileAuromeria.class);
             enabled = true;
@@ -55,17 +55,8 @@ public class BlockSpecialFlowerMI extends BlockSpecialFlower implements IAdditio
     }
 
     @Override
-    public void registerRecipes(IForgeRegistry<IRecipe> registry) {
-        if(isAuromeriaEnabled) {
-            SubTileAuromeria.auromeriaRecipe = new RecipePetals(ItemBlockSpecialFlower.ofType(SubTileAuromeria.NAME), ModPetalRecipes.green, ModPetalRecipes.red, ModPetalRecipes.red, ModPetalRecipes.purple, "runeManaB", new ItemStack(ItemsTC.visResonator), "redstoneRoot");
-            BotaniaAPI.registerPetalRecipe(SubTileAuromeria.auromeriaRecipe.getOutput(), SubTileAuromeria.auromeriaRecipe.getInputs().toArray());
-        }
-
-    }
-
-    @Override
     public void postInit() {
-        if(isAuromeriaEnabled) {
+        if (isAuromeriaEnabled) {
             SubTileAuromeria.AUROMERIA_ENTRY = new BasicLexiconEntry("auromeria", BotaniaAPI.categoryFunctionalFlowers);
             SubTileAuromeria.AUROMERIA_ENTRY.setLexiconPages(
                     new PageText("0"),
@@ -78,8 +69,17 @@ public class BlockSpecialFlowerMI extends BlockSpecialFlower implements IAdditio
 
     @Override
     public void registerModels(ModelRegistryEvent event) {
-        if(isAuromeriaEnabled) {
+        if (isAuromeriaEnabled) {
             BotaniaAPIClient.registerSubtileModel(SubTileAuromeria.class, new ModelResourceLocation(new ResourceLocation(MagicultureIntegrations.MOD_ID, SubTileAuromeria.NAME), "normal"));
         }
+    }
+
+    @Override
+    public void registerRecipes(IForgeRegistry<IRecipe> registry) {
+        if (isAuromeriaEnabled) {
+            SubTileAuromeria.auromeriaRecipe = new RecipePetals(ItemBlockSpecialFlower.ofType(SubTileAuromeria.NAME), ModPetalRecipes.green, ModPetalRecipes.red, ModPetalRecipes.red, ModPetalRecipes.purple, "runeManaB", new ItemStack(ItemsTC.visResonator), "redstoneRoot");
+            BotaniaAPI.registerPetalRecipe(SubTileAuromeria.auromeriaRecipe.getOutput(), SubTileAuromeria.auromeriaRecipe.getInputs().toArray());
+        }
+
     }
 }

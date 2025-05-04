@@ -1,13 +1,13 @@
 package com.invadermonky.magicultureintegrations.integrations.immersiveengineering;
 
-import com.invadermonky.magicultureintegrations.api.mods.IIntegrationModule;
+import com.invadermonky.magicultureintegrations.api.mods.IntegrationModule;
 import com.invadermonky.magicultureintegrations.integrations.immersiveengineering.mods.*;
-import com.invadermonky.magicultureintegrations.util.IntegrationList;
 import com.invadermonky.magicultureintegrations.util.ModIds;
-import org.jetbrains.annotations.NotNull;
 
-public class InitImmersiveEngineering implements IIntegrationModule {
-    private final IntegrationList integrations = new IntegrationList("Immersive Engineering");
+public class InitImmersiveEngineering extends IntegrationModule {
+    public InitImmersiveEngineering() {
+        super("Immersive Engineering");
+    }
 
     @Override
     public void buildModIntegrations() {
@@ -20,10 +20,5 @@ public class InitImmersiveEngineering implements IIntegrationModule {
         integrations.addIntegration(ModIds.thaumcraft, IEThaumcraft.class);
         integrations.addIntegration(ModIds.thaumic_additions, IEThaumicAdditions.class);
         integrations.addIntegration(ModIds.tinkers_construct, IETinkersConstruct.class);
-    }
-
-    @Override
-    public @NotNull IntegrationList getModIntegrations() {
-        return this.integrations;
     }
 }

@@ -21,7 +21,7 @@ import java.util.List;
 public class BMRustic implements IProxy, IHarvestHandler {
     @Override
     public void init() {
-        if(MIConfigIntegrations.blood_magic.ritual_harvest.rustic) {
+        if (MIConfigIntegrations.blood_magic.ritual_harvest.rustic) {
             HarvestRegistry.registerHandler(this);
         }
     }

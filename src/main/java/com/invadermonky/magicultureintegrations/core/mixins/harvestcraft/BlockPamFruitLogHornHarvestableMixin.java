@@ -16,8 +16,11 @@ import vazkii.botania.api.item.IHornHarvestable;
 
 @Mixin(value = BlockPamFruitLog.class, remap = false)
 public abstract class BlockPamFruitLogHornHarvestableMixin implements IHornHarvestable {
-    @Shadow public abstract int getMatureAge();
-    @Shadow public abstract void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune);
+    @Shadow
+    public abstract int getMatureAge();
+
+    @Shadow
+    public abstract void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune);
 
     @Override
     public boolean canHornHarvest(World world, BlockPos blockPos, ItemStack itemStack, EnumHornType enumHornType) {
@@ -32,7 +35,7 @@ public abstract class BlockPamFruitLogHornHarvestableMixin implements IHornHarve
     @Override
     public void harvestByHorn(World world, BlockPos pos, ItemStack hornStack, EnumHornType enumHornType) {
         IBlockState state = world.getBlockState(pos);
-        if(state.getValue(BlockPamFruitLog.AGE) >= this.getMatureAge()) {
+        if (state.getValue(BlockPamFruitLog.AGE) >= this.getMatureAge()) {
             NonNullList<ItemStack> drops = NonNullList.create();
             this.getDrops(drops, world, pos, state, 0);
             drops.remove(drops.size() - 1);

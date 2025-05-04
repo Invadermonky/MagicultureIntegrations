@@ -6,6 +6,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ITickable;
 import net.minecraftforge.fluids.capability.TileFluidHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import rustic.common.crafting.ICondenserRecipe;
@@ -13,27 +14,44 @@ import rustic.common.tileentity.TileEntityCondenserBase;
 
 @Mixin(value = TileEntityCondenserBase.class, remap = false)
 public abstract class TileEntityCondenserBaseHeatableMixin extends TileFluidHandler implements ITickable, IHeatableTile {
-    @Shadow public int condenserBurnTime;
-    @Shadow public int currentItemBurnTime;
-    @Shadow public int brewTime;
-    @Shadow public int totalBrewTime;
-    @Shadow protected boolean hasContentChanged;
-    @Shadow protected ICondenserRecipe currentRecipe;
-    @Shadow protected ItemStackHandler internalStackHandler;
-    @Shadow protected abstract boolean canBrew();
-    @Shadow protected abstract void refreshCurrentRecipe();
-    @Shadow public abstract int getAmount();
-    @Shadow(remap = true) public abstract NBTTagCompound writeToNBT(NBTTagCompound tag);
-    @Shadow(remap = true) public abstract void readFromNBT(NBTTagCompound tag);
+    @Shadow
+    public int condenserBurnTime;
+    @Shadow
+    public int currentItemBurnTime;
+    @Shadow
+    public int brewTime;
+    @Shadow
+    public int totalBrewTime;
+    @Shadow
+    protected boolean hasContentChanged;
+    @Shadow
+    protected ICondenserRecipe currentRecipe;
+    @Shadow
+    protected ItemStackHandler internalStackHandler;
+
+    @Shadow
+    protected abstract boolean canBrew();
+
+    @Shadow
+    protected abstract void refreshCurrentRecipe();
+
+    @Shadow
+    public abstract int getAmount();
+
+    @Shadow(remap = true)
+    public abstract void readFromNBT(NBTTagCompound tag);
+
+    @Shadow(remap = true)
+    public abstract @NotNull NBTTagCompound writeToNBT(NBTTagCompound tag);
 
     @Override
     public boolean canSmeltHeatable() {
         boolean isBrewing = this.canBrew();
         boolean validRecipe;
-        if(this.hasContentChanged) {
+        if (this.hasContentChanged) {
             this.refreshCurrentRecipe();
         }
-        if(this.currentRecipe == null) {
+        if (this.currentRecipe == null) {
             return false;
         } else {
             validRecipe = this.getAmount() >= this.currentRecipe.getFluid().amount && this.internalStackHandler.insertItem(0, currentRecipe.getResult(), true).isEmpty();
@@ -52,6 +70,11 @@ public abstract class TileEntityCondenserBaseHeatableMixin extends TileFluidHand
     }
 
     @Override
+    public void setBurnTimeMaxHeatable(int burnTimeMax) {
+        this.currentItemBurnTime = burnTimeMax;
+    }
+
+    @Override
     public int getCookTimeHeatable() {
         return this.brewTime;
     }
@@ -59,11 +82,6 @@ public abstract class TileEntityCondenserBaseHeatableMixin extends TileFluidHand
     @Override
     public int getCookTimeMaxHeatable() {
         return this.totalBrewTime;
-    }
-
-    @Override
-    public void setBurnTimeMaxHeatable(int burnTimeMax) {
-        this.currentItemBurnTime = burnTimeMax;
     }
 
     @Override

@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 
 import java.util.function.Function;
 
-public class TOPRedstonePaste implements Function<ITheOneProbe,Void>, IConfigurable {
+public class TOPRedstonePaste implements Function<ITheOneProbe, Void>, IConfigurable {
     @Override
     public Void apply(ITheOneProbe input) {
         input.registerProvider(new IProbeInfoProvider() {
@@ -27,7 +27,7 @@ public class TOPRedstonePaste implements Function<ITheOneProbe,Void>, IConfigura
 
             @Override
             public void addProbeInfo(ProbeMode mode, IProbeInfo probeInfo, EntityPlayer player, World world, IBlockState state, IProbeHitData data) {
-                if(Tools.show(mode, Config.getRealConfig().getShowRedstone())) {
+                if (Tools.show(mode, Config.getRealConfig().getShowRedstone())) {
                     if (state.getBlock() instanceof BlockRedstonePaste) {
                         int redstonePower = state.getBlock().shouldCheckWeakPower(state, world, data.getPos(), data.getSideHit()) ? state.getStrongPower(world, data.getPos(), data.getSideHit()) : state.getWeakPower(world, data.getPos(), data.getSideHit());
                         if (redstonePower > 0) {

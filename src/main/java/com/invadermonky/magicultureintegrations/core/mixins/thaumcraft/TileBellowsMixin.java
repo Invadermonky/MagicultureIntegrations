@@ -18,17 +18,17 @@ public abstract class TileBellowsMixin extends TileThaumcraft implements ITickab
 
     @Inject(method = "update", at = @At("TAIL"), remap = true)
     private void updateMixin(CallbackInfo ci) {
-        if(!this.world.isRemote && BlockStateUtils.isEnabled(this.getBlockMetadata())) {
+        if (!this.world.isRemote && BlockStateUtils.isEnabled(this.getBlockMetadata())) {
             TileEntity tile = world.getTileEntity(this.pos.offset(BlockStateUtils.getFacing(this.getBlockMetadata())));
 
-            if(tile instanceof IHeatableTile && !HeatableUtils.isHeatableBlacklisted(TileBellows.class, tile)) {
+            if (tile instanceof IHeatableTile && !HeatableUtils.isHeatableBlacklisted(TileBellows.class, tile)) {
                 IHeatableTile heatable = (IHeatableTile) tile;
-                if(heatable.getBurnTimeHeatable() > 0 && heatable.getCookTimeHeatable() > 0) {
+                if (heatable.getBurnTimeHeatable() > 0 && heatable.getCookTimeHeatable() > 0) {
                     heatable.boostCookTimeHeatable(1);
                 }
-            } else if(tile instanceof IBoostableTile && !HeatableUtils.isHeatableBlacklisted(TileBellows.class, tile)) {
+            } else if (tile instanceof IBoostableTile && !HeatableUtils.isHeatableBlacklisted(TileBellows.class, tile)) {
                 IBoostableTile boostable = ((IBoostableTile) tile).getTrueBoostable();
-                if(boostable.getCookTimeBoostable() > 0) {
+                if (boostable.getCookTimeBoostable() > 0) {
                     boostable.boostCookTimeBoostable(1);
                 }
             }

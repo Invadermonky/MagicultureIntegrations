@@ -15,8 +15,11 @@ import vazkii.botania.api.item.IHornHarvestable;
 @Optional.Interface(modid = ModIds.ConstIds.botania, iface = "vazkii.botania.api.item.IHornHarvestable")
 @Mixin(value = BlockPlant.class, remap = false)
 public abstract class BlockPlantHornHarvestableMixin implements IHornHarvestable {
-    @Shadow public abstract int getAge(IBlockState state);
-    @Shadow public abstract int getMaxAge();
+    @Shadow
+    public abstract int getAge(IBlockState state);
+
+    @Shadow
+    public abstract int getMaxAge();
 
     @Optional.Method(modid = ModIds.ConstIds.botania)
     @Override
@@ -34,10 +37,10 @@ public abstract class BlockPlantHornHarvestableMixin implements IHornHarvestable
     @Override
     public void harvestByHorn(World world, BlockPos pos, ItemStack hornStack, EnumHornType enumHornType) {
         IBlockState state = world.getBlockState(pos);
-        if(state.getBlock() instanceof BlockPlant && enumHornType == EnumHornType.WILD) {
+        if (state.getBlock() instanceof BlockPlant && enumHornType == EnumHornType.WILD) {
             boolean cropFlag = getAge(state) >= getMaxAge();
             boolean bulbFlag = world.getBlockState(pos.up()).getBlock() instanceof BlockBulb;
-            if(cropFlag && bulbFlag) {
+            if (cropFlag && bulbFlag) {
                 BlockPos harvestPos = pos.up();
                 IBlockState harvestState = world.getBlockState(harvestPos);
                 harvestState.getBlock().dropBlockAsItem(world, harvestPos, harvestState, 0);

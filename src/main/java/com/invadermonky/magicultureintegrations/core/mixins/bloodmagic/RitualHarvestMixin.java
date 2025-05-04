@@ -30,9 +30,9 @@ public abstract class RitualHarvestMixin {
     private static Iterator<ItemStack> harvestBlockMixin(Iterator<ItemStack> original, @Local(name = "world") World world, @Local(name = "cropPos") BlockPos cropPos, @Local(name = "controllerPos") BlockPos controllerPos) {
         IBlockState cropState = world.getBlockState(cropPos);
         TileEntity tile = world.getTileEntity(controllerPos);
-        if(tile instanceof IMasterRitualStone) {
+        if (tile instanceof IMasterRitualStone) {
             NonNullList<ItemStack> drops = NonNullList.create();
-            while(original.hasNext()) {
+            while (original.hasNext()) {
                 drops.add(original.next());
             }
             IMasterRitualStone masterRitualStone = (IMasterRitualStone) tile;

@@ -19,7 +19,7 @@ public class RitualMagneticTweakMixin {
                     target = "LWayofTime/bloodmagic/util/Utils;swapLocations(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;)Z",
                     shift = At.Shift.AFTER
             ))
-    private void performRitualMixin(IMasterRitualStone masterRitualStone, CallbackInfo ci,@Local(ordinal = 2) BlockPos pos) {
+    private void performRitualMixin(IMasterRitualStone masterRitualStone, CallbackInfo ci, @Local(ordinal = 2) BlockPos pos) {
         World world = masterRitualStone.getWorldObj();
         world.setBlockState(pos, ModTags.RITUAL_MAGNETIC_REPLACEMENTS.getOrDefault(world.provider.getDimension(), Blocks.STONE.getDefaultState()));
     }

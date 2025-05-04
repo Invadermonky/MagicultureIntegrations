@@ -5,7 +5,7 @@ import com.invadermonky.magicultureintegrations.MagicultureIntegrations;
 public class StringHelper {
     public static String getTranslationKey(String name, String type, String... params) {
         StringBuilder s = new StringBuilder(type + "." + MagicultureIntegrations.MOD_ID + ":" + name);
-        for(String p : params) {
+        for (String p : params) {
             s.append(".").append(p);
         }
         return s.toString();
@@ -13,7 +13,7 @@ public class StringHelper {
 
     public static String getMixinString(ModIds modId, String... params) {
         StringBuilder s = new StringBuilder("mixins.mi." + modId.modId);
-        for(String param : params) {
+        for (String param : params) {
             s.append(".").append(param);
         }
         s.append(".json");

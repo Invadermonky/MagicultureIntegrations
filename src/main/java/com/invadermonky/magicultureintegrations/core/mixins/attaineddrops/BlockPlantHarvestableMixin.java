@@ -18,10 +18,15 @@ import shadows.attained.blocks.BlockPlant;
 
 @Mixin(value = BlockPlant.class, remap = false)
 public abstract class BlockPlantHarvestableMixin implements IHarvestableCrop {
-    @Shadow public abstract int getMaxAge();
-    @Shadow public abstract int getAge(IBlockState state);
+    @Shadow
+    @Final
+    public static PropertyInteger CHARGE;
 
-    @Shadow @Final public static PropertyInteger CHARGE;
+    @Shadow
+    public abstract int getMaxAge();
+
+    @Shadow
+    public abstract int getAge(IBlockState state);
 
     @Override
     public BlockPos getHarvestPosition(World world, BlockPos cropPos) {
@@ -31,7 +36,7 @@ public abstract class BlockPlantHarvestableMixin implements IHarvestableCrop {
     @Override
     public @NotNull HarvestResult getHarvestResult(World world, BlockPos pos) {
         IBlockState state = world.getBlockState(pos);
-        if(state.getBlock() instanceof BlockPlant) {
+        if (state.getBlock() instanceof BlockPlant) {
             boolean ageFlag = getAge(state) >= getMaxAge();
             boolean bulbFlag = world.getBlockState(this.getHarvestPosition(world, pos)).getBlock() instanceof BlockBulb;
             return ageFlag && bulbFlag ? HarvestResult.HARVEST : HarvestResult.CLAIM;
@@ -40,9 +45,9 @@ public abstract class BlockPlantHarvestableMixin implements IHarvestableCrop {
     }
 
     @Override
-    public NonNullList<ItemStack> harvestCrop(@Nullable EntityPlayer player, World world, BlockPos pos, boolean silkTouch, int fortune) {
+    public @NotNull NonNullList<ItemStack> harvestCrop(@Nullable EntityPlayer player, World world, BlockPos pos, boolean silkTouch, int fortune) {
         NonNullList<ItemStack> drops = NonNullList.create();
-        if(this.getHarvestResult(world, pos) == HarvestResult.HARVEST) {
+        if (this.getHarvestResult(world, pos) == HarvestResult.HARVEST) {
             BlockPos harvestPos = this.getHarvestPosition(world, pos);
             IBlockState harvestState = world.getBlockState(harvestPos);
             harvestState.getBlock().getDrops(drops, world, harvestPos, harvestState, fortune);

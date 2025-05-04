@@ -28,17 +28,17 @@ public abstract class FurnaceArrayMixin {
     private void updateMixin(TileEntity tile, int ticksActive, CallbackInfoReturnable<Boolean> cir, @Local(ordinal = 1) BlockPos checkPos) {
         World world = tile.getWorld();
         TileEntity checkTile = world.getTileEntity(checkPos);
-        if(checkTile instanceof IHeatableTile && !HeatableUtils.isHeatableBlacklisted(AlchemyArrayEffectFurnaceFuel.class, checkTile)) {
+        if (checkTile instanceof IHeatableTile && !HeatableUtils.isHeatableBlacklisted(AlchemyArrayEffectFurnaceFuel.class, checkTile)) {
             IHeatableTile heatable = (IHeatableTile) checkTile;
-            if(heatable.canSmeltHeatable() && heatable.getBurnTimeHeatable() <= 1) {
+            if (heatable.canSmeltHeatable() && heatable.getBurnTimeHeatable() <= 1) {
                 EntityPlayer sacrifice = BloodMagicUtils.getSacrificeTarget(world, tile.getPos(), 10.00);
-                if(sacrifice == null || sacrifice.isDead)
+                if (sacrifice == null || sacrifice.isDead)
                     return;
 
                 heatable.boostBurnTimeHeatable(401);
                 heatable.updateTileHeatable();
 
-                if(!sacrifice.isCreative()) {
+                if (!sacrifice.isCreative()) {
                     sacrifice.hurtResistantTime = 0;
                     sacrifice.attackEntityFrom(DamageSourceBloodMagic.INSTANCE, 1.0f);
                 }

@@ -96,7 +96,7 @@ public class MIConfigFixes {
     public static class ConfigChangeListener {
         @SubscribeEvent
         public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
-            if(event.getModID().equals(MagicultureIntegrations.MOD_ID)) {
+            if (event.getModID().equals(MagicultureIntegrations.MOD_ID)) {
                 ConfigManager.sync(MagicultureIntegrations.MOD_ID, Config.Type.INSTANCE);
                 ModTags.syncConfig();
             }

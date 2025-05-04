@@ -7,11 +7,15 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 
 public interface IAddition extends IConfigurable {
-    default void registerBlocks(IForgeRegistry<Block> registry) {}
+    default void registerBlocks(IForgeRegistry<Block> registry) {
+    }
 
-    default void registerItems(IForgeRegistry<Item> registry) {}
+    default void registerItems(IForgeRegistry<Item> registry) {
+    }
 
-    default void registerModels(ModelRegistryEvent event) {}
+    default void registerModels(ModelRegistryEvent event) {
+    }
 
-    default void registerRecipes(IForgeRegistry<IRecipe> registry) {}
+    default void registerRecipes(IForgeRegistry<IRecipe> registry) {
+    }
 }

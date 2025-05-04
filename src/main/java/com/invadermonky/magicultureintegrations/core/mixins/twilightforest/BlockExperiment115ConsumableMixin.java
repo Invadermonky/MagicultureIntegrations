@@ -19,7 +19,7 @@ public abstract class BlockExperiment115ConsumableMixin implements IKekimurusCon
     @Override
     public void consumeBlock(World world, BlockPos pos, IBlockState state) {
         int nextSlice = state.getValue(BlockTFExperiment115.NOMS) + 1;
-        if(nextSlice <= 7) {
+        if (nextSlice <= 7) {
             world.setBlockState(pos, state.withProperty(BlockTFExperiment115.NOMS, nextSlice));
         } else {
             world.setBlockToAir(pos);

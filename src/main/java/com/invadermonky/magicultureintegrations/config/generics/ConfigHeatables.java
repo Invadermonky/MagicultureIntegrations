@@ -61,23 +61,37 @@ public class ConfigHeatables {
     public boolean tc_smeltery = true;
 
     public void registerHeatableBlacklists(Class<?> heatProvider) {
-        if(ModIds.bewitchment.isLoaded && !this.witches_oven) HeatableUtils.blacklistHeatable(heatProvider, TileEntityWitchesOven.class);
-        if(ModIds.cooking_for_blockheads.isLoaded && !this.cfb_oven) HeatableUtils.blacklistHeatable(heatProvider, TileOven.class);
-        if(ModIds.engineers_decor.isLoaded && !this.ed_laboratory_furnace) HeatableUtils.blacklistHeatable(heatProvider, BlockDecorFurnace.BTileEntity.class);
-        if(ModIds.futuremc.isLoaded && !this.fmc_advanced_furnaces) HeatableUtils.blacklistHeatable(heatProvider, TileFurnaceAdvanced.class);
-        if(ModIds.immersive_engineering.isLoaded) {
-            if(!this.ie_alloy_smelter) HeatableUtils.blacklistHeatable(heatProvider, TileEntityAlloySmelter.class);
-            if(!this.ie_blast_furnace) HeatableUtils.blacklistHeatable(heatProvider, TileEntityBlastFurnace.class);
-            if(!this.ie_coke_oven) HeatableUtils.blacklistHeatable(heatProvider, TileEntityCokeOven.class);
+        if (ModIds.bewitchment.isLoaded && !this.witches_oven)
+            HeatableUtils.blacklistHeatable(heatProvider, TileEntityWitchesOven.class);
+        if (ModIds.cooking_for_blockheads.isLoaded && !this.cfb_oven)
+            HeatableUtils.blacklistHeatable(heatProvider, TileOven.class);
+        if (ModIds.engineers_decor.isLoaded && !this.ed_laboratory_furnace)
+            HeatableUtils.blacklistHeatable(heatProvider, BlockDecorFurnace.BTileEntity.class);
+        if (ModIds.futuremc.isLoaded && !this.fmc_advanced_furnaces)
+            HeatableUtils.blacklistHeatable(heatProvider, TileFurnaceAdvanced.class);
+        if (ModIds.immersive_engineering.isLoaded) {
+            if (!this.ie_alloy_smelter)
+                HeatableUtils.blacklistHeatable(heatProvider, TileEntityAlloySmelter.class);
+            if (!this.ie_blast_furnace)
+                HeatableUtils.blacklistHeatable(heatProvider, TileEntityBlastFurnace.class);
+            if (!this.ie_coke_oven)
+                HeatableUtils.blacklistHeatable(heatProvider, TileEntityCokeOven.class);
         }
-        if(ModIds.industrial_craft.isLoaded) {
-            if(!this.ic2_blast_furnace) HeatableUtils.blacklistHeatable(heatProvider, ic2.core.block.machine.tileentity.TileEntityBlastFurnace.class);
-            if(!this.ic2_coke_kiln) HeatableUtils.blacklistHeatable(heatProvider, TileEntityCokeKiln.class);
+        if (ModIds.industrial_craft.isLoaded) {
+            if (!this.ic2_blast_furnace)
+                HeatableUtils.blacklistHeatable(heatProvider, ic2.core.block.machine.tileentity.TileEntityBlastFurnace.class);
+            if (!this.ic2_coke_kiln)
+                HeatableUtils.blacklistHeatable(heatProvider, TileEntityCokeKiln.class);
         }
-        if(ModIds.mystical_agriculture.isLoaded && !this.ma_essence_furnaces) HeatableUtils.blacklistHeatable(heatProvider, TileEssenceFurnace.class);
-        if(ModIds.rustic.isLoaded && !this.rustic_condenser) HeatableUtils.blacklistHeatable(heatProvider, TileEntityCondenserBase.class);
-        if(ModIds.thaumcraft.isLoaded && !this.tc_essentia_smelter) HeatableUtils.blacklistHeatable(heatProvider, TileSmelter.class);
-        if(ModIds.thaumic_additions.isLoaded && !this.ta_essentia_smelter) HeatableUtils.blacklistHeatable(heatProvider, TileHeatingStructure.class);
-        if(ModIds.tinkers_construct.isLoaded && !this.tc_smeltery) HeatableUtils.blacklistHeatable(heatProvider, TileEntityWitchesOven.class);
+        if (ModIds.mystical_agriculture.isLoaded && !this.ma_essence_furnaces)
+            HeatableUtils.blacklistHeatable(heatProvider, TileEssenceFurnace.class);
+        if (ModIds.rustic.isLoaded && !this.rustic_condenser)
+            HeatableUtils.blacklistHeatable(heatProvider, TileEntityCondenserBase.class);
+        if (ModIds.thaumcraft.isLoaded && !this.tc_essentia_smelter)
+            HeatableUtils.blacklistHeatable(heatProvider, TileSmelter.class);
+        if (ModIds.thaumic_additions.isLoaded && !this.ta_essentia_smelter)
+            HeatableUtils.blacklistHeatable(heatProvider, TileHeatingStructure.class);
+        if (ModIds.tinkers_construct.isLoaded && !this.tc_smeltery)
+            HeatableUtils.blacklistHeatable(heatProvider, TileEntityWitchesOven.class);
     }
 }

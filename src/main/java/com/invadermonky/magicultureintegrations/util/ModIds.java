@@ -3,6 +3,7 @@ package com.invadermonky.magicultureintegrations.util;
 import WayofTime.bloodmagic.BloodMagic;
 import baubles.common.Baubles;
 import blusunrize.immersiveengineering.ImmersiveEngineering;
+import com.animania.Animania;
 import com.bewitchment.Bewitchment;
 import com.blakebr0.mysticalagriculture.MysticalAgriculture;
 import com.charles445.simpledifficulty.SimpleDifficulty;
@@ -36,6 +37,7 @@ import javax.annotation.Nullable;
 
 public enum ModIds {
     agricraft(ConstIds.agricraft),
+    animania(ConstIds.animania),
     astral_sorcery(ConstIds.astral_sorcery),
     attained_drops(ConstIds.attained_drops),
     baubles(ConstIds.baubles),
@@ -70,8 +72,7 @@ public enum ModIds {
     tinkers_complement(ConstIds.tinkers_complement),
     tough_as_nails(ConstIds.toughasnails),
     twilight_forest(ConstIds.twilight_forest),
-    universal_tweaks(ConstIds.universal_tweaks, ConstVersions.universal_tweaks, true, false)
-    ;
+    universal_tweaks(ConstIds.universal_tweaks, ConstVersions.universal_tweaks, true, false);
 
     public final String modId;
     public final String version;
@@ -101,6 +102,7 @@ public enum ModIds {
 
     public static class ConstIds {
         public static final String agricraft = "agricraft";
+        public static final String animania = Animania.MODID;
         public static final String astral_sorcery = AstralSorcery.MODID;
         public static final String attained_drops = AttainedDrops2.MODID;
         public static final String baubles = Baubles.MODID;

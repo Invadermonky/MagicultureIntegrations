@@ -25,8 +25,8 @@ public class ModMixinsMI implements ILateMixinLoader {
         put(StringHelper.getMixinString(ModIds.bloodmagic, "burningfurnacearray"), () -> ModIds.bloodmagic.isLoaded && MIConfigIntegrations.blood_magic.furnace_array_mixins);
         put(StringHelper.getMixinString(ModIds.bloodmagic, "boundtool"), () -> ModIds.bloodmagic.isLoaded && !ModIds.universal_tweaks.isLoaded && MIConfigTweaks.blood_magic.bound_tool_tweak);
         put(StringHelper.getMixinString(ModIds.bloodmagic, "cuttingfluid"), () -> ModIds.bloodmagic.isLoaded && MIConfigTweaks.blood_magic.cutting_fluid_tweak);
-        put(StringHelper.getMixinString(ModIds.bloodmagic, "ritual"), () -> ModIds.bloodmagic.isLoaded&& !ModIds.universal_tweaks.isLoaded && MIConfigFixes.blood_magic.fix_ritual);
-        put(StringHelper.getMixinString(ModIds.bloodmagic, "ritualcrusher"),() -> ModIds.bloodmagic.isLoaded && MIConfigTweaks.blood_magic.ritual_crusher);
+        put(StringHelper.getMixinString(ModIds.bloodmagic, "ritual"), () -> ModIds.bloodmagic.isLoaded && !ModIds.universal_tweaks.isLoaded && MIConfigFixes.blood_magic.fix_ritual);
+        put(StringHelper.getMixinString(ModIds.bloodmagic, "ritualcrusher"), () -> ModIds.bloodmagic.isLoaded && MIConfigTweaks.blood_magic.ritual_crusher);
         put(StringHelper.getMixinString(ModIds.bloodmagic, "ritualharvest"), () -> ModIds.bloodmagic.isLoaded && MIConfigTweaks.blood_magic.ritual_harvest);
         put(StringHelper.getMixinString(ModIds.bloodmagic, "ritualmagnetic", "tweak"), () -> ModIds.bloodmagic.isLoaded && MIConfigTweaks.blood_magic.ritual_magnetic_replace);
         put(StringHelper.getMixinString(ModIds.bloodmagic, "ritualmagnetic", ModIds.ore_stages.modId), () -> ModIds.bloodmagic.isLoaded && ModIds.ore_stages.isLoaded && MIConfigIntegrations.blood_magic.ore_stages_magnetism);

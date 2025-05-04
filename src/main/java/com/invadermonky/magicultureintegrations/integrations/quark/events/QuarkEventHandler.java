@@ -18,7 +18,7 @@ public class QuarkEventHandler {
     @SubscribeEvent
     public void onLivingUpdate(LivingEvent.LivingUpdateEvent event) {
         World world = event.getEntity().world;
-        if(!world.isRemote) {
+        if (!world.isRemote) {
             if (event.getEntityLiving() instanceof EntityFoxhound) {
                 EntityFoxhound foxhound = (EntityFoxhound) event.getEntityLiving();
                 if (foxhound.isTamed()) {

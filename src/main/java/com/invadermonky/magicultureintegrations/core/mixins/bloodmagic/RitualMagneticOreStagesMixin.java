@@ -30,10 +30,10 @@ public abstract class RitualMagneticOreStagesMixin {
         World world = masterRitualStone.getWorldObj();
         IBlockState state = world.getBlockState(pos);
         EntityPlayer player = masterRitualStone.getOwnerNetwork().getPlayer();
-        if(ModIds.ore_stages.isLoaded && player != null) {
+        if (ModIds.ore_stages.isLoaded && player != null) {
             Tuple<String, IBlockState> check = OreTiersAPI.getStageInfo(state);
-            while(check != null) {
-                if(GameStageHelper.hasStage(player, check.getFirst())) {
+            while (check != null) {
+                if (GameStageHelper.hasStage(player, check.getFirst())) {
                     break;
                 } else {
                     state = check.getSecond();

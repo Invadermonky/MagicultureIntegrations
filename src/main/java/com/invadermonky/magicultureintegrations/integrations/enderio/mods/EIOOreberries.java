@@ -19,7 +19,7 @@ public class EIOOreberries implements IProxy {
     @SubscribeEvent
     public void registerFarmers(RegistryEvent.Register<IFarmerJoe> event) {
         IFarmerJoe farmer = event.getRegistry().getValue(new ResourceLocation(ModIds.enderio.modId, "default"));
-        if(farmer instanceof PlantableFarmer) {
+        if (farmer instanceof PlantableFarmer) {
             CommonProxy.oreberryBushBlocks.forEach(block -> ((PlantableFarmer) farmer).addHarvestExlude(block));
         }
     }

@@ -8,7 +8,7 @@ import epicsquid.mysticalworld.init.ModBlocks;
 public class BMMysticalWorld implements IProxy {
     @Override
     public void init() {
-        if(MIConfigIntegrations.blood_magic.ritual_harvest.mystical_world) {
+        if (MIConfigIntegrations.blood_magic.ritual_harvest.mystical_world) {
             HarvestRegistry.registerStandardCrop(ModBlocks.aubergine, ModBlocks.aubergine.getMaxAge());
         }
     }

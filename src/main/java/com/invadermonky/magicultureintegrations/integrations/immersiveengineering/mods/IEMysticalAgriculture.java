@@ -11,19 +11,9 @@ import com.invadermonky.magicultureintegrations.config.MIConfigIntegrations;
 public class IEMysticalAgriculture implements IProxy {
     @Override
     public void preInit() {
-        if(MIConfigIntegrations.immersive_engineering.external_heater_integrations.ma_essence_furnaces) {
+        if (MIConfigIntegrations.immersive_engineering.external_heater_integrations.ma_essence_furnaces) {
             ExternalHeaterHandler.registerHeatableAdapter(TileEssenceFurnace.class, new MysticalAgricultureFurnaceAdapter());
         }
-    }
-
-    @Override
-    public void init() {
-
-    }
-
-    @Override
-    public void postInit() {
-
     }
 
     public static class MysticalAgricultureFurnaceAdapter extends HeatableAdapter<TileEssenceFurnace> {

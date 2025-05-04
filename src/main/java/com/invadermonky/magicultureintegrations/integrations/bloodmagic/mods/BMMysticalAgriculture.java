@@ -27,17 +27,17 @@ public class BMMysticalAgriculture implements IProxy, IHarvestHandler {
         BlockMysticalCrop crop = (BlockMysticalCrop) state.getBlock();
         crop.getDrops(currentDrops, world, pos, state, 0);
         boolean foundSeed = false;
-        for(ItemStack drop : currentDrops) {
-            if(!drop.isEmpty() && drop.getItem() == crop.getSeed()) {
+        for (ItemStack drop : currentDrops) {
+            if (!drop.isEmpty() && drop.getItem() == crop.getSeed()) {
                 drop.shrink(1);
                 foundSeed = true;
                 break;
             }
         }
-        if(foundSeed) {
+        if (foundSeed) {
             world.setBlockState(pos, crop.getDefaultState());
-            for(ItemStack drop : currentDrops) {
-                if(!drop.isEmpty())
+            for (ItemStack drop : currentDrops) {
+                if (!drop.isEmpty())
                     drops.add(drop);
             }
             return true;

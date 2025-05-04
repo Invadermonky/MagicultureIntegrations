@@ -52,6 +52,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
@@ -80,16 +81,6 @@ public class BlockCrystalSorter extends BlockContainer implements IAddition, IPr
         this.setCreativeTab(RegistryItems.creativeTabAstralSorcery);
     }
 
-    @Override
-    public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-        return Item.getItemFromBlock(this);
-    }
-
-    @Override
-    public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
-        this.setDefaultFacing(worldIn, pos, state);
-    }
-
     private void setDefaultFacing(World world, BlockPos pos, IBlockState state) {
         if (!world.isRemote) {
             IBlockState iblockstate = world.getBlockState(pos.north());
@@ -112,33 +103,10 @@ public class BlockCrystalSorter extends BlockContainer implements IAddition, IPr
         }
     }
 
-    @Override
-    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        ItemStack heldStack = playerIn.getHeldItem(hand);
-        TileEntity tile = worldIn.getTileEntity(pos);
-        if(tile instanceof TileCrystalSorter) {
-            if(heldStack.isEmpty() && playerIn.isSneaking()) {
-                if(!((TileCrystalSorter) tile).getProcessingCrystal().isEmpty()) {
-                    ItemStack extract = ((TileCrystalSorter) tile).removeProcessingCrystal(false);
-                    if(!playerIn.addItemStackToInventory(extract)) {
-                        playerIn.dropItem(extract, true);
-                    }
-                    return true;
-                }
-            } else if(!playerIn.isSneaking()) {
-                if(((TileCrystalSorter) tile).insertProcessingCrystal(heldStack, true).isEmpty()) {
-                    ((TileCrystalSorter) tile).insertProcessingCrystal(heldStack.splitStack(heldStack.getCount()), false);
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
     @Optional.Method(modid = ModIds.ConstIds.astral_sorcery)
     @Override
     public void onInteract(World world, BlockPos blockPos, EntityPlayer entityPlayer, EnumFacing enumFacing, boolean isSneaking) {
-        if(!world.isRemote) {
+        if (!world.isRemote) {
             IBlockState oldState = world.getBlockState(blockPos);
             IBlockState newState = this.getDefaultState()
                     .withProperty(FACING, oldState.getValue(FACING))
@@ -149,24 +117,19 @@ public class BlockCrystalSorter extends BlockContainer implements IAddition, IPr
 
     @Nullable
     @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta) {
+    public TileEntity createNewTileEntity(@NotNull @NotNull World worldIn, int meta) {
         return new TileCrystalSorter();
     }
 
     @Override
-    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-        return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite()).withProperty(INVERTED, false);
+    public @NotNull @NotNull EnumBlockRenderType getRenderType(@NotNull @NotNull IBlockState state) {
+        return EnumBlockRenderType.MODEL;
     }
 
     @Override
-    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
-        worldIn.setBlockState(pos, state.withProperty(FACING, placer.getHorizontalFacing().getOpposite()).withProperty(INVERTED, false), 2);
-    }
-
-    @Override
-    public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
+    public void breakBlock(World worldIn, @NotNull @NotNull BlockPos pos, @NotNull @NotNull IBlockState state) {
         TileEntity tile = worldIn.getTileEntity(pos);
-        if(tile instanceof TileCrystalSorter) {
+        if (tile instanceof TileCrystalSorter) {
             ((TileCrystalSorter) tile).dropContentsIntoWorld();
             worldIn.updateComparatorOutputLevel(pos, this);
         }
@@ -174,56 +137,12 @@ public class BlockCrystalSorter extends BlockContainer implements IAddition, IPr
     }
 
     @Override
-    public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
-        return new ItemStack(this);
-    }
-
-    @Override
-    public boolean hasComparatorInputOverride(IBlockState state) {
-        return true;
-    }
-
-    @Override
-    public int getComparatorInputOverride(IBlockState blockState, World worldIn, BlockPos pos) {
-        TileEntity tile = worldIn.getTileEntity(pos);
-        if(tile instanceof TileCrystalSorter) {
-            return ((TileCrystalSorter) tile).getProcessingCrystal().isEmpty() ? 0 : 15;
-        }
-        return 0;
-    }
-
-    @Override
-    public boolean canConnectRedstone(IBlockState state, IBlockAccess world, BlockPos pos, @Nullable EnumFacing side) {
+    public boolean isTopSolid(@NotNull @NotNull IBlockState state) {
         return false;
     }
 
     @Override
-    public EnumBlockRenderType getRenderType(IBlockState state) {
-        return EnumBlockRenderType.MODEL;
-    }
-
-    @Override
-    public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
-        return true;
-    }
-
-    @Override
-    public boolean isTopSolid(IBlockState state) {
-        return false;
-    }
-
-    @Override
-    public boolean isFullCube(IBlockState state) {
-        return false;
-    }
-
-    @Override
-    public boolean isOpaqueCube(IBlockState state) {
-        return false;
-    }
-
-    @Override
-    public IBlockState getStateFromMeta(int meta) {
+    public @NotNull @NotNull IBlockState getStateFromMeta(int meta) {
         return this.getDefaultState()
                 .withProperty(INVERTED, (meta & 4) != 0)
                 .withProperty(FACING, EnumFacing.byHorizontalIndex(meta & -5));
@@ -235,18 +154,100 @@ public class BlockCrystalSorter extends BlockContainer implements IAddition, IPr
     }
 
     @Override
-    public IBlockState withRotation(IBlockState state, Rotation rot) {
+    public @NotNull @NotNull IBlockState withRotation(IBlockState state, Rotation rot) {
         return state.withProperty(FACING, rot.rotate(state.getValue(FACING))).withProperty(INVERTED, state.getValue(INVERTED));
     }
 
     @Override
-    public IBlockState withMirror(IBlockState state, Mirror mirrorIn) {
+    public @NotNull @NotNull IBlockState withMirror(IBlockState state, Mirror mirrorIn) {
         return state.withRotation(mirrorIn.toRotation(state.getValue(FACING))).withProperty(INVERTED, state.getValue(INVERTED));
     }
 
     @Override
-    protected BlockStateContainer createBlockState() {
+    public boolean isFullCube(@NotNull @NotNull IBlockState state) {
+        return false;
+    }
+
+    @Override
+    public boolean shouldSideBeRendered(@NotNull @NotNull IBlockState blockState, @NotNull @NotNull IBlockAccess blockAccess, @NotNull @NotNull BlockPos pos, @NotNull @NotNull EnumFacing side) {
+        return true;
+    }
+
+    @Override
+    public boolean isOpaqueCube(@NotNull @NotNull IBlockState state) {
+        return false;
+    }
+
+    @Override
+    public void onBlockAdded(@NotNull @NotNull World worldIn, @NotNull @NotNull BlockPos pos, @NotNull @NotNull IBlockState state) {
+        this.setDefaultFacing(worldIn, pos, state);
+    }
+
+    @Override
+    public @NotNull @NotNull Item getItemDropped(@NotNull @NotNull IBlockState state, @NotNull @NotNull Random rand, int fortune) {
+        return Item.getItemFromBlock(this);
+    }
+
+    @Override
+    public boolean onBlockActivated(World worldIn, @NotNull @NotNull BlockPos pos, @NotNull @NotNull IBlockState state, EntityPlayer playerIn, @NotNull @NotNull EnumHand hand, @NotNull @NotNull EnumFacing facing, float hitX, float hitY, float hitZ) {
+        ItemStack heldStack = playerIn.getHeldItem(hand);
+        TileEntity tile = worldIn.getTileEntity(pos);
+        if (tile instanceof TileCrystalSorter) {
+            if (heldStack.isEmpty() && playerIn.isSneaking()) {
+                if (!((TileCrystalSorter) tile).getProcessingCrystal().isEmpty()) {
+                    ItemStack extract = ((TileCrystalSorter) tile).removeProcessingCrystal(false);
+                    if (!playerIn.addItemStackToInventory(extract)) {
+                        playerIn.dropItem(extract, true);
+                    }
+                    return true;
+                }
+            } else if (!playerIn.isSneaking()) {
+                if (((TileCrystalSorter) tile).insertProcessingCrystal(heldStack, true).isEmpty()) {
+                    ((TileCrystalSorter) tile).insertProcessingCrystal(heldStack.splitStack(heldStack.getCount()), false);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public @NotNull @NotNull IBlockState getStateForPlacement(@NotNull @NotNull World worldIn, @NotNull @NotNull BlockPos pos, @NotNull @NotNull EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+        return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite()).withProperty(INVERTED, false);
+    }
+
+    @Override
+    public void onBlockPlacedBy(World worldIn, @NotNull @NotNull BlockPos pos, IBlockState state, EntityLivingBase placer, @NotNull @NotNull ItemStack stack) {
+        worldIn.setBlockState(pos, state.withProperty(FACING, placer.getHorizontalFacing().getOpposite()).withProperty(INVERTED, false), 2);
+    }
+
+    @Override
+    public @NotNull @NotNull ItemStack getItem(@NotNull @NotNull World worldIn, @NotNull @NotNull BlockPos pos, @NotNull @NotNull IBlockState state) {
+        return new ItemStack(this);
+    }
+
+    @Override
+    public boolean hasComparatorInputOverride(@NotNull @NotNull IBlockState state) {
+        return true;
+    }
+
+    @Override
+    public int getComparatorInputOverride(@NotNull @NotNull IBlockState blockState, World worldIn, @NotNull @NotNull BlockPos pos) {
+        TileEntity tile = worldIn.getTileEntity(pos);
+        if (tile instanceof TileCrystalSorter) {
+            return ((TileCrystalSorter) tile).getProcessingCrystal().isEmpty() ? 0 : 15;
+        }
+        return 0;
+    }
+
+    @Override
+    protected @NotNull @NotNull BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, FACING, INVERTED);
+    }
+
+    @Override
+    public boolean canConnectRedstone(@NotNull @NotNull IBlockState state, @NotNull @NotNull IBlockAccess world, @NotNull @NotNull BlockPos pos, @Nullable EnumFacing side) {
+        return false;
     }
 
     @Override
@@ -263,6 +264,13 @@ public class BlockCrystalSorter extends BlockContainer implements IAddition, IPr
     @Override
     public void registerItems(IForgeRegistry<Item> registry) {
         registry.register(new ItemBlock(this).setRegistryName(this.getRegistryName()));
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void registerModels(ModelRegistryEvent event) {
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(this.getRegistryName(), "inventory"));
+        ClientRegistry.bindTileEntitySpecialRenderer(TileCrystalSorter.class, new RenderCrystalSorter());
     }
 
     @Override
@@ -283,13 +291,6 @@ public class BlockCrystalSorter extends BlockContainer implements IAddition, IPr
         crystalSorterRecipe.setPassiveStarlightRequirement(2000);
     }
 
-    @SideOnly(Side.CLIENT)
-    @Override
-    public void registerModels(ModelRegistryEvent event) {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(this.getRegistryName(), "inventory"));
-        ClientRegistry.bindTileEntitySpecialRenderer(TileCrystalSorter.class, new RenderCrystalSorter());
-    }
-
     @Override
     public void postInit() {
         //Guide entry
@@ -300,7 +301,7 @@ public class BlockCrystalSorter extends BlockContainer implements IAddition, IPr
         crystalSorterNode.addPage(new JournalPageText(StringHelper.getTranslationKey("CRYSTALSORTER", "journal", "text2")));
 
         ResearchNode infusionNode = ResearchProgression.findNode("INFUSER");
-        if(infusionNode != null) {
+        if (infusionNode != null) {
             crystalSorterNode.addSourceConnectionFrom(infusionNode);
         }
         regConstellation.register(crystalSorterNode);

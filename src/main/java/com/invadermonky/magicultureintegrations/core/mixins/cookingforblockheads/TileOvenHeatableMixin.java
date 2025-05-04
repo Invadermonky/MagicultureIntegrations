@@ -14,10 +14,15 @@ import java.util.IntSummaryStatistics;
 
 @Mixin(value = TileOven.class, remap = false)
 public abstract class TileOvenHeatableMixin extends TileEntity implements ITickable, IKitchenSmeltingProvider, IHeatableTile {
-    @Shadow public int furnaceBurnTime;
-    @Shadow public int currentItemBurnTime;
-    @Shadow public int[] slotCookTime;
-    @Shadow protected abstract boolean shouldConsumeFuel();
+    @Shadow
+    public int furnaceBurnTime;
+    @Shadow
+    public int currentItemBurnTime;
+    @Shadow
+    public int[] slotCookTime;
+
+    @Shadow
+    protected abstract boolean shouldConsumeFuel();
 
     @Override
     public boolean canSmeltHeatable() {
@@ -35,6 +40,11 @@ public abstract class TileOvenHeatableMixin extends TileEntity implements ITicka
     }
 
     @Override
+    public void setBurnTimeMaxHeatable(int burnTimeMax) {
+        this.currentItemBurnTime = burnTimeMax;
+    }
+
+    @Override
     public int getCookTimeHeatable() {
         IntSummaryStatistics stat = Arrays.stream(this.slotCookTime).summaryStatistics();
         return stat.getMax();
@@ -46,22 +56,17 @@ public abstract class TileOvenHeatableMixin extends TileEntity implements ITicka
     }
 
     @Override
-    public void setBurnTimeMaxHeatable(int burnTimeMax) {
-        this.currentItemBurnTime = burnTimeMax;
-    }
-
-    @Override
     public void boostBurnTimeHeatable(int boostAmount) {
         this.furnaceBurnTime = getBurnTimeHeatable() + (int) (boostAmount * ModConfig.general.ovenFuelTimeMultiplier);
-        if(this.getBurnTimeMaxHeatable() < this.furnaceBurnTime) {
+        if (this.getBurnTimeMaxHeatable() < this.furnaceBurnTime) {
             setBurnTimeMaxHeatable(this.furnaceBurnTime);
         }
     }
 
     @Override
     public void boostCookTimeHeatable(int boostAmount) {
-        for(int i = 0; i < this.slotCookTime.length; i++) {
-            if(this.slotCookTime[i] != -1)
+        for (int i = 0; i < this.slotCookTime.length; i++) {
+            if (this.slotCookTime[i] != -1)
                 this.slotCookTime[i] = Math.min(getCookTimeMaxHeatable(), this.slotCookTime[i] + boostAmount);
         }
     }

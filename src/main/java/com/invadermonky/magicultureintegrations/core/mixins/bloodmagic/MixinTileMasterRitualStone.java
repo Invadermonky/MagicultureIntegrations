@@ -17,10 +17,17 @@ import java.util.Map;
 
 @Mixin(value = TileMasterRitualStone.class, remap = false)
 public abstract class MixinTileMasterRitualStone extends TileTicking implements IMasterRitualStone {
-    @Shadow @Final protected Map<String,AreaDescriptor> modableRangeMap;
-    @Shadow private Ritual currentRitual;
-    @Shadow public abstract AreaDescriptor getBlockRange(String range);
-    @Shadow public abstract void addBlockRange(String range, AreaDescriptor defaultRange);
+    @Shadow
+    @Final
+    protected Map<String, AreaDescriptor> modableRangeMap;
+    @Shadow
+    private Ritual currentRitual;
+
+    @Shadow
+    public abstract AreaDescriptor getBlockRange(String range);
+
+    @Shadow
+    public abstract void addBlockRange(String range, AreaDescriptor defaultRange);
 
     /**
      * @author Invadermonky
@@ -32,17 +39,17 @@ public abstract class MixinTileMasterRitualStone extends TileTicking implements 
      */
     @Redirect(method = "deserialize", at = @At(value = "INVOKE", target = "LWayofTime/bloodmagic/ritual/Ritual;readFromNBT(Lnet/minecraft/nbt/NBTTagCompound;)V"))
     private void customRitualReadFromNBT(Ritual instance, NBTTagCompound ritualTag) {
-        if(this.currentRitual != null) {
+        if (this.currentRitual != null) {
             this.currentRitual.readFromNBT(ritualTag);
         }
         NBTTagList tags = ritualTag.getTagList("areas", 10);
-        if(!tags.isEmpty()) {
-            for(int i = 0; i < tags.tagCount(); i++) {
+        if (!tags.isEmpty()) {
+            for (int i = 0; i < tags.tagCount(); i++) {
                 NBTTagCompound newTag = tags.getCompoundTagAt(i);
                 String rangeKey = newTag.getString("key");
                 NBTTagCompound storedTag = newTag.getCompoundTag("area");
                 AreaDescriptor desc = this.currentRitual.getBlockRange(rangeKey).copy();
-                if(desc != null) {
+                if (desc != null) {
                     desc.readFromNBT(storedTag);
                     this.addBlockRange(rangeKey, desc);
                 }
@@ -60,11 +67,11 @@ public abstract class MixinTileMasterRitualStone extends TileTicking implements 
      */
     @Redirect(method = "serialize", at = @At(value = "INVOKE", target = "LWayofTime/bloodmagic/ritual/Ritual;writeToNBT(Lnet/minecraft/nbt/NBTTagCompound;)V"))
     private void customRitualWriteToNBT(Ritual instance, NBTTagCompound ritualTag) {
-        if(this.currentRitual != null) {
+        if (this.currentRitual != null) {
             this.currentRitual.writeToNBT(ritualTag);
         }
         NBTTagList tags = new NBTTagList();
-        for(Map.Entry<String, AreaDescriptor> entry : this.modableRangeMap.entrySet()) {
+        for (Map.Entry<String, AreaDescriptor> entry : this.modableRangeMap.entrySet()) {
             NBTTagCompound newTag = new NBTTagCompound();
             newTag.setString("key", entry.getKey());
             NBTTagCompound storedTag = new NBTTagCompound();

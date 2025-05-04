@@ -18,12 +18,19 @@ import java.util.Collection;
 
 @Mixin(value = TileEntityBlastFurnace.class, remap = false)
 public abstract class TileEntityBlastFurnaceBoostableMixin extends TileEntityInventory implements IUpgradableBlock, IHasGui, IGuiValueProvider, IBoostableTile {
-    @Shadow protected int progress;
-    @Shadow protected int progressNeeded;
-    @Shadow public abstract MachineRecipeResult<IRecipeInput, Collection<ItemStack>, ItemStack> getOutput();
-    @Shadow public abstract boolean isHot();
+    @Shadow
+    @Final
+    public FluidTank fluidTank;
+    @Shadow
+    protected int progress;
+    @Shadow
+    protected int progressNeeded;
 
-    @Shadow @Final public FluidTank fluidTank;
+    @Shadow
+    public abstract MachineRecipeResult<IRecipeInput, Collection<ItemStack>, ItemStack> getOutput();
+
+    @Shadow
+    public abstract boolean isHot();
 
     @Override
     public boolean isTrueBoostable() {
@@ -54,12 +61,13 @@ public abstract class TileEntityBlastFurnaceBoostableMixin extends TileEntityInv
     @Override
     public void boostCookTimeBoostable(int boostAmount) {
         MachineRecipeResult<IRecipeInput, Collection<ItemStack>, ItemStack> result = this.getOutput();
-        if(result != null) {
+        if (result != null) {
             this.progress = Math.min(getCookTimeMaxBoostable() - 1, getCookTimeBoostable() + boostAmount);
             this.fluidTank.drainInternal(result.getRecipe().getMetaData().getInteger("fluid") * boostAmount, true);
         }
     }
 
     @Override
-    public void updateTileBoostable() {}
+    public void updateTileBoostable() {
+    }
 }

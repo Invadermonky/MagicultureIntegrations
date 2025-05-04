@@ -8,7 +8,7 @@ import com.invadermonky.magicultureintegrations.config.MIConfigIntegrations;
 public class BMBewitchment implements IProxy {
     @Override
     public void init() {
-        if(MIConfigIntegrations.blood_magic.ritual_harvest.bewitchment) {
+        if (MIConfigIntegrations.blood_magic.ritual_harvest.bewitchment) {
             HarvestRegistry.registerStandardCrop(ModObjects.crop_aconitum, (ModObjects.crop_aconitum).getMaxAge());
             HarvestRegistry.registerStandardCrop(ModObjects.crop_belladonna, (ModObjects.crop_belladonna).getMaxAge());
             HarvestRegistry.registerStandardCrop(ModObjects.crop_garlic, (ModObjects.crop_garlic).getMaxAge());

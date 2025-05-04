@@ -24,18 +24,18 @@ public abstract class RightClickHarvestMixin {
             )
     )
     private static void harvestFruitMixin(ItemStack itemStack, World world, BlockPos pos, @Local(argsOnly = true) IBlockState state, @Local(argsOnly = true) EntityPlayer player) {
-        if(state.getBlock() instanceof BlockPamFruitLog) {
+        if (state.getBlock() instanceof BlockPamFruitLog) {
             RayTraceResult trace = player.rayTrace(player.getAttributeMap().getAttributeInstance(EntityPlayer.REACH_DISTANCE).getAttributeValue(), 0);
-            if(trace != null && trace.sideHit != null) {
+            if (trace != null && trace.sideHit != null) {
                 pos = pos.offset(trace.sideHit);
             }
         }
         if (!world.restoringBlockSnapshots && !world.isRemote) {
             float f = 0.5F;
-            double d0 = (double)(world.rand.nextFloat() * f) + (double)0.25F;
-            double d1 = (double)(world.rand.nextFloat() * f) + (double)0.25F;
-            double d2 = (double)(world.rand.nextFloat() * f) + (double)0.25F;
-            EntityItem entityItem = new EntityItem(world, (double)pos.getX() + d0, (double)pos.getY() + d1, (double)pos.getZ() + d2, itemStack);
+            double d0 = (double) (world.rand.nextFloat() * f) + (double) 0.25F;
+            double d1 = (double) (world.rand.nextFloat() * f) + (double) 0.25F;
+            double d2 = (double) (world.rand.nextFloat() * f) + (double) 0.25F;
+            EntityItem entityItem = new EntityItem(world, (double) pos.getX() + d0, (double) pos.getY() + d1, (double) pos.getZ() + d2, itemStack);
             entityItem.setDefaultPickupDelay();
             world.spawnEntity(entityItem);
         }

@@ -10,7 +10,7 @@ import rustic.common.tileentity.TileEntityCondenserBase;
 public class IERustic implements IProxy {
     @Override
     public void preInit() {
-        if(MIConfigIntegrations.immersive_engineering.external_heater_integrations.rustic_condenser) {
+        if (MIConfigIntegrations.immersive_engineering.external_heater_integrations.rustic_condenser) {
             ExternalHeaterHandler.registerHeatableAdapter(TileEntityCondenserBase.class, new RusticFurnaceAdapter());
         }
     }

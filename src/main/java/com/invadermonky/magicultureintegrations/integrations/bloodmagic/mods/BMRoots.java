@@ -8,7 +8,7 @@ import epicsquid.roots.init.ModBlocks;
 public class BMRoots implements IProxy {
     @Override
     public void init() {
-        if(MIConfigIntegrations.blood_magic.ritual_harvest.roots) {
+        if (MIConfigIntegrations.blood_magic.ritual_harvest.roots) {
             HarvestRegistry.registerStandardCrop(ModBlocks.cloud_berry, ModBlocks.cloud_berry.getMaxAge());
             HarvestRegistry.registerStandardCrop(ModBlocks.dewgonia, ModBlocks.dewgonia.getMaxAge());
             HarvestRegistry.registerStandardCrop(ModBlocks.infernal_bulb, ModBlocks.infernal_bulb.getMaxAge());

@@ -19,8 +19,12 @@ import java.util.Random;
 
 @Mixin(value = BlockOreberryBush.class, remap = false)
 public abstract class BlockOreberryBushHarvestableMixin implements IHarvestableCrop {
-    @Shadow @Final public static PropertyInteger AGE;
-    @Shadow public abstract ItemStack getBerriesStack(Random rand);
+    @Shadow
+    @Final
+    public static PropertyInteger AGE;
+
+    @Shadow
+    public abstract ItemStack getBerriesStack(Random rand);
 
     @Override
     public BlockPos getHarvestPosition(World world, BlockPos cropPos) {
@@ -30,7 +34,7 @@ public abstract class BlockOreberryBushHarvestableMixin implements IHarvestableC
     @Override
     public @NotNull HarvestResult getHarvestResult(World world, BlockPos pos) {
         IBlockState state = world.getBlockState(pos);
-        if(state.getBlock() instanceof BlockOreberryBush) {
+        if (state.getBlock() instanceof BlockOreberryBush) {
             return state.getValue(AGE) >= 3 ? HarvestResult.HARVEST : HarvestResult.CLAIM;
         }
         return HarvestResult.PASS;
@@ -40,7 +44,7 @@ public abstract class BlockOreberryBushHarvestableMixin implements IHarvestableC
     public @NotNull NonNullList<ItemStack> harvestCrop(@Nullable EntityPlayer player, World world, BlockPos pos, boolean silkTouch, int fortune) {
         NonNullList<ItemStack> drops = NonNullList.create();
         IBlockState state = world.getBlockState(pos);
-        if(state.getBlock() instanceof BlockOreberryBush && state.getBlock() instanceof IHarvestableCrop && this.getHarvestResult(world, pos) == HarvestResult.HARVEST) {
+        if (state.getBlock() instanceof BlockOreberryBush && state.getBlock() instanceof IHarvestableCrop && this.getHarvestResult(world, pos) == HarvestResult.HARVEST) {
             drops.add(getBerriesStack(world.rand));
             world.setBlockState(pos, state.withProperty(AGE, 2));
         }

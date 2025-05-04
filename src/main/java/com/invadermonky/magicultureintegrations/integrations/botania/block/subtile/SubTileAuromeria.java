@@ -25,47 +25,6 @@ public class SubTileAuromeria extends SubTileFunctional implements IConfigurable
 
     protected int visPower = 0;
 
-    @Override
-    public void onUpdate() {
-        super.onUpdate();
-
-        //Slight delay before this flower activates.
-        if(this.ticksExisted <= 60)
-            return;
-
-        World world = supertile.getWorld();
-        if(!world.isRemote && this.redstoneSignal <= 0 && this.ticksExisted % 20 == 0) {
-            boolean did = false;
-            BlockPos flowerPos = supertile.getPos();
-            float flux = AuraHelper.getFlux(world, flowerPos);
-            float vis = AuraHelper.getVis(world, flowerPos);
-            int base = AuraHelper.getAuraBase(world, flowerPos);
-            float fluxPercent = flux / base;
-            boolean canDrain = vis >= 1.0f && ((vis / base) > 0.4 || (flux + vis) >= base);
-            boolean drainedFlux = false;
-
-            if(canDrain && this.visPower <= 0) {
-                AuraHelper.drainVis(world, flowerPos, 1.0f, false);
-                this.visPower += 100;
-            }
-
-            if(this.mana >= manaCost && this.visPower > 0) {
-                if(flux > 0 && world.rand.nextFloat() < (MIConfigAdditions.botania.auromeria.fluxDrainChance + fluxPercent)) {
-                    AuraHelper.drainFlux(world, flowerPos, (float) MIConfigAdditions.botania.auromeria.fluxDrainAmount, false);
-                    drainedFlux = true;
-                }
-                this.mana -= manaCost;
-                this.visPower -= visPowerCost;
-                spawnFluxBurst(world, flowerPos, drainedFlux);
-                did = true;
-            }
-
-            if (did) {
-                this.sync();
-            }
-        }
-    }
-
     public void spawnFluxBurst(World world, BlockPos pos, boolean drainedFlux) {
         EntityManaBurst burst = new EntityManaBurst(world);
         burst.setBurstSourceCoords(pos);
@@ -90,13 +49,54 @@ public class SubTileAuromeria extends SubTileFunctional implements IConfigurable
     }
 
     @Override
-    public int getColor() {
-        return 16711808;
+    public void onUpdate() {
+        super.onUpdate();
+
+        //Slight delay before this flower activates.
+        if (this.ticksExisted <= 60)
+            return;
+
+        World world = supertile.getWorld();
+        if (!world.isRemote && this.redstoneSignal <= 0 && this.ticksExisted % 20 == 0) {
+            boolean did = false;
+            BlockPos flowerPos = supertile.getPos();
+            float flux = AuraHelper.getFlux(world, flowerPos);
+            float vis = AuraHelper.getVis(world, flowerPos);
+            int base = AuraHelper.getAuraBase(world, flowerPos);
+            float fluxPercent = flux / base;
+            boolean canDrain = vis >= 1.0f && ((vis / base) > 0.4 || (flux + vis) >= base);
+            boolean drainedFlux = false;
+
+            if (canDrain && this.visPower <= 0) {
+                AuraHelper.drainVis(world, flowerPos, 1.0f, false);
+                this.visPower += 100;
+            }
+
+            if (this.mana >= manaCost && this.visPower > 0) {
+                if (flux > 0 && world.rand.nextFloat() < (MIConfigAdditions.botania.auromeria.fluxDrainChance + fluxPercent)) {
+                    AuraHelper.drainFlux(world, flowerPos, (float) MIConfigAdditions.botania.auromeria.fluxDrainAmount, false);
+                    drainedFlux = true;
+                }
+                this.mana -= manaCost;
+                this.visPower -= visPowerCost;
+                spawnFluxBurst(world, flowerPos, drainedFlux);
+                did = true;
+            }
+
+            if (did) {
+                this.sync();
+            }
+        }
     }
 
     @Override
     public int getMaxMana() {
         return manaCost * 5;
+    }
+
+    @Override
+    public int getColor() {
+        return 16711808;
     }
 
     @Override

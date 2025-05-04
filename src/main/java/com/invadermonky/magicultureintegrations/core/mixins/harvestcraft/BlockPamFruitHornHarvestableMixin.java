@@ -14,6 +14,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.fml.common.Optional;
+import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import vazkii.botania.api.item.IHornHarvestable;
@@ -25,10 +26,14 @@ public abstract class BlockPamFruitHornHarvestableMixin extends Block implements
         super(blockMaterialIn, blockMapColorIn);
     }
 
-    @Shadow public abstract int getMatureAge();
-    @Shadow public abstract void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune);
+    @Shadow
+    public abstract int getMatureAge();
 
-    @Shadow public abstract Item getFruitItem();
+    @Shadow
+    public abstract void getDrops(@NotNull NonNullList<ItemStack> drops, @NotNull IBlockAccess world, @NotNull BlockPos pos, @NotNull IBlockState state, int fortune);
+
+    @Shadow
+    public abstract Item getFruitItem();
 
     @Optional.Method(modid = ModIds.ConstIds.botania)
     @Override
@@ -46,11 +51,11 @@ public abstract class BlockPamFruitHornHarvestableMixin extends Block implements
     @Override
     public void harvestByHorn(World world, BlockPos pos, ItemStack hornStack, EnumHornType enumHornType) {
         IBlockState state = world.getBlockState(pos);
-        if(enumHornType == EnumHornType.CANOPY || (BlockPamFruit.fruitRemoval && state.getValue(BlockPamFruit.AGE) >= this.getMatureAge())) {
+        if (enumHornType == EnumHornType.CANOPY || (BlockPamFruit.fruitRemoval && state.getValue(BlockPamFruit.AGE) >= this.getMatureAge())) {
             this.dropBlockAsItem(world, pos, state, 0);
             world.playEvent(Constants.WorldEvents.BREAK_BLOCK_EFFECTS, pos, Block.getStateId(world.getBlockState(pos)));
-        } else if(enumHornType == EnumHornType.WILD) {
-            if(state.getValue(BlockPamFruit.AGE) >= this.getMatureAge()) {
+        } else if (enumHornType == EnumHornType.WILD) {
+            if (state.getValue(BlockPamFruit.AGE) >= this.getMatureAge()) {
                 NonNullList<ItemStack> drops = NonNullList.create();
                 this.getDrops(drops, world, pos, state, 0);
                 drops.remove(drops.size() - 1);

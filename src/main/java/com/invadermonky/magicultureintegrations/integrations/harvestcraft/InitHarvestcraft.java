@@ -1,8 +1,7 @@
 package com.invadermonky.magicultureintegrations.integrations.harvestcraft;
 
-import com.invadermonky.magicultureintegrations.api.mods.IIntegrationModule;
+import com.invadermonky.magicultureintegrations.api.mods.IntegrationModule;
 import com.invadermonky.magicultureintegrations.config.MIConfigFixes;
-import com.invadermonky.magicultureintegrations.util.IntegrationList;
 import com.pam.harvestcraft.blocks.BlockRegistry;
 import gnu.trove.set.hash.THashSet;
 import net.minecraft.item.Item;
@@ -11,12 +10,12 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class InitHarvestcraft implements IIntegrationModule {
-    private final IntegrationList integrations = new IntegrationList("Pam's Harvestcraft");
+public class InitHarvestcraft extends IntegrationModule {
+    private final THashSet<Item> harvestcraftMachines = new THashSet<>();
 
-    private THashSet<Item> harvestcraftMachines = new THashSet<>(
-
-    );
+    public InitHarvestcraft() {
+        super("Pam's Harvestcraft");
+    }
 
     @Override
     public void buildModIntegrations() {
@@ -24,13 +23,8 @@ public class InitHarvestcraft implements IIntegrationModule {
     }
 
     @Override
-    public IntegrationList getModIntegrations() {
-        return this.integrations;
-    }
-
-    @Override
     public void preInit() {
-        if(MIConfigFixes.harvestcraft.fix_machine_burntime)
+        if (MIConfigFixes.harvestcraft.fix_machine_burntime)
             MinecraftForge.EVENT_BUS.register(this);
     }
 
@@ -48,7 +42,7 @@ public class InitHarvestcraft implements IIntegrationModule {
     @SubscribeEvent
     public void onFurnaceFuelBurnTime(FurnaceFuelBurnTimeEvent event) {
         ItemStack stack = event.getItemStack();
-        if(harvestcraftMachines.contains(stack.getItem())) {
+        if (harvestcraftMachines.contains(stack.getItem())) {
             event.setBurnTime(0);
         }
     }

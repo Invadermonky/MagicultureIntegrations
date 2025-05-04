@@ -19,16 +19,17 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 public class MagicultureIntegrations {
     public static final String MOD_ID = "magicultureintegrations";
     public static final String MOD_NAME = "Magiculture Integrations";
-    public static final String MOD_VERSION = "1.12.2-2.1.2";
+    public static final String MOD_VERSION = "2.1.3";
     public static final String MC_VERSION = "[1.12.2]";
     public static final String DEPENDENCIES =
-            ";required-after:mixinbooter@[9.0,)" +
-            ";required-after:configanytime@[3.0,)" +
-            ";after:" + ModIds.ConstIds.bloodmagic +
-            ";after:" + ModIds.ConstIds.botania +
-            ";after:" + ModIds.ConstIds.embers +
-            ";after:" + ModIds.ConstIds.natures_aura +
-            ";after:" + ModIds.ConstIds.patchouli;
+            ";required-after:mixinbooter@[10.5,)" +
+                    ";required-after:configanytime@[3.0,)" +
+                    ";after:" + ModIds.ConstIds.bloodmagic +
+                    ";after:" + ModIds.ConstIds.botania +
+                    ";after:" + ModIds.ConstIds.embers +
+                    ";after:" + ModIds.ConstIds.natures_aura +
+                    ";after:" + ModIds.ConstIds.patchouli +
+                    ";after:" + ModIds.ConstIds.quark;
 
     public static final String ProxyClientClass = "com.invadermonky." + MOD_ID + ".proxy.ClientProxy";
     public static final String ProxyServerClass = "com.invadermonky." + MOD_ID + ".proxy.CommonProxy";

@@ -19,6 +19,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.ThaumcraftApiHelper;
@@ -61,41 +62,36 @@ public class ItemLensFlux extends Item implements ILensControl, ICompositableLen
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+    public void addInformation(@NotNull ItemStack stack, @Nullable World worldIn, @NotNull List<String> tooltip, @NotNull ITooltipFlag flagIn) {
         int storedColor = ItemLens.getStoredColor(stack);
         if (storedColor != -1) {
             tooltip.add(I18n.format("botaniamisc.color", I18n.format("botania.color" + storedColor)));
         }
     }
 
+    @Override
+    public @NotNull String getItemStackDisplayName(@NotNull ItemStack stack) {
+        ItemStack compositeLens = this.getCompositeLens(stack);
+        return compositeLens.isEmpty() ? super.getItemStackDisplayName(stack) : String.format(net.minecraft.util.text.translation.I18n.translateToLocal("item.botania:compositeLens.name"), this.getItemShortTermName(stack), this.getItemShortTermName(compositeLens));
+    }
+
     private String getItemShortTermName(ItemStack stack) {
-        if(stack.getItem() == ModItems.lens) {
+        if (stack.getItem() == ModItems.lens) {
             return net.minecraft.util.text.translation.I18n.translateToLocal(stack.getTranslationKey().replaceAll("item.", "item.botania:") + ".short");
         }
         return I18n.format(StringHelper.getTranslationKey(ITEM_ID, "item", "short"));
     }
 
     @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        ItemStack compositeLens = this.getCompositeLens(stack);
-        return compositeLens.isEmpty() ? super.getItemStackDisplayName(stack) : String.format(net.minecraft.util.text.translation.I18n.translateToLocal("item.botania:compositeLens.name"), this.getItemShortTermName(stack), this.getItemShortTermName(compositeLens));
-    }
-
-    @Override
-    public int getManaToTransfer(IManaBurst burst, EntityThrowable entity, ItemStack stack, IManaReceiver receiver) {
-        return getLens().getManaToTransfer(burst, entity, stack, receiver);
-    }
-
-    @Override
     public void apply(ItemStack stack, BurstProperties props) {
         int storedColor = ItemLens.getStoredColor(stack);
-        if(storedColor != -1) {
+        if (storedColor != -1) {
             props.color = this.getLensColor(stack);
         }
 
         getLens().apply(stack, props);
         ItemStack compositeLens = this.getCompositeLens(stack);
-        if(!compositeLens.isEmpty() && compositeLens.getItem() instanceof ILens) {
+        if (!compositeLens.isEmpty() && compositeLens.getItem() instanceof ILens) {
             ((ILens) compositeLens.getItem()).apply(compositeLens, props);
         }
     }
@@ -105,7 +101,7 @@ public class ItemLensFlux extends Item implements ILensControl, ICompositableLen
         EntityThrowable entity = (EntityThrowable) burst;
         dead = getLens().collideBurst(burst, entity, rayTrace, isManaBlock, dead, stack);
         ItemStack compositeLens = getCompositeLens(stack);
-        if(!compositeLens.isEmpty() && compositeLens.getItem() instanceof ILens) {
+        if (!compositeLens.isEmpty() && compositeLens.getItem() instanceof ILens) {
             dead = ((ILens) compositeLens.getItem()).collideBurst(burst, rayTrace, isManaBlock, dead, compositeLens);
         }
         return dead;
@@ -115,13 +111,13 @@ public class ItemLensFlux extends Item implements ILensControl, ICompositableLen
     public void updateBurst(IManaBurst burst, ItemStack stack) {
         EntityThrowable entity = (EntityThrowable) burst;
         int storedColor = ItemLens.getStoredColor(stack);
-        if(storedColor == 16 && entity.world.isRemote) {
+        if (storedColor == 16 && entity.world.isRemote) {
             burst.setColor(this.getLensColor(stack));
         }
 
         getLens().updateBurst(burst, entity, stack);
         ItemStack compositeLens = getCompositeLens(stack);
-        if(!compositeLens.isEmpty() && compositeLens.getItem() instanceof ILens) {
+        if (!compositeLens.isEmpty() && compositeLens.getItem() instanceof ILens) {
             ((ILens) compositeLens.getItem()).updateBurst(burst, compositeLens);
         }
     }
@@ -129,6 +125,11 @@ public class ItemLensFlux extends Item implements ILensControl, ICompositableLen
     @Override
     public boolean doParticles(IManaBurst iManaBurst, ItemStack itemStack) {
         return true;
+    }
+
+    @Override
+    public int getManaToTransfer(IManaBurst burst, EntityThrowable entity, ItemStack stack, IManaReceiver receiver) {
+        return getLens().getManaToTransfer(burst, entity, stack, receiver);
     }
 
     @Override
@@ -157,7 +158,7 @@ public class ItemLensFlux extends Item implements ILensControl, ICompositableLen
         if (storedColor == -1) {
             return 16777215;
         } else {
-            return storedColor == 16 ? Color.HSBtoRGB((float)(Botania.proxy.getWorldElapsedTicks() * 2L % 360L) / 360.0F, 1.0F, 1.0F) : EnumDyeColor.byMetadata(storedColor).getColorValue();
+            return storedColor == 16 ? Color.HSBtoRGB((float) (Botania.proxy.getWorldElapsedTicks() * 2L % 360L) / 360.0F, 1.0F, 1.0F) : EnumDyeColor.byMetadata(storedColor).getColorValue();
         }
     }
 
@@ -165,9 +166,9 @@ public class ItemLensFlux extends Item implements ILensControl, ICompositableLen
     public boolean canCombineLenses(ItemStack sourceLens, ItemStack compositeLens) {
         ICompositableLens sourceItem = (ICompositableLens) sourceLens.getItem();
         ICompositableLens compositeItem = (ICompositableLens) compositeLens.getItem();
-        if(sourceItem == compositeItem && sourceLens.getMetadata() == compositeLens.getMetadata()) {
+        if (sourceItem == compositeItem && sourceLens.getMetadata() == compositeLens.getMetadata()) {
             return false;
-        } else if(sourceItem.isCombinable(sourceLens) && compositeItem.isCombinable(compositeLens)) {
+        } else if (sourceItem.isCombinable(sourceLens) && compositeItem.isCombinable(compositeLens)) {
             return !isBlacklisted(sourceLens, compositeLens);
         }
         return false;

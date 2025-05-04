@@ -34,9 +34,31 @@ import java.util.List;
 
 public class ASSpartanWeaponry implements IProxy {
 
+    public static boolean canBeSharpened(@Nonnull ItemStack stack) {
+        if (stack.isEmpty()) {
+            return false;
+        } else {
+            Item item = stack.getItem();
+            if (item instanceof CrystalPropertyItem || !(item instanceof ItemThrowingWeapon)) {
+                return false;
+            } else if (SwordSharpenHelper.isSharpenableItem(stack)) {
+                return false;
+            }
+            return !SwordSharpenHelper.blacklistedSharpenableSwordClassNames.contains(item.getClass().getName());
+        }
+    }
+
+    public static boolean isWeaponSharpened(@Nonnull ItemStack stack) {
+        return canBeSharpened(stack) && stack.hasTagCompound() && NBTHelper.getData(stack).getBoolean("sharp") && !SwordSharpenHelper.isSwordSharpened(stack);
+    }
+
+    public static void setSharpened(@Nonnull ItemStack stack) {
+        NBTHelper.getData(stack).setBoolean("sharp", true);
+    }
+
     @Override
     public void preInit() {
-        if(MIConfigIntegrations.astral_sorcery.spartan_weaponry_thrown)
+        if (MIConfigIntegrations.astral_sorcery.spartan_weaponry_thrown)
             MinecraftForge.EVENT_BUS.register(this);
     }
 
@@ -58,7 +80,7 @@ public class ASSpartanWeaponry implements IProxy {
                 player = (EntityPlayer) source.getTrueSource();
             } else if (source.getTrueSource() instanceof EntityThrownWeapon) {
                 Entity shooter = ((EntityThrownWeapon) source.getTrueSource()).shootingEntity;
-                if (shooter != null && shooter instanceof EntityPlayer) {
+                if (shooter instanceof EntityPlayer) {
                     player = (EntityPlayer) shooter;
                 } else {
                     return;
@@ -67,7 +89,7 @@ public class ASSpartanWeaponry implements IProxy {
                 return;
             }
             ItemStack held = player.getHeldItemMainhand();
-            if(isWeaponSharpened(held)) {
+            if (isWeaponSharpened(held)) {
                 event.setAmount(event.getAmount() * (1 + ((float) Config.swordSharpMultiplier)));
             }
         }
@@ -80,7 +102,7 @@ public class ASSpartanWeaponry implements IProxy {
         ItemStack stack = event.getItemStack();
         if (isWeaponSharpened(stack)) {
             List<String> newTooltip = new LinkedList<>();
-            if(toolTip.size() > 1) {
+            if (toolTip.size() > 1) {
                 newTooltip.addAll(toolTip);
                 newTooltip.add(1, I18n.format("misc.sword.sharpened", Math.round(Config.swordSharpMultiplier * 100) + "%"));
             } else {
@@ -90,29 +112,6 @@ public class ASSpartanWeaponry implements IProxy {
             toolTip.clear();
             toolTip.addAll(newTooltip);
         }
-    }
-
-
-    public static boolean canBeSharpened(@Nonnull ItemStack stack) {
-        if(stack.isEmpty()) {
-            return false;
-        } else {
-            Item item = stack.getItem();
-            if(item instanceof CrystalPropertyItem || !(item instanceof ItemThrowingWeapon)) {
-                return false;
-            } else if(SwordSharpenHelper.isSharpenableItem(stack)) {
-                return false;
-            }
-            return !SwordSharpenHelper.blacklistedSharpenableSwordClassNames.contains(item.getClass().getName());
-        }
-    }
-
-    public static boolean isWeaponSharpened(@Nonnull ItemStack stack) {
-        return canBeSharpened(stack) && stack.hasTagCompound() && NBTHelper.getData(stack).getBoolean("sharp") && !SwordSharpenHelper.isSwordSharpened(stack);
-    }
-
-    public static void setSharpened(@Nonnull ItemStack stack) {
-        NBTHelper.getData(stack).setBoolean("sharp", true);
     }
 
     public static class ThrowingWeaponSharpeningRecipe extends GrindstoneRecipe {
@@ -132,7 +131,7 @@ public class ASSpartanWeaponry implements IProxy {
 
         @Override
         public @NotNull GrindResult grind(ItemStack stackIn) {
-            if(canBeSharpened(stackIn) && rand.nextInt(this.chance) == 0) {
+            if (canBeSharpened(stackIn) && rand.nextInt(this.chance) == 0) {
                 ItemStack copy = ItemUtils.copyStackWithSize(stackIn, stackIn.getCount());
                 setSharpened(copy);
                 return GrindResult.itemChange(copy);

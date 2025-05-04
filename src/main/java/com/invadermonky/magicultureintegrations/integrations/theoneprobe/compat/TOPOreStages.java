@@ -27,8 +27,8 @@ public class TOPOreStages implements Function<ITheOneProbe, Void>, IConfigurable
         input.registerBlockDisplayOverride((mode, probeInfo, player, world, state, data) -> {
             IBlockState checkState = state;
             Tuple<String, IBlockState> stageInfo = OreTiersAPI.getStageInfo(checkState);
-            while(stageInfo != null) {
-                if(GameStageHelper.hasStage(player, stageInfo.getFirst())) {
+            while (stageInfo != null) {
+                if (GameStageHelper.hasStage(player, stageInfo.getFirst())) {
                     break;
                 } else {
                     checkState = stageInfo.getSecond();

@@ -1,4 +1,16 @@
 # Changelog
+## 1.12.2-2.1.4
+
+---
+
+## 1.12.2-2.1.3
+### Added
+- Fixed Animania seed placing dispenser logic when Botania or Quark are loaded
+### Changed
+- Minor internal tweaks to IntegrationModule API class to improve future additions
+### Fixed
+- Fixed small remap bug with Bound Tool Mixin
+- Fixed internal versioning
 
 ## 1.12.2-2.1.2
 ### Added

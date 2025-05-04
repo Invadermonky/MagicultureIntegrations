@@ -1,8 +1,7 @@
 package com.invadermonky.magicultureintegrations.integrations.qualitytools;
 
-import com.invadermonky.magicultureintegrations.api.mods.IIntegrationModule;
+import com.invadermonky.magicultureintegrations.api.mods.IntegrationModule;
 import com.invadermonky.magicultureintegrations.config.MIConfigTweaks;
-import com.invadermonky.magicultureintegrations.util.IntegrationList;
 import com.invadermonky.magicultureintegrations.util.ReflectionHelper;
 import com.tmtravlr.qualitytools.QualityToolsHelper;
 import com.tmtravlr.qualitytools.reforging.GuiReforgingStation;
@@ -17,22 +16,19 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.jetbrains.annotations.NotNull;
 
-public class InitQualityTools implements IIntegrationModule {
-    private final IntegrationList integrations = new IntegrationList("Quality Tools");
-
-    @Override
-    public void buildModIntegrations() {}
+public class InitQualityTools extends IntegrationModule {
+    public InitQualityTools() {
+        super("Quality Tools");
+    }
 
     @Override
-    public @NotNull IntegrationList getModIntegrations() {
-        return this.integrations;
+    public void buildModIntegrations() {
     }
 
     @Override
     public void preInit() {
-        if(MIConfigTweaks.quality_tools.gui_quality_text) {
+        if (MIConfigTweaks.quality_tools.gui_quality_text) {
             MinecraftForge.EVENT_BUS.register(this);
         }
     }
@@ -41,14 +37,14 @@ public class InitQualityTools implements IIntegrationModule {
     @SubscribeEvent
     public void onGuiScreenDrawForeground(GuiContainerEvent.DrawForeground event) {
         GuiScreen guiScreen = event.getGuiContainer();
-        if(guiScreen instanceof GuiReforgingStation) {
+        if (guiScreen instanceof GuiReforgingStation) {
             GuiReforgingStation reforgeGui = (GuiReforgingStation) guiScreen;
             try {
                 TileEntityReforgingStation tile = (TileEntityReforgingStation) ReflectionHelper.getFieldObject(reforgeGui, "tileReforgingStation");
                 ItemStack reforgeStack = tile.getStackInSlot(0);
-                if(QualityToolsHelper.hasQualityTag(reforgeStack)) {
+                if (QualityToolsHelper.hasQualityTag(reforgeStack)) {
                     NBTTagCompound qualityTag = QualityToolsHelper.getQualityTag(reforgeStack);
-                    if(qualityTag.hasKey(QualityToolsHelper.TAG_NAME_NAME)) {
+                    if (qualityTag.hasKey(QualityToolsHelper.TAG_NAME_NAME)) {
                         String qualityStr = I18n.format(qualityTag.getString(QualityToolsHelper.TAG_NAME_NAME));
                         Minecraft.getMinecraft().fontRenderer.drawString(
                                 I18n.format(qualityStr),
@@ -57,7 +53,8 @@ public class InitQualityTools implements IIntegrationModule {
                                 0x303030);
                     }
                 }
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+            }
         }
     }
 }

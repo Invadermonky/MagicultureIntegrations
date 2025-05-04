@@ -22,8 +22,8 @@ public class RenderCrystalSorter extends TileEntitySpecialRenderer<TileCrystalSo
     @Override
     public void render(TileCrystalSorter te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
         ItemStack crystalStack = te.getProcessingCrystal();
-        if(canRenderCrystal(te, crystalStack)) {
-            if(crystalStack.getItem() instanceof ItemHighlighted) {
+        if (canRenderCrystal(te, crystalStack)) {
+            if (crystalStack.getItem() instanceof ItemHighlighted) {
                 this.highlightColor = ((ItemHighlighted) crystalStack.getItem()).getHightlightColor(crystalStack);
             }
             RenderingUtils.renderItemAsEntity(crystalStack, x, y + 0.25, z, partialTicks, te.getTicksExisted());

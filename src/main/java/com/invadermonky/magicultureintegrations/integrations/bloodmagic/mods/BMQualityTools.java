@@ -14,21 +14,21 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class BMQualityTools implements IProxy {
     @Override
     public void preInit() {
-        if(MIConfigIntegrations.blood_magic.sentient_armor_quality) {
+        if (MIConfigIntegrations.blood_magic.sentient_armor_quality) {
             MinecraftForge.EVENT_BUS.register(this);
         }
     }
 
     @SubscribeEvent
     public void onEquipmentChangePre(LivingEquipmentChangeEvent event) {
-        if(event.getEntity().world.isRemote)
+        if (event.getEntity().world.isRemote)
             return;
 
-        if(event.getEntity() instanceof EntityPlayer) {
+        if (event.getEntity() instanceof EntityPlayer) {
             ItemStack oldArmor = event.getFrom();
             ItemStack newArmor = event.getTo();
-            if(newArmor.getItem() instanceof ItemSentientArmour) {
-                if(QualityToolsHelper.hasQualityTag(oldArmor)) {
+            if (newArmor.getItem() instanceof ItemSentientArmour) {
+                if (QualityToolsHelper.hasQualityTag(oldArmor)) {
                     NBTTagCompound qualityTag = QualityToolsHelper.getQualityTag(oldArmor);
                     newArmor.setTagInfo(QualityToolsHelper.TAG_NAME_QUALITY, qualityTag);
                 } else {

@@ -28,14 +28,14 @@ public class SubTileKekimurusMixin extends SubTileGenerating {
             cancellable = true
     )
     private void eatExperiment115Mixin(CallbackInfo ci, @Local BlockPos pos, @Local IBlockState state) {
-        if(state.getBlock() instanceof IKekimurusConsumable) {
+        if (state.getBlock() instanceof IKekimurusConsumable) {
             World world = this.supertile.getWorld();
             IKekimurusConsumable consumable = (IKekimurusConsumable) state.getBlock();
-            if(consumable.canBeConsumed(world, pos, state)) {
+            if (consumable.canBeConsumed(world, pos, state)) {
                 int mana = consumable.getManaGain(world, pos, state);
                 consumable.consumeBlock(world, pos, state);
                 world.playEvent(Constants.WorldEvents.BREAK_BLOCK_EFFECTS, pos, Block.getStateId(state));
-                world.playSound(null, this.supertile.getPos(), SoundEvents.ENTITY_GENERIC_EAT, SoundCategory.BLOCKS, 1.0F, 0.5F + (float)Math.random() * 0.5F);
+                world.playSound(null, this.supertile.getPos(), SoundEvents.ENTITY_GENERIC_EAT, SoundCategory.BLOCKS, 1.0F, 0.5F + (float) Math.random() * 0.5F);
                 this.mana += mana;
                 this.sync();
                 ci.cancel();

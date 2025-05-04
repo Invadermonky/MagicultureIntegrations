@@ -20,7 +20,7 @@ public interface IHarvestableCrop {
      * Returns the harvested crop location. This is normally the crop position, but it can be elsewhere, such as the
      * case with Pumpkins and Melons.
      *
-     * @param world The world object
+     * @param world   The world object
      * @param cropPos The crop position
      * @return The harvested block position
      */
@@ -29,13 +29,13 @@ public interface IHarvestableCrop {
     /**
      * <p>Returns whether this block belongs to this handler and whether it can be harvested.</p>
      * <u1>
-     *     <li>{@link HarvestResult#HARVEST} - This block belongs to this handler and is ready to be harvested.</li>
-     *     <li>{@link HarvestResult#CLAIM} - This block belongs to this handler but is not ready to be harvested.</li>
-     *     <li>{@link HarvestResult#PASS} - This block does not belong to this handler.</li>
+     * <li>{@link HarvestResult#HARVEST} - This block belongs to this handler and is ready to be harvested.</li>
+     * <li>{@link HarvestResult#CLAIM} - This block belongs to this handler but is not ready to be harvested.</li>
+     * <li>{@link HarvestResult#PASS} - This block does not belong to this handler.</li>
      * </u1>
      *
      * @param world The world object
-     * @param pos The crop position
+     * @param pos   The crop position
      * @return {@link HarvestResult} based on block harvestability
      */
     @Nonnull
@@ -48,11 +48,11 @@ public interface IHarvestableCrop {
      * <p><b>DO NOT</b> fire the {@link net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent} in this method.
      * The individual harvest handlers should fire the event.</p>
      *
-     * @param player The player or fake player harvesting the block.
-     * @param world The world object
-     * @param pos The crop position
+     * @param player    The player or fake player harvesting the block.
+     * @param world     The world object
+     * @param pos       The crop position
      * @param silkTouch If the crop is being harvested with silk touch
-     * @param fortune The fortune modifier on the tool harvested the crop
+     * @param fortune   The fortune modifier on the tool harvested the crop
      * @return A list of items containing all drops from the crop block.
      */
     @Nonnull

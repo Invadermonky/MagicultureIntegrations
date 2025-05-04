@@ -23,7 +23,7 @@ public abstract class BlockPamFruitLogHarvestableMixin implements IHarvestableCr
     @Override
     public @NotNull HarvestResult getHarvestResult(World world, BlockPos pos) {
         IBlockState state = world.getBlockState(pos);
-        if(state.getBlock() instanceof BlockPamFruit) {
+        if (state.getBlock() instanceof BlockPamFruit) {
             return state.getValue(BlockPamFruit.AGE) >= ((BlockPamFruit) state.getBlock()).getMatureAge() ? HarvestResult.HARVEST : HarvestResult.CLAIM;
         }
         return HarvestResult.PASS;
@@ -32,7 +32,7 @@ public abstract class BlockPamFruitLogHarvestableMixin implements IHarvestableCr
     @Override
     public @NotNull NonNullList<ItemStack> harvestCrop(@Nullable EntityPlayer player, World world, BlockPos pos, boolean silkTouch, int fortune) {
         NonNullList<ItemStack> drops = NonNullList.create();
-        if(this.getHarvestResult(world, pos) == HarvestResult.HARVEST) {
+        if (this.getHarvestResult(world, pos) == HarvestResult.HARVEST) {
             IBlockState state = world.getBlockState(pos);
             state.getBlock().getDrops(drops, world, pos, state, fortune);
             drops.remove(drops.size() - 1);

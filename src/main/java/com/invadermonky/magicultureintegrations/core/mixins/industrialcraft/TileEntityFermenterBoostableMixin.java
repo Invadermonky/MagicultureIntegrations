@@ -31,9 +31,14 @@ public abstract class TileEntityFermenterBoostableMixin extends TileEntityInvent
         type of tile entity would be difficult to code and very bad for performance.
      */
 
-    @Shadow @Final private FluidTank inputTank;
-    @Shadow @Final private FluidTank outputTank;
-    @Shadow private int heatBuffer;
+    @Shadow
+    @Final
+    private FluidTank inputTank;
+    @Shadow
+    @Final
+    private FluidTank outputTank;
+    @Shadow
+    private int heatBuffer;
 
     @Override
     public boolean isTrueBoostable() {
@@ -47,7 +52,7 @@ public abstract class TileEntityFermenterBoostableMixin extends TileEntityInvent
 
     @Override
     public boolean canSmeltBoostable() {
-        if(this.inputTank.getFluid() != null) {
+        if (this.inputTank.getFluid() != null) {
             IFermenterRecipeManager.FermentationProperty fp = Recipes.fermenter.getFermentationInformation(this.inputTank.getFluid().getFluid());
             EnumFacing dir = this.getFacing();
             TileEntity te = this.getWorld().getTileEntity(this.pos.offset(dir));

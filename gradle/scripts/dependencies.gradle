@@ -31,6 +31,7 @@ repositories {
 dependencies {
     implementation rfg.deobf('curse.maven:had-enough-items-557549:4543375')
     implementation 'com.cleanroommc:configanytime:3.0'
+    compileOnly 'org.jetbrains:annotations:24.0.0'
 
     // Mod Integrations
     def modMap = [:]

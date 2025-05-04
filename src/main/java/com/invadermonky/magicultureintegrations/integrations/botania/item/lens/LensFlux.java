@@ -24,10 +24,10 @@ import java.util.List;
 public class LensFlux extends Lens {
     @Override
     public boolean collideBurst(IManaBurst burst, EntityThrowable entity, RayTraceResult rayTrace, boolean isManaBlock, boolean dead, ItemStack stack) {
-        if(!entity.world.isRemote && !burst.isFake()) {
+        if (!entity.world.isRemote && !burst.isFake()) {
             BlockPos sourcePos = burst.getBurstSourceBlockPos();
 
-            if(rayTrace.entityHit == null && !isManaBlock && (rayTrace.getBlockPos() == null || !sourcePos.equals(rayTrace.getBlockPos()))) {
+            if (rayTrace.entityHit == null && !isManaBlock && (rayTrace.getBlockPos() == null || !sourcePos.equals(rayTrace.getBlockPos()))) {
                 createFluxExplosion(entity, (float) burst.getMana() / 50.0f, false);
             }
         } else {
@@ -39,25 +39,25 @@ public class LensFlux extends Lens {
 
     @Override
     public void updateBurst(IManaBurst burst, EntityThrowable entity, ItemStack stack) {
-        if(entity.world.isRemote)
+        if (entity.world.isRemote)
             return;
 
         AxisAlignedBB axis = (new AxisAlignedBB(entity.posX, entity.posY, entity.posZ, entity.lastTickPosX, entity.lastTickPosY, entity.lastTickPosZ)).grow(1.0);
         List<EntityLivingBase> entities = entity.world.getEntitiesWithinAABB(EntityLivingBase.class, axis);
 
-        for(EntityLivingBase living : entities) {
-            if(living instanceof EntityPlayer)
+        for (EntityLivingBase living : entities) {
+            if (living instanceof EntityPlayer)
                 continue;
 
-            if(living.hurtTime == 0) {
+            if (living.hurtTime == 0) {
                 int mana = burst.getMana();
                 int toDrain = Math.min(48, mana);
                 burst.setMana(mana - 16);
-                if(!burst.isFake()) {
+                if (!burst.isFake()) {
                     float damage = MIConfigAdditions.botania.auromeria.fluxBurstDamage * toDrain / 48;
                     living.attackEntityFrom(DamageSourceThaumcraft.taint, damage);
                     living.addPotionEffect(new PotionEffect(PotionFluxTaint.instance, 160));
-                    if(burst.getMana() <= 0) {
+                    if (burst.getMana() <= 0) {
                         entity.setDead();
                     }
                 }
@@ -74,7 +74,7 @@ public class LensFlux extends Lens {
     public void createFluxExplosion(EntityThrowable entity, float explosionStrength, boolean damageTerrain) {
         float flux = (float) (entity.world.rand.nextDouble() < MIConfigAdditions.botania.auromeria.pollutionChance ? MIConfigAdditions.botania.auromeria.pollutionAmount : 0);
         entity.world.createExplosion(entity, entity.posX, entity.posY, entity.posZ, explosionStrength, damageTerrain);
-        if(flux > 0) {
+        if (flux > 0) {
             BlockPos pos = entity.getPosition();
             AuraHandler.addFlux(entity.world, pos, flux);
             PacketHandler.INSTANCE.sendToAllAround(new PacketFXPollute(pos, flux * 10.0f), new NetworkRegistry.TargetPoint(entity.world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 32.0));

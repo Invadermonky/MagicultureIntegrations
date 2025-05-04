@@ -10,11 +10,17 @@ import thaumcraft.common.blocks.essentia.BlockSmelter;
 
 @Mixin(value = TileAbstractSmelter.class, remap = false)
 public abstract class TileAbstractSmelterHeatableMixin extends TileSyncableTickable implements ISidedInventory, IHeatableTile {
-    @Shadow public int smeltTime;
-    @Shadow public int furnaceCookTime;
-    @Shadow public int currentItemBurnTime;
-    @Shadow public int furnaceBurnTime;
-    @Shadow protected abstract boolean canSmelt();
+    @Shadow
+    public int smeltTime;
+    @Shadow
+    public int furnaceCookTime;
+    @Shadow
+    public int currentItemBurnTime;
+    @Shadow
+    public int furnaceBurnTime;
+
+    @Shadow
+    protected abstract boolean canSmelt();
 
     @Override
     public boolean canSmeltHeatable() {
@@ -32,6 +38,11 @@ public abstract class TileAbstractSmelterHeatableMixin extends TileSyncableTicka
     }
 
     @Override
+    public void setBurnTimeMaxHeatable(int burnTimeMax) {
+        this.currentItemBurnTime = burnTimeMax;
+    }
+
+    @Override
     public int getCookTimeHeatable() {
         return this.furnaceCookTime;
     }
@@ -39,11 +50,6 @@ public abstract class TileAbstractSmelterHeatableMixin extends TileSyncableTicka
     @Override
     public int getCookTimeMaxHeatable() {
         return this.smeltTime;
-    }
-
-    @Override
-    public void setBurnTimeMaxHeatable(int burnTimeMax) {
-        this.currentItemBurnTime = burnTimeMax;
     }
 
     @Override

@@ -26,10 +26,10 @@ public abstract class SubTileExoflameMixin extends SubTileFunctional {
             cancellable = true
     )
     private void onUpdateMixinFixed(CallbackInfo ci, @Local(ordinal = 0) LocalBooleanRef localRef, @Local TileEntity tile) {
-        if(tile == null || tile instanceof IExoflameHeatable)
+        if (tile == null || tile instanceof IExoflameHeatable)
             return;
 
-        if(tile instanceof IHeatableTile && !HeatableUtils.isHeatableBlacklisted(SubTileExoflame.class, tile)) {
+        if (tile instanceof IHeatableTile && !HeatableUtils.isHeatableBlacklisted(SubTileExoflame.class, tile)) {
             IHeatableTile heatable = (IHeatableTile) tile;
             if (heatable.canSmeltHeatable() && this.mana > 2) {
                 if (heatable.getBurnTimeHeatable() <= 2) {
@@ -44,14 +44,15 @@ public abstract class SubTileExoflameMixin extends SubTileFunctional {
                 localRef.set(true);
             }
 
-            if(this.mana <= 0) {
-                if(localRef.get()) this.sync();
+            if (this.mana <= 0) {
+                if (localRef.get())
+                    this.sync();
                 ci.cancel();
             }
-        } else if(tile instanceof IBoostableTile && !HeatableUtils.isHeatableBlacklisted(SubTileExoflame.class, tile)) {
+        } else if (tile instanceof IBoostableTile && !HeatableUtils.isHeatableBlacklisted(SubTileExoflame.class, tile)) {
             IBoostableTile boostable = (IBoostableTile) tile;
-            if(boostable.canSmeltBoostable() && this.mana > 2) {
-                if(this.ticksExisted % 2 == 0) {
+            if (boostable.canSmeltBoostable() && this.mana > 2) {
+                if (this.ticksExisted % 2 == 0) {
                     boostable.boostCookTimeBoostable(1);
                 }
                 this.mana = Math.max(0, this.mana - 2);
@@ -59,8 +60,9 @@ public abstract class SubTileExoflameMixin extends SubTileFunctional {
                 localRef.set(true);
             }
 
-            if(this.mana <= 0) {
-                if(localRef.get()) this.sync();
+            if (this.mana <= 0) {
+                if (localRef.get())
+                    this.sync();
                 ci.cancel();
             }
         }

@@ -14,6 +14,10 @@ import thaumcraft.common.lib.utils.CropUtils;
 public class CropUtilsMixin {
 
     /**
+     * @param world The world object
+     * @param pos   The crop harvest position
+     * @param cir   Boolean callback returnable, set to true if crop can be harvested, false if crop is not ready to be harvested
+     *              and ignored if the block is not a custom harvestable.
      * @author Invadermonky
      * @reason Adding support for special crop handlers to Thaumcraft Golems
      *
@@ -22,11 +26,6 @@ public class CropUtilsMixin {
      *
      * <p>This is part one of a two part mixin, the other found in {@link SealHarvestMixin}. This mixin handles the
      * 'should be harvested', while the other mixin actually handles the block harvest.</p>
-     *
-     * @param world The world object
-     * @param pos The crop harvest position
-     * @param cir Boolean callback returnable, set to true if crop can be harvested, false if crop is not ready to be harvested
-     *            and ignored if the block is not a custom harvestable.
      */
     @Inject(
             method = "isGrownCrop",
@@ -35,7 +34,7 @@ public class CropUtilsMixin {
     )
     private static void isGrownCropMixin(World world, BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
         IBlockState state = world.getBlockState(pos);
-        if(state.getBlock() instanceof IHarvestableCrop) {
+        if (state.getBlock() instanceof IHarvestableCrop) {
             IHarvestableCrop harvestable = (IHarvestableCrop) state.getBlock();
             switch (harvestable.getHarvestResult(world, pos)) {
                 case HARVEST:

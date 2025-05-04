@@ -18,9 +18,9 @@ import java.util.stream.Collectors;
 public class BMHarvestableCrop implements IHarvestHandler {
     @Override
     public boolean harvest(World world, BlockPos pos, IBlockState state, List<ItemStack> drops) {
-        if(state.getBlock() instanceof IHarvestableCrop) {
+        if (state.getBlock() instanceof IHarvestableCrop) {
             IHarvestableCrop harvestable = (IHarvestableCrop) state.getBlock();
-            if(harvestable.getHarvestResult(world, pos) == IHarvestableCrop.HarvestResult.HARVEST) {
+            if (harvestable.getHarvestResult(world, pos) == IHarvestableCrop.HarvestResult.HARVEST) {
                 drops.addAll(harvestable.harvestCrop(null, world, pos, false, 0).stream().filter(stack -> !stack.isEmpty()).collect(Collectors.toList()));
                 BlockPos harvestPos = harvestable.getHarvestPosition(world, pos);
                 world.playEvent(Constants.WorldEvents.BREAK_BLOCK_EFFECTS, harvestPos, Block.getStateId(world.getBlockState(harvestPos)));
@@ -32,7 +32,7 @@ public class BMHarvestableCrop implements IHarvestHandler {
 
     @Override
     public boolean test(World world, BlockPos pos, IBlockState state) {
-        if(state.getBlock() instanceof IHarvestableCrop) {
+        if (state.getBlock() instanceof IHarvestableCrop) {
             return ((IHarvestableCrop) state.getBlock()).getHarvestResult(world, pos) == IHarvestableCrop.HarvestResult.HARVEST;
         }
         return false;

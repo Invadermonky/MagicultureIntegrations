@@ -12,16 +12,23 @@ import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(value = TileEntityCokeOven.class, remap = false)
 public abstract class TileEntityCokeOvenBoostableMixin extends TileEntityMultiblockPart<TileEntityCokeOven> implements IIEInventory, IEBlockInterfaces.IActiveState, IEBlockInterfaces.IGuiTile, IEBlockInterfaces.IProcessTile, IBoostableTile {
-    @Shadow public int process;
-    @Shadow public int processMax;
-    @Shadow public abstract boolean isDummy();
-    @Shadow public abstract CokeOvenRecipe getRecipe();
-
-    @Shadow public abstract boolean getIsActive();
+    @Shadow
+    public int process;
+    @Shadow
+    public int processMax;
 
     protected TileEntityCokeOvenBoostableMixin(int[] structureDimensions) {
         super(structureDimensions);
     }
+
+    @Shadow
+    public abstract boolean isDummy();
+
+    @Shadow
+    public abstract CokeOvenRecipe getRecipe();
+
+    @Shadow
+    public abstract boolean getIsActive();
 
     @Override
     public boolean isTrueBoostable() {

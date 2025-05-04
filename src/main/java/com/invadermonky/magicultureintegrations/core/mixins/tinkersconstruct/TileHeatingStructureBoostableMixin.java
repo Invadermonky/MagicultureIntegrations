@@ -13,13 +13,17 @@ import java.util.IntSummaryStatistics;
 
 @Mixin(value = TileHeatingStructure.class, remap = false)
 public abstract class TileHeatingStructureBoostableMixin<T extends MultiblockDetection> extends TileMultiblock<T> implements IBoostableTile {
-    @Shadow protected int[] itemTemperatures;
-    @Shadow protected int[] itemTempRequired;
-    @Shadow public abstract boolean hasFuel();
+    @Shadow
+    protected int[] itemTemperatures;
+    @Shadow
+    protected int[] itemTempRequired;
 
     public TileHeatingStructureBoostableMixin(String name, int inventorySize) {
         super(name, inventorySize);
     }
+
+    @Shadow
+    public abstract boolean hasFuel();
 
     @Override
     public boolean isTrueBoostable() {
@@ -51,7 +55,7 @@ public abstract class TileHeatingStructureBoostableMixin<T extends MultiblockDet
 
     @Override
     public void boostCookTimeBoostable(int boostAmount) {
-        for(int i = 0; i < this.itemTempRequired.length; i++) {
+        for (int i = 0; i < this.itemTempRequired.length; i++) {
             this.itemTemperatures[i] = Math.min(this.itemTempRequired[i], this.itemTemperatures[i] + boostAmount);
         }
     }

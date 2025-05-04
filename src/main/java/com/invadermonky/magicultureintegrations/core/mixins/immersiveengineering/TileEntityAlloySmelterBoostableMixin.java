@@ -14,15 +14,20 @@ import javax.annotation.Nullable;
 
 @Mixin(value = TileEntityAlloySmelter.class, remap = false)
 public abstract class TileEntityAlloySmelterBoostableMixin extends TileEntityMultiblockPart<TileEntityAlloySmelter> implements IIEInventory, IEBlockInterfaces.IActiveState, IEBlockInterfaces.IGuiTile, IEBlockInterfaces.IProcessTile, IBoostableTile {
-    @Shadow public int process;
-    @Shadow public int processMax;
-    @Shadow @Nullable public abstract AlloyRecipe getRecipe();
-
-    @Shadow public int burnTime;
+    @Shadow
+    public int process;
+    @Shadow
+    public int processMax;
+    @Shadow
+    public int burnTime;
 
     protected TileEntityAlloySmelterBoostableMixin(int[] structureDimensions) {
         super(structureDimensions);
     }
+
+    @Shadow
+    @Nullable
+    public abstract AlloyRecipe getRecipe();
 
     @Override
     public boolean isTrueBoostable() {

@@ -26,7 +26,7 @@ public class BlockCropHarvestableMixin implements IHarvestableCrop {
     @Override
     public @NotNull HarvestResult getHarvestResult(World world, BlockPos pos) {
         Optional<TileEntityCrop> optional = WorldHelper.getTile(world, pos, TileEntityCrop.class);
-        if(optional.isPresent()) {
+        if (optional.isPresent()) {
             return optional.filter(IAgriCrop::canBeHarvested).isPresent() ? HarvestResult.HARVEST : HarvestResult.CLAIM;
         }
         return HarvestResult.PASS;

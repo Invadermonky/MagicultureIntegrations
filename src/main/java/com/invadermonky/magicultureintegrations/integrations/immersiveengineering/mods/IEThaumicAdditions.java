@@ -10,7 +10,7 @@ import org.zeith.thaumicadditions.tiles.TileAbstractSmelter;
 public class IEThaumicAdditions implements IProxy {
     @Override
     public void preInit() {
-        if(MIConfigIntegrations.immersive_engineering.external_heater_integrations.ta_essentia_smelter) {
+        if (MIConfigIntegrations.immersive_engineering.external_heater_integrations.ta_essentia_smelter) {
             ExternalHeaterHandler.registerHeatableAdapter(TileAbstractSmelter.class, new ThaumicAdditionsFurnaceAdapter());
         }
     }

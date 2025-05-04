@@ -18,11 +18,11 @@ public class ASEventSubscriber {
     public void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
         World world = event.getWorld();
         double dstr = ConstellationSkyHandler.getInstance().getCurrentDaytimeDistribution(event.getWorld());
-        if(world.isRemote || dstr <= 1.0E-4)
+        if (world.isRemote || dstr <= 1.0E-4)
             return;
 
         ItemStack stack = event.getItemStack();
-        if(ItemSkyResonator.hasUpgrade(stack, ResonatorUpgrade.FLUID_FIELDS) && ItemSkyResonator.getCurrentUpgrade(event.getEntityPlayer(), stack) == ResonatorUpgrade.FLUID_FIELDS) {
+        if (ItemSkyResonator.hasUpgrade(stack, ResonatorUpgrade.FLUID_FIELDS) && ItemSkyResonator.getCurrentUpgrade(event.getEntityPlayer(), stack) == ResonatorUpgrade.FLUID_FIELDS) {
             FluidRarityRegistry.ChunkFluidEntry fluidEntry = FluidRarityRegistry.getChunkEntry(world.getChunk(event.getPos()));
             FluidStack fluid = fluidEntry == null ? new FluidStack(FluidRegistry.WATER, 1) : fluidEntry.tryDrain(1, false);
             if (fluid == null || fluid.getFluid() == null) {

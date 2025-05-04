@@ -17,15 +17,15 @@ public class IntegrationList {
 
     public void addIntegration(ModIds owner, Class<? extends IProxy> integrationClass, ModIds... dependencies) {
         try {
-            if(owner.isLoaded) {
+            if (owner.isLoaded) {
                 boolean toLoad = true;
-                for(ModIds mod : dependencies) {
-                    if(!mod.isLoaded) {
+                for (ModIds mod : dependencies) {
+                    if (!mod.isLoaded) {
                         toLoad = false;
                         break;
                     }
                 }
-                if(toLoad) {
+                if (toLoad) {
                     modIntegrations.add(integrationClass.newInstance());
                     LogHelper.info("Loaded " + moduleName + " integration module: " + owner.modId);
                 }

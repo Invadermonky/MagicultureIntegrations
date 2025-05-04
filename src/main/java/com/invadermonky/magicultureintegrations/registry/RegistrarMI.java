@@ -24,12 +24,12 @@ public class RegistrarMI {
     public static final List<IProxy> PROXY_ADDITIONS = new ArrayList<>();
 
     public static <T extends IAddition> void registerAddition(T toRegister) {
-        if(toRegister != null && toRegister.isEnabled()) {
-            if(toRegister instanceof Block)
+        if (toRegister != null && toRegister.isEnabled()) {
+            if (toRegister instanceof Block)
                 MOD_BLOCKS.add((Block) toRegister);
-            if(toRegister instanceof Item)
+            if (toRegister instanceof Item)
                 MOD_ITEMS.add((Item) toRegister);
-            if(toRegister instanceof IProxy)
+            if (toRegister instanceof IProxy)
                 PROXY_ADDITIONS.add((IProxy) toRegister);
         }
     }
@@ -57,7 +57,7 @@ public class RegistrarMI {
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
     public static void registerModels(ModelRegistryEvent event) {
-        MOD_ITEMS.forEach(item -> ((IAddition) item).registerModels(event));;
+        MOD_ITEMS.forEach(item -> ((IAddition) item).registerModels(event));
         MOD_BLOCKS.forEach(block -> ((IAddition) block).registerModels(event));
     }
 

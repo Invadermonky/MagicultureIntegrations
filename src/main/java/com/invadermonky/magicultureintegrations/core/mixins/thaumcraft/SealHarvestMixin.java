@@ -25,7 +25,8 @@ import thaumcraft.common.golems.seals.SealHarvest;
 
 @Mixin(value = SealHarvest.class, remap = false)
 public abstract class SealHarvestMixin {
-    @Shadow public abstract ISealConfigToggles.SealToggle[] getToggles();
+    @Shadow
+    public abstract ISealConfigToggles.SealToggle[] getToggles();
 
     @Inject(
             method = "onTaskCompletion",
@@ -38,9 +39,9 @@ public abstract class SealHarvestMixin {
     private void onTaskCompletionMixin(World world, IGolemAPI golem, Task task, CallbackInfoReturnable<Boolean> cir, @Local FakePlayer player) {
         BlockPos pos = task.getPos();
         IBlockState state = world.getBlockState(pos);
-        if(state.getBlock() instanceof IHarvestableCrop) {
+        if (state.getBlock() instanceof IHarvestableCrop) {
             IHarvestableCrop harvestable = (IHarvestableCrop) state.getBlock();
-            if(harvestable.getHarvestResult(world, pos) == IHarvestableCrop.HarvestResult.HARVEST) {
+            if (harvestable.getHarvestResult(world, pos) == IHarvestableCrop.HarvestResult.HARVEST) {
                 BlockPos harvestPos = harvestable.getHarvestPosition(world, pos);
                 IBlockState harvestState = world.getBlockState(harvestPos);
                 world.playEvent(Constants.WorldEvents.BREAK_BLOCK_EFFECTS, harvestPos, Block.getStateId(harvestState));
@@ -50,7 +51,7 @@ public abstract class SealHarvestMixin {
 
                 if (!world.isRemote) {
                     EnumFacing dropFacing = null;
-                    if(!world.isAirBlock(harvestPos)) {
+                    if (!world.isAirBlock(harvestPos)) {
                         for (EnumFacing facing : EnumFacing.VALUES) {
                             if (world.isAirBlock(harvestPos.offset(facing))) {
                                 dropFacing = facing;

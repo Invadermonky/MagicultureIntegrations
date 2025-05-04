@@ -11,7 +11,7 @@ import thedarkcolour.futuremc.tile.TileFurnaceAdvanced;
 public class IEFutureMC implements IProxy {
     @Override
     public void preInit() {
-        if(MIConfigIntegrations.immersive_engineering.external_heater_integrations.fmc_advanced_furnaces) {
+        if (MIConfigIntegrations.immersive_engineering.external_heater_integrations.fmc_advanced_furnaces) {
             ExternalHeaterHandler.registerHeatableAdapter(TileFurnaceAdvanced.class, new FutureMCFurnaceAdapter());
         }
     }

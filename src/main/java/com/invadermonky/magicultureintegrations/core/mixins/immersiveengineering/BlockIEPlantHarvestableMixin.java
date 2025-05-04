@@ -16,9 +16,11 @@ import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(value = BlockIECrop.class, remap = false)
 public abstract class BlockIEPlantHarvestableMixin implements IHarvestableCrop {
-    @Shadow public abstract IBlockState getStateFromMeta(int meta);
+    @Shadow
+    public abstract IBlockState getStateFromMeta(int meta);
 
-    @Shadow public abstract int getMetaFromState(IBlockState state);
+    @Shadow
+    public abstract int getMetaFromState(IBlockState state);
 
     @Override
     public BlockPos getHarvestPosition(World world, BlockPos cropPos) {
@@ -29,7 +31,7 @@ public abstract class BlockIEPlantHarvestableMixin implements IHarvestableCrop {
     public @NotNull HarvestResult getHarvestResult(World world, BlockPos pos) {
         IBlockState state = world.getBlockState(pos);
         IBlockState upState = world.getBlockState(pos.up());
-        if(state.getBlock() == IEContent.blockCrop) {
+        if (state.getBlock() == IEContent.blockCrop) {
             return upState.getBlock() == IEContent.blockCrop ? HarvestResult.HARVEST : HarvestResult.CLAIM;
         }
         return HarvestResult.PASS;
@@ -38,7 +40,7 @@ public abstract class BlockIEPlantHarvestableMixin implements IHarvestableCrop {
     @Override
     public @NotNull NonNullList<ItemStack> harvestCrop(@Nullable EntityPlayer player, World world, BlockPos pos, boolean silkTouch, int fortune) {
         NonNullList<ItemStack> drops = NonNullList.create();
-        if(this.getHarvestResult(world, pos) == HarvestResult.HARVEST) {
+        if (this.getHarvestResult(world, pos) == HarvestResult.HARVEST) {
             IBlockState state = world.getBlockState(pos);
             IBlockState upState = world.getBlockState(pos.up());
             upState.getBlock().getDrops(drops, world, pos.up(), upState, fortune);
