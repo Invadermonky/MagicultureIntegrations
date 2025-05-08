@@ -10,7 +10,7 @@ import slimeknights.tconstruct.smeltery.tileentity.TileHeatingStructure;
 public class IETinkersConstruct implements IProxy {
     @Override
     public void preInit() {
-        if (MIConfigIntegrations.immersive_engineering.external_heater_integrations.tc_smeltery) {
+        if (MIConfigIntegrations.immersive_engineering.externalHeaterHeatables.tc_smeltery) {
             ExternalHeaterHandler.registerHeatableAdapter(TileHeatingStructure.class, new TinkersConstructFurnaceAdapter());
         }
     }

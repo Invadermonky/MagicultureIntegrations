@@ -11,10 +11,10 @@ import ic2.core.block.steam.TileEntityCokeKiln;
 public class IEIndustrialCraft implements IProxy {
     @Override
     public void preInit() {
-        if (MIConfigIntegrations.industrial_craft.boostable_blast_furnace && MIConfigIntegrations.immersive_engineering.external_heater_integrations.ic2_blast_furnace) {
+        if (MIConfigIntegrations.industrial_craft.boostableBlastFurnace && MIConfigIntegrations.immersive_engineering.externalHeaterHeatables.ic2_blast_furnace) {
             ExternalHeaterHandler.registerHeatableAdapter(TileEntityBlastFurnace.class, new IndustrialCraftBlastFurnaceAdapter());
         }
-        if (MIConfigIntegrations.industrial_craft.boostable_coke_kiln && MIConfigIntegrations.immersive_engineering.external_heater_integrations.ic2_coke_kiln) {
+        if (MIConfigIntegrations.industrial_craft.boostableCokeKiLn && MIConfigIntegrations.immersive_engineering.externalHeaterHeatables.ic2_coke_kiln) {
             ExternalHeaterHandler.registerHeatableAdapter(TileEntityCokeKiln.class, new IndustrialCraftCokeKilnAdapter());
         }
     }

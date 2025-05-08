@@ -27,7 +27,7 @@ public class MIConfigTweaks {
     public static class AstralSorceryTweaks {
         @Config.RequiresMcRestart
         @Config.Comment("Right clicking on a block at night while holding an Ichosic Resonator will display the fluid reservoir contained in that chunk.")
-        public boolean show_reservoir = true;
+        public boolean showReservoir = true;
     }
 
     public static class BloodMagicTweaks {
@@ -39,12 +39,12 @@ public class MIConfigTweaks {
                         "allowing drop modification through tweaker mods.  This fix is included in Universal Tweaks 1.15.0 and will",
                         "disable itself if UT is present."
                 })
-        public boolean bound_tool_tweak = true;
+        public boolean boundToolTweak = true;
 
         @Config.RequiresMcRestart
         @Config.Name("Cutting Fluid Tweak")
         @Config.Comment("Enables Cutting Fluid/Explosive Powder tweaks.")
-        public boolean cutting_fluid_tweak = true;
+        public boolean cuttingFluidTweak = true;
         @Config.Comment("Maximum Cutting Fluid uses before being consumed.")
         public int cuttingFluidMaxUses = 16;
         @Config.Comment("Maximum Explosive Powder uses before being consumed.")
@@ -53,12 +53,12 @@ public class MIConfigTweaks {
         @Config.RequiresMcRestart
         @Config.Name("Ritual of the Crusher")
         @Config.Comment("Ritual of the Crusher will now fire the HarvestBlockEvent, allowing drop modification through tweaker mods.")
-        public boolean ritual_crusher = true;
+        public boolean ritualCrusherTweak = true;
 
         @Config.RequiresMcRestart
         @Config.Name("Reap of the Harvest Moon")
         @Config.Comment("Reap of the Harvest Moon ritual will now fire the HarvestBlockEvent, allowing drop modification through tweaker mods.")
-        public boolean ritual_harvest = true;
+        public boolean ritualHarvestTweak = true;
 
         @Config.RequiresMcRestart
         @Config.Name("Ritual of Magnetism")
@@ -68,7 +68,7 @@ public class MIConfigTweaks {
                         "performance in areas that have been stripped by the ritual by preventing the ritual from leaving empty cavities",
                         "in the stone."
                 })
-        public boolean ritual_magnetic_replace = true;
+        public boolean ritualMagneticTweak = true;
 
         @Config.Name("Ritual of Magnetism Block Replacements")
         @Config.Comment
@@ -78,7 +78,7 @@ public class MIConfigTweaks {
                         "  Format: dimensionId=modid:blockid:meta",
                         "  0=minecraft:stone:0"
                 })
-        public String[] ritual_magnetic_replacements = {
+        public String[] ritualMagneticTweakReplacements = {
                 "-1=minecraft:netherrack:0",
                 "1=minecraft:end_stone:0"
         };
@@ -90,7 +90,7 @@ public class MIConfigTweaks {
         @Config.Name("Lax Spirit of Birthing")
         @Config.Comment("Reduces the requirements needed to spawn a Spirit of Birthing, fixing an issue that prevented some\n" +
                 "modded animals from spawning them when giving birth in high-aura chunks.")
-        public boolean loose_birthing_spirit = true;
+        public boolean birthingSpiritTweak = true;
     }
 
     public static class QualityToolsTweaks {

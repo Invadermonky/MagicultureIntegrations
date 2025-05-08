@@ -3,7 +3,6 @@ package com.invadermonky.magicultureintegrations.integrations.bloodmagic;
 import WayofTime.bloodmagic.alchemyArray.AlchemyArrayEffectFurnaceFuel;
 import WayofTime.bloodmagic.compat.guideapi.GuideBloodMagic;
 import WayofTime.bloodmagic.ritual.harvest.HarvestRegistry;
-import amerifrance.guideapi.api.IPage;
 import amerifrance.guideapi.api.impl.Book;
 import amerifrance.guideapi.api.impl.abstraction.CategoryAbstract;
 import amerifrance.guideapi.api.impl.abstraction.EntryAbstract;

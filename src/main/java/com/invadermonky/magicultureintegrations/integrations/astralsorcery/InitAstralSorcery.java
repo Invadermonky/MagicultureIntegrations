@@ -23,7 +23,7 @@ public class InitAstralSorcery extends IntegrationModule {
 
     @Override
     public void preInit() {
-        if (MIConfigTweaks.astral_sorcery.show_reservoir) {
+        if (MIConfigTweaks.astral_sorcery.showReservoir) {
             MinecraftForge.EVENT_BUS.register(new ASEventSubscriber());
         }
 

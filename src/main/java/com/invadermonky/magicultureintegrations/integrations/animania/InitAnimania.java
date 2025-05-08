@@ -2,6 +2,7 @@ package com.invadermonky.magicultureintegrations.integrations.animania;
 
 import com.animania.common.blocks.BlockSeeds;
 import com.invadermonky.magicultureintegrations.api.mods.IntegrationModule;
+import com.invadermonky.magicultureintegrations.config.MIConfigFixes;
 import com.invadermonky.magicultureintegrations.integrations.animania.dispenser.SeedDispenserBehavior;
 import com.invadermonky.magicultureintegrations.util.ModIds;
 import net.minecraft.block.Block;
@@ -21,7 +22,7 @@ public class InitAnimania extends IntegrationModule {
 
     @Override
     public void postInit() {
-        if (ModIds.botania.isLoaded || ModIds.quark.isLoaded) {
+        if (MIConfigFixes.animania.fixDispenserLogic && (ModIds.botania.isLoaded || ModIds.quark.isLoaded)) {
             registerSeedDispenserBehavior(Items.WHEAT_SEEDS, Blocks.WHEAT, BlockSeeds.EnumType.WHEAT);
             registerSeedDispenserBehavior(Items.PUMPKIN_SEEDS, Blocks.PUMPKIN_STEM, BlockSeeds.EnumType.PUMPKIN);
             registerSeedDispenserBehavior(Items.MELON_SEEDS, Blocks.MELON_STEM, BlockSeeds.EnumType.MELON);

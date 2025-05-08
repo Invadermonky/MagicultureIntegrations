@@ -20,6 +20,8 @@ While built for Magiculture 2, Magiculture Integrations features a robust config
 ## **🐞 Bugfixes**
 ### **Agricraft**
 - **Ender IO:**  Fixes crash caused by Agricraft's Ender IO Farming Station integration
+### **Animania**
+- **Dispenser Logic:** Fixes seed placement dispenser logic when Botania or Quark is loaded
 ### **Bewitchment**
 - **Witches' Oven:** Fixes Bewitchment's Witches' Oven consuming container items
 ### **Blood Magic**

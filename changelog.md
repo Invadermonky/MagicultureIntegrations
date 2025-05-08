@@ -1,16 +1,17 @@
 # Changelog
-## 1.12.2-2.1.4
-
----
-
 ## 1.12.2-2.1.3
 ### Added
-- Fixed Animania seed placing dispenser logic when Botania or Quark are loaded
+- Added fix for Animania seed placing dispenser logic when Botania or Quark is loaded
 ### Changed
 - Minor internal tweaks to IntegrationModule API class to improve future additions
+- Standardized some non-standard internal configuration names
 ### Fixed
 - Fixed small remap bug with Bound Tool Mixin
 - Fixed internal versioning
+- Fixed Mystical Agriculture heatable mixin not loading
+- Fixed Thaumcraft heatable essentia smelter configuration disable not working
+
+---
 
 ## 1.12.2-2.1.2
 ### Added

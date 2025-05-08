@@ -15,6 +15,6 @@ public class InitThaumcraft extends IntegrationModule {
 
     @Override
     public void postInit() {
-        MIConfigIntegrations.thaumcraft.bellows_integrations.registerHeatableBlacklists(TileBellows.class);
+        MIConfigIntegrations.thaumcraft.bellowsHeatables.registerHeatableBlacklists(TileBellows.class);
     }
 }

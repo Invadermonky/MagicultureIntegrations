@@ -27,8 +27,8 @@ public class InitBotania extends IntegrationModule {
 
     @Override
     public void postInit() {
-        if (MIConfigIntegrations.botania.exoflame_mixin) {
-            MIConfigIntegrations.botania.exoflame.registerHeatableBlacklists(SubTileExoflame.class);
+        if (MIConfigIntegrations.botania.exoflameMixin) {
+            MIConfigIntegrations.botania.exoflameHeatables.registerHeatableBlacklists(SubTileExoflame.class);
         }
     }
 }

@@ -24,7 +24,7 @@ public class InitHarvestcraft extends IntegrationModule {
 
     @Override
     public void preInit() {
-        if (MIConfigFixes.harvestcraft.fix_machine_burntime)
+        if (MIConfigFixes.harvestcraft.fixMachineBurntime)
             MinecraftForge.EVENT_BUS.register(this);
     }
 

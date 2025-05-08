@@ -10,7 +10,7 @@ import thaumcraft.common.tiles.essentia.TileSmelter;
 public class IEThaumcraft implements IProxy {
     @Override
     public void preInit() {
-        if (MIConfigIntegrations.immersive_engineering.external_heater_integrations.tc_essentia_smelter) {
+        if (MIConfigIntegrations.immersive_engineering.externalHeaterHeatables.tc_essentia_smelter) {
             ExternalHeaterHandler.registerHeatableAdapter(TileSmelter.class, new ThaumcraftFurnaceAdapter());
         }
     }

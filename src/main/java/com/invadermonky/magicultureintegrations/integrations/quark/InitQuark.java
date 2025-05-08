@@ -18,12 +18,12 @@ public class InitQuark extends IntegrationModule {
 
     @Override
     public void preInit() {
-        if (MIConfigIntegrations.quark.foxhound_heater)
+        if (MIConfigIntegrations.quark.foxhoundHeater)
             MinecraftForge.EVENT_BUS.register(new QuarkEventHandler());
     }
 
     @Override
     public void postInit() {
-        MIConfigIntegrations.quark.foxhound_integrations.registerHeatableBlacklists(EntityFoxhound.class);
+        MIConfigIntegrations.quark.foxhoundHeatables.registerHeatableBlacklists(EntityFoxhound.class);
     }
 }

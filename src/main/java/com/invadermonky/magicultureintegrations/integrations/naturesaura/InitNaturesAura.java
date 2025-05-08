@@ -18,12 +18,12 @@ public class InitNaturesAura extends IntegrationModule {
 
     @Override
     public void preInit() {
-        if (MIConfigTweaks.natures_aura.loose_birthing_spirit)
+        if (MIConfigTweaks.natures_aura.birthingSpiritTweak)
             MinecraftForge.EVENT_BUS.register(new NAEventHandler());
     }
 
     @Override
     public void postInit() {
-        MIConfigIntegrations.natures_aura.exteral_heater_integrations.registerHeatableBlacklists(TileEntityFurnaceHeater.class);
+        MIConfigIntegrations.natures_aura.extraneousHeaterHeatables.registerHeatableBlacklists(TileEntityFurnaceHeater.class);
     }
 }

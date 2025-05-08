@@ -47,7 +47,7 @@ public abstract class TileEntityBlastFurnaceBoostableMixin extends TileEntityMul
 
     @Override
     public boolean canSmeltBoostable() {
-        if (!MIConfigIntegrations.immersive_engineering.boostable_blast_furnace_improved && this.master() instanceof TileEntityBlastFurnaceAdvanced)
+        if (!MIConfigIntegrations.immersive_engineering.boostableBlastFurnaceImproved && this.master() instanceof TileEntityBlastFurnaceAdvanced)
             return false;
         return this.formed && this.getRecipe() != null && this.burnTime > 0 && this.process > 0;
     }

@@ -138,17 +138,18 @@ public class MIConfigIntegrations {
         @Config.RequiresMcRestart
         @Config.Name("Enable Exoflame Integrations")
         @Config.Comment("Global enable/disable for all Exoflame integrations")
-        public boolean exoflame_mixin = true;
+        public boolean exoflameMixin = true;
 
         @Config.RequiresMcRestart
         @Config.Name("Exoflame Integrations")
-        public ConfigHeatables exoflame = new ConfigHeatables();
+        public ConfigHeatables exoflameHeatables = new ConfigHeatables();
 
         @Config.Name("Horn/Drum of the Wild Integrations")
         public WildHornIntegrations wild_horn = new WildHornIntegrations();
 
         @Config.RequiresMcRestart
         @Config.Name("Enable Kekimurus Integrations")
+        @Config.Comment("Global enable/disable for all Kekimurus integrations")
         public boolean kekimurus_mixin = true;
 
         @Config.RequiresMcRestart
@@ -184,7 +185,7 @@ public class MIConfigIntegrations {
                         "Enables the IHeatableTile mixin injection, allowing the Oven to be heated and boosted by all supported",
                         "furnace heaters. For individual toggles see the specific heater integration configs."
                 })
-        public boolean heatable_oven = true;
+        public boolean heatableOven = true;
     }
 
     public static class EngineersDecorIntegrations {
@@ -195,7 +196,7 @@ public class MIConfigIntegrations {
                         "Enables the IHeatableTile mixin injection, allowing the Laboratory Furnace to be heated and boosted by",
                         "all supported furnace heaters. For individual toggles see the specific heater integration configs."
                 })
-        public boolean heatable_furnace = true;
+        public boolean heatableFurnace = true;
     }
 
     public static class FutureMCIntegrations {
@@ -206,7 +207,7 @@ public class MIConfigIntegrations {
                         "Enables the IHeatableTile mixin injection, allowing the Blast Furnace and Smoker to be heated and boosted",
                         "by all supported furnace heaters. For individual toggles see the specific heater integration configs."
                 })
-        public boolean heatable_advanced_furnaces = true;
+        public boolean heatableAdvancedFurnaces = true;
     }
 
     public static class HarvestcraftIntegrations {
@@ -224,7 +225,7 @@ public class MIConfigIntegrations {
                         "Enables the IBoostableTile mixin injection, allowing the Alloy Smelter to be boosted by all supported",
                         "furnace boosters. For individual toggles see the specific heater integration configs."
                 })
-        public boolean boostable_alloy_smelter = false;
+        public boolean boostableAlloySmelter = false;
 
         @Config.RequiresMcRestart
         @Config.Name("Boostable Blast Furnace")
@@ -233,12 +234,12 @@ public class MIConfigIntegrations {
                         "Enables the IBoostableTile mixin injection, allowing the Blast Furnace to be boosted by all supported",
                         "furnace boosters. For individual toggles see the specific heater integration configs."
                 })
-        public boolean boostable_blast_furnace = false;
+        public boolean boostableBlastFurnace = false;
 
         @Config.RequiresMcRestart
         @Config.Name("Boostable Improved Blast Furnace")
         @Config.Comment("Allows Furnace Boosters to also boost the Improved Blast Furnace.")
-        public boolean boostable_blast_furnace_improved = false;
+        public boolean boostableBlastFurnaceImproved = false;
 
         @Config.RequiresMcRestart
         @Config.Name("Boostable Coke Oven")
@@ -247,11 +248,11 @@ public class MIConfigIntegrations {
                         "Enables the IBoostableTile mixin injection, allowing the Coke Oven to be boosted by all supported",
                         "furnace boosters. For individual toggles see the specific heater integration configs."
                 })
-        public boolean boostable_coke_oven = false;
+        public boolean boostableCokeOven = false;
 
         @Config.RequiresMcRestart
         @Config.Name("External Heater Integrations")
-        public ExternalHeaterIntegrations external_heater_integrations = new ExternalHeaterIntegrations();
+        public ExternalHeaterIntegrations externalHeaterHeatables = new ExternalHeaterIntegrations();
 
         @Config.RequiresMcRestart
         @Config.Name("Harvestable Hemp")
@@ -260,7 +261,7 @@ public class MIConfigIntegrations {
                         "Enables the IHarvestableCrop mixin injection, allowing IE Hemp to be harvested by a number of",
                         "modded harvesters."
                 })
-        public boolean harvestable_mixin = true;
+        public boolean harvestableMixin = true;
 
         public static class ExternalHeaterIntegrations {
             @Config.RequiresMcRestart
@@ -304,7 +305,7 @@ public class MIConfigIntegrations {
                         "Enables the IBoostableTile mixin injection, allowing the Blast Furnace to be boosted by all supported",
                         "furnace boosters. For individual toggles see the specific heater integration configs."
                 })
-        public boolean boostable_blast_furnace = false;
+        public boolean boostableBlastFurnace = false;
         @Config.RequiresMcRestart
         @Config.Name("Boostable Coke Kiln")
         @Config.Comment
@@ -312,7 +313,7 @@ public class MIConfigIntegrations {
                         "Enables the IBoostableTile mixin injection, allowing the Coke Kiln to be boosted by all supported",
                         "furnace boosters. For individual toggles see the specific heater integration configs."
                 })
-        public boolean boostable_coke_kiln = false;
+        public boolean boostableCokeKiLn = false;
     }
 
     public static class MysticalAgricultureIntegrations {
@@ -323,33 +324,33 @@ public class MIConfigIntegrations {
                         "Enables the IHeatableTile mixin injection, allowing all Essence Furnaces to be heated and boosted by",
                         "all supported furnace heaters. For individual toggles see the specific heater integration configs."
                 })
-        public boolean heatable_furnace = true;
+        public boolean heatableFurnace = true;
     }
 
     public static class NaturesAuraIntegrations {
         @Config.RequiresMcRestart
         @Config.Name("Enable Extraneous Heater Integrations")
         @Config.Comment("Global enable/disable for all Extraneous Heater integrations.")
-        public boolean external_heater_mixins = true;
+        public boolean extraneousHeaterMixins = true;
 
         @Config.Name("Extraneous Heater Integrations")
-        public ConfigHeatables exteral_heater_integrations = new ConfigHeatables();
+        public ConfigHeatables extraneousHeaterHeatables = new ConfigHeatables();
     }
 
     public static class OreberriesIntegrations {
         @Config.RequiresMcRestart
         @Config.Name("Hafvestable Oreberries")
         @Config.Comment("Enables the IHarvestableCrop mixin injection, allowing oreberry bushes to be harvested by modded harvesters.")
-        public boolean harvestable_oreberries = true;
+        public boolean harvestableOreberries = true;
     }
 
     public static class QuarkIntegrations {
         @Config.RequiresMcRestart
         @Config.Name("Enable Foxhound Booster")
         @Config.Comment("Enables Foxhound furnace booster integrations.")
-        public boolean foxhound_heater = true;
+        public boolean foxhoundHeater = true;
         @Config.Name("Foxhound Integrations")
-        public ConfigHeatables foxhound_integrations = new ConfigHeatables();
+        public ConfigHeatables foxhoundHeatables = new ConfigHeatables();
 
         @Config.Comment("The cook time boost a sitting Foxhound provides a heatable tile. Processing time will be reduced by this amount every 3 ticks.")
         public int foxButtSpeedup = 1;
@@ -359,7 +360,7 @@ public class MIConfigIntegrations {
         @Config.RequiresMcRestart
         @Config.Name("Elemental Soil Integrations")
         @Config.Comment("Enables the expanded elemental soil harvest integration.")
-        public boolean elemental_soil_mixins = true;
+        public boolean elementalSoilMixins = true;
     }
 
     public static class RusticIntegrations {
@@ -371,22 +372,22 @@ public class MIConfigIntegrations {
                         "heated and boosted by all supported furnace heaters. For individual toggles see the specific heater",
                         "integration configs."
                 })
-        public boolean heatable_condenser = true;
+        public boolean heatableCondenser = true;
     }
 
     public static class ThaumcraftIntegrations {
         @Config.RequiresMcRestart
         @Config.Name("Enable Arcane Bellows Integrations")
         @Config.Comment("Global enable/disable for all Arcane Bellows integrations.")
-        public boolean bellows_mixins = true;
+        public boolean bellowsMixins = true;
 
         @Config.Name("Arcane Bellows Integrations")
-        public ConfigHeatables bellows_integrations = new ConfigHeatables();
+        public ConfigHeatables bellowsHeatables = new ConfigHeatables();
 
         @Config.RequiresMcRestart
         @Config.Name("Golem Harvest Integrations")
         @Config.Comment("Enables expanded Golem crop harvest integration.")
-        public boolean golem_mixins = true;
+        public boolean golemMixins = true;
 
         @Config.RequiresMcRestart
         @Config.Name("Heatable Essentia Smelteries")
@@ -395,7 +396,7 @@ public class MIConfigIntegrations {
                         "Enables the IHeatableTile mixin injection, allowing the Essentia Smelteries to be heated and boosted",
                         "by all supported furnace heaters. For individual toggles see the specific heater integration configs."
                 })
-        public boolean heatable_essence_furnace = true;
+        public boolean essenceFurnaceMixins = true;
     }
 
     public static class ThaumicAdditionsIntegrations {
@@ -406,7 +407,7 @@ public class MIConfigIntegrations {
                         "Enables the IHeatableTile mixin injection, allowing the Essentia Smelteries to be heated and boosted",
                         "by all supported furnace heaters. For individual toggles see the specific heater integration configs."
                 })
-        public boolean heatable_essence_smelter = true;
+        public boolean heatableEssenceSmelter = true;
     }
 
     public static class TheOneProbeIntegrations {
@@ -424,7 +425,7 @@ public class MIConfigIntegrations {
         @Config.Name("Boostable Smeltery")
         @Config.Comment("Enables the IHeatableTile mixin injection, allowing the Smeltery to be boosted by all supported furnace\n" +
                 "boosters. For individual toggles see the specific heater integration configs.")
-        public boolean boostable_smeltery = false;
+        public boolean boostableSmeltery = false;
     }
 
     @Mod.EventBusSubscriber(modid = MagicultureIntegrations.MOD_ID)

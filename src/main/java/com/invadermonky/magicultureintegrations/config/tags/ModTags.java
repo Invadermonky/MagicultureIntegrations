@@ -21,7 +21,7 @@ public class ModTags {
     private static void parseRitualMagneticReplacements() {
         RITUAL_MAGNETIC_REPLACEMENTS.clear();
         Pattern pattern = Pattern.compile("^(-?\\d+)=([^=\\s]+?):(\\d+)$");
-        for (String str : MIConfigTweaks.blood_magic.ritual_magnetic_replacements) {
+        for (String str : MIConfigTweaks.blood_magic.ritualMagneticTweakReplacements) {
             Matcher matcher = pattern.matcher(str);
             if (matcher.find()) {
                 int dimension = Integer.parseInt(matcher.group(1));
