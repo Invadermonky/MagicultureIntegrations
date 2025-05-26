@@ -1,5 +1,6 @@
 package com.invadermonky.magicultureintegrations;
 
+import com.invadermonky.magicultureintegrations.config.tags.ModTags;
 import com.invadermonky.magicultureintegrations.proxy.CommonProxy;
 import com.invadermonky.magicultureintegrations.util.LogHelper;
 import com.invadermonky.magicultureintegrations.util.ModIds;
@@ -19,7 +20,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 public class MagicultureIntegrations {
     public static final String MOD_ID = "magicultureintegrations";
     public static final String MOD_NAME = "Magiculture Integrations";
-    public static final String MOD_VERSION = "2.1.3";
+    public static final String MOD_VERSION = "2.2.0";
     public static final String MC_VERSION = "[1.12.2]";
     public static final String DEPENDENCIES =
             ";required-after:mixinbooter@[10.5,)" +
@@ -56,6 +57,7 @@ public class MagicultureIntegrations {
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         proxy.postInit(event);
+        ModTags.syncConfig();
         LogHelper.debug("Finished postInit phase.");
     }
 }

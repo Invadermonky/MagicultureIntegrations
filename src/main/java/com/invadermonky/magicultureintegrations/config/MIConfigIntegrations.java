@@ -163,6 +163,9 @@ public class MIConfigIntegrations {
             @Config.Name("Harvestcraft")
             @Config.Comment("Allows the Horn and Drum of the Wild to harvest Harvestcraft fruit and bark.")
             public boolean harvestcraft = true;
+            @Config.Name("Industrial Craft 2")
+            @Config.Comment("Allows the Horn and Drum of the Wild to harvest IC2 Crops.")
+            public boolean industrialcraft = true;
             @Config.Name("Oreberries")
             @Config.Comment("Allows the Horn and Drum of the Wild to harvest Oreberries orberry bushes.")
             public boolean oreberries = true;
@@ -306,6 +309,7 @@ public class MIConfigIntegrations {
                         "furnace boosters. For individual toggles see the specific heater integration configs."
                 })
         public boolean boostableBlastFurnace = false;
+
         @Config.RequiresMcRestart
         @Config.Name("Boostable Coke Kiln")
         @Config.Comment
@@ -314,6 +318,24 @@ public class MIConfigIntegrations {
                         "furnace boosters. For individual toggles see the specific heater integration configs."
                 })
         public boolean boostableCokeKiLn = false;
+
+        @Config.RequiresMcRestart
+        @Config.Name("Growable Crops")
+        @Config.Comment("Allows IC2 Crops to be boosted by bone meal effects. This includes some modded crop growing tools.")
+        public boolean growableCrops = true;
+
+        @Config.Name("Growable Crops - Bonemeal")
+        @Config.Comment
+                ({
+                        "Allows IC2 Crop growth to be increased with Bonemeal and Bonemeal-type items. This setting requires",
+                        "Growable Crops set to true."
+                })
+        public boolean growableCropsBonemeal = false;
+
+        @Config.RequiresMcRestart
+        @Config.Name("Harvestable Crops")
+        @Config.Comment("Enables the IHarvestableCrop mixin injection, allowing IC2 Crops to be harvested by supported modded harvesters.")
+        public boolean harvestableCrops = true;
     }
 
     public static class MysticalAgricultureIntegrations {

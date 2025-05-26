@@ -46,6 +46,9 @@ public class ModMixinsMI implements ILateMixinLoader {
         put(StringHelper.getMixinString(ModIds.immersive_engineering, "hemp", "harvestable"), () -> ModIds.immersive_engineering.isLoaded && MIConfigIntegrations.immersive_engineering.harvestableMixin);
         put(StringHelper.getMixinString(ModIds.industrial_craft, "blastfurnace", "boostable"), () -> ModIds.industrial_craft.isLoaded && MIConfigIntegrations.industrial_craft.boostableBlastFurnace);
         put(StringHelper.getMixinString(ModIds.industrial_craft, "cokekiln", "boostable"), () -> ModIds.industrial_craft.isLoaded && MIConfigIntegrations.industrial_craft.boostableCokeKiLn);
+        put(StringHelper.getMixinString(ModIds.industrial_craft, "crop", "harvestable"), () -> ModIds.industrial_craft.isLoaded && MIConfigIntegrations.industrial_craft.harvestableCrops);
+        put(StringHelper.getMixinString(ModIds.industrial_craft, "crop", "hornharvestable"), () -> ModIds.industrial_craft.isLoaded && ModIds.botania.isLoaded && MIConfigIntegrations.botania.wild_horn.industrialcraft);
+        put(StringHelper.getMixinString(ModIds.industrial_craft, "crop", "growable"), () -> ModIds.industrial_craft.isLoaded && MIConfigIntegrations.industrial_craft.growableCrops);
         put(StringHelper.getMixinString(ModIds.mystical_agriculture, "heatable"), () -> ModIds.mystical_agriculture.isLoaded && MIConfigIntegrations.mystical_agriculture.heatableFurnace);
         put(StringHelper.getMixinString(ModIds.natures_aura, "externalheater"), () -> ModIds.natures_aura.isLoaded && MIConfigIntegrations.natures_aura.extraneousHeaterMixins);
         put(StringHelper.getMixinString(ModIds.oreberries, "blockoreberrybush", "harvestable"), () -> ModIds.oreberries.isLoaded && MIConfigIntegrations.oreberries.harvestableOreberries);

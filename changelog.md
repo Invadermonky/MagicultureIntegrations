@@ -1,4 +1,13 @@
 # Changelog
+## 1.12.2-2.2.0
+### Added
+- Added IC2 Crop harvestable integration
+- Added IC2 Crop `IGrowable` injection
+### Fixed
+- Fixed a bug causing preventing several config options from syncing correctly on restart
+
+---
+
 ## 1.12.2-2.1.3
 ### Added
 - Added fix for Animania seed placing dispenser logic when Botania or Quark is loaded

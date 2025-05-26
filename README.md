@@ -71,6 +71,8 @@ While built for Magiculture 2, Magiculture Integrations features a robust config
 ### **Industrial Craft**
 - **Blast Furnace:** (*disabled by default*) Industrial Craft's Blast Furnace can be boosted, but not heated, by all supported furnace heaters
 - **Coke Kiln:** (*disabled by default*) Industrial Craft's Coke Kiln can be boosted, but not heated, by all supported furnace heaters
+- **Crops:** Industrial Craft crops can now be harvested by all supported crop harvesters
+- **Growable Crops:** Industrial Craft crops can now be boosted by bonemeal-like effects (direct bonemeal usage disabled by default)
 ### **Mystical Agriculture**
 - **Essence Furnace:** Mystical Agriculture's Essence Furnaces can be heated and boosted by all supported furnace heaters
 ### **Roots**

@@ -61,7 +61,7 @@ public class MIConfigTweaks {
         public boolean ritualHarvestTweak = true;
 
         @Config.RequiresMcRestart
-        @Config.Name("Ritual of Magnetism")
+        @Config.Name("Ritual of Magnetism Tweak")
         @Config.Comment
                 ({
                         "The Ritual of Magnetism will now replace the blocks it pulls from the ground with stone. This will improve",
