@@ -335,11 +335,6 @@ public class MIConfigIntegrations {
                 })
         public boolean boostableCokeKiLn = false;
 
-        @Config.RequiresMcRestart
-        @Config.Name("Growable Crops")
-        @Config.Comment("Allows IC2 Crops to be boosted by bone meal effects. This includes some modded crop growing tools.")
-        public boolean growableCrops = true;
-
         @Config.Name("Growable Crops - Bonemeal")
         @Config.Comment
                 ({

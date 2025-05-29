@@ -15,7 +15,7 @@ import java.util.Random;
 
 @Mixin(value = BlockTileEntity.class, remap = false)
 public abstract class BlockTileEntityGrowableMixin implements IGrowable {
-    //TODO: Remove this.
+    //This mixin is only used for testing since IC2 crops take ungodly long times to grow.
 
     @Override
     public boolean canGrow(@NotNull World worldIn, @NotNull BlockPos pos, @NotNull IBlockState state, boolean isClient) {

@@ -49,7 +49,6 @@ public class ModMixinsMI implements ILateMixinLoader {
         put(StringHelper.getMixinString(ModIds.industrial_craft, "cokekiln", "boostable"), () -> ModIds.industrial_craft.isLoaded && MIConfigIntegrations.industrial_craft.boostableCokeKiLn);
         put(StringHelper.getMixinString(ModIds.industrial_craft, "crop", "harvestable"), () -> ModIds.industrial_craft.isLoaded && MIConfigIntegrations.industrial_craft.harvestableCrops);
         put(StringHelper.getMixinString(ModIds.industrial_craft, "crop", "hornharvestable"), () -> ModIds.industrial_craft.isLoaded && ModIds.botania.isLoaded && MIConfigIntegrations.botania.wild_horn.industrialcraft);
-        put(StringHelper.getMixinString(ModIds.industrial_craft, "crop", "growable"), () -> ModIds.industrial_craft.isLoaded && MIConfigIntegrations.industrial_craft.growableCrops);
         put(StringHelper.getMixinString(ModIds.mystical_agriculture, "heatable"), () -> ModIds.mystical_agriculture.isLoaded && MIConfigIntegrations.mystical_agriculture.heatableFurnace);
         put(StringHelper.getMixinString(ModIds.natures_aura, "externalheater"), () -> ModIds.natures_aura.isLoaded && MIConfigIntegrations.natures_aura.extraneousHeaterMixins);
         put(StringHelper.getMixinString(ModIds.new_crimson_revelations, "blockmanapod", "harvestable"), () -> ModIds.new_crimson_revelations.isLoaded && MIConfigIntegrations.new_crimson_revelations.harvestableManaPods);
@@ -66,6 +65,9 @@ public class ModMixinsMI implements ILateMixinLoader {
         put(StringHelper.getMixinString(ModIds.thaumic_additions, "smelter", "heatable"), () -> ModIds.thaumic_additions.isLoaded && MIConfigIntegrations.thaumic_additions.heatableEssenceSmelter);
         put(StringHelper.getMixinString(ModIds.tinkers_construct, "smeltery", "boostable"), () -> ModIds.tinkers_construct.isLoaded && MIConfigIntegrations.tinkers_construct.boostableSmeltery);
         put(StringHelper.getMixinString(ModIds.twilight_forest, "experiment115", "kekimurus"), () -> ModIds.twilight_forest.isLoaded && ModIds.botania.isLoaded && MIConfigIntegrations.botania.kekimurus.experiment115);
+
+        //TODO: Remove this. Used only for debugging IC2 crops.
+        //put(StringHelper.getMixinString(ModIds.industrial_craft, "crop", "growable"), () -> ModIds.industrial_craft.isLoaded);
     }});
 
     @Override
