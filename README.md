@@ -36,57 +36,48 @@ While built for Magiculture 2, Magiculture Integrations features a robust config
 ---
 
 ## **⚙ Integrations**
+### **Agricraft**
+- **Crops:** Agricraft crops can now be harvested by all supported crop harvesters
 ### **Astral Sorcery**
 - **Spartan Weaponry:** Spartan Weaponry thrown weapons can be sharpened at the grindstone
+### **Attained Drops**
+- **Crops:** Attained Drops crops can now be harvested by all supported crop harvesters
 ### **Blood Magic**
-- **Agricraft:** Reap of the Harvest Moon ritual can harvest Agricraft crops
-- **Attained Drops 2:** Reap of the Harvest Moon ritual can harvest Attained Drops 2 crops
-- **Bewitchment:** Reap of the Harvest Moon ritual can harvest Bewitchment crops
-- **Immersive Engineering:** Reap of the Harvest Moon ritual can harvest Immersive Engineering hemp
-- **Mystical Agriculture:** Reap of the Harvest Moon ritual can harvest Mystical Agriculture crops (as well as most Mystical Agriculture addons)
-- **Oreberries:** Reap of the Harvest Moon ritual can harvest Oreberries Oreberry bushes
 - **Ore Stages:** Ritual of Magnetism ignores staged ores the player does not have access to
-- **Pam's Harvestcraft:** Reap of the Harvest Moon ritual can harvest Harvestcraft fruits and bark
-- **Roots:** Reap of the Harvest Moon ritual can harvest Roots herbs
-- **Rustic:** Reap of the Harvest Moon ritual can harvest Rustic herbs
-- **Thaumic Additions:** Reap of the Harvest Moon ritual can harvest Thaumic Additions crops
+### **Bewitchment**
+- **Crops:** Bewitchment crops can now be harvested by all supported crop harvesters
 ### **Botania**
 - **Twilight Forest:** Kekimurus flower can consume Twilight Forest's Experiment 115 (cake destruction configurable)
 ### **Cooking for Blockheads**
 - **Oven:** Cooking for Blockheads Oven can be heated and boosted by all supported furnace heaters
-### **Ender IO**
-- **Agricraft:** Ender IO's Farming Station can harvest Agricraft crops
-- **Attained Drops 2:** Ender IO's Farming Station can harvest Attained Drops 2 crops
-- **Oreberries:** Ender IO's Farming Station can harvest Oreberries Oreberry bushes
-- **Pam's Harvestcraft:** Ender IO's Farming Station can harvest Harvestcraft fruit
 ### **Engineer's Decor**
 - **Laboratory Furnace:** Engineer's Decor Laboratory Furnace can be heated and boosted by all supported furnace heaters
 ### **Future MC**
 - **Blast Furnace:** Future MC's Blast Furnace can be heated and boosted by all supported furnace heaters
 - **Smoker:** Future MC's Smoker can be heated and boosted by all supported furnace heaters
+### **Harvestcraft**
+- **Fruit and Bark:** Harvestcraft fruit and bark can now be harvested by ***most*** supported crop harvesters
 ### **Immersive Engineering**
 - **Alloy Smelter:** (*disabled by default*) Immersive Engineering's Alloy Smelter can be boosted, but not heated, by all supported furnace heaters
 - **Blast Furnace:** (*disabled by default*) Immersive Engineering's Blast Furnace can be boosted, but not heated, by all supported furnace heaters
 - **Coke Oven:** (*disabled by default*) Immersive Engineering's Coke Oven can be boosted, but not heated, by all supported furnace heaters
+- **Hemp:** Immersive Engineering hemp can now be harvested by all supported crop harvesters
 ### **Industrial Craft**
 - **Blast Furnace:** (*disabled by default*) Industrial Craft's Blast Furnace can be boosted, but not heated, by all supported furnace heaters
 - **Coke Kiln:** (*disabled by default*) Industrial Craft's Coke Kiln can be boosted, but not heated, by all supported furnace heaters
 - **Crops:** Industrial Craft crops can now be harvested by all supported crop harvesters
-- **Growable Crops:** Industrial Craft crops can now be boosted by bonemeal-like effects (direct bonemeal usage disabled by default)
 ### **Mystical Agriculture**
+- **Crops:** Mystical Agriculture crops can now be harvested by all supported crop harvesters
 - **Essence Furnace:** Mystical Agriculture's Essence Furnaces can be heated and boosted by all supported furnace heaters
-### **Roots**
-- **Agricraft:** Roots elemental soils can handle Agricraft crops (requires manual Agricraft soil json settings)
-- **Attained Drops 2:** Roots elemental soils can handle Attained Drops 2 crops (Magmatic and Terran Soils do not effect drops due to soil implementation limitations)
-- **Oreberries:** Roots elemental soils can handle Oreberries oreberry bushes
+### **New Crimson Revelations**
+- **Mana Pods:** New Crimson Revelations mana pods can now be harvested by all supported crop harvesters
+### **Oreberries**
+- **Oreberry Bushes:** Oreberries oreberry bushes can now be harvested by all supported crop harvesters
 ### **Rustic**
 - **Alchemic Condenser:** Rustics Basic and Advanced Alchemic Condensers can be heated and boosted by all supported furnace heaters
+- **Herbs:** Rustic herbs can now be harvested by all supported crop harvesters
 ### **Thaumcraft**
-- **Agricraft:** Thaumcraft Golems can harvest Agricraft crops
-- **Attained Drops 2:** Thaumcraft Golems can harvest Attained Drops 2 crops
 - **Essence Smelter:** Thuamcraft's Essence Furnaces can be heated and boosted by all supported furnace heaters
-- **Oreberries:** Thaumcraft Golems can harvest Oreberries Oreberry bushes
-- **Pam's Harvestcraft:** Thaumcraft Golems can harvest Harvestcraft fruit and bark
 ### **Thaumic Additions**
 - **Essence Smelter:** Thaumic Additions Essence Furnaces can be heated and boosted by all supported furnace heaters
 ### **The One Probe**
@@ -97,16 +88,32 @@ While built for Magiculture 2, Magiculture Integrations features a robust config
 
 ---
 
+## **🚜 Supported Crop Harvesters**
+
+|       **Mod**        |      **Harvester**       |
+|:--------------------:|:------------------------:|
+|  Actually Additions  |          Farmer          |
+|     Blood Magic      | Reap of the Harvest Moon |
+|       Botania        |  Horn/Drum of the Wild   |
+|        Cyclic        |     Gentle Harvester     |
+|       Ender IO       |     Farming Station      |
+| Industrial Foregoing |      Plant Gatherer      |
+|         Rats         |  Rat 'Harvest' Command   |
+|        Roots         |      Elemental Soil      |
+|      Thaumcraft      |  Control Seal: Harvest   |
+
+---
+
 ## **🔥 Supported Furnace Heaters**
 
-|          Mod          |        Feature        | Heater | Booster |
-|:---------------------:|:---------------------:|:------:|:-------:|
-|      Blood Magic      | Burning Furnace Array |   ✔    |         |
-|        Botania        |       Exoflame        |   ✔    |    ✔    |
-| Immersive Engineering |    External Heater    |   ✔    |    ✔    |
-|     Nature's Aura     |   Extraneous Heater   |   ✔    |    ✔    |
-|         Quark         |       Foxhound        |        |    ✔    |
-|      Thaumcraft       |    Arcane Bellows     |        |    ✔    |
+|        **Mod**        |      **Feature**      | **Heater** | **Booster** |
+|:---------------------:|:---------------------:|:----------:|:-----------:|
+|      Blood Magic      | Burning Furnace Array |     ✔      |             |
+|        Botania        |       Exoflame        |     ✔      |      ✔      |
+| Immersive Engineering |    External Heater    |     ✔      |      ✔      |
+|     Nature's Aura     |   Extraneous Heater   |     ✔      |      ✔      |
+|         Quark         |       Foxhound        |            |      ✔      |
+|      Thaumcraft       |    Arcane Bellows     |            |      ✔      |
 
 <br>
 

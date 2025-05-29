@@ -35,6 +35,7 @@ public class ModMixinsMI implements ILateMixinLoader {
         put(StringHelper.getMixinString(ModIds.botania, "kekimurus"), () -> ModIds.botania.isLoaded && MIConfigIntegrations.botania.kekimurus_mixin);
         put(StringHelper.getMixinString(ModIds.cooking_for_blockheads, "oven", "fix"), () -> ModIds.cooking_for_blockheads.isLoaded && !ModIds.universal_tweaks.isLoaded && MIConfigFixes.cooking_for_blockheads.fixOven);
         put(StringHelper.getMixinString(ModIds.cooking_for_blockheads, "oven", "heatable"), () -> ModIds.cooking_for_blockheads.isLoaded && MIConfigIntegrations.cooking_for_blockheads.heatableOven);
+        put(StringHelper.getMixinString(ModIds.cyclic, "harvestexpansion"), () -> ModIds.cyclic.isLoaded && MIConfigIntegrations.cyclic.harvesterExpansion);
         put(StringHelper.getMixinString(ModIds.engineers_decor, "decorfurnace", "heatable"), () -> ModIds.engineers_decor.isLoaded && MIConfigIntegrations.engineers_decor.heatableFurnace);
         put(StringHelper.getMixinString(ModIds.futuremc, "advancedfurnace", "heatable"), () -> ModIds.futuremc.isLoaded && MIConfigIntegrations.future_mc.heatableAdvancedFurnaces);
         put(StringHelper.getMixinString(ModIds.harvestcraft, "blockpam", "harvestable"), () -> ModIds.harvestcraft.isLoaded && MIConfigIntegrations.harvestcraft.harvestable_fruit);
@@ -51,12 +52,16 @@ public class ModMixinsMI implements ILateMixinLoader {
         put(StringHelper.getMixinString(ModIds.industrial_craft, "crop", "growable"), () -> ModIds.industrial_craft.isLoaded && MIConfigIntegrations.industrial_craft.growableCrops);
         put(StringHelper.getMixinString(ModIds.mystical_agriculture, "heatable"), () -> ModIds.mystical_agriculture.isLoaded && MIConfigIntegrations.mystical_agriculture.heatableFurnace);
         put(StringHelper.getMixinString(ModIds.natures_aura, "externalheater"), () -> ModIds.natures_aura.isLoaded && MIConfigIntegrations.natures_aura.extraneousHeaterMixins);
+        put(StringHelper.getMixinString(ModIds.new_crimson_revelations, "blockmanapod", "harvestable"), () -> ModIds.new_crimson_revelations.isLoaded && MIConfigIntegrations.new_crimson_revelations.harvestableManaPods);
+        put(StringHelper.getMixinString(ModIds.new_crimson_revelations, "blockmanapod", "hornharvestable"), () -> ModIds.new_crimson_revelations.isLoaded && ModIds.botania.isLoaded && MIConfigIntegrations.botania.wild_horn.newcrimsonrevelations);
         put(StringHelper.getMixinString(ModIds.oreberries, "blockoreberrybush", "harvestable"), () -> ModIds.oreberries.isLoaded && MIConfigIntegrations.oreberries.harvestableOreberries);
         put(StringHelper.getMixinString(ModIds.oreberries, "blockoreberrybush", "hornharvestable"), () -> ModIds.oreberries.isLoaded && ModIds.botania.isLoaded && MIConfigIntegrations.botania.wild_horn.oreberries);
+        put(StringHelper.getMixinString(ModIds.rats, "ratharvestexpansion"), () -> ModIds.rats.isLoaded && MIConfigIntegrations.rats.ratHarvestExpansion);
         put(StringHelper.getMixinString(ModIds.roots, "elementalsoil"), () -> ModIds.roots.isLoaded && MIConfigIntegrations.roots.elementalSoilMixins);
         put(StringHelper.getMixinString(ModIds.rustic, "condenser", "heatable"), () -> ModIds.rustic.isLoaded && MIConfigIntegrations.rustic.heatableCondenser);
+        put(StringHelper.getMixinString(ModIds.rustic, "blockherb", "harvestable"), () -> ModIds.rustic.isLoaded && MIConfigIntegrations.rustic.harvestableHerbs);
         put(StringHelper.getMixinString(ModIds.thaumcraft, "bellows"), () -> ModIds.thaumcraft.isLoaded && MIConfigIntegrations.thaumcraft.bellowsMixins);
-        put(StringHelper.getMixinString(ModIds.thaumcraft, "golemharvest"), () -> ModIds.thaumcraft.isLoaded && MIConfigIntegrations.thaumcraft.golemMixins);
+        put(StringHelper.getMixinString(ModIds.thaumcraft, "golemharvestexpansion"), () -> ModIds.thaumcraft.isLoaded && MIConfigIntegrations.thaumcraft.golemHarvestExpansion);
         put(StringHelper.getMixinString(ModIds.thaumcraft, "smelter", "heatable"), () -> ModIds.thaumcraft.isLoaded && MIConfigIntegrations.thaumcraft.essenceFurnaceMixins);
         put(StringHelper.getMixinString(ModIds.thaumic_additions, "smelter", "heatable"), () -> ModIds.thaumic_additions.isLoaded && MIConfigIntegrations.thaumic_additions.heatableEssenceSmelter);
         put(StringHelper.getMixinString(ModIds.tinkers_construct, "smeltery", "boostable"), () -> ModIds.tinkers_construct.isLoaded && MIConfigIntegrations.tinkers_construct.boostableSmeltery);

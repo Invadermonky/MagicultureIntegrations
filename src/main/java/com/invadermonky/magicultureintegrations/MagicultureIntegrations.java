@@ -28,6 +28,7 @@ public class MagicultureIntegrations {
                     ";after:" + ModIds.ConstIds.bloodmagic +
                     ";after:" + ModIds.ConstIds.botania +
                     ";after:" + ModIds.ConstIds.embers +
+                    ";after:" + ModIds.ConstIds.industrial_foregoing +
                     ";after:" + ModIds.ConstIds.natures_aura +
                     ";after:" + ModIds.ConstIds.patchouli +
                     ";after:" + ModIds.ConstIds.quark;

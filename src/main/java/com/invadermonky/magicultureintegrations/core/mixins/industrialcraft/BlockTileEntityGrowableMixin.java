@@ -15,13 +15,19 @@ import java.util.Random;
 
 @Mixin(value = BlockTileEntity.class, remap = false)
 public abstract class BlockTileEntityGrowableMixin implements IGrowable {
+    //TODO: Remove this.
 
     @Override
     public boolean canGrow(@NotNull World worldIn, @NotNull BlockPos pos, @NotNull IBlockState state, boolean isClient) {
         TileEntity tile = worldIn.getTileEntity(pos);
-        if(tile instanceof TileEntityCrop) {
+        if (tile instanceof TileEntityCrop) {
             TileEntityCrop tileCrop = (TileEntityCrop) tile;
-            return tileCrop.getCrop() != null && tileCrop.getCrop().canGrow(tileCrop);
+            if (tileCrop.getCrop() != null && tileCrop.getCrop().canGrow(tileCrop)) {
+                tileCrop.setCurrentSize(tileCrop.getCurrentSize() + 1);
+                tileCrop.setGrowthPoints(0);
+                tileCrop.dirty = true;
+                return true;
+            }
         }
         return false;
     }
@@ -34,9 +40,9 @@ public abstract class BlockTileEntityGrowableMixin implements IGrowable {
     @Override
     public void grow(@NotNull World worldIn, @NotNull Random rand, @NotNull BlockPos pos, @NotNull IBlockState state) {
         TileEntity tile = worldIn.getTileEntity(pos);
-        if(tile instanceof TileEntityCrop) {
+        if (tile instanceof TileEntityCrop) {
             TileEntityCrop tileCrop = (TileEntityCrop) tile;
-            if(tileCrop.getCrop() != null && tileCrop.getCrop().canGrow(tileCrop)) {
+            if (tileCrop.getCrop() != null && tileCrop.getCrop().canGrow(tileCrop)) {
                 tileCrop.setCurrentSize(tileCrop.getCurrentSize() + 1);
                 tileCrop.dirty = true;
             }

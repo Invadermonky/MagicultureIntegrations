@@ -29,15 +29,18 @@ repositories {
 }
 
 dependencies {
-    implementation rfg.deobf('curse.maven:had-enough-items-557549:4543375')
     implementation 'com.cleanroommc:configanytime:3.0'
+    runtimeOnly 'com.cleanroommc:strip-latest-forge-requirements:1.0'
     compileOnly 'org.jetbrains:annotations:24.0.0'
+
+    implementation rfg.deobf('curse.maven:had-enough-items-557549:4543375')
 
     // Mod Integrations
     def modMap = [:]
     def customModMap = [:]
     def loadMap = [:]
 
+    modMap.put(["actually-additions-228404:3117927"], project.actuallyadditions)
     modMap.put(["agricraft-225635:3317747", "infinitylib-251396:3317119"], project.agricraft)
     modMap.put(["astral-sorcery-241721:3044416", "baubles-227083:2518667"], project.astralsorcery)
     modMap.put(["attained-drops-2-254294:2538349", "placebo-283644:4629597"], project.attaineddrops)
@@ -45,20 +48,25 @@ dependencies {
     modMap.put(["blood-magic-224791:2822288", "guide-api-228832:2645992"], project.bloodmagic)
     modMap.put(["botania-225643:3330934", "baubles-227083:2518667"], project.botania)
     modMap.put(["cooking-for-blockheads-231484:2862651"], project.cookingforblockheads)
+    modMap.put(["cyclic-239286:4075832"], project.cyclic)
     modMap.put(["embers-rekindled-300777:3695248"], project.embers)
     modMap.put(["engineers-decor-313866:3783239", "immersive-engineering-231951:2974106"], project.engineersdecor)
     modMap.put(["future-mc-310059:5013081", "shadowfacts-forgelin-248453:2785465"], project.futuremc)
     modMap.put(["item-stages-280316:2696766", "game-stages-268655:2951840", "bookshelf-228525:2836960"], project.itemstages)
+    modMap.put(["llibrary-243298:3116493"], project.llibary)
     modMap.put(["pams-harvestcraft-221857:2904825"], project.harvestcraft)
     modMap.put(["immersive-engineering-231951:2974106"], project.immersiveengineering)
     modMap.put(["industrial-craft-242638:3078604"], project.industrialcraft)
+    modMap.put(["industrial-foregoing-266515:2745321", "tesla-core-lib-254602:3438487", "shadowfacts-forgelin-248453:2785465"], project.industrialforegoing)
     modMap.put(["mystical-agriculture-246640:2704562", "cucumber-272335:2645867"], project.mysticalagriculture)
     modMap.put(["mystical-world-282940:3460961", "mysticallib-277064:3483816", "patchouli-306770:3162874"], project.mysticalworld)
     modMap.put(["natures-aura-306626:2882138", "patchouli-306770:3162874"], project.naturesaura)
+    modMap.put(["new-crimson-revelations-1025633:6167339", "thaumcraft-223628:2629023", "baubles-227083:2518667", "thaumcraftfix-1069346:6405744"], project.newcrimsonrevelations)
     modMap.put(["oreberries-275408:2578045"], project.oreberries)
     modMap.put(["ore-stages-290201:2632997", "game-stages-268655:2951840", "bookshelf-228525:2836960"], project.orestages)
     modMap.put(["quality-tools-264756:2732994", "potion-core-242872:2905184"], project.qualitytools)
     modMap.put(["quark-rotn-edition-417392:5594720", "autoreglib-250363:2746011"], project.quark)
+    modMap.put(["rats-ratn-edition-439001:3711122"], project.rats)
     modMap.put(["redstone-paste-67508:2477676"], project.redstonepaste)
     modMap.put(["roots-246183:5193525", "mystical-world-282940:3460961", "mysticallib-277064:3483816", "patchouli-306770:3162874"], project.roots)
     modMap.put(["rustic-256141:3107974"], project.rustic)

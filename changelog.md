@@ -2,7 +2,12 @@
 ## 1.12.2-2.2.0
 ### Added
 - Added IC2 Crop harvestable integration
-- Added IC2 Crop `IGrowable` injection
+- Added Rustic herb harvestable integration, fixing issues with some farming methods
+- Actually Additions Farmer can now harvest all supported crops
+- Cyclic Gentle Harvester can now harvest all supported crops
+- Industrial Foregoing Plant Harvester can now harvest all supported crops
+- Rats 'Harvest' command can now harvest all supported crops
+
 ### Fixed
 - Fixed a bug causing preventing several config options from syncing correctly on restart
 

@@ -30,6 +30,8 @@ public class MIConfigIntegrations {
     public static BotaniaIntegrations botania = new BotaniaIntegrations();
     @Config.Name("Cooking for Blockheads")
     public static CookingForBlockheadsIntegrations cooking_for_blockheads = new CookingForBlockheadsIntegrations();
+    @Config.Name("Cyclic")
+    public static CyclicMagicIntegrations cyclic = new CyclicMagicIntegrations();
     @Config.Name("Engineer's Decor")
     public static EngineersDecorIntegrations engineers_decor = new EngineersDecorIntegrations();
     @Config.Name("Future MC")
@@ -44,10 +46,14 @@ public class MIConfigIntegrations {
     public static MysticalAgricultureIntegrations mystical_agriculture = new MysticalAgricultureIntegrations();
     @Config.Name("Nature's Aura")
     public static NaturesAuraIntegrations natures_aura = new NaturesAuraIntegrations();
+    @Config.Name("New Crimson Revelations")
+    public static NewCrimsonRevelationsIntegrations new_crimson_revelations = new NewCrimsonRevelationsIntegrations();
     @Config.Name("Oreberries")
     public static OreberriesIntegrations oreberries = new OreberriesIntegrations();
     @Config.Name("Quark")
     public static QuarkIntegrations quark = new QuarkIntegrations();
+    @Config.Name("Rats")
+    public static RatsIntegrations rats = new RatsIntegrations();
     @Config.Name("Roots")
     public static RootsIntegrations roots = new RootsIntegrations();
     @Config.Name("Rustic")
@@ -67,7 +73,7 @@ public class MIConfigIntegrations {
         @Config.Comment
                 ({
                         "Enables the IHarvestableCrop mixin injection, allowing Agricraft crops to be harvested by a number",
-                        "of modded harvesters."
+                        "ofsupported modded harvesters."
                 })
         public boolean harvestable_mixin = true;
     }
@@ -85,7 +91,7 @@ public class MIConfigIntegrations {
         @Config.Comment
                 ({
                         "Enables the IHarvestableCrop mixin injection, allowing Attained Drops 2 crops to be harvested by a",
-                        "number of modded harvesters."
+                        "number ofsupported modded harvesters."
                 })
         public boolean harvestable_mixin = true;
     }
@@ -166,6 +172,9 @@ public class MIConfigIntegrations {
             @Config.Name("Industrial Craft 2")
             @Config.Comment("Allows the Horn and Drum of the Wild to harvest IC2 Crops.")
             public boolean industrialcraft = true;
+            @Config.Name("New Crimson Revelations")
+            @Config.Comment("Allows the Horn and Drum of the Wild to harvest New Crimson Revelations' Mana Pods.")
+            public boolean newcrimsonrevelations = true;
             @Config.Name("Oreberries")
             @Config.Comment("Allows the Horn and Drum of the Wild to harvest Oreberries orberry bushes.")
             public boolean oreberries = true;
@@ -189,6 +198,13 @@ public class MIConfigIntegrations {
                         "furnace heaters. For individual toggles see the specific heater integration configs."
                 })
         public boolean heatableOven = true;
+    }
+
+    public static class CyclicMagicIntegrations {
+        @Config.RequiresMcRestart
+        @Config.Name("Harvester Expansion")
+        @Config.Comment("Enables the Cyclic Gentle Harvester crop harvest expansion.")
+        public boolean harvesterExpansion = true;
     }
 
     public static class EngineersDecorIntegrations {
@@ -216,7 +232,7 @@ public class MIConfigIntegrations {
     public static class HarvestcraftIntegrations {
         @Config.RequiresMcRestart
         @Config.Name("Harvestable Harvestcraft Fruit and Bark")
-        @Config.Comment("Enables the IHarvestableCrop mixin injection, allowing fruit and bark to be harvested by modded harvesters.")
+        @Config.Comment("Enables the IHarvestableCrop mixin injection, allowing fruit and bark to be harvested bysupported modded harvesters.")
         public boolean harvestable_fruit = true;
     }
 
@@ -359,10 +375,17 @@ public class MIConfigIntegrations {
         public ConfigHeatables extraneousHeaterHeatables = new ConfigHeatables();
     }
 
+    public static class NewCrimsonRevelationsIntegrations {
+        @Config.RequiresMcRestart
+        @Config.Name("Harvestable Mana Pods")
+        @Config.Comment("Enables the IHarvestableCrop mixin injection, allowing Mana Pods to be harvested by supported modded harvesters.")
+        public boolean harvestableManaPods = true;
+    }
+
     public static class OreberriesIntegrations {
         @Config.RequiresMcRestart
         @Config.Name("Hafvestable Oreberries")
-        @Config.Comment("Enables the IHarvestableCrop mixin injection, allowing oreberry bushes to be harvested by modded harvesters.")
+        @Config.Comment("Enables the IHarvestableCrop mixin injection, allowing oreberry bushes to be harvested by supported modded harvesters.")
         public boolean harvestableOreberries = true;
     }
 
@@ -378,6 +401,13 @@ public class MIConfigIntegrations {
         public int foxButtSpeedup = 1;
     }
 
+    public static class RatsIntegrations {
+        @Config.RequiresMcRestart
+        @Config.Name("Rat Harvest Expansion")
+        @Config.Comment("Enables the Rats crop harvest crop expansion.")
+        public boolean ratHarvestExpansion = true;
+    }
+
     public static class RootsIntegrations {
         @Config.RequiresMcRestart
         @Config.Name("Elemental Soil Integrations")
@@ -386,6 +416,11 @@ public class MIConfigIntegrations {
     }
 
     public static class RusticIntegrations {
+        @Config.RequiresMcRestart
+        @Config.Name("Harvestable Herbs")
+        @Config.Comment("Enables the IHarvestableCrop mixin injection, allowing Herbs to be harvested by supported modded harvesters.")
+        public boolean harvestableHerbs = true;
+
         @Config.RequiresMcRestart
         @Config.Name("Heatable Basic/Advance Alchemic Condenser")
         @Config.Comment
@@ -407,9 +442,9 @@ public class MIConfigIntegrations {
         public ConfigHeatables bellowsHeatables = new ConfigHeatables();
 
         @Config.RequiresMcRestart
-        @Config.Name("Golem Harvest Integrations")
+        @Config.Name("Golem Harvest Expansion")
         @Config.Comment("Enables expanded Golem crop harvest integration.")
-        public boolean golemMixins = true;
+        public boolean golemHarvestExpansion = true;
 
         @Config.RequiresMcRestart
         @Config.Name("Heatable Essentia Smelteries")

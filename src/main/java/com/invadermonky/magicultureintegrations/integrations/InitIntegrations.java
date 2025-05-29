@@ -2,6 +2,7 @@ package com.invadermonky.magicultureintegrations.integrations;
 
 import com.invadermonky.magicultureintegrations.api.IProxy;
 import com.invadermonky.magicultureintegrations.api.mods.IntegrationModule;
+import com.invadermonky.magicultureintegrations.integrations.actuallyadditions.InitActuallyAdditions;
 import com.invadermonky.magicultureintegrations.integrations.animania.InitAnimania;
 import com.invadermonky.magicultureintegrations.integrations.astralsorcery.InitAstralSorcery;
 import com.invadermonky.magicultureintegrations.integrations.bloodmagic.InitBloodMagic;
@@ -9,6 +10,7 @@ import com.invadermonky.magicultureintegrations.integrations.botania.InitBotania
 import com.invadermonky.magicultureintegrations.integrations.enderio.InitEnderIO;
 import com.invadermonky.magicultureintegrations.integrations.harvestcraft.InitHarvestcraft;
 import com.invadermonky.magicultureintegrations.integrations.immersiveengineering.InitImmersiveEngineering;
+import com.invadermonky.magicultureintegrations.integrations.industrialforegoing.InitIndustrialForegoing;
 import com.invadermonky.magicultureintegrations.integrations.naturesaura.InitNaturesAura;
 import com.invadermonky.magicultureintegrations.integrations.qualitytools.InitQualityTools;
 import com.invadermonky.magicultureintegrations.integrations.quark.InitQuark;
@@ -25,6 +27,7 @@ public class InitIntegrations {
     public static ArrayList<IntegrationModule> integrationModules = new ArrayList<>();
 
     private static void buildModules() {
+        loadModule(ModIds.actually_additions, InitActuallyAdditions.class);
         loadModule(ModIds.animania, InitAnimania.class);
         loadModule(ModIds.astral_sorcery, InitAstralSorcery.class);
         loadModule(ModIds.bloodmagic, InitBloodMagic.class);
@@ -32,6 +35,7 @@ public class InitIntegrations {
         loadModule(ModIds.enderio, InitEnderIO.class);
         loadModule(ModIds.harvestcraft, InitHarvestcraft.class);
         loadModule(ModIds.immersive_engineering, InitImmersiveEngineering.class);
+        loadModule(ModIds.industrial_foregoing, InitIndustrialForegoing.class);
         loadModule(ModIds.natures_aura, InitNaturesAura.class);
         loadModule(ModIds.quality_tools, InitQualityTools.class);
         loadModule(ModIds.quark, InitQuark.class);
