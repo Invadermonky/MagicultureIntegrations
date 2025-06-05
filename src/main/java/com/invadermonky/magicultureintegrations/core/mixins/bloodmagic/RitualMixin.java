@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(value = Ritual.class, remap = false)
-public class MixinRitual {
+public class RitualMixin {
 
     /**
      * @author Invadermonky

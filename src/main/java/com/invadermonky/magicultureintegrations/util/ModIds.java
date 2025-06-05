@@ -1,42 +1,5 @@
 package com.invadermonky.magicultureintegrations.util;
 
-import WayofTime.bloodmagic.BloodMagic;
-import baubles.common.Baubles;
-import blusunrize.immersiveengineering.ImmersiveEngineering;
-import com.animania.Animania;
-import com.bewitchment.Bewitchment;
-import com.blakebr0.mysticalagriculture.MysticalAgriculture;
-import com.charles445.simpledifficulty.SimpleDifficulty;
-import com.github.alexthe666.rats.RatsMod;
-import com.lothrazar.cyclicmagic.util.Const;
-import com.oblivioussp.spartanweaponry.ModSpartanWeaponry;
-import com.pam.harvestcraft.Reference;
-import com.tmtravlr.qualitytools.QualityToolsMod;
-import crazypants.enderio.base.EnderIO;
-import de.ellpeck.actuallyadditions.mod.ActuallyAdditions;
-import de.ellpeck.naturesaura.NaturesAura;
-import epicsquid.mysticalworld.MysticalWorld;
-import epicsquid.roots.Roots;
-import hellfirepvp.astralsorcery.AstralSorcery;
-import ic2.core.IC2;
-import josephcsible.oreberries.OreberriesMod;
-import knightminer.tcomplement.TinkersComplement;
-import mcjty.theoneprobe.TheOneProbe;
-import mod.icarus.crimsonrevelations.NewCrimsonRevelations;
-import net.blay09.mods.cookingforblockheads.CookingForBlockheads;
-import org.zeith.thaumicadditions.InfoTAR;
-import rustic.core.Rustic;
-import shadows.attained.AttainedDrops2;
-import slimeknights.tconstruct.TConstruct;
-import teamroots.embers.Embers;
-import thaumcraft.Thaumcraft;
-import thedarkcolour.futuremc.FutureMC;
-import toughasnails.core.ToughAsNails;
-import twilightforest.TwilightForestMod;
-import vazkii.botania.common.lib.LibMisc;
-import vazkii.patchouli.common.base.Patchouli;
-import wile.engineersdecor.ModEngineersDecor;
-
 import javax.annotation.Nullable;
 
 public enum ModIds {
@@ -62,7 +25,8 @@ public enum ModIds {
     mystical_agriculture(ConstIds.mystical_agriculture),
     mystical_world(ConstIds.mystical_world),
     natures_aura(ConstIds.natures_aura),
-    new_crimson_revelations(ConstIds.new_crimson_revelations),
+    new_crimson_revelations(ConstIds.new_crimson_revelations, ConstVersions.new_crimson_revelations, true, false),
+    nutrition(ConstIds.nutrition),
     oreberries(ConstIds.oreberries),
     ore_stages(ConstIds.ore_stages),
     patchouli(ConstIds.patchouli),
@@ -80,6 +44,7 @@ public enum ModIds {
     tinkers_construct(ConstIds.tinkers_construct),
     tinkers_complement(ConstIds.tinkers_complement),
     tough_as_nails(ConstIds.toughasnails),
+    travelers_backpack(ConstIds.travelers_backpack),
     twilight_forest(ConstIds.twilight_forest),
     universal_tweaks(ConstIds.universal_tweaks, ConstVersions.universal_tweaks, true, false);
 
@@ -110,51 +75,54 @@ public enum ModIds {
 
 
     public static class ConstIds {
-        public static final String actually_additions = ActuallyAdditions.MODID;
+        public static final String actually_additions = "actuallyadditions";
         public static final String agricraft = "agricraft";
-        public static final String animania = Animania.MODID;
-        public static final String astral_sorcery = AstralSorcery.MODID;
-        public static final String attained_drops = AttainedDrops2.MODID;
-        public static final String baubles = Baubles.MODID;
-        public static final String bewitchment = Bewitchment.MODID;
-        public static final String bloodmagic = BloodMagic.MODID;
-        public static final String botania = LibMisc.MOD_ID;
-        public static final String cooking_for_blockheads = CookingForBlockheads.MOD_ID;
-        public static final String cyclic = Const.MODID;
-        public static final String embers = Embers.MODID;
-        public static final String enderio = EnderIO.MODID;
-        public static final String engineers_decor = ModEngineersDecor.MODID;
-        public static final String futuremc = FutureMC.ID;
-        public static final String harvestcraft = Reference.MODID;
-        public static final String immersive_engineering = ImmersiveEngineering.MODID;
-        public static final String industrialcraft = IC2.MODID;
-        public static final String industrial_foregoing = com.buuz135.industrial.utils.Reference.MOD_ID;
-        public static final String mystical_agriculture = MysticalAgriculture.MOD_ID;
-        public static final String mystical_world = MysticalWorld.MODID;
-        public static final String natures_aura = NaturesAura.MOD_ID;
-        public static final String new_crimson_revelations = NewCrimsonRevelations.MODID;
-        public static final String oreberries = OreberriesMod.MODID;
+        public static final String animania = "animania";
+        public static final String astral_sorcery = "astralsorcery";
+        public static final String attained_drops = "attaineddrops2";
+        public static final String baubles = "baubles";
+        public static final String bewitchment = "bewitchment";
+        public static final String bloodmagic = "bloodmagic";
+        public static final String botania = "botania";
+        public static final String cooking_for_blockheads = "cookingforblockheads";
+        public static final String cyclic = "cyclicmagic";
+        public static final String embers = "embers";
+        public static final String enderio = "enderio";
+        public static final String engineers_decor = "engineersdecor";
+        public static final String futuremc = "futuremc";
+        public static final String harvestcraft = "harvestcraft";
+        public static final String immersive_engineering = "immersiveengineering";
+        public static final String industrialcraft = "ic2";
+        public static final String industrial_foregoing = "industrialforegoing";
+        public static final String mystical_agriculture = "mysticalagriculture";
+        public static final String mystical_world = "mysticalworld";
+        public static final String natures_aura = "naturesaura";
+        public static final String new_crimson_revelations = "crimsonrevelations";
+        public static final String nutrition = "nutrition";
+        public static final String oreberries = "oreberries";
         public static final String ore_stages = "orestages";
-        public static final String patchouli = Patchouli.MOD_ID;
-        public static final String quality_tools = QualityToolsMod.MOD_ID;
-        public static final String quark = vazkii.quark.base.lib.LibMisc.MOD_ID;
-        public static final String rats = RatsMod.MODID;
+        public static final String patchouli = "patchouli";
+        public static final String quality_tools = "qualitytools";
+        public static final String quark = "quark";
+        public static final String rats = "rats";
         public static final String redstone_paste = "redstonepaste";
-        public static final String roots = Roots.MODID;
-        public static final String rustic = Rustic.MODID;
-        public static final String simpledifficulty = SimpleDifficulty.MODID;
-        public static final String spartan_weaponry = ModSpartanWeaponry.ID;
-        public static final String thaumcraft = Thaumcraft.MODID;
-        public static final String thaumic_additions = InfoTAR.MOD_ID;
-        public static final String the_one_probe = TheOneProbe.MODID;
-        public static final String tinkers_construct = TConstruct.modID;
-        public static final String tinkers_complement = TinkersComplement.modID;
-        public static final String toughasnails = ToughAsNails.MOD_ID;
-        public static final String twilight_forest = TwilightForestMod.ID;
+        public static final String roots = "roots";
+        public static final String rustic = "rustic";
+        public static final String simpledifficulty = "simpledifficulty";
+        public static final String spartan_weaponry = "spartanweaponry";
+        public static final String thaumcraft = "thaumcraft";
+        public static final String thaumic_additions = "thaumadditions";
+        public static final String the_one_probe = "theoneprobe";
+        public static final String tinkers_construct = "tconstruct";
+        public static final String tinkers_complement = "tcomplement";
+        public static final String toughasnails = "toughasnails";
+        public static final String travelers_backpack = "travelersbackpack";
+        public static final String twilight_forest = "twilightforest";
         public static final String universal_tweaks = "universaltweaks";
     }
 
     public static class ConstVersions {
+        public static final String new_crimson_revelations = "1.3.2";
         public static final String universal_tweaks = "1.15.0";
     }
 }

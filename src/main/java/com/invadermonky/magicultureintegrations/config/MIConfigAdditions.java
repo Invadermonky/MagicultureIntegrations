@@ -22,20 +22,27 @@ public class MIConfigAdditions {
 
 
     public static class ConfigAstralSorceryAdditions {
+        @Config.Name("Resonance Analyzer")
+        @Config.Comment("Astral Sorcery machine used to sort celestial crystals based on size and purity.")
         public CrystalSorter crystal_sorter = new CrystalSorter();
 
         public static class CrystalSorter {
             @Config.RequiresMcRestart
-            @Config.Comment("Enables the Astral Sorcery crystal sorter block.")
-            public boolean enable = true;
+            @Config.Comment("Enables the Resonance Analyzer.")
+            public boolean enableCrystalSorter = true;
 
-            @Config.Comment("The Crystal Sorter will sort sort according to size in addition to purity.")
-            public boolean sortSize = true;
+            @Config.Comment("The Crystal Sorter will sort sort respecting size in addition to purity.")
+            public boolean sortRespectingSize = true;
         }
     }
 
     public static class ConfigBotaniaAdditions {
-        @Config.Comment("Botania functional flower. Uses Thaumcraft vis and mana to generate mana bursts. See Lexicon entry for more details")
+        @Config.Name("Auromeria")
+        @Config.Comment
+                ({
+                        "Botania functional flower. Uses Thaumcraft vis and mana to generate mana bursts. See Lexicon entry for",
+                        "more details"
+                })
         public Auromeria auromeria = new Auromeria();
 
         public static class Auromeria {
@@ -44,7 +51,11 @@ public class MIConfigAdditions {
             public boolean enableAuromeria = true;
             @Config.Comment("The amount of damage a flux mana burst deals when colliding with an entity.")
             public float fluxBurstDamage = 12.0f;
-            @Config.Comment("The amount of flux drained from the environment when the Auromeria drains flux when creating a mana burst. ")
+            @Config.Comment
+                    ({
+                            "The amount of flux drained from the environment when the Auromeria drains flux when creating a mana",
+                            "burst."
+                    })
             public double fluxDrainAmount = 0.05;
             @Config.Comment("The base chance that the Auromeria will drain flux when generating a mana burst.")
             public double fluxDrainChance = 0.05;

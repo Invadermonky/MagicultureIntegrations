@@ -3,7 +3,7 @@
     {
       "key": "FLUXLENS",
       "name": "research.FLUXLENS.title",
-      "icons": ["magicultureintegrations:lens_flux"],
+      "icons": ["magicultureintegrations:textures/items/lens_flux.png"],
       "category": "ARTIFICE",
       "parents": ["BASEARTIFICE", "FLUX"],
       "location": [0,4],
@@ -15,8 +15,7 @@
         },
         {
           "text": "research.FLUXLENS.stage.1",
-          "recipes": ["magicultureintegration:FluxLens"],
-          "warp": 1
+          "recipes": ["magicultureintegration:FluxLens"]
         }
       ]
     }

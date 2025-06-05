@@ -12,6 +12,7 @@ import com.invadermonky.magicultureintegrations.integrations.harvestcraft.InitHa
 import com.invadermonky.magicultureintegrations.integrations.immersiveengineering.InitImmersiveEngineering;
 import com.invadermonky.magicultureintegrations.integrations.industrialforegoing.InitIndustrialForegoing;
 import com.invadermonky.magicultureintegrations.integrations.naturesaura.InitNaturesAura;
+import com.invadermonky.magicultureintegrations.integrations.nutrition.InitNutrition;
 import com.invadermonky.magicultureintegrations.integrations.qualitytools.InitQualityTools;
 import com.invadermonky.magicultureintegrations.integrations.quark.InitQuark;
 import com.invadermonky.magicultureintegrations.integrations.thaumcraft.InitThaumcraft;
@@ -37,6 +38,7 @@ public class InitIntegrations {
         loadModule(ModIds.immersive_engineering, InitImmersiveEngineering.class);
         loadModule(ModIds.industrial_foregoing, InitIndustrialForegoing.class);
         loadModule(ModIds.natures_aura, InitNaturesAura.class);
+        loadModule(ModIds.nutrition, InitNutrition.class);
         loadModule(ModIds.quality_tools, InitQualityTools.class);
         loadModule(ModIds.quark, InitQuark.class);
         loadModule(ModIds.thaumcraft, InitThaumcraft.class);

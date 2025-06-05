@@ -7,9 +7,28 @@
 - Cyclic Gentle Harvester can now harvest all supported crops
 - Industrial Foregoing Plant Harvester can now harvest all supported crops
 - Rats 'Harvest' command can now harvest all supported crops
+- Added harvest support to New Crimson Revelation Mana Beans
+- Added configuration to add Nutrition nutrient values to non-food consumable items
+- Several automatic feeder items and devices now increase Nutrition nutrient values when used
+  - Blood Magic Ritual of the Satiated Stomach
+  - Botania Fruit of Grisaia
+  - Cyclic Saturation Potion
+  - IC2 Quantum Helm
+  - Minecraft Saturation Potion
+  - New Crimson Revelations Sustainer Verdant Ring
+  - Industrial Foregoing Meat Feeder
+  - Thaumcraft Sustainer Verdant Charm
+  - Tinker's Construct Tasty trait
+  - Traveler's Backpack Sunflower Backpack
+
+### Changed
+- Configuration was adjusted to fix a number of inconsistent names and broken options be sure to regenerate your configuration after updating
 
 ### Fixed
 - Fixed a bug causing preventing several config options from syncing correctly on restart
+- Fixed Flux Lens failing to load when the Auromeria is enabled
+- Fixed a few typos in the Flux Lens Thaumonomicon entry
+- Fixed several configuration options displaying features that did not work
 
 ---
 

@@ -77,7 +77,7 @@ public class TileCrystalSorter extends TileEntity implements ITickable {
                 } else {
                     CrystalProperties properties = this.getCrystalProperties(crystal);
                     if (properties != null) {
-                        boolean sizeFlag = !MIConfigAdditions.astral_sorcery.crystal_sorter.sortSize || properties.getSize() >= CrystalProperties.getMaxSize(crystal);
+                        boolean sizeFlag = !MIConfigAdditions.astral_sorcery.crystal_sorter.sortRespectingSize || properties.getSize() >= CrystalProperties.getMaxSize(crystal);
                         boolean purityFlag = properties.getPurity() >= this.getPurityThreshold();
                         IItemHandler outputHandler = purityFlag && sizeFlag ? this.output_pure : this.output_impure;
                         //Transfer into pure slot

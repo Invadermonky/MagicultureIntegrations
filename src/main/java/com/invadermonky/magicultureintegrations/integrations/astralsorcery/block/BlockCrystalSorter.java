@@ -252,7 +252,7 @@ public class BlockCrystalSorter extends BlockContainer implements IAddition, IPr
 
     @Override
     public boolean isEnabled() {
-        return MIConfigAdditions.astral_sorcery.crystal_sorter.enable;
+        return MIConfigAdditions.astral_sorcery.crystal_sorter.enableCrystalSorter;
     }
 
     @Override

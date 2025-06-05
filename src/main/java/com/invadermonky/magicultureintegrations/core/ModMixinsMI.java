@@ -26,16 +26,19 @@ public class ModMixinsMI implements ILateMixinLoader {
         put(StringHelper.getMixinString(ModIds.bloodmagic, "boundtool"), () -> ModIds.bloodmagic.isLoaded && !ModIds.universal_tweaks.isLoaded && MIConfigTweaks.blood_magic.boundToolTweak);
         put(StringHelper.getMixinString(ModIds.bloodmagic, "cuttingfluid"), () -> ModIds.bloodmagic.isLoaded && MIConfigTweaks.blood_magic.cuttingFluidTweak);
         put(StringHelper.getMixinString(ModIds.bloodmagic, "ritual"), () -> ModIds.bloodmagic.isLoaded && !ModIds.universal_tweaks.isLoaded && MIConfigFixes.blood_magic.fixRitual);
-        put(StringHelper.getMixinString(ModIds.bloodmagic, "ritualcrusher"), () -> ModIds.bloodmagic.isLoaded && MIConfigTweaks.blood_magic.ritualCrusherTweak);
-        put(StringHelper.getMixinString(ModIds.bloodmagic, "ritualharvest"), () -> ModIds.bloodmagic.isLoaded && MIConfigTweaks.blood_magic.ritualHarvestTweak);
-        put(StringHelper.getMixinString(ModIds.bloodmagic, "ritualmagnetic", "tweak"), () -> ModIds.bloodmagic.isLoaded && MIConfigTweaks.blood_magic.ritualMagneticTweak);
+        put(StringHelper.getMixinString(ModIds.bloodmagic, "ritualcrusher"), () -> ModIds.bloodmagic.isLoaded && MIConfigTweaks.blood_magic.ritualCrusherTweaks.ritualCrusherTweak);
+        put(StringHelper.getMixinString(ModIds.bloodmagic, "ritualfullstomach", "nutrition"), () -> ModIds.bloodmagic.isLoaded && ModIds.nutrition.isLoaded && MIConfigIntegrations.nutrition.autoFeeders.BMRitualFullStomach);
+        put(StringHelper.getMixinString(ModIds.bloodmagic, "ritualharvest"), () -> ModIds.bloodmagic.isLoaded && MIConfigTweaks.blood_magic.ritualHarvestTweaks.ritualHarvestTweak);
+        put(StringHelper.getMixinString(ModIds.bloodmagic, "ritualmagnetic", "tweak"), () -> ModIds.bloodmagic.isLoaded && MIConfigTweaks.blood_magic.ritualMagneticTweaks.ritualMagneticTweak);
         put(StringHelper.getMixinString(ModIds.bloodmagic, "ritualmagnetic", ModIds.ore_stages.modId), () -> ModIds.bloodmagic.isLoaded && ModIds.ore_stages.isLoaded && MIConfigIntegrations.blood_magic.ore_stages_magnetism);
         put(StringHelper.getMixinString(ModIds.bloodmagic, "fluidrouting"), () -> ModIds.bloodmagic.isLoaded && !ModIds.universal_tweaks.isLoaded && MIConfigFixes.blood_magic.fixFluidRouting);
         put(StringHelper.getMixinString(ModIds.botania, "exoflame"), () -> ModIds.botania.isLoaded && MIConfigIntegrations.botania.exoflameMixin);
+        put(StringHelper.getMixinString(ModIds.botania, "infinitefruit", "nutrition"), () -> ModIds.botania.isLoaded && ModIds.nutrition.isLoaded && MIConfigIntegrations.nutrition.autoFeeders.BotFruitOfGrisaia.enable);
         put(StringHelper.getMixinString(ModIds.botania, "kekimurus"), () -> ModIds.botania.isLoaded && MIConfigIntegrations.botania.kekimurus_mixin);
         put(StringHelper.getMixinString(ModIds.cooking_for_blockheads, "oven", "fix"), () -> ModIds.cooking_for_blockheads.isLoaded && !ModIds.universal_tweaks.isLoaded && MIConfigFixes.cooking_for_blockheads.fixOven);
         put(StringHelper.getMixinString(ModIds.cooking_for_blockheads, "oven", "heatable"), () -> ModIds.cooking_for_blockheads.isLoaded && MIConfigIntegrations.cooking_for_blockheads.heatableOven);
         put(StringHelper.getMixinString(ModIds.cyclic, "harvestexpansion"), () -> ModIds.cyclic.isLoaded && MIConfigIntegrations.cyclic.harvesterExpansion);
+        put(StringHelper.getMixinString(ModIds.cyclic, "potionsaturation", "nutrition"), () -> ModIds.cyclic.isLoaded && ModIds.nutrition.isLoaded && MIConfigIntegrations.nutrition.autoFeeders.cyclicSaturation.enable);
         put(StringHelper.getMixinString(ModIds.engineers_decor, "decorfurnace", "heatable"), () -> ModIds.engineers_decor.isLoaded && MIConfigIntegrations.engineers_decor.heatableFurnace);
         put(StringHelper.getMixinString(ModIds.futuremc, "advancedfurnace", "heatable"), () -> ModIds.futuremc.isLoaded && MIConfigIntegrations.future_mc.heatableAdvancedFurnaces);
         put(StringHelper.getMixinString(ModIds.harvestcraft, "blockpam", "harvestable"), () -> ModIds.harvestcraft.isLoaded && MIConfigIntegrations.harvestcraft.harvestable_fruit);
@@ -49,10 +52,13 @@ public class ModMixinsMI implements ILateMixinLoader {
         put(StringHelper.getMixinString(ModIds.industrial_craft, "cokekiln", "boostable"), () -> ModIds.industrial_craft.isLoaded && MIConfigIntegrations.industrial_craft.boostableCokeKiLn);
         put(StringHelper.getMixinString(ModIds.industrial_craft, "crop", "harvestable"), () -> ModIds.industrial_craft.isLoaded && MIConfigIntegrations.industrial_craft.harvestableCrops);
         put(StringHelper.getMixinString(ModIds.industrial_craft, "crop", "hornharvestable"), () -> ModIds.industrial_craft.isLoaded && ModIds.botania.isLoaded && MIConfigIntegrations.botania.wild_horn.industrialcraft);
+        put(StringHelper.getMixinString(ModIds.industrial_craft, "quantumsuit", "nutrition"), () -> ModIds.industrial_craft.isLoaded && ModIds.nutrition.isLoaded && MIConfigIntegrations.nutrition.autoFeeders.IC2QuantumHelmet.enable);
+        put(StringHelper.getMixinString(ModIds.industrial_foregoing, "meatfeeder", "nutrition"), () -> ModIds.industrial_foregoing.isLoaded && ModIds.nutrition.isLoaded && MIConfigIntegrations.nutrition.autoFeeders.IFMeatFeeder.enable);
         put(StringHelper.getMixinString(ModIds.mystical_agriculture, "heatable"), () -> ModIds.mystical_agriculture.isLoaded && MIConfigIntegrations.mystical_agriculture.heatableFurnace);
         put(StringHelper.getMixinString(ModIds.natures_aura, "externalheater"), () -> ModIds.natures_aura.isLoaded && MIConfigIntegrations.natures_aura.extraneousHeaterMixins);
         put(StringHelper.getMixinString(ModIds.new_crimson_revelations, "blockmanapod", "harvestable"), () -> ModIds.new_crimson_revelations.isLoaded && MIConfigIntegrations.new_crimson_revelations.harvestableManaPods);
         put(StringHelper.getMixinString(ModIds.new_crimson_revelations, "blockmanapod", "hornharvestable"), () -> ModIds.new_crimson_revelations.isLoaded && ModIds.botania.isLoaded && MIConfigIntegrations.botania.wild_horn.newcrimsonrevelations);
+        put(StringHelper.getMixinString(ModIds.new_crimson_revelations, "verdantring", "nutrition"), () -> ModIds.new_crimson_revelations.isLoaded && ModIds.nutrition.isLoaded && MIConfigIntegrations.nutrition.autoFeeders.TCVerdantCharm.enable);
         put(StringHelper.getMixinString(ModIds.oreberries, "blockoreberrybush", "harvestable"), () -> ModIds.oreberries.isLoaded && MIConfigIntegrations.oreberries.harvestableOreberries);
         put(StringHelper.getMixinString(ModIds.oreberries, "blockoreberrybush", "hornharvestable"), () -> ModIds.oreberries.isLoaded && ModIds.botania.isLoaded && MIConfigIntegrations.botania.wild_horn.oreberries);
         put(StringHelper.getMixinString(ModIds.rats, "ratharvestexpansion"), () -> ModIds.rats.isLoaded && MIConfigIntegrations.rats.ratHarvestExpansion);
@@ -62,11 +68,14 @@ public class ModMixinsMI implements ILateMixinLoader {
         put(StringHelper.getMixinString(ModIds.thaumcraft, "bellows"), () -> ModIds.thaumcraft.isLoaded && MIConfigIntegrations.thaumcraft.bellowsMixins);
         put(StringHelper.getMixinString(ModIds.thaumcraft, "golemharvestexpansion"), () -> ModIds.thaumcraft.isLoaded && MIConfigIntegrations.thaumcraft.golemHarvestExpansion);
         put(StringHelper.getMixinString(ModIds.thaumcraft, "smelter", "heatable"), () -> ModIds.thaumcraft.isLoaded && MIConfigIntegrations.thaumcraft.essenceFurnaceMixins);
+        put(StringHelper.getMixinString(ModIds.thaumcraft, "verdantcharm", "nutrition"), () -> ModIds.thaumcraft.isLoaded && ModIds.nutrition.isLoaded && MIConfigIntegrations.nutrition.autoFeeders.TCVerdantCharm.enable);
         put(StringHelper.getMixinString(ModIds.thaumic_additions, "smelter", "heatable"), () -> ModIds.thaumic_additions.isLoaded && MIConfigIntegrations.thaumic_additions.heatableEssenceSmelter);
         put(StringHelper.getMixinString(ModIds.tinkers_construct, "smeltery", "boostable"), () -> ModIds.tinkers_construct.isLoaded && MIConfigIntegrations.tinkers_construct.boostableSmeltery);
+        put(StringHelper.getMixinString(ModIds.tinkers_construct, "traittasty", "nutrition"), () -> ModIds.tinkers_construct.isLoaded && ModIds.nutrition.isLoaded && MIConfigIntegrations.nutrition.autoFeeders.TCTastyTrait.enable);
+        put(StringHelper.getMixinString(ModIds.travelers_backpack, "sunflower", "nutrition"), () -> ModIds.travelers_backpack.isLoaded && ModIds.nutrition.isLoaded && MIConfigIntegrations.nutrition.autoFeeders.TBSunflowerBackpack.enable);
         put(StringHelper.getMixinString(ModIds.twilight_forest, "experiment115", "kekimurus"), () -> ModIds.twilight_forest.isLoaded && ModIds.botania.isLoaded && MIConfigIntegrations.botania.kekimurus.experiment115);
 
-        //TODO: Remove this. Used only for debugging IC2 crops.
+        //Used only for debugging IC2 crops.
         //put(StringHelper.getMixinString(ModIds.industrial_craft, "crop", "growable"), () -> ModIds.industrial_craft.isLoaded);
     }});
 

@@ -71,6 +71,23 @@ While built for Magiculture 2, Magiculture Integrations features a robust config
 - **Essence Furnace:** Mystical Agriculture's Essence Furnaces can be heated and boosted by all supported furnace heaters
 ### **New Crimson Revelations**
 - **Mana Pods:** New Crimson Revelations mana pods can now be harvested by all supported crop harvesters
+### **Nutrition**
+- **Auto-Feeder Integration:** Many auto-feeding devices now increase nutritional values when they perform feed operations. This includes a configurable nutrient values and nutrient cap per feeder. For a list of supported devices, see below.
+- **Expanded Foods:** New configuration option to add nutrition values to non-food consumable items
+
+|           Mod           |             Device             |
+|:-----------------------:|:------------------------------:|
+|       Blood Magic       | Ritual of the Satiated Stomach |
+|         Botania         |        Fruit of Grisaia        |
+|         Cyclic          |       Saturation Potion        |
+|    Indusrial Craft 2    |         Quantum Helmet         |
+|  Industrial Foregoing   |          Meat Feeder           |
+|        Minecraft        |       Saturation Potion*       |
+| New Crimson Revelations |    Verdant Ring (Sustainer)    |
+|       Thaumcraft        |   Verdant Charm (Sustainer)    |
+|   Tinker's Construct    |          Tasty Trait           |
+|   Traveler's Backpack   |       Sunflower Backpack       |
+
 ### **Oreberries**
 - **Oreberry Bushes:** Oreberries oreberry bushes can now be harvested by all supported crop harvesters
 ### **Rustic**

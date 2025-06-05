@@ -30,6 +30,7 @@ public class MagicultureIntegrations {
                     ";after:" + ModIds.ConstIds.embers +
                     ";after:" + ModIds.ConstIds.industrial_foregoing +
                     ";after:" + ModIds.ConstIds.natures_aura +
+                    ";after:" + ModIds.ConstIds.nutrition +
                     ";after:" + ModIds.ConstIds.patchouli +
                     ";after:" + ModIds.ConstIds.quark;
 

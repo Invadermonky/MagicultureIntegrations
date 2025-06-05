@@ -2,6 +2,7 @@ package com.invadermonky.magicultureintegrations.config;
 
 import com.cleanroommc.configanytime.ConfigAnytime;
 import com.invadermonky.magicultureintegrations.MagicultureIntegrations;
+import com.invadermonky.magicultureintegrations.config.generics.ConfigHeatableOnly;
 import com.invadermonky.magicultureintegrations.config.generics.ConfigHeatables;
 import com.invadermonky.magicultureintegrations.config.tags.ModTags;
 import net.minecraftforge.common.config.Config;
@@ -48,6 +49,8 @@ public class MIConfigIntegrations {
     public static NaturesAuraIntegrations natures_aura = new NaturesAuraIntegrations();
     @Config.Name("New Crimson Revelations")
     public static NewCrimsonRevelationsIntegrations new_crimson_revelations = new NewCrimsonRevelationsIntegrations();
+    @Config.Name("Nutrition")
+    public static NutritionIntegrations nutrition = new NutritionIntegrations();
     @Config.Name("Oreberries")
     public static OreberriesIntegrations oreberries = new OreberriesIntegrations();
     @Config.Name("Quark")
@@ -72,8 +75,8 @@ public class MIConfigIntegrations {
         @Config.Name("Harvestable Agricraft Crops")
         @Config.Comment
                 ({
-                        "Enables the IHarvestableCrop mixin injection, allowing Agricraft crops to be harvested by a number",
-                        "ofsupported modded harvesters."
+                        "Enables the IHarvestableCrop mixin injection, allowing Agricraft crops to be harvested by a",
+                        "number of supported modded harvesters."
                 })
         public boolean harvestable_mixin = true;
     }
@@ -90,8 +93,8 @@ public class MIConfigIntegrations {
         @Config.Name("Attained Drops 2")
         @Config.Comment
                 ({
-                        "Enables the IHarvestableCrop mixin injection, allowing Attained Drops 2 crops to be harvested by a",
-                        "number ofsupported modded harvesters."
+                        "Enables the IHarvestableCrop mixin injection, allowing Attained Drops 2 crops to be harvested",
+                        "by a number ofsupported modded harvesters."
                 })
         public boolean harvestable_mixin = true;
     }
@@ -101,8 +104,8 @@ public class MIConfigIntegrations {
         @Config.Name("Heatable Witches' Oven")
         @Config.Comment
                 ({
-                        "Enables the IHeatableTile mixin injection, allowing the Witches' Oven to be heated and boosted by all",
-                        "supported furnace heaters. For individual toggles see the specific heater integration configs."
+                        "Enables the IHeatableTile mixin injection, allowing the Witches' Oven to be heated and boosted by",
+                        "all supported furnace heaters. For individual toggles see the specific heater integration configs."
                 })
         public boolean heatable_oven = true;
     }
@@ -113,7 +116,7 @@ public class MIConfigIntegrations {
         @Config.Comment("Global enable/disable for all Burning Furnace Array integrations.")
         public boolean furnace_array_mixins = true;
 
-        public ConfigHeatables furnace_array = new ConfigHeatables();
+        public ConfigHeatableOnly furnace_array = new ConfigHeatableOnly();
 
         @Config.RequiresMcRestart
         @Config.Name("Ore Stages Magnetism")
@@ -194,8 +197,8 @@ public class MIConfigIntegrations {
         @Config.Name("Heatable Oven")
         @Config.Comment
                 ({
-                        "Enables the IHeatableTile mixin injection, allowing the Oven to be heated and boosted by all supported",
-                        "furnace heaters. For individual toggles see the specific heater integration configs."
+                        "Enables the IHeatableTile mixin injection, allowing the Oven to be heated and boosted by all",
+                        "supported furnace heaters. For individual toggles see the specific heater integration configs."
                 })
         public boolean heatableOven = true;
     }
@@ -232,7 +235,11 @@ public class MIConfigIntegrations {
     public static class HarvestcraftIntegrations {
         @Config.RequiresMcRestart
         @Config.Name("Harvestable Harvestcraft Fruit and Bark")
-        @Config.Comment("Enables the IHarvestableCrop mixin injection, allowing fruit and bark to be harvested bysupported modded harvesters.")
+        @Config.Comment
+                ({
+                        "Enables the IHarvestableCrop mixin injection, allowing fruit and bark to be harvested by",
+                        "most supported modded harvesters."
+                })
         public boolean harvestable_fruit = true;
     }
 
@@ -345,7 +352,11 @@ public class MIConfigIntegrations {
 
         @Config.RequiresMcRestart
         @Config.Name("Harvestable Crops")
-        @Config.Comment("Enables the IHarvestableCrop mixin injection, allowing IC2 Crops to be harvested by supported modded harvesters.")
+        @Config.Comment
+                ({
+                        "Enables the IHarvestableCrop mixin injection, allowing IC2 Crops to be harvested by supported",
+                        "modded harvesters."
+                })
         public boolean harvestableCrops = true;
     }
 
@@ -373,14 +384,122 @@ public class MIConfigIntegrations {
     public static class NewCrimsonRevelationsIntegrations {
         @Config.RequiresMcRestart
         @Config.Name("Harvestable Mana Pods")
-        @Config.Comment("Enables the IHarvestableCrop mixin injection, allowing Mana Pods to be harvested by supported modded harvesters.")
+        @Config.Comment
+                ({
+                        "Enables the IHarvestableCrop mixin injection, allowing Mana Pods to be harvested by supported",
+                        "modded harvesters."
+                })
         public boolean harvestableManaPods = true;
+    }
+
+    public static class NutritionIntegrations {
+        @Config.Name("Custom Foods")
+        @Config.Comment
+                ({
+                        "Custom foods that are not normally supported by Nutrition can be added here. These can be any",
+                        "item that features an 'eat' effect but does not extend the ItemFood class.",
+                        "Format:",
+                        "  modid:itemid:meta;nutritionalValue;nutrientName1;nutrientName2...",
+                        "    modid:itemid - the registry name of the item",
+                        "    meta - [optional] the metadata of the item",
+                        "    nutritionalValue - the nutritional value of the food, this value must be between 0 and 100",
+                        "    nutrientName - the names of the nutrient type, default values are dairy, fruit, grain, protein",
+                        "                   and vegetable. Multiple names can be used separated by semi-colons.",
+                        "Example:",
+                        "  ic2:filled_tin_can;0.5;protein;grain"
+                })
+        public String[] customFoods = new String[]{};
+
+        @Config.Name("Auto Feeders")
+        public AutoFeedersIntegrations autoFeeders = new AutoFeedersIntegrations();
+
+        public static class AutoFeedersIntegrations {
+            @Config.Name("Blood Magic Ritual of Satiated Stomach")
+            @Config.Comment("Ritual of the Satiated Stomach feeds players food directly so it does not need a cap or adjustment.")
+            public boolean BMRitualFullStomach = true;
+
+            @Config.Name("Botania Fruit of Grisaia")
+            @Config.Comment("Fires 4 times per use of the item")
+            public AutoFeederDeviceConfig BotFruitOfGrisaia = new AutoFeederDeviceConfig("fruit");
+
+            @Config.Name("Cyclic Saturation Potion")
+            public AutoFeederDeviceConfig cyclicSaturation = new AutoFeederDeviceConfig(0.05);
+
+            @Config.Name("Industrial Craft Quantum Helmet")
+            public AutoFeederDeviceConfig IC2QuantumHelmet = new AutoFeederDeviceConfig("protein");
+
+            @Config.Name("Industrial Foregoing Meat Feeder")
+            public AutoFeederDeviceConfig IFMeatFeeder = new AutoFeederDeviceConfig("protein");
+
+            @Config.Name("Minecraft Saturation Potion")
+            public AutoFeederDeviceConfig saturationPotion = new AutoFeederDeviceConfig(0.0025);
+
+            @Config.Name("Traveller's Backpack Sunflower Backpack")
+            public AutoFeederDeviceConfig TBSunflowerBackpack = new AutoFeederDeviceConfig();
+
+            @Config.Name("Tinker's Construct Tasty Trait")
+            public AutoFeederDeviceConfig TCTastyTrait = new AutoFeederDeviceConfig("protein");
+
+            @Config.Name("Thaumcraft Verdant Charm")
+            public AutoFeederDeviceConfig TCVerdantCharm = new AutoFeederDeviceConfig();
+
+            public static class AutoFeederDeviceConfig {
+                @Config.RequiresMcRestart
+                @Config.Name("Enable Nutrition Integration")
+                @Config.Comment("Enables Nutrition integration when this device auto-feeds the player.")
+                public boolean enable = true;
+
+                @Config.RangeDouble(min = 0, max = 100)
+                @Config.Name("Nutritional Value")
+                @Config.Comment
+                        ({
+                                "The nutritional value gained whenever this device auto-feeds the player. This value will",
+                                "be applied across all configured nutrients."
+                        })
+                public double nutritionValue;
+
+                @Config.RangeInt(min = 0, max = 100)
+                @Config.Name("Maximum Nutritional Value")
+                @Config.Comment
+                        ({
+                                "The maximum nutritional value this device can reach. A value of 75 can only achieve",
+                                "75/100 nutrition."
+                        })
+                public int maxNutrition;
+
+                @Config.Name("Nutrient Names")
+                @Config.Comment
+                        ({
+                                "A list of nutrient names this device can increase. Leaving this option will cause this",
+                                "device to increase all registered nutrients."
+                        })
+                public String[] nutrientNames;
+
+                public AutoFeederDeviceConfig(double nutritionValue, int maxNutrition, String... nutrientNames) {
+                    this.nutritionValue = nutritionValue;
+                    this.maxNutrition = maxNutrition;
+                    this.nutrientNames = nutrientNames;
+                }
+
+                public AutoFeederDeviceConfig(double nutritionValue, String... nutrientNames) {
+                    this(nutritionValue, 75, nutrientNames);
+                }
+
+                public AutoFeederDeviceConfig(String... nutrientNames) {
+                    this(0.5, nutrientNames);
+                }
+            }
+        }
     }
 
     public static class OreberriesIntegrations {
         @Config.RequiresMcRestart
         @Config.Name("Hafvestable Oreberries")
-        @Config.Comment("Enables the IHarvestableCrop mixin injection, allowing oreberry bushes to be harvested by supported modded harvesters.")
+        @Config.Comment
+                ({
+                        "Enables the IHarvestableCrop mixin injection, allowing oreberry bushes to be harvested by",
+                        "supported modded harvesters."
+                })
         public boolean harvestableOreberries = true;
     }
 
@@ -392,7 +511,11 @@ public class MIConfigIntegrations {
         @Config.Name("Foxhound Integrations")
         public ConfigHeatables foxhoundHeatables = new ConfigHeatables();
 
-        @Config.Comment("The cook time boost a sitting Foxhound provides a heatable tile. Processing time will be reduced by this amount every 3 ticks.")
+        @Config.Comment
+                ({
+                        "The cook time boost a sitting Foxhound provides a heatable tile. Processing time will be reduced",
+                        "by this amount every 3 ticks."
+                })
         public int foxButtSpeedup = 1;
     }
 
@@ -413,16 +536,20 @@ public class MIConfigIntegrations {
     public static class RusticIntegrations {
         @Config.RequiresMcRestart
         @Config.Name("Harvestable Herbs")
-        @Config.Comment("Enables the IHarvestableCrop mixin injection, allowing Herbs to be harvested by supported modded harvesters.")
+        @Config.Comment
+                ({
+                        "Enables the IHarvestableCrop mixin injection, allowing Herbs to be harvested by supported",
+                        "modded harvesters."
+                })
         public boolean harvestableHerbs = true;
 
         @Config.RequiresMcRestart
         @Config.Name("Heatable Basic/Advance Alchemic Condenser")
         @Config.Comment
                 ({
-                        "Enables the IHeatableTile mixin injection, allowing the Basic and Advanced Alchemic Condenser to be",
-                        "heated and boosted by all supported furnace heaters. For individual toggles see the specific heater",
-                        "integration configs."
+                        "Enables the IHeatableTile mixin injection, allowing the Basic and Advanced Alchemic Condenser",
+                        "to be heated and boosted by all supported furnace heaters. For individual toggles see the",
+                        "specific heater integration configs."
                 })
         public boolean heatableCondenser = true;
     }
@@ -475,8 +602,11 @@ public class MIConfigIntegrations {
     public static class TinkersConstructIntegrations {
         @Config.RequiresMcRestart
         @Config.Name("Boostable Smeltery")
-        @Config.Comment("Enables the IHeatableTile mixin injection, allowing the Smeltery to be boosted by all supported furnace\n" +
-                "boosters. For individual toggles see the specific heater integration configs.")
+        @Config.Comment
+                ({
+                        "Enables the IHeatableTile mixin injection, allowing the Smeltery to be boosted by all supported",
+                        "furnace boosters. For individual toggles see the specific heater integration configs."
+                })
         public boolean boostableSmeltery = false;
     }
 

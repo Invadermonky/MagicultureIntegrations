@@ -19,4 +19,13 @@ public class StringHelper {
         s.append(".json");
         return s.toString();
     }
+
+    public static String getVanillaMixinString(String... params) {
+        StringBuilder s = new StringBuilder("mixins.mi.minecraft");
+        for (String param : params) {
+            s.append(".").append(param);
+        }
+        s.append(".json");
+        return s.toString();
+    }
 }

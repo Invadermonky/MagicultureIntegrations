@@ -20,7 +20,7 @@ public class ModTags {
     private static void parseRitualMagneticReplacements() {
         RITUAL_MAGNETIC_REPLACEMENTS.clear();
         Pattern pattern = Pattern.compile("^(-?\\d+)=([^=\\s]+?):(\\d+)$");
-        for (String str : MIConfigTweaks.blood_magic.ritualMagneticTweakReplacements) {
+        for (String str : MIConfigTweaks.blood_magic.ritualMagneticTweaks.ritualMagneticTweakReplacements) {
             Matcher matcher = pattern.matcher(str.trim());
             if (matcher.find()) {
                 int dimension = Integer.parseInt(matcher.group(1));

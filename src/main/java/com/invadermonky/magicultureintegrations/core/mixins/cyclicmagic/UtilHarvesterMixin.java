@@ -1,4 +1,4 @@
-package com.invadermonky.magicultureintegrations.core.mixins.cylic;
+package com.invadermonky.magicultureintegrations.core.mixins.cyclicmagic;
 
 import com.invadermonky.magicultureintegrations.api.block.IHarvestableCrop;
 import com.lothrazar.cyclicmagic.util.UtilHarvester;

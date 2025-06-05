@@ -33,8 +33,8 @@ public class MIConfigFixes {
         @Config.Name("Fix Ender IO Plugin")
         @Config.Comment
                 ({
-                        "Fixes broken Ender IO integration that causes Farming Station crash. This fix is included in Universal",
-                        "Tweaks 1.15.0 and will disable itself if Universal Tweaks is present."
+                        "Fixes broken Ender IO integration that causes Farming Station crash. This fix is included in",
+                        "Universal Tweaks 1.15.0 and will disable itself if Universal Tweaks is present."
                 })
         public boolean fixEnderioPlugin = true;
     }
@@ -51,8 +51,8 @@ public class MIConfigFixes {
         @Config.Name("Witches' Oven Fix")
         @Config.Comment
                 ({
-                        "Fixes Witches' Oven consuming container fuel items.  This fix is included in Universal Tweaks 1.15.0",
-                        "and will disable itself if Universal Tweaks is present."
+                        "Fixes Witches' Oven consuming container fuel items.  This fix is included in Universal Tweaks",
+                        "1.15.0 and will disable itself if Universal Tweaks is present."
                 })
         public boolean fixWitchesOven = true;
     }

@@ -5,6 +5,7 @@ import com.invadermonky.magicultureintegrations.api.IAddition;
 import com.invadermonky.magicultureintegrations.config.MIConfigAdditions;
 import com.invadermonky.magicultureintegrations.integrations.botania.item.lens.LensFlux;
 import com.invadermonky.magicultureintegrations.util.StringHelper;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.projectile.EntityThrowable;
@@ -16,6 +17,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
+import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -213,6 +216,16 @@ public class ItemLensFlux extends Item implements ILensControl, ICompositableLen
     @Override
     public boolean isEnabled() {
         return MIConfigAdditions.botania.auromeria.enableAuromeria;
+    }
+
+    @Override
+    public void registerItems(IForgeRegistry<Item> registry) {
+        registry.register(FLUX_LENS);
+    }
+
+    @Override
+    public void registerModels(ModelRegistryEvent event) {
+        ModelLoader.setCustomModelResourceLocation(FLUX_LENS, 0, new ModelResourceLocation(FLUX_LENS.getRegistryName(), "inventory"));
     }
 
     @Override

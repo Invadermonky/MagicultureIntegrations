@@ -8,15 +8,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-
-import java.util.ArrayList;
 
 @Mixin(value = CRBlockManaPod.class, remap = false)
 public abstract class CRBlockManaPodHarvestableMixin implements IHarvestableCrop {
@@ -26,9 +23,6 @@ public abstract class CRBlockManaPodHarvestableMixin implements IHarvestableCrop
 
     @Shadow
     protected abstract int getAge(IBlockState state);
-
-    @Shadow
-    public abstract ArrayList<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune);
 
     @Override
     public BlockPos getHarvestPosition(World world, BlockPos cropPos) {
@@ -49,7 +43,7 @@ public abstract class CRBlockManaPodHarvestableMixin implements IHarvestableCrop
         IBlockState state = world.getBlockState(pos);
         NonNullList<ItemStack> drops = NonNullList.create();
         if (state.getBlock() instanceof IHarvestableCrop && ((IHarvestableCrop) state.getBlock()).getHarvestResult(world, pos) == HarvestResult.HARVEST) {
-            drops.addAll(getDrops(world, pos, state, fortune));
+            state.getBlock().getDrops(drops, world, pos, state, fortune);
             world.setBlockState(pos, state.getBlock().getDefaultState());
         }
         return drops;

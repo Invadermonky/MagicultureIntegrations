@@ -1,4 +1,4 @@
-package com.invadermonky.magicultureintegrations.core.mixins.bloodmagic;
+package com.invadermonky.magicultureintegrations.core.mixins.bloodmagic.rituals;
 
 import WayofTime.bloodmagic.ritual.IMasterRitualStone;
 import WayofTime.bloodmagic.ritual.types.RitualCrushing;
