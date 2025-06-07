@@ -18,6 +18,7 @@ public enum ModIds {
     enderio(ConstIds.enderio),
     engineers_decor(ConstIds.engineers_decor),
     futuremc(ConstIds.futuremc),
+    game_stages(ConstIds.game_stages),
     harvestcraft(ConstIds.harvestcraft),
     immersive_engineering(ConstIds.immersive_engineering),
     industrial_craft(ConstIds.industrialcraft),
@@ -90,6 +91,7 @@ public enum ModIds {
         public static final String enderio = "enderio";
         public static final String engineers_decor = "engineersdecor";
         public static final String futuremc = "futuremc";
+        public static final String game_stages = "gamestages";
         public static final String harvestcraft = "harvestcraft";
         public static final String immersive_engineering = "immersiveengineering";
         public static final String industrialcraft = "ic2";

@@ -53,6 +53,7 @@ dependencies {
     modMap.put(["engineers-decor-313866:3783239", "immersive-engineering-231951:2974106"], project.engineersdecor)
     modMap.put(["environmental-tech-245453:2691536", "valkyrielib-245480:2691542"], project.environmentaltech)
     modMap.put(["future-mc-310059:5013081", "shadowfacts-forgelin-248453:2785465"], project.futuremc)
+    modMap.put(["game-stages-268655:2951840", "bookshelf-228525:2836960"], project.gamestages)
     modMap.put(["item-stages-280316:2696766", "game-stages-268655:2951840", "bookshelf-228525:2836960"], project.itemstages)
     modMap.put(["llibrary-243298:3116493"], project.llibary)
     modMap.put(["pams-harvestcraft-221857:2904825"], project.harvestcraft)

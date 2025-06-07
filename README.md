@@ -95,6 +95,7 @@ While built for Magiculture 2, Magiculture Integrations features a robust config
 - **Herbs:** Rustic herbs can now be harvested by all supported crop harvesters
 ### **Thaumcraft**
 - **Essence Smelter:** Thuamcraft's Essence Furnaces can be heated and boosted by all supported furnace heaters
+- **Staged Aspect Tooltips:** Thaumcraft's item tooltip aspect values can now be locked behind a Game Stage
 ### **Thaumic Additions**
 - **Essence Smelter:** Thaumic Additions Essence Furnaces can be heated and boosted by all supported furnace heaters
 ### **The One Probe**

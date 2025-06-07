@@ -69,6 +69,7 @@ public class ModMixinsMI implements ILateMixinLoader {
         put(StringHelper.getMixinString(ModIds.thaumcraft, "bellows"), () -> ModIds.thaumcraft.isLoaded && MIConfigIntegrations.thaumcraft.bellowsMixins);
         put(StringHelper.getMixinString(ModIds.thaumcraft, "golemharvestexpansion"), () -> ModIds.thaumcraft.isLoaded && MIConfigIntegrations.thaumcraft.golemHarvestExpansion);
         put(StringHelper.getMixinString(ModIds.thaumcraft, "smelter", "heatable"), () -> ModIds.thaumcraft.isLoaded && MIConfigIntegrations.thaumcraft.essenceFurnaceMixins);
+        put(StringHelper.getMixinString(ModIds.thaumcraft, "tooltip", "gamestage"), () -> ModIds.thaumcraft.isLoaded && ModIds.game_stages.isLoaded && !MIConfigIntegrations.thaumcraft.stageTooltipAspects.isEmpty());
         put(StringHelper.getMixinString(ModIds.thaumcraft, "verdantcharm", "nutrition"), () -> ModIds.thaumcraft.isLoaded && ModIds.nutrition.isLoaded && MIConfigIntegrations.nutrition.autoFeeders.TCVerdantCharm.enable);
         put(StringHelper.getMixinString(ModIds.thaumic_additions, "smelter", "heatable"), () -> ModIds.thaumic_additions.isLoaded && MIConfigIntegrations.thaumic_additions.heatableEssenceSmelter);
         put(StringHelper.getMixinString(ModIds.tinkers_construct, "smeltery", "boostable"), () -> ModIds.tinkers_construct.isLoaded && MIConfigIntegrations.tinkers_construct.boostableSmeltery);

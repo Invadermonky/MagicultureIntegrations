@@ -576,6 +576,15 @@ public class MIConfigIntegrations {
                         "by all supported furnace heaters. For individual toggles see the specific heater integration configs."
                 })
         public boolean essenceFurnaceMixins = true;
+
+        @Config.RequiresMcRestart
+        @Config.Name("Aspect Tooltip Game Stage Support")
+        @Config.Comment
+                ({
+                        "Hides Thaumcraft's item aspects tooltip when the player does not have the specified Game Stage.",
+                        "To enable this feature, set this value to the stage name that allows players access to this information."
+                })
+        public String stageTooltipAspects = "";
     }
 
     public static class ThaumicAdditionsIntegrations {

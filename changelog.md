@@ -10,6 +10,7 @@
 - Rats 'Harvest' command can now harvest all supported crops
 - Added harvest support to New Crimson Revelation Mana Beans
 - Added configuration to add Nutrition nutrient values to non-food consumable items
+- Added ability to lock Thaumcraft item tooltip aspect values behing a Game Stage
 - Several automatic feeder items and devices now increase Nutrition nutrient values when used
   - Blood Magic Ritual of the Satiated Stomach
   - Botania Fruit of Grisaia
