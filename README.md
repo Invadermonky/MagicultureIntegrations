@@ -143,6 +143,7 @@ While built for Magiculture 2, Magiculture Integrations features a robust config
 ### **Astral Sorcery**
 - **Ichosic Resonator:** Right-clicking the ground at night with an Ichosic Resonator will display the fluid reservoir contained in that chunk
 ### **Blood Magic**
+- **Blood Packs:** Blood Letter's Pack and Coat of Arms can have their LP capacity modified
 - **Bound Tools:** Bound Tool right click harvest has been overhauled, significantly increasing performance and firing the BlockHarvestEvent, exposing block drops to tweaker mods
 - **Cutting Fluid/Explosive Powder:** Cutting Fluid and Explosive Powder can have their max uses modified
 - **Ritual of the Crusher:** Ritual fires the BlockHarvestEvent, exposing block drops to tweaker mods

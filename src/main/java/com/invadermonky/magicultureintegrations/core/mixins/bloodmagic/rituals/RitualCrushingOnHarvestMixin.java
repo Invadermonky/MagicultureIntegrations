@@ -20,7 +20,7 @@ import java.util.List;
 
 @SuppressWarnings("unchecked")
 @Mixin(value = RitualCrushing.class, remap = false)
-public abstract class RitualCrushingMixin {
+public abstract class RitualCrushingOnHarvestMixin {
     @Shadow
     protected abstract FakePlayer getFakePlayer(WorldServer world);
 

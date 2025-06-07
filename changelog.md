@@ -1,6 +1,7 @@
 # Changelog
 ## 1.12.2-2.2.0
 ### Added
+- Added Blood Magic tweak for adjusting the LP storage of the Blood Letter's Pack and Coat of Arms
 - Added IC2 Crop harvestable integration
 - Added Rustic herb harvestable integration, fixing issues with some farming methods
 - Actually Additions Farmer can now harvest all supported crops

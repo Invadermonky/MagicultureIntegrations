@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import java.util.Iterator;
 
 @Mixin(value = RitualHarvest.class, remap = false)
-public abstract class RitualHarvestMixin {
+public abstract class RitualHarvestOnHarvestMixin {
     @ModifyExpressionValue(
             method = "harvestBlock",
             at = @At(

@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(value = RitualMagnetic.class, remap = false)
-public class RitualMagneticTweakMixin {
+public class RitualMagneticFillTweakMixin {
     @Inject(method = "performRitual",
             at = @At(value = "INVOKE",
                     target = "LWayofTime/bloodmagic/util/Utils;swapLocations(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;)Z",

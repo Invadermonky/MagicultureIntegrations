@@ -22,8 +22,9 @@ public class ModMixinsMI implements ILateMixinLoader {
         put(StringHelper.getMixinString(ModIds.attained_drops, "blockplant", "hornharvestable"), () -> ModIds.attained_drops.isLoaded && ModIds.botania.isLoaded && MIConfigIntegrations.botania.wild_horn.attained_drops);
         put(StringHelper.getMixinString(ModIds.bewitchment, "oven", "fix"), () -> ModIds.bewitchment.isLoaded && !ModIds.universal_tweaks.isLoaded && MIConfigFixes.bewitchment.fixWitchesOven);
         put(StringHelper.getMixinString(ModIds.bewitchment, "oven", "heatable"), () -> ModIds.bewitchment.isLoaded && MIConfigIntegrations.bewitchment.heatable_oven);
-        put(StringHelper.getMixinString(ModIds.bloodmagic, "burningfurnacearray"), () -> ModIds.bloodmagic.isLoaded && MIConfigIntegrations.blood_magic.furnace_array_mixins);
+        put(StringHelper.getMixinString(ModIds.bloodmagic, "bloodpack"), () -> ModIds.bloodmagic.isLoaded && MIConfigTweaks.blood_magic.bloodPackTweaks);
         put(StringHelper.getMixinString(ModIds.bloodmagic, "boundtool"), () -> ModIds.bloodmagic.isLoaded && !ModIds.universal_tweaks.isLoaded && MIConfigTweaks.blood_magic.boundToolTweak);
+        put(StringHelper.getMixinString(ModIds.bloodmagic, "burningfurnacearray"), () -> ModIds.bloodmagic.isLoaded && MIConfigIntegrations.blood_magic.furnace_array_mixins);
         put(StringHelper.getMixinString(ModIds.bloodmagic, "cuttingfluid"), () -> ModIds.bloodmagic.isLoaded && MIConfigTweaks.blood_magic.cuttingFluidTweak);
         put(StringHelper.getMixinString(ModIds.bloodmagic, "ritual"), () -> ModIds.bloodmagic.isLoaded && !ModIds.universal_tweaks.isLoaded && MIConfigFixes.blood_magic.fixRitual);
         put(StringHelper.getMixinString(ModIds.bloodmagic, "ritualcrusher"), () -> ModIds.bloodmagic.isLoaded && MIConfigTweaks.blood_magic.ritualCrusherTweaks.ritualCrusherTweak);
