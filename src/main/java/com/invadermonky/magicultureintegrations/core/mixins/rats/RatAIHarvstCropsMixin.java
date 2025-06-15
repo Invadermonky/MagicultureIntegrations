@@ -29,7 +29,7 @@ public abstract class RatAIHarvstCropsMixin extends EntityAIBase {
     @Shadow
     private BlockPos targetBlock;
 
-    @Shadow
+    @Shadow(remap = true)
     public abstract void resetTask();
 
     @Inject(
@@ -59,9 +59,9 @@ public abstract class RatAIHarvstCropsMixin extends EntityAIBase {
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/pathfinding/PathNavigate;tryMoveToXYZ(DDDD)Z",
-                    shift = At.Shift.AFTER,
-                    remap = true
+                    shift = At.Shift.AFTER
             ),
+            remap = true,
             cancellable = true
     )
     private void updateTaskMixin(CallbackInfo ci, @Local(name = "block") IBlockState state) {
@@ -74,7 +74,7 @@ public abstract class RatAIHarvstCropsMixin extends EntityAIBase {
                 ci.cancel();
             } else if (result == IHarvestableCrop.HarvestResult.HARVEST) {
                 double distance = this.entity.getDistance(this.targetBlock.getX(), this.targetBlock.getY(), this.targetBlock.getZ());
-                if (distance < (double) 1.5f) {
+                if (distance < 1.5) {
                     NonNullList<ItemStack> drops = crop.harvestCrop(null, this.entity.world, this.targetBlock, false, 0);
                     this.entity.world.playEvent(Constants.WorldEvents.BREAK_BLOCK_EFFECTS, this.targetBlock, Block.getStateId(state));
 

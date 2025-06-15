@@ -52,6 +52,7 @@ dependencies {
     modMap.put(["embers-rekindled-300777:3695248"], project.embers)
     modMap.put(["engineers-decor-313866:3783239", "immersive-engineering-231951:2974106"], project.engineersdecor)
     modMap.put(["environmental-tech-245453:2691536", "valkyrielib-245480:2691542"], project.environmentaltech)
+    modMap.put(["forestry-59751:6450115"], project.forestry)
     modMap.put(["future-mc-310059:5013081", "shadowfacts-forgelin-248453:2785465"], project.futuremc)
     modMap.put(["game-stages-268655:2951840", "bookshelf-228525:2836960"], project.gamestages)
     modMap.put(["item-stages-280316:2696766", "game-stages-268655:2951840", "bookshelf-228525:2836960"], project.itemstages)
@@ -90,6 +91,7 @@ dependencies {
     compileOnly rfg.deobf("curse.maven:ender-io-64578:4674244")
     compileOnly rfg.deobf("curse.maven:endercore-231868:4671384")
     compileOnly rfg.deobf(files('libs/Nutrition-1.12.2-4.9.0.jar'))
+    compileOnly rfg.deobf("curse.maven:llibrary-243298:3116493")
 
     modMap.each{mods, load -> {
         boolean loadFlag = load.toBoolean()

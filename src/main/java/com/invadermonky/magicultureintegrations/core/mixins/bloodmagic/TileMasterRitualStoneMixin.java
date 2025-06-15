@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import java.util.Map;
 
 @Mixin(value = TileMasterRitualStone.class, remap = false)
-public abstract class MixinTileMasterRitualStone extends TileTicking implements IMasterRitualStone {
+public abstract class TileMasterRitualStoneMixin extends TileTicking implements IMasterRitualStone {
     @Shadow
     @Final
     protected Map<String, AreaDescriptor> modableRangeMap;

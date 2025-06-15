@@ -18,6 +18,8 @@ While built for Magiculture 2, Magiculture Integrations features a robust config
 ---
 
 ## **🐞 Bugfixes**
+### **Actually Additions**
+- **Default Farmer Behavior:** Fixes Farmer default behavior not replanting crops on modded soils
 ### **Agricraft**
 - **Ender IO:**  Fixes crash caused by Agricraft's Ender IO Farming Station integration
 ### **Animania**

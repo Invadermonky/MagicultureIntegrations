@@ -20,7 +20,7 @@ public class RitualMixin {
      * range on their own ritual. This overwriting is necessary in order to allow rituals to modify the tile entity NBT
      * via overloading the {@link Ritual#readFromNBT(NBTTagCompound)} method.<br><br>
      * <p>
-     * This fix is the second part of the fix found in {@link MixinTileMasterRitualStone#customRitualReadFromNBT(Ritual, NBTTagCompound)}.
+     * This fix is the second part of the fix found in {@link TileMasterRitualStoneMixin#customRitualReadFromNBT(Ritual, NBTTagCompound)}.
      */
     @Overwrite
     public void readFromNBT(NBTTagCompound tag) {
@@ -39,7 +39,7 @@ public class RitualMixin {
      * resulting in the ritual falling back to its default values. This overwriting is necessary in order to allow rituals
      * to write from tile entity NBT via overloading the {@link Ritual#writeToNBT(NBTTagCompound)} method.<br><br>
      * <p>
-     * This fix is the second part of the fix found in {@link MixinTileMasterRitualStone#customRitualWriteToNBT(Ritual, NBTTagCompound)}.
+     * This fix is the second part of the fix found in {@link TileMasterRitualStoneMixin#customRitualWriteToNBT(Ritual, NBTTagCompound)}.
      */
     @Overwrite
     public void writeToNBT(NBTTagCompound tag) {

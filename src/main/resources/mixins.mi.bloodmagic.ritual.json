@@ -7,7 +7,7 @@
   "compatibilityLevel": "JAVA_8" ,
   "mixins": [
     "RitualMixin" ,
-    "MixinTileMasterRitualStone"
+    "TileMasterRitualStoneMixin"
   ] ,
   "server": [] ,
   "client": []

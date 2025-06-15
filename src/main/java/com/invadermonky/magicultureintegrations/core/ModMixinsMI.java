@@ -16,8 +16,9 @@ import java.util.function.BooleanSupplier;
 
 public class ModMixinsMI implements ILateMixinLoader {
     private static final Map<String, BooleanSupplier> mixinConfigs = ImmutableMap.copyOf(new HashMap<String, BooleanSupplier>() {{
-        put(StringHelper.getMixinString(ModIds.agricraft, "enderioplugin", "fix"), () -> ModIds.agricraft.isLoaded && ModIds.enderio.isLoaded && !ModIds.universal_tweaks.isLoaded && MIConfigFixes.agricraft.fixEnderioPlugin);
+        put(StringHelper.getMixinString(ModIds.actually_additions, "defaultfarmerbehavior", "fix"), () -> ModIds.actually_additions.isLoaded && MIConfigFixes.actually_additions.fixDefaultFarmerReplant);
         put(StringHelper.getMixinString(ModIds.agricraft, "blockcrop", "harvestable"), () -> ModIds.agricraft.isLoaded && MIConfigIntegrations.agricraft.harvestable_mixin);
+        put(StringHelper.getMixinString(ModIds.agricraft, "enderioplugin", "fix"), () -> ModIds.agricraft.isLoaded && ModIds.enderio.isLoaded && !ModIds.universal_tweaks.isLoaded && MIConfigFixes.agricraft.fixEnderioPlugin);
         put(StringHelper.getMixinString(ModIds.attained_drops, "blockplant", "harvestable"), () -> ModIds.attained_drops.isLoaded && MIConfigIntegrations.attained_drops.harvestable_mixin);
         put(StringHelper.getMixinString(ModIds.attained_drops, "blockplant", "hornharvestable"), () -> ModIds.attained_drops.isLoaded && ModIds.botania.isLoaded && MIConfigIntegrations.botania.wild_horn.attained_drops);
         put(StringHelper.getMixinString(ModIds.bewitchment, "oven", "fix"), () -> ModIds.bewitchment.isLoaded && !ModIds.universal_tweaks.isLoaded && MIConfigFixes.bewitchment.fixWitchesOven);

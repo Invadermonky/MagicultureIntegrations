@@ -16,10 +16,10 @@ import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(value = BlockIECrop.class, remap = false)
 public abstract class BlockIEPlantHarvestableMixin implements IHarvestableCrop {
-    @Shadow
+    @Shadow(remap = true)
     public abstract IBlockState getStateFromMeta(int meta);
 
-    @Shadow
+    @Shadow(remap = true)
     public abstract int getMetaFromState(IBlockState state);
 
     @Override

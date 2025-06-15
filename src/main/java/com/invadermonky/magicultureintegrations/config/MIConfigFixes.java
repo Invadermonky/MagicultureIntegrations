@@ -15,6 +15,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
         name = MagicultureIntegrations.MOD_ID + "/" + MagicultureIntegrations.MOD_NAME + " - Fixes"
 )
 public class MIConfigFixes {
+    @Config.Name("Actually Additions")
+    public static ActuallyAdditionsFixes actually_additions = new ActuallyAdditionsFixes();
     @Config.Name("Agricraft")
     public static AgricraftFixes agricraft = new AgricraftFixes();
     @Config.Name("Animania")
@@ -27,6 +29,13 @@ public class MIConfigFixes {
     public static CookingForBlockheadsFixes cooking_for_blockheads = new CookingForBlockheadsFixes();
     @Config.Name("Harvestcraft")
     public static HarvestcraftFixes harvestcraft = new HarvestcraftFixes();
+
+    public static class ActuallyAdditionsFixes {
+        @Config.RequiresMcRestart
+        @Config.Name("Fix Default Farmer Replant Behavior")
+        @Config.Comment("Fixes Actually Additions Farmer not replanting crops on modded soils")
+        public boolean fixDefaultFarmerReplant = true;
+    }
 
     public static class AgricraftFixes {
         @Config.RequiresMcRestart

@@ -1,4 +1,13 @@
 # Changelog
+## 1.12.2-2.3.0
+### Added
+- Actually Additions Farmer default harvest behavior can now replant crops on modded soils
+### Fixed
+- Fixed Rats Harvest command being unable to correctly harvest certain crops
+- Fixed some modded Farmers being unable to interact with Immersive Engineering Hemp
+
+---
+
 ## 1.12.2-2.2.0
 ### Added
 - Added Blood Magic tweak for adjusting the LP storage of the Blood Letter's Pack and Coat of Arms
