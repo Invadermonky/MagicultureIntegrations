@@ -2,6 +2,7 @@
 ## 1.12.2-2.3.0
 ### Added
 - Actually Additions Farmer default harvest behavior can now replant crops on modded soils
+- Forestry Fruit Pods and Fruit Leaves can now be harvested by supported crop farmers
 ### Fixed
 - Fixed Rats Harvest command being unable to correctly harvest certain crops
 - Fixed some modded Farmers being unable to interact with Immersive Engineering Hemp

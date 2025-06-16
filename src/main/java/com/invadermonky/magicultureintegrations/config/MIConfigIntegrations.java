@@ -35,6 +35,8 @@ public class MIConfigIntegrations {
     public static CyclicMagicIntegrations cyclic = new CyclicMagicIntegrations();
     @Config.Name("Engineer's Decor")
     public static EngineersDecorIntegrations engineers_decor = new EngineersDecorIntegrations();
+    @Config.Name("Forestry")
+    public static ForestryIntegrations forestry = new ForestryIntegrations();
     @Config.Name("Future MC")
     public static FutureMCIntegrations future_mc = new FutureMCIntegrations();
     @Config.Name("Harvestcraft")
@@ -169,6 +171,9 @@ public class MIConfigIntegrations {
             @Config.Name("Attained Drops 2")
             @Config.Comment("Allows the Horn and Drum of the Wild to harvest Attained Drops 2 crops.")
             public boolean attained_drops = true;
+            @Config.Name("Forestry")
+            @Config.Comment("Allows the Horn and Drum of the Wild to harvest Forestry Fruit Pods and Fruit Leaves")
+            public boolean forestry = true;
             @Config.Name("Harvestcraft")
             @Config.Comment("Allows the Horn and Drum of the Wild to harvest Harvestcraft fruit and bark.")
             public boolean harvestcraft = true;
@@ -219,6 +224,17 @@ public class MIConfigIntegrations {
                         "all supported furnace heaters. For individual toggles see the specific heater integration configs."
                 })
         public boolean heatableFurnace = true;
+    }
+
+    public static class ForestryIntegrations {
+        @Config.RequiresMcRestart
+        @Config.Name("Harvestable Fruit")
+        @Config.Comment
+                ({
+                        "Enables the IHarvestableCrop mixin injection, allowing Forestry Fruit Pods and Fruit Leaves to be",
+                        "harvested by supported harvesters."
+                })
+        public boolean harvestableFruit = true;
     }
 
     public static class FutureMCIntegrations {
@@ -287,7 +303,7 @@ public class MIConfigIntegrations {
                         "Enables the IHarvestableCrop mixin injection, allowing IE Hemp to be harvested by a number of",
                         "modded harvesters."
                 })
-        public boolean harvestableMixin = true;
+        public boolean harvestableCrops = true;
 
         public static class ExternalHeaterIntegrations {
             @Config.RequiresMcRestart

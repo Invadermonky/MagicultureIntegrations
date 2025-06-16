@@ -54,6 +54,8 @@ While built for Magiculture 2, Magiculture Integrations features a robust config
 - **Oven:** Cooking for Blockheads Oven can be heated and boosted by all supported furnace heaters
 ### **Engineer's Decor**
 - **Laboratory Furnace:** Engineer's Decor Laboratory Furnace can be heated and boosted by all supported furnace heaters
+### **Forestry**
+- **Fruit:** Forestry Fruit Leaves and Fruit Pods can be harvested by all supported crop harvesters
 ### **Future MC**
 - **Blast Furnace:** Future MC's Blast Furnace can be heated and boosted by all supported furnace heaters
 - **Smoker:** Future MC's Smoker can be heated and boosted by all supported furnace heaters

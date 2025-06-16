@@ -42,6 +42,8 @@ public class ModMixinsMI implements ILateMixinLoader {
         put(StringHelper.getMixinString(ModIds.cyclic, "harvestexpansion"), () -> ModIds.cyclic.isLoaded && MIConfigIntegrations.cyclic.harvesterExpansion);
         put(StringHelper.getMixinString(ModIds.cyclic, "potionsaturation", "nutrition"), () -> ModIds.cyclic.isLoaded && ModIds.nutrition.isLoaded && MIConfigIntegrations.nutrition.autoFeeders.cyclicSaturation.enable);
         put(StringHelper.getMixinString(ModIds.engineers_decor, "decorfurnace", "heatable"), () -> ModIds.engineers_decor.isLoaded && MIConfigIntegrations.engineers_decor.heatableFurnace);
+        put(StringHelper.getMixinString(ModIds.forestry, "fruit", "harvestable"), () -> ModIds.forestry.isLoaded && MIConfigIntegrations.forestry.harvestableFruit);
+        put(StringHelper.getMixinString(ModIds.forestry, "fruit", "hornharvestable"), () -> ModIds.forestry.isLoaded && ModIds.botania.isLoaded && MIConfigIntegrations.botania.wild_horn.forestry);
         put(StringHelper.getMixinString(ModIds.futuremc, "advancedfurnace", "heatable"), () -> ModIds.futuremc.isLoaded && MIConfigIntegrations.future_mc.heatableAdvancedFurnaces);
         put(StringHelper.getMixinString(ModIds.harvestcraft, "blockpam", "harvestable"), () -> ModIds.harvestcraft.isLoaded && MIConfigIntegrations.harvestcraft.harvestable_fruit);
         put(StringHelper.getMixinString(ModIds.harvestcraft, "blockpam", "hornharvestable"), () -> ModIds.harvestcraft.isLoaded && ModIds.botania.isLoaded && MIConfigIntegrations.botania.wild_horn.harvestcraft);
@@ -49,7 +51,7 @@ public class ModMixinsMI implements ILateMixinLoader {
         put(StringHelper.getMixinString(ModIds.immersive_engineering, "alloysmelter", "boostable"), () -> ModIds.immersive_engineering.isLoaded && MIConfigIntegrations.immersive_engineering.boostableAlloySmelter);
         put(StringHelper.getMixinString(ModIds.immersive_engineering, "blastfurnace", "boostable"), () -> ModIds.immersive_engineering.isLoaded && MIConfigIntegrations.immersive_engineering.boostableBlastFurnace);
         put(StringHelper.getMixinString(ModIds.immersive_engineering, "cokeoven", "boostable"), () -> ModIds.immersive_engineering.isLoaded && MIConfigIntegrations.immersive_engineering.boostableCokeOven);
-        put(StringHelper.getMixinString(ModIds.immersive_engineering, "hemp", "harvestable"), () -> ModIds.immersive_engineering.isLoaded && MIConfigIntegrations.immersive_engineering.harvestableMixin);
+        put(StringHelper.getMixinString(ModIds.immersive_engineering, "hemp", "harvestable"), () -> ModIds.immersive_engineering.isLoaded && MIConfigIntegrations.immersive_engineering.harvestableCrops);
         put(StringHelper.getMixinString(ModIds.industrial_craft, "blastfurnace", "boostable"), () -> ModIds.industrial_craft.isLoaded && MIConfigIntegrations.industrial_craft.boostableBlastFurnace);
         put(StringHelper.getMixinString(ModIds.industrial_craft, "cokekiln", "boostable"), () -> ModIds.industrial_craft.isLoaded && MIConfigIntegrations.industrial_craft.boostableCokeKiLn);
         put(StringHelper.getMixinString(ModIds.industrial_craft, "crop", "harvestable"), () -> ModIds.industrial_craft.isLoaded && MIConfigIntegrations.industrial_craft.harvestableCrops);

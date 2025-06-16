@@ -17,6 +17,7 @@ public enum ModIds {
     embers(ConstIds.embers),
     enderio(ConstIds.enderio),
     engineers_decor(ConstIds.engineers_decor),
+    forestry(ConstIds.forestry),
     futuremc(ConstIds.futuremc),
     game_stages(ConstIds.game_stages),
     harvestcraft(ConstIds.harvestcraft),
@@ -90,6 +91,7 @@ public enum ModIds {
         public static final String embers = "embers";
         public static final String enderio = "enderio";
         public static final String engineers_decor = "engineersdecor";
+        public static final String forestry = "forestry";
         public static final String futuremc = "futuremc";
         public static final String game_stages = "gamestages";
         public static final String harvestcraft = "harvestcraft";

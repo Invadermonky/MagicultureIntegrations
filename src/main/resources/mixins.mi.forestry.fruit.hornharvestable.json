@@ -1,0 +1,14 @@
+{
+  "package": "com.invadermonky.magicultureintegrations.core.mixins.forestry",
+  "required": false,
+  "refmap": "magicultureintegrations.refmap.json",
+  "target": "@env(DEFAULT)",
+  "minVersion": "0.8.5",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "BlockFruitLeavesHornHarvestableMixin",
+    "BlockFruitPodHornHarvestableMixin"
+  ],
+  "server": [],
+  "client": []
+}
