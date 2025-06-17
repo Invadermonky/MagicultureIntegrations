@@ -1,5 +1,6 @@
 package com.invadermonky.magicultureintegrations.core.mixins.harvestcraft;
 
+import com.invadermonky.magicultureintegrations.util.EntityHelper;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.pam.harvestcraft.addons.RightClickHarvesting;
 import com.pam.harvestcraft.blocks.growables.BlockPamFruitLog;
@@ -25,7 +26,7 @@ public abstract class RightClickHarvestMixin {
     )
     private static void harvestFruitMixin(ItemStack itemStack, World world, BlockPos pos, @Local(argsOnly = true) IBlockState state, @Local(argsOnly = true) EntityPlayer player) {
         if (state.getBlock() instanceof BlockPamFruitLog) {
-            RayTraceResult trace = player.rayTrace(player.getAttributeMap().getAttributeInstance(EntityPlayer.REACH_DISTANCE).getAttributeValue(), 0);
+            RayTraceResult trace = EntityHelper.getPlayerRayTrace(player);
             if (trace != null && trace.sideHit != null) {
                 pos = pos.offset(trace.sideHit);
             }

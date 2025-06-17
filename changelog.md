@@ -6,6 +6,7 @@
 ### Fixed
 - Fixed Rats Harvest command being unable to correctly harvest certain crops
 - Fixed some modded Farmers being unable to interact with Immersive Engineering Hemp
+- Fixed Harvestcraft's right-click bark harvest fix not dropping items on bark interaction
 
 ---
 
