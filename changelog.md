@@ -1,5 +1,11 @@
 # Changelog
-## 1.12.2-2.3.0
+## 1.12.2-2.2.1
+### Fixed
+- Fixed typo that prevented Actually Additions Farmer fix from loading
+
+---
+
+## 1.12.2-2.2.1
 ### Added
 - Actually Additions Farmer default harvest behavior can now replant crops on modded soils
 - Forestry Fruit Pods and Fruit Leaves can now be harvested by supported crop farmers
