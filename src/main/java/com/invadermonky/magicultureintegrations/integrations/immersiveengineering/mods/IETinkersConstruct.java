@@ -18,7 +18,12 @@ public class IETinkersConstruct implements IProxy {
     public static class TinkersConstructFurnaceAdapter extends ExternalHeaterHandler.HeatableAdapter<TileHeatingStructure<?>> {
         @Override
         public int doHeatTick(TileHeatingStructure furnace, int energy, boolean redstone) {
-            return furnace instanceof IBoostableTile ? ImmersiveEngineeringUtils.doBoostableTick(((IBoostableTile) furnace).getTrueBoostable(), energy, redstone) : 0;
+            try {
+                return ImmersiveEngineeringUtils.doBoostableTick(((IBoostableTile) furnace).getTrueBoostable(), energy, redstone);
+            } catch (ClassCastException ignored) {
+                return 0;
+            }
+            //return furnace instanceof IBoostableTile ? ImmersiveEngineeringUtils.doBoostableTick(((IBoostableTile) furnace).getTrueBoostable(), energy, redstone) : 0;
         }
     }
 }

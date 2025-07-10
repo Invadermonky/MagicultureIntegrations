@@ -1,5 +1,12 @@
 # Changelog
-## 1.12.2-2.2.1
+## 1.12.2-2.3
+### Fixed
+- Fixed an issue causing the Cooking For Blockheads oven fix from not loading in some environments
+- Fixed an issue causing Tinker's Construct Smeltery IBoostable interface to not update the tile correctly (this also fixes Tinker's Complement Melter)
+
+---
+
+## 1.12.2-2.2.2
 ### Fixed
 - Fixed typo that prevented Actually Additions Farmer fix from loading
 

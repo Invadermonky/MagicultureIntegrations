@@ -62,6 +62,6 @@ public abstract class TileHeatingStructureBoostableMixin<T extends MultiblockDet
 
     @Override
     public void updateTileBoostable() {
-
+        this.checkMultiblockStructure();
     }
 }
