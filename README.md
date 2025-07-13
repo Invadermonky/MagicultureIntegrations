@@ -14,6 +14,8 @@ While built for Magiculture 2, Magiculture Integrations features a robust config
 - **Resonance Analyzer:** New simple machine used to sort Rock Crystals based on crystal purity (block texture and model courtesy of [Kombee](https://www.curseforge.com/members/kombee))
 ### **Botania**
 - **Auromeria:** New functional flower that drains vis, flux, and mana to generate mana bursts, see Lexicon entry for more details
+### **Thaumcraft**
+- **Revealing Infusion:** New Infusion enchantment that allows all non-goggle helmets to receive the "Goggles of Revealing" upgrade
 
 ---
 

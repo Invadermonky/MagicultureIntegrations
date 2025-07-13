@@ -19,6 +19,8 @@ public class MIConfigAdditions {
     public static ConfigAstralSorceryAdditions astral_sorcery = new ConfigAstralSorceryAdditions();
     @Config.Name("Botania")
     public static ConfigBotaniaAdditions botania = new ConfigBotaniaAdditions();
+    @Config.Name("Thaumcraft")
+    public static ConfigThaumcraftAdditions thaumcraft = new ConfigThaumcraftAdditions();
 
 
     public static class ConfigAstralSorceryAdditions {
@@ -64,6 +66,13 @@ public class MIConfigAdditions {
             @Config.Comment("The chance of aura pollution when a flux mana burst explodes.")
             public double pollutionChance = 0.5;
         }
+    }
+
+    public static class ConfigThaumcraftAdditions {
+        @Config.RequiresMcRestart
+        @Config.Name("Revealing Infusion Enchantment")
+        @Config.Comment("Enables the Revealing infusion enchantment, allowing all non-goggle helmets to display Aspects on valid blocks.")
+        public boolean enableRevealingInfusion = true;
     }
 
     @Mod.EventBusSubscriber(modid = MagicultureIntegrations.MOD_ID)

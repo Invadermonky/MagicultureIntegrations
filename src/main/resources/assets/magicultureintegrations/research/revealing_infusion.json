@@ -1,0 +1,23 @@
+{
+  "entries": [
+    {
+      "key": "MI_REVEALING_INFUSION" ,
+      "name": "research.REVEALING_INFUSION.title" ,
+      "icons": ["magicultureintegrations:textures/research/r_revealing_infusion.png"] ,
+      "category": "INFUSION",
+      "parents": ["INFUSIONENCHANTMENT" , "~BASEARTIFICE"] ,
+      "location": [-5, 5],
+      "stages": [
+        {
+          "text": "research.REVEALING_INFUSION.text.stage.1" ,
+          "required_knowledge": ["THEORY;INFUSION;1"]
+        } ,
+        {
+          "text": "research.REVEALING_INFUSION.text.stage.2" ,
+          "recipes": ["magicultureintegrations:revealing_infusion_fake"]
+        }
+      ]
+    }
+  ]
+}
+    

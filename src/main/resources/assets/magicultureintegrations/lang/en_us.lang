@@ -22,6 +22,9 @@ tile.botania:flower.auromeria.name=Auromeria
 tile.botania:flower.auromeria.reference=#BlameBeel
 tile.magicultureintegrations:crystal_sorter.name=Resonance Analyzer
 
+# Enchants
+enchantment.infusion.REVEALING=§5Goggles of Revealing
+
 # Research
 botania.entry.auromeria=Auromeria
 botania.tagline.auromeria=Consumes Vis to generate mana bursts
@@ -38,3 +41,7 @@ journal.magicultureintegrations:CRYSTALSORTER.text2=Once the crystal properties 
 research.FLUXLENS.title=Mana Lens: Flux
 research.FLUXLENS.stage.0=Though botanists may spout claims of clean renewable power, but on several occasions I have observed a fascinating interaction between mana and vis. The two forces appear to destabilize one another, the mana dissipating harmlessly into the environment and the vis become something much more... ominous.<BR>To further this research I will need some sort of mana focus and an environment with a ready supply of vis.
 research.FLUXLENS.stage.1=Infusing a lens with a small amount of flux causes any mana pushed through the foci to become incredibly unstable, exploding on contact with any solid surface. Though the flux contained in the burst might be released into the environment during the explosion, the risk is well worth the lens' potential as a powerful weapon.<BR>By infusing a lens that has been calibrated to harm living beings, a new foci is created, capable of tearing through living tissue unimpeded while still retaining the bursts explosive capability.
+
+research.REVEALING_INFUSION.title=Revealing
+research.REVEALING_INFUSION.text.stage.1=Having to wear goggles in addition my normal headgear is becoming a strain on my neck and losing track of my experiments has resulted in several small detonations.<BR>There has to be a way to more permanently affix my goggles to my helmet.
+research.REVEALING_INFUSION.text.stage.2=I deem my most recent experiment a success, primitive though it may be. by affixing a pair of goggles of revealing to any helmet and fusing them in place via infusion, I am able to grant nearly any helmet the properties of the goggles of revealing.<BR>However, the infusion does not seem to be able to apply itself to helmets that already include their own revealing capabilities.

@@ -52,6 +52,7 @@ public class RegistrarMI {
         IForgeRegistry<IRecipe> registry = event.getRegistry();
         MOD_ITEMS.forEach(item -> ((IAddition) item).registerRecipes(registry));
         MOD_BLOCKS.forEach(block -> ((IAddition) block).registerRecipes(registry));
+        PROXY_ADDITIONS.forEach(block -> ((IAddition) block).registerRecipes(registry));
     }
 
     @SideOnly(Side.CLIENT)

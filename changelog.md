@@ -1,5 +1,7 @@
 # Changelog
 ## 1.12.2-2.3
+### Added
+- Added new Thaumcraft Infusion enchantment that allows all non-goggle armors to receive the "Goggles of Revealing" upgrade
 ### Fixed
 - Fixed an issue causing the Cooking For Blockheads oven fix from not loading in some environments
 - Fixed an issue causing Tinker's Construct Smeltery IBoostable interface to not update the tile correctly (this also fixes Tinker's Complement Melter)

@@ -3,7 +3,7 @@ package com.invadermonky.magicultureintegrations.integrations.astralsorcery;
 import com.invadermonky.magicultureintegrations.api.mods.IntegrationModule;
 import com.invadermonky.magicultureintegrations.config.MIConfigTweaks;
 import com.invadermonky.magicultureintegrations.integrations.astralsorcery.block.BlockCrystalSorter;
-import com.invadermonky.magicultureintegrations.integrations.astralsorcery.events.ASEventSubscriber;
+import com.invadermonky.magicultureintegrations.integrations.astralsorcery.events.ASCommonEventHandler;
 import com.invadermonky.magicultureintegrations.integrations.astralsorcery.mods.ASSpartanWeaponry;
 import com.invadermonky.magicultureintegrations.registry.RegistrarMI;
 import com.invadermonky.magicultureintegrations.util.ModIds;
@@ -24,7 +24,7 @@ public class InitAstralSorcery extends IntegrationModule {
     @Override
     public void preInit() {
         if (MIConfigTweaks.astral_sorcery.showReservoir) {
-            MinecraftForge.EVENT_BUS.register(new ASEventSubscriber());
+            MinecraftForge.EVENT_BUS.register(new ASCommonEventHandler());
         }
 
         RegistrarMI.registerAddition(crystal_sorter);
