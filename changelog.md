@@ -1,5 +1,5 @@
 # Changelog
-## 1.12.2-2.3
+## 1.12.2-2.2.3
 ### Added
 - Added new Thaumcraft Infusion enchantment that allows all non-goggle armors to receive the "Goggles of Revealing" upgrade
 ### Fixed
