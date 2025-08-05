@@ -1,4 +1,9 @@
 # Changelog
+### Fixed
+- Fixed Flux Lens not displaying recipe in thaumonomicon
+
+---
+
 ## 1.12.2-2.2.3
 ### Added
 - Added new Thaumcraft Infusion enchantment that allows all non-goggle armors to receive the "Goggles of Revealing" upgrade
