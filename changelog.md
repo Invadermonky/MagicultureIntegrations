@@ -1,4 +1,5 @@
 # Changelog
+## 1.12.2-2.2.4
 ### Fixed
 - Fixed Flux Lens not displaying recipe in thaumonomicon
 
