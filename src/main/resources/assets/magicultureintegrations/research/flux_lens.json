@@ -15,7 +15,7 @@
         },
         {
           "text": "research.FLUXLENS.stage.1",
-          "recipes": ["magicultureintegration:FluxLens"]
+          "recipes": ["magicultureintegrations:FluxLens"]
         }
       ]
     }

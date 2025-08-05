@@ -81,7 +81,7 @@ While built for Magiculture 2, Magiculture Integrations features a robust config
 - **Auto-Feeder Integration:** Many auto-feeding devices now increase nutritional values when they perform feed operations. This includes a configurable nutrient values and nutrient cap per feeder. For a list of supported devices, see below.
 - **Expanded Foods:** New configuration option to add nutrition values to non-food consumable items
 
-|           Mod           |             Device             |
+|         **Mod**         |           **Device**           |
 |:-----------------------:|:------------------------------:|
 |       Blood Magic       | Ritual of the Satiated Stomach |
 |         Botania         |        Fruit of Grisaia        |
