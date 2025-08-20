@@ -8,6 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import thaumcraft.api.damagesource.DamageSourceThaumcraft;
@@ -72,12 +73,13 @@ public class LensFlux extends Lens {
     }
 
     public void createFluxExplosion(EntityThrowable entity, float explosionStrength, boolean damageTerrain) {
-        float flux = (float) (entity.world.rand.nextDouble() < MIConfigAdditions.botania.auromeria.pollutionChance ? MIConfigAdditions.botania.auromeria.pollutionAmount : 0);
+        float flux = (float) (entity.world.rand.nextFloat() < MIConfigAdditions.botania.auromeria.pollutionChance ? MIConfigAdditions.botania.auromeria.pollutionAmount : 0);
         entity.world.createExplosion(entity, entity.posX, entity.posY, entity.posZ, explosionStrength, damageTerrain);
         if (flux > 0) {
+            float fluxDisplay = MathHelper.clamp(flux * 10.0f, 0, Byte.MAX_VALUE);
             BlockPos pos = entity.getPosition();
             AuraHandler.addFlux(entity.world, pos, flux);
-            PacketHandler.INSTANCE.sendToAllAround(new PacketFXPollute(pos, flux * 10.0f), new NetworkRegistry.TargetPoint(entity.world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 32.0));
+            PacketHandler.INSTANCE.sendToAllAround(new PacketFXPollute(pos, fluxDisplay), new NetworkRegistry.TargetPoint(entity.world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 32.0));
         }
     }
 }

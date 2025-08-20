@@ -14,6 +14,8 @@ import net.minecraftforge.fml.common.Optional;
 import org.spongepowered.asm.mixin.Mixin;
 import vazkii.botania.api.item.IHornHarvestable;
 
+import java.util.List;
+
 @Optional.Interface(modid = ModIds.ConstIds.botania, iface = "vazkii.botania.api.item.IHornHarvestable")
 @Mixin(value = BlockTileEntity.class, remap = false)
 public abstract class BlockTileEntityHornHarvestableMixin extends Block implements IHornHarvestable {
@@ -40,8 +42,11 @@ public abstract class BlockTileEntityHornHarvestableMixin extends Block implemen
         if (tile instanceof TileEntityCrop) {
             TileEntityCrop tileCrop = (TileEntityCrop) tile;
             if (tileCrop.getCrop() != null && tileCrop.getCrop().canBeHarvested(tileCrop)) {
-                world.playEvent(Constants.WorldEvents.BREAK_BLOCK_EFFECTS, blockPos, Block.getStateId(world.getBlockState(blockPos)));
-                tileCrop.performHarvest().forEach(stack -> spawnAsEntity(world, blockPos, stack));
+                List<ItemStack> harvest = tileCrop.performHarvest();
+                if (harvest != null) {
+                    world.playEvent(Constants.WorldEvents.BREAK_BLOCK_EFFECTS, blockPos, Block.getStateId(world.getBlockState(blockPos)));
+                    harvest.forEach(stack -> spawnAsEntity(world, blockPos, stack));
+                }
             }
         }
     }

@@ -1,4 +1,11 @@
 # Changelog
+## 1.12.2-2.2.5
+### Fixed
+- Fixed server crash when Auromeria mana bursts exploded
+- Fixed rare crash when IC2 crops harvest method returned a null value
+
+---
+
 ## 1.12.2-2.2.4
 ### Fixed
 - Fixed Flux Lens not displaying recipe in thaumonomicon

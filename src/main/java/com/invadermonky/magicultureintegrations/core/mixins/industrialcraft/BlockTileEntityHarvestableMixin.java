@@ -14,6 +14,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 
+import java.util.List;
+
 @Mixin(value = BlockTileEntity.class, remap = false)
 public class BlockTileEntityHarvestableMixin implements IHarvestableCrop {
 
@@ -37,7 +39,10 @@ public class BlockTileEntityHarvestableMixin implements IHarvestableCrop {
         NonNullList<ItemStack> drops = NonNullList.create();
         TileEntity tile = world.getTileEntity(pos);
         if (tile instanceof ICropTile && getHarvestResult(world, pos) == HarvestResult.HARVEST) {
-            drops.addAll(((ICropTile) tile).performHarvest());
+            List<ItemStack> harvest = ((ICropTile) tile).performHarvest();
+            if (harvest != null) {
+                drops.addAll(harvest);
+            }
         }
         return drops;
     }

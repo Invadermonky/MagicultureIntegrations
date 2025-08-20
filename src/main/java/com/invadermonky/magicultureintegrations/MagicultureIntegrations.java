@@ -20,7 +20,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 public class MagicultureIntegrations {
     public static final String MOD_ID = "magicultureintegrations";
     public static final String MOD_NAME = "Magiculture Integrations";
-    public static final String MOD_VERSION = "2.2.4";
+    public static final String MOD_VERSION = "2.2.5";
     public static final String MC_VERSION = "[1.12.2]";
     public static final String DEPENDENCIES =
             ";required-after:mixinbooter@[10.5,)" +
