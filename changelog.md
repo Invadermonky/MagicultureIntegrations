@@ -1,4 +1,10 @@
 # Changelog
+## 1.12.2-2.2.6
+### Fixed
+- Fixed Actually Additions Farmer harvesting `IHarvestableCrop` crops without draining any power
+
+---
+
 ## 1.12.2-2.2.5
 ### Fixed
 - Fixed server crash when Auromeria mana bursts exploded

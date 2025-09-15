@@ -23,6 +23,7 @@ public class AAHarvestableCrop implements IFarmerBehavior {
             IHarvestableCrop crop = (IHarvestableCrop) state.getBlock();
             if (crop.getHarvestResult(world, blockPos) == IHarvestableCrop.HarvestResult.HARVEST) {
                 iFarmer.addToOutput(crop.harvestCrop(null, world, blockPos, false, 0));
+                iFarmer.extractEnergy(250);
                 return FarmerResult.SUCCESS;
             }
         }
