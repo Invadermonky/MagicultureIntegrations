@@ -42,8 +42,6 @@ public interface IHarvestableCrop {
     HarvestResult getHarvestResult(World world, BlockPos pos);
 
     /**
-     * @deprecated Use {@link IHarvestableCrop#harvestCrop(EntityPlayer, World, BlockPos, boolean, int, boolean)} when possible.
-     *
      * <p>Called when actually harvesting the crop. This method should handle block state resetting/destruction
      * and return any crop drops.</p>
      *
@@ -57,15 +55,8 @@ public interface IHarvestableCrop {
      * @param fortune   The fortune modifier on the tool harvested the crop
      * @return A list of items containing all drops from the crop block.
      */
-    //TODO: Include a simulate option for this crop harvest.
-    @Deprecated
     @Nonnull
     NonNullList<ItemStack> harvestCrop(@Nullable EntityPlayer player, World world, BlockPos pos, boolean silkTouch, int fortune);
-
-    @Nonnull
-    default NonNullList<ItemStack> harvestCrop(@Nullable EntityPlayer player, World world, BlockPos pos, boolean silkTouch, int fortune, boolean simulate) {
-        return harvestCrop(player, world, pos, silkTouch, fortune);
-    }
 
     /**
      * A helper enum used for modded harvesting methods.
