@@ -1,4 +1,11 @@
 # Changelog
+## 1.12.2-2.2.7
+### Fixed
+- Fixed rare crash caused by IC2 crops returning a `null` ItemStack harvest result
+- Fixed incorrectly labeled core transformer
+
+---
+
 ## 1.12.2-2.2.6
 ### Fixed
 - Fixed Actually Additions Farmer harvesting `IHarvestableCrop` crops without draining any power

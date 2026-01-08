@@ -41,6 +41,7 @@ public class BlockTileEntityHarvestableMixin implements IHarvestableCrop {
         if (tile instanceof ICropTile && getHarvestResult(world, pos) == HarvestResult.HARVEST) {
             List<ItemStack> harvest = ((ICropTile) tile).performHarvest();
             if (harvest != null) {
+                harvest.removeIf(stack -> stack == null || stack.isEmpty());
                 drops.addAll(harvest);
             }
         }

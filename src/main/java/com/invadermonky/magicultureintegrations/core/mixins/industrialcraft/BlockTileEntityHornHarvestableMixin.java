@@ -45,7 +45,7 @@ public abstract class BlockTileEntityHornHarvestableMixin extends Block implemen
                 List<ItemStack> harvest = tileCrop.performHarvest();
                 if (harvest != null) {
                     world.playEvent(Constants.WorldEvents.BREAK_BLOCK_EFFECTS, blockPos, Block.getStateId(world.getBlockState(blockPos)));
-                    harvest.forEach(stack -> spawnAsEntity(world, blockPos, stack));
+                    harvest.stream().filter(stack -> stack != null && !stack.isEmpty()).forEach(stack -> spawnAsEntity(world, blockPos, stack));
                 }
             }
         }
