@@ -1,5 +1,5 @@
 # Changelog
-## 1.12.2-2.2.8
+## 1.12.2-2.3.0
 ### Removed
 - Removed Ore Stages TOP compat, this fix has been merged into [Ore Stages: ReStaged](https://www.curseforge.com/minecraft/mc-mods/ore-stages-restaged)
 - Removed Bewitchment Witches' Oven fix, this fix has been added to [Universal Tweaks](https://www.curseforge.com/minecraft/mc-mods/universal-tweaks)
