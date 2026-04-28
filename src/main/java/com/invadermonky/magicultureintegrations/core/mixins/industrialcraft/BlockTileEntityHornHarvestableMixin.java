@@ -1,8 +1,8 @@
 package com.invadermonky.magicultureintegrations.core.mixins.industrialcraft;
 
 import com.invadermonky.magicultureintegrations.util.ModIds;
+import ic2.api.crops.ICropTile;
 import ic2.core.block.BlockTileEntity;
-import ic2.core.crop.TileEntityCrop;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemStack;
@@ -39,13 +39,13 @@ public abstract class BlockTileEntityHornHarvestableMixin extends Block implemen
     @Override
     public void harvestByHorn(World world, BlockPos blockPos, ItemStack itemStack, EnumHornType enumHornType) {
         TileEntity tile = world.getTileEntity(blockPos);
-        if (tile instanceof TileEntityCrop) {
-            TileEntityCrop tileCrop = (TileEntityCrop) tile;
-            if (tileCrop.getCrop() != null && tileCrop.getCrop().canBeHarvested(tileCrop)) {
-                List<ItemStack> harvest = tileCrop.performHarvest();
+        if (!world.isRemote && tile instanceof ICropTile) {
+            ICropTile crop = (ICropTile) tile;
+            if (crop.getCrop() != null && (crop.getCurrentSize() == crop.getCrop().getOptimalHarvestSize(crop) || crop.getCurrentSize() == crop.getCrop().getMaxSize())) {
+                List<ItemStack> harvest = crop.performHarvest();
                 if (harvest != null) {
                     world.playEvent(Constants.WorldEvents.BREAK_BLOCK_EFFECTS, blockPos, Block.getStateId(world.getBlockState(blockPos)));
-                    harvest.stream().filter(stack -> stack != null && !stack.isEmpty()).forEach(stack -> spawnAsEntity(world, blockPos, stack));
+                    harvest.stream().filter(stack -> stack != null && !stack.isEmpty()).forEach(stack -> spawnAsEntity(world, blockPos, stack.copy()));
                 }
             }
         }

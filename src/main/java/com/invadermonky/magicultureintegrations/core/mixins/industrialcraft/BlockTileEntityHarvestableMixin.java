@@ -3,7 +3,6 @@ package com.invadermonky.magicultureintegrations.core.mixins.industrialcraft;
 import com.invadermonky.magicultureintegrations.api.block.IHarvestableCrop;
 import ic2.api.crops.ICropTile;
 import ic2.core.block.BlockTileEntity;
-import ic2.core.crop.TileEntityCrop;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -27,9 +26,9 @@ public class BlockTileEntityHarvestableMixin implements IHarvestableCrop {
     @Override
     public @NotNull HarvestResult getHarvestResult(World world, BlockPos pos) {
         TileEntity tile = world.getTileEntity(pos);
-        if (tile instanceof TileEntityCrop) {
-            TileEntityCrop crop = (TileEntityCrop) tile;
-            return crop.getCrop() != null && crop.getCrop().canBeHarvested(crop) ? HarvestResult.HARVEST : HarvestResult.CLAIM;
+        if (tile instanceof ICropTile) {
+            ICropTile crop = (ICropTile) tile;
+            return crop.getCrop() != null && (crop.getCurrentSize() == crop.getCrop().getOptimalHarvestSize(crop) || crop.getCurrentSize() == crop.getCrop().getMaxSize()) ? HarvestResult.HARVEST : HarvestResult.CLAIM;
         }
         return HarvestResult.PASS;
     }
@@ -38,11 +37,14 @@ public class BlockTileEntityHarvestableMixin implements IHarvestableCrop {
     public @NotNull NonNullList<ItemStack> harvestCrop(@Nullable EntityPlayer player, World world, BlockPos pos, boolean silkTouch, int fortune) {
         NonNullList<ItemStack> drops = NonNullList.create();
         TileEntity tile = world.getTileEntity(pos);
-        if (tile instanceof ICropTile && getHarvestResult(world, pos) == HarvestResult.HARVEST) {
+        if (!world.isRemote && tile instanceof ICropTile && getHarvestResult(world, pos) == HarvestResult.HARVEST) {
             List<ItemStack> harvest = ((ICropTile) tile).performHarvest();
             if (harvest != null) {
-                harvest.removeIf(stack -> stack == null || stack.isEmpty());
-                drops.addAll(harvest);
+                for(ItemStack drop : harvest) {
+                    if(drop != null && !drop.isEmpty()) {
+                        drops.add(drop.copy());
+                    }
+                }
             }
         }
         return drops;

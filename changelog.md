@@ -1,4 +1,10 @@
 # Changelog
+## 1.12.2-2.2.8
+### Fixed
+- Fixed some crop harvesters creating ghost items when harvesting IC2 crops
+
+---
+
 ## 1.12.2-2.2.7
 ### Fixed
 - Fixed rare crash caused by IC2 crops returning a `null` ItemStack harvest result
