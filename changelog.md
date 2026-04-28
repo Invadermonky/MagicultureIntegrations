@@ -1,5 +1,7 @@
 # Changelog
 ## 1.12.2-2.2.8
+### Removed
+- Removed Ore Stages TOP compat, this fix has been merged into [Ore Stages: ReStaged](https://www.curseforge.com/minecraft/mc-mods/ore-stages-restaged)
 ### Fixed
 - Fixed some crop harvesters creating ghost items when harvesting IC2 crops
 
