@@ -26,13 +26,6 @@ While built for Magiculture 2, Magiculture Integrations features a robust config
 - **Ender IO:**  Fixes crash caused by Agricraft's Ender IO Farming Station integration
 ### **Animania**
 - **Dispenser Logic:** Fixes seed placement dispenser logic when Botania or Quark is loaded
-### **Bewitchment**
-- **Witches' Oven:** Fixes Bewitchment's Witches' Oven consuming container items
-### **Blood Magic**
-- **Fluid Routing:** Fixes Routing Node fluid routing being unable to support multiple liquids and soft-locking when encountering a full tank
-- **Ritual Fix:** Fixes Blood Magic ritual resetting on world/chunk unload
-### **Cooking for Blockheads**
-- **Oven:** Fixes Cooking for Blockheads Oven consuming container items
 ### **Pam's Harvestcraft**
 - **Bark Harvest:** Fixes bark harvesting launching harvested drops in random directions
 - **Machines:** Pam's Harvestcraft machines (grinder, market, et cetera) are no longer registered as burnable furnace fuel

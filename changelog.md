@@ -2,6 +2,10 @@
 ## 1.12.2-2.2.8
 ### Removed
 - Removed Ore Stages TOP compat, this fix has been merged into [Ore Stages: ReStaged](https://www.curseforge.com/minecraft/mc-mods/ore-stages-restaged)
+- Removed Bewitchment Witches' Oven fix, this fix has been added to [Universal Tweaks](https://www.curseforge.com/minecraft/mc-mods/universal-tweaks)
+- Removed Blood Magic fluid routing fix, this fix has been added to [Universal Tweaks](https://www.curseforge.com/minecraft/mc-mods/universal-tweaks)
+- Removed Blood Magic ritual reset fix, this fix has been added to [Universal Tweaks](https://www.curseforge.com/minecraft/mc-mods/universal-tweaks)
+- Removed Cooking For Blockheads Oven fix, this fix has been added to [Universal Tweaks](https://www.curseforge.com/minecraft/mc-mods/universal-tweaks)
 ### Fixed
 - Fixed some crop harvesters creating ghost items when harvesting IC2 crops
 
