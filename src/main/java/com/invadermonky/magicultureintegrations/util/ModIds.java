@@ -9,6 +9,7 @@ public enum ModIds {
     astral_sorcery(ConstIds.astral_sorcery),
     attained_drops(ConstIds.attained_drops),
     baubles(ConstIds.baubles),
+    better_questing(ConstIds.better_questing, ConstVersions.better_questing, true, true),
     bewitchment(ConstIds.bewitchment),
     bloodmagic(ConstIds.bloodmagic),
     botania(ConstIds.botania),
@@ -83,6 +84,7 @@ public enum ModIds {
         public static final String astral_sorcery = "astralsorcery";
         public static final String attained_drops = "attaineddrops2";
         public static final String baubles = "baubles";
+        public static final String better_questing = "betterquesting";
         public static final String bewitchment = "bewitchment";
         public static final String bloodmagic = "bloodmagic";
         public static final String botania = "botania";
@@ -126,6 +128,7 @@ public enum ModIds {
     }
 
     public static class ConstVersions {
+        public static final String better_questing = "4.3.1";
         public static final String new_crimson_revelations = "1.3.2";
         public static final String universal_tweaks = "1.15.0";
     }

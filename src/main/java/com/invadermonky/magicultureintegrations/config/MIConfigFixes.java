@@ -21,6 +21,8 @@ public class MIConfigFixes {
     public static AgricraftFixes agricraft = new AgricraftFixes();
     @Config.Name("Animania")
     public static AnimaniaFixes animania = new AnimaniaFixes();
+    @Config.Name("Better Questing")
+    public static BetterQuestingFixes better_questing = new BetterQuestingFixes();
     @Config.Name("Harvestcraft")
     public static HarvestcraftFixes harvestcraft = new HarvestcraftFixes();
 
@@ -47,6 +49,12 @@ public class MIConfigFixes {
         @Config.Name("Fix Dispenser Logic")
         @Config.Comment("Fixes seed placement dispenser logic when Botania or Quark is loaded")
         public boolean fixDispenserLogic = true;
+    }
+
+    public static class BetterQuestingFixes {
+         @Config.Name("Fix World Load Crash")
+         @Config.Comment("A temporary fix for Better Questing Unofficial crashing on world load.")
+        public boolean fixWorldLoadCrash = true;
     }
 
     public static class HarvestcraftFixes {

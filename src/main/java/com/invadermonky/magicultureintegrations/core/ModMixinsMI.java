@@ -21,6 +21,7 @@ public class ModMixinsMI implements ILateMixinLoader {
         put(StringHelper.getMixinString(ModIds.agricraft, "enderioplugin", "fix"), () -> ModIds.agricraft.isLoaded && ModIds.enderio.isLoaded && !ModIds.universal_tweaks.isLoaded && MIConfigFixes.agricraft.fixEnderioPlugin);
         put(StringHelper.getMixinString(ModIds.attained_drops, "blockplant", "harvestable"), () -> ModIds.attained_drops.isLoaded && MIConfigIntegrations.attained_drops.harvestable_mixin);
         put(StringHelper.getMixinString(ModIds.attained_drops, "blockplant", "hornharvestable"), () -> ModIds.attained_drops.isLoaded && ModIds.botania.isLoaded && MIConfigIntegrations.botania.wild_horn.attained_drops);
+        put(StringHelper.getMixinString(ModIds.better_questing, "crashfix"), () -> ModIds.better_questing.isLoaded && MIConfigFixes.better_questing.fixWorldLoadCrash);
         put(StringHelper.getMixinString(ModIds.bewitchment, "oven", "heatable"), () -> ModIds.bewitchment.isLoaded && MIConfigIntegrations.bewitchment.heatable_oven);
         put(StringHelper.getMixinString(ModIds.bloodmagic, "bloodpack"), () -> ModIds.bloodmagic.isLoaded && MIConfigTweaks.blood_magic.bloodPackTweaks);
         put(StringHelper.getMixinString(ModIds.bloodmagic, "boundtool"), () -> ModIds.bloodmagic.isLoaded && !ModIds.universal_tweaks.isLoaded && MIConfigTweaks.blood_magic.boundToolTweak);

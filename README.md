@@ -98,7 +98,6 @@ While built for Magiculture 2, Magiculture Integrations features a robust config
 ### **Thaumic Additions**
 - **Essence Smelter:** Thaumic Additions Essence Furnaces can be heated and boosted by all supported furnace heaters
 ### **The One Probe**
-- **Ore Stages:** Fixes error tooltip when looking at staged ores on servers
 - **Redstone Paste:** Redstone Paste redstone displays correct redstone power level
 ### **Tinker's Construct**
 - **Smeltery:** (*disabled by default*) Tinker's Construct Smeltery can be boosted, but not heated, by all supported furnace heaters

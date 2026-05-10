@@ -1,4 +1,13 @@
 # Changelog
+## 1.12.2-2.3.1
+### Added
+- Added fix for Better Questing Unofficial crash on world load (temporary until the mod is updated)
+
+### Removed
+- Removed unused configuration options that were not removed in version 2.3.0
+
+---
+
 ## 1.12.2-2.3.0
 ### Removed
 - Removed Ore Stages TOP compat, this fix has been merged into [Ore Stages: ReStaged](https://www.curseforge.com/minecraft/mc-mods/ore-stages-restaged)
