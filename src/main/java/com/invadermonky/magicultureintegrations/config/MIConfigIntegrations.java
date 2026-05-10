@@ -618,10 +618,6 @@ public class MIConfigIntegrations {
         @Config.Name("Redstone Paste")
         @Config.Comment("Enables Redstone Paste support, displaying redstone power when looking at redstone paste wires.")
         public boolean redstone_paste = true;
-
-        @Config.Name("Ore Stages")
-        @Config.Comment("Enables Ore Stages support, fixing errored tooltip when looking at staged ores on servers.")
-        public boolean ore_stages = true;
     }
 
     public static class TinkersConstructIntegrations {
