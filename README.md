@@ -126,6 +126,7 @@ While built for Magiculture 2, Magiculture Integrations features a robust config
 |:---------------------:|:---------------------:|:----------:|:-----------:|
 |      Blood Magic      | Burning Furnace Array |     ✔      |             |
 |        Botania        |       Exoflame        |     ✔      |      ✔      |
+|        Botania        |   Manatide Bellows    |            |      ✔      |
 | Immersive Engineering |    External Heater    |     ✔      |      ✔      |
 |     Nature's Aura     |   Extraneous Heater   |     ✔      |      ✔      |
 |         Quark         |       Foxhound        |            |      ✔      |

@@ -31,6 +31,7 @@ public class ModMixinsMI implements ILateMixinLoader {
         put(StringHelper.getMixinString(ModIds.bloodmagic, "ritualharvest"), () -> ModIds.bloodmagic.isLoaded && MIConfigTweaks.blood_magic.ritualHarvestTweaks.ritualHarvestTweak);
         put(StringHelper.getMixinString(ModIds.bloodmagic, "ritualmagnetic", "tweak"), () -> ModIds.bloodmagic.isLoaded && MIConfigTweaks.blood_magic.ritualMagneticTweaks.ritualMagneticTweak);
         put(StringHelper.getMixinString(ModIds.bloodmagic, "ritualmagnetic", ModIds.ore_stages.modId), () -> ModIds.bloodmagic.isLoaded && ModIds.ore_stages.isLoaded && MIConfigIntegrations.blood_magic.ore_stages_magnetism);
+        put(StringHelper.getMixinString(ModIds.botania, "bellows"), () -> ModIds.botania.isLoaded && MIConfigIntegrations.botania.bellowsMixin);
         put(StringHelper.getMixinString(ModIds.botania, "exoflame"), () -> ModIds.botania.isLoaded && MIConfigIntegrations.botania.exoflameMixin);
         put(StringHelper.getMixinString(ModIds.botania, "infinitefruit", "nutrition"), () -> ModIds.botania.isLoaded && ModIds.nutrition.isLoaded && MIConfigIntegrations.nutrition.autoFeeders.BotFruitOfGrisaia.enable);
         put(StringHelper.getMixinString(ModIds.botania, "kekimurus"), () -> ModIds.botania.isLoaded && MIConfigIntegrations.botania.kekimurus_mixin);

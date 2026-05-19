@@ -6,6 +6,7 @@ import com.invadermonky.magicultureintegrations.integrations.botania.block.Block
 import com.invadermonky.magicultureintegrations.integrations.botania.item.ItemLensFlux;
 import com.invadermonky.magicultureintegrations.registry.RegistrarMI;
 import com.invadermonky.magicultureintegrations.util.ModIds;
+import thaumcraft.common.tiles.devices.TileBellows;
 import vazkii.botania.common.block.subtile.functional.SubTileExoflame;
 
 public class InitBotania extends IntegrationModule {
@@ -27,6 +28,9 @@ public class InitBotania extends IntegrationModule {
 
     @Override
     public void postInit() {
+        if (MIConfigIntegrations.botania.bellowsMixin) {
+            MIConfigIntegrations.botania.bellowsHeatables.registerHeatableBlacklists(TileBellows.class);
+        }
         if (MIConfigIntegrations.botania.exoflameMixin) {
             MIConfigIntegrations.botania.exoflameHeatables.registerHeatableBlacklists(SubTileExoflame.class);
         }

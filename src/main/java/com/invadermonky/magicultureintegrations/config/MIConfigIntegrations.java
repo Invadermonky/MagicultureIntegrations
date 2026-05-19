@@ -147,6 +147,15 @@ public class MIConfigIntegrations {
 
     public static class BotaniaIntegrations {
         @Config.RequiresMcRestart
+        @Config.Name("Enable Bellows Integrations")
+        @Config.Comment("Global enable/disable for all Manatide Bellows integrations")
+        public boolean bellowsMixin = true;
+
+        @Config.RequiresMcRestart
+        @Config.Name("Bellows Integrations")
+        public ConfigHeatables bellowsHeatables = new ConfigHeatables();
+
+        @Config.RequiresMcRestart
         @Config.Name("Enable Exoflame Integrations")
         @Config.Comment("Global enable/disable for all Exoflame integrations")
         public boolean exoflameMixin = true;
