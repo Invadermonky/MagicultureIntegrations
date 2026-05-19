@@ -35,7 +35,7 @@ public abstract class TileBellowsMixin {
         boolean did = false;
         if(tile instanceof IHeatableTile && !HeatableUtils.isHeatableBlacklisted(TileBellows.class, tile)) {
             IHeatableTile heatable = (IHeatableTile) tile;
-            if(heatable.canSmeltHeatable()) {
+            if(heatable.canSmeltHeatable() && heatable.getBurnTimeHeatable() > 0) {
                 heatable.boostCookTimeHeatable(20);
                 heatable.boostBurnTimeHeatable(-Math.min(10, heatable.getBurnTimeHeatable()));
                 heatable.updateTileHeatable();
