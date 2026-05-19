@@ -1,4 +1,12 @@
 # Changelog
+## 1.12.2-2.3.2
+### Added
+- Added heatable and boostable support for Botania's Manatide Bellows
+### Removed
+- Removed Better Questing Unofficial fix as it has been implemented in the main mod
+
+---
+
 ## 1.12.2-2.3.1
 ### Added
 - Added fix for Better Questing Unofficial crash on world load (temporary until the mod is updated)
