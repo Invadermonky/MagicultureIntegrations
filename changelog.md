@@ -1,4 +1,12 @@
 # Changelog
+## 1.12.2-2.3.3
+### Changed
+- New Crimson Revelations features now require mod version 1.5.3
+### Removed
+- Removed New Crimson Revelations Mana Bean harvestable logic as it is now supported natively
+
+---
+
 ## 1.12.2-2.3.2
 ### Added
 - Added heatable and boostable support for Botania's Manatide Bellows

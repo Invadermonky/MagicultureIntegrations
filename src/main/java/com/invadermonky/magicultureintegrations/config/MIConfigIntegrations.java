@@ -49,8 +49,6 @@ public class MIConfigIntegrations {
     public static MysticalAgricultureIntegrations mystical_agriculture = new MysticalAgricultureIntegrations();
     @Config.Name("Nature's Aura")
     public static NaturesAuraIntegrations natures_aura = new NaturesAuraIntegrations();
-    @Config.Name("New Crimson Revelations")
-    public static NewCrimsonRevelationsIntegrations new_crimson_revelations = new NewCrimsonRevelationsIntegrations();
     @Config.Name("Nutrition")
     public static NutritionIntegrations nutrition = new NutritionIntegrations();
     @Config.Name("Oreberries")
@@ -189,9 +187,6 @@ public class MIConfigIntegrations {
             @Config.Name("Industrial Craft 2")
             @Config.Comment("Allows the Horn and Drum of the Wild to harvest IC2 Crops.")
             public boolean industrialcraft = true;
-            @Config.Name("New Crimson Revelations")
-            @Config.Comment("Allows the Horn and Drum of the Wild to harvest New Crimson Revelations' Mana Pods.")
-            public boolean newcrimsonrevelations = true;
             @Config.Name("Oreberries")
             @Config.Comment("Allows the Horn and Drum of the Wild to harvest Oreberries orberry bushes.")
             public boolean oreberries = true;
@@ -404,17 +399,6 @@ public class MIConfigIntegrations {
 
         @Config.Name("Extraneous Heater Integrations")
         public ConfigHeatables extraneousHeaterHeatables = new ConfigHeatables();
-    }
-
-    public static class NewCrimsonRevelationsIntegrations {
-        @Config.RequiresMcRestart
-        @Config.Name("Harvestable Mana Pods")
-        @Config.Comment
-                ({
-                        "Enables the IHarvestableCrop mixin injection, allowing Mana Pods to be harvested by supported",
-                        "modded harvesters."
-                })
-        public boolean harvestableManaPods = true;
     }
 
     public static class NutritionIntegrations {

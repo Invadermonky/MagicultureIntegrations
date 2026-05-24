@@ -57,8 +57,6 @@ public class ModMixinsMI implements ILateMixinLoader {
         put(StringHelper.getMixinString(ModIds.industrial_foregoing, "meatfeeder", "nutrition"), () -> ModIds.industrial_foregoing.isLoaded && ModIds.nutrition.isLoaded && MIConfigIntegrations.nutrition.autoFeeders.IFMeatFeeder.enable);
         put(StringHelper.getMixinString(ModIds.mystical_agriculture, "heatable"), () -> ModIds.mystical_agriculture.isLoaded && MIConfigIntegrations.mystical_agriculture.heatableFurnace);
         put(StringHelper.getMixinString(ModIds.natures_aura, "externalheater"), () -> ModIds.natures_aura.isLoaded && MIConfigIntegrations.natures_aura.extraneousHeaterMixins);
-        put(StringHelper.getMixinString(ModIds.new_crimson_revelations, "blockmanapod", "harvestable"), () -> ModIds.new_crimson_revelations.isLoaded && MIConfigIntegrations.new_crimson_revelations.harvestableManaPods);
-        put(StringHelper.getMixinString(ModIds.new_crimson_revelations, "blockmanapod", "hornharvestable"), () -> ModIds.new_crimson_revelations.isLoaded && ModIds.botania.isLoaded && MIConfigIntegrations.botania.wild_horn.newcrimsonrevelations);
         put(StringHelper.getMixinString(ModIds.new_crimson_revelations, "verdantring", "nutrition"), () -> ModIds.new_crimson_revelations.isLoaded && ModIds.nutrition.isLoaded && MIConfigIntegrations.nutrition.autoFeeders.TCVerdantCharm.enable);
         put(StringHelper.getMixinString(ModIds.oreberries, "blockoreberrybush", "harvestable"), () -> ModIds.oreberries.isLoaded && MIConfigIntegrations.oreberries.harvestableOreberries);
         put(StringHelper.getMixinString(ModIds.oreberries, "blockoreberrybush", "hornharvestable"), () -> ModIds.oreberries.isLoaded && ModIds.botania.isLoaded && MIConfigIntegrations.botania.wild_horn.oreberries);

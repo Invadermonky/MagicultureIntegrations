@@ -2,6 +2,7 @@ package com.invadermonky.magicultureintegrations.util;
 
 import javax.annotation.Nullable;
 
+@SuppressWarnings("unused")
 public enum ModIds {
     actually_additions(ConstIds.actually_additions),
     agricraft(ConstIds.agricraft),
@@ -129,7 +130,7 @@ public enum ModIds {
 
     public static class ConstVersions {
         public static final String better_questing = "4.3.1";
-        public static final String new_crimson_revelations = "1.3.2";
+        public static final String new_crimson_revelations = "1.5.3";
         public static final String universal_tweaks = "1.15.0";
     }
 }
