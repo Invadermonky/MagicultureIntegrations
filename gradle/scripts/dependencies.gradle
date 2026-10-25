@@ -37,57 +37,56 @@ dependencies {
 
     // Mod Integrations
     def modMap = [:]
-    def customModMap = [:]
     def loadMap = [:]
 
-    modMap.put(["actually-additions-228404:3117927"], project.actuallyadditions)
-    modMap.put(["agricraft-225635:3317747", "infinitylib-251396:3317119"], project.agricraft)
-    modMap.put(["astral-sorcery-241721:3044416", "baubles-227083:2518667"], project.astralsorcery)
-    modMap.put(["attained-drops-2-254294:2538349", "placebo-283644:4629597"], project.attaineddrops)
-    modMap.put(["better-questing-unofficial-629629:7859791"], project.betterquesting)
-    modMap.put(["bewitchment-legacy-285439:3256343", "baubles-227083:2518667", "patchouli-306770:3162874"], project.bewitchment)
-    modMap.put(["blood-magic-224791:2822288", "guide-api-228832:2645992"], project.bloodmagic)
-    modMap.put(["botania-225643:3330934", "baubles-227083:2518667"], project.botania)
-    modMap.put(["cooking-for-blockheads-231484:2862651"], project.cookingforblockheads)
-    modMap.put(["cyclic-239286:4075832"], project.cyclic)
-    modMap.put(["embers-rekindled-300777:3695248"], project.embers)
-    modMap.put(["engineers-decor-313866:3783239", "immersive-engineering-231951:2974106"], project.engineersdecor)
-    modMap.put(["environmental-tech-245453:2691536", "valkyrielib-245480:2691542"], project.environmentaltech)
-    modMap.put(["forestry-59751:6450115"], project.forestry)
-    modMap.put(["future-mc-310059:5013081", "shadowfacts-forgelin-248453:2785465"], project.futuremc)
-    modMap.put(["game-stages-268655:2951840", "bookshelf-228525:2836960"], project.gamestages)
-    modMap.put(["item-stages-280316:2696766", "game-stages-268655:2951840", "bookshelf-228525:2836960"], project.itemstages)
-    modMap.put(["llibrary-243298:3116493"], project.llibary)
-    modMap.put(["pams-harvestcraft-221857:2904825"], project.harvestcraft)
-    modMap.put(["immersive-engineering-231951:2974106"], project.immersiveengineering)
-    modMap.put(["industrial-craft-242638:3078604"], project.industrialcraft)
-    modMap.put(["industrial-foregoing-266515:2745321", "tesla-core-lib-254602:3438487", "shadowfacts-forgelin-248453:2785465"], project.industrialforegoing)
-    modMap.put(["mystical-agriculture-246640:2704562", "cucumber-272335:2645867"], project.mysticalagriculture)
-    modMap.put(["mystical-world-282940:3460961", "mysticallib-277064:3483816", "patchouli-306770:3162874"], project.mysticalworld)
-    modMap.put(["natures-aura-306626:2882138", "patchouli-306770:3162874"], project.naturesaura)
-    modMap.put(["new-crimson-revelations-1025633:8139449", "thaumcraft-223628:2629023", "baubles-227083:2518667", "thaumicapi-1533287:8066628"], project.newcrimsonrevelations)
-    modMap.put(["oreberries-275408:2578045"], project.oreberries)
-    modMap.put(["ore-stages-290201:2632997", "game-stages-268655:2951840", "bookshelf-228525:2836960"], project.orestages)
-    modMap.put(["quality-tools-264756:2732994", "potion-core-242872:2905184"], project.qualitytools)
-    modMap.put(["quark-rotn-edition-417392:5594720", "autoreglib-250363:2746011"], project.quark)
-    modMap.put(["rats-ratn-edition-439001:3711122"], project.rats)
-    modMap.put(["redstone-paste-67508:2477676"], project.redstonepaste)
-    modMap.put(["rftools-224641:2861573", "mcjtylib-233105:2745846"], project.rftools)
-    modMap.put(["roots-246183:5193525", "mystical-world-282940:3460961", "mysticallib-277064:3483816", "patchouli-306770:3162874"], project.roots)
-    modMap.put(["rustic-256141:3107974"], project.rustic)
-    modMap.put(["spartan-weaponry-278141:5564836"], project.spartanweaponry)
-    modMap.put(["simpledifficulty-360779:3613814"], project.simpledifficulty)
-    modMap.put(["thaumcraft-223628:2629023", "baubles-227083:2518667"], project.thaumcraft)
-    modMap.put(["thaumic-additions-232564:3663195", "hammer-lib-247401:5259462", "thaumcraft-223628:2629023", "baubles-227083:2518667", "patchouli-306770:3162874"], project.thaumicadditions)
-    modMap.put(["thaumic-augmentation-319441:6047659", "thaumcraft-223628:2629023", "baubles-227083:2518667"], project.thaumicaugmentation)
-    modMap.put(["the-one-probe-245211:2667280"], project.theoneprobe)
-    modMap.put(["tinkers-construct-74072:2902483", "mantle-74924:2713386"], project.tinkersconstruct)
-    modMap.put(["tinkers-complement-272671:2843439", "tinkers-construct-74072:2902483", "mantle-74924:2713386"], project.tinkerscomplement)
-    modMap.put(["tough-as-nails-246391:2639903"], project.toughasnails)
-    modMap.put(["travelers-backpack-321117:3150850"], project.travellersbackpack)
-    modMap.put(["the-twilight-forest-227639:3051450"], project.twilightforest)
-
-    customModMap.put(["com.animania:animania-1.12.2-base:2.0.3.28", "curse.maven:animania-farm-407632:3213139"], project.animania)
+    modMap.put(["curse.maven:actually-additions-228404:3117927"], project.actuallyadditions)
+    modMap.put(["com.animania:animania-1.12.2-base:2.0.3.28", "curse.maven:animania-farm-407632:3213139"], project.animania)
+    modMap.put(["curse.maven:agricraft-225635:3317747", "curse.maven:infinitylib-251396:3317119"], project.agricraft)
+    modMap.put(["curse.maven:astral-sorcery-241721:3044416", "curse.maven:baubles-227083:2518667"], project.astralsorcery)
+    modMap.put(["curse.maven:attained-drops-2-254294:2538349", "curse.maven:placebo-283644:4629597"], project.attaineddrops)
+    modMap.put(["curse.maven:better-questing-unofficial-629629:7859791"], project.betterquesting)
+    modMap.put(["curse.maven:bewitchment-legacy-285439:3256343", "curse.maven:baubles-227083:2518667", "curse.maven:patchouli-306770:3162874"], project.bewitchment)
+    modMap.put(["curse.maven:blood-magic-224791:2822288", "curse.maven:guide-api-228832:2645992"], project.bloodmagic)
+    modMap.put(["curse.maven:botania-225643:3330934", "curse.maven:baubles-227083:2518667"], project.botania)
+    modMap.put(["curse.maven:cooking-for-blockheads-231484:2862651"], project.cookingforblockheads)
+    modMap.put(["curse.maven:cyclic-239286:4075832"], project.cyclic)
+    modMap.put(["curse.maven:embers-rekindled-300777:3695248"], project.embers)
+    modMap.put(["curse.maven:engineers-decor-313866:3783239", "curse.maven:immersive-engineering-231951:2974106"], project.engineersdecor)
+    modMap.put(["curse.maven:environmental-tech-245453:2691536", "curse.maven:valkyrielib-245480:2691542"], project.environmentaltech)
+    modMap.put(["curse.maven:familiar-fauna-289347:2644656"], project.familiarfauna)
+    modMap.put(["curse.maven:forestry-59751:6450115"], project.forestry)
+    modMap.put(["curse.maven:future-mc-310059:5013081", "curse.maven:shadowfacts-forgelin-248453:2785465"], project.futuremc)
+    modMap.put(["curse.maven:game-stages-268655:2951840", "curse.maven:bookshelf-228525:2836960"], project.gamestages)
+    modMap.put(["curse.maven:item-stages-280316:2696766", "curse.maven:game-stages-268655:2951840", "curse.maven:bookshelf-228525:2836960"], project.itemstages)
+    modMap.put(["curse.maven:llibrary-243298:3116493"], project.llibary)
+    modMap.put(["curse.maven:pams-harvestcraft-221857:2904825"], project.harvestcraft)
+    modMap.put(["curse.maven:immersive-engineering-231951:2974106"], project.immersiveengineering)
+    modMap.put(["curse.maven:industrial-craft-242638:3078604"], project.industrialcraft)
+    modMap.put(["curse.maven:industrial-foregoing-266515:2745321", "curse.maven:tesla-core-lib-254602:3438487", "curse.maven:shadowfacts-forgelin-248453:2785465"], project.industrialforegoing)
+    modMap.put(["curse.maven:mystical-agriculture-246640:2704562", "curse.maven:cucumber-272335:2645867"], project.mysticalagriculture)
+    modMap.put(["curse.maven:mystical-world-282940:3460961", "curse.maven:mysticallib-277064:3483816", "curse.maven:patchouli-306770:3162874"], project.mysticalworld)
+    modMap.put(["curse.maven:natures-aura-306626:2882138", "curse.maven:patchouli-306770:3162874"], project.naturesaura)
+    modMap.put(["curse.maven:new-crimson-revelations-1025633:8139449", "curse.maven:thaumcraft-223628:2629023", "curse.maven:baubles-227083:2518667", "curse.maven:thaumicapi-1533287:8066628"], project.newcrimsonrevelations)
+    modMap.put(["curse.maven:oreberries-275408:2578045"], project.oreberries)
+    modMap.put(["curse.maven:ore-stages-290201:2632997", "curse.maven:game-stages-268655:2951840", "curse.maven:bookshelf-228525:2836960"], project.orestages)
+    modMap.put(["curse.maven:quality-tools-264756:2732994", "curse.maven:potion-core-242872:2905184"], project.qualitytools)
+    modMap.put(["curse.maven:quark-rotn-edition-417392:5594720", "curse.maven:autoreglib-250363:2746011"], project.quark)
+    modMap.put(["curse.maven:rats-ratn-edition-439001:3711122"], project.rats)
+    modMap.put(["curse.maven:redstone-paste-67508:2477676"], project.redstonepaste)
+    modMap.put(["curse.maven:rftools-224641:2861573", "curse.maven:mcjtylib-233105:2745846"], project.rftools)
+    modMap.put(["curse.maven:roots-246183:5193525", "curse.maven:mystical-world-282940:3460961", "curse.maven:mysticallib-277064:3483816", "curse.maven:patchouli-306770:3162874"], project.roots)
+    modMap.put(["curse.maven:rustic-256141:3107974"], project.rustic)
+    modMap.put(["curse.maven:spartan-weaponry-278141:5564836"], project.spartanweaponry)
+    modMap.put(["curse.maven:simpledifficulty-360779:3613814"], project.simpledifficulty)
+    modMap.put(["curse.maven:thaumcraft-223628:2629023", "curse.maven:baubles-227083:2518667"], project.thaumcraft)
+    modMap.put(["curse.maven:thaumic-additions-232564:3663195", "curse.maven:hammer-lib-247401:5259462", "curse.maven:thaumcraft-223628:2629023", "curse.maven:baubles-227083:2518667", "curse.maven:patchouli-306770:3162874"], project.thaumicadditions)
+    modMap.put(["curse.maven:thaumic-augmentation-319441:6047659", "curse.maven:thaumcraft-223628:2629023", "curse.maven:baubles-227083:2518667"], project.thaumicaugmentation)
+    modMap.put(["curse.maven:the-one-probe-245211:2667280"], project.theoneprobe)
+    modMap.put(["curse.maven:tinkers-construct-74072:2902483", "curse.maven:mantle-74924:2713386"], project.tinkersconstruct)
+    modMap.put(["curse.maven:tinkers-complement-272671:2843439", "curse.maven:tinkers-construct-74072:2902483", "curse.maven:mantle-74924:2713386"], project.tinkerscomplement)
+    modMap.put(["curse.maven:tough-as-nails-246391:2639903"], project.toughasnails)
+    modMap.put(["curse.maven:travelers-backpack-321117:3150850"], project.travellersbackpack)
+    modMap.put(["curse.maven:the-twilight-forest-227639:3051450"], project.twilightforest)
 
     compileOnly rfg.deobf("curse.maven:ender-io-64578:4674244")
     compileOnly rfg.deobf("curse.maven:endercore-231868:4671384")
@@ -97,25 +96,11 @@ dependencies {
     modMap.each{mods, load -> {
         boolean loadFlag = load.toBoolean()
         mods.each{mod ->
-            def modMaven = "curse.maven:" + mod
-            if(!loadMap.containsKey(modMaven)) {
-                loadMap.put(modMaven,loadFlag)
-            } else {
-                if(loadFlag && !loadMap[modMaven]) {
-                    loadMap[modMaven] = loadFlag
-                }
-            }
-        }
-    }}
-
-    customModMap.each{mods, load -> {
-        boolean loadFlag = load.toBoolean()
-        mods.each{mod ->
-            if(!loadMap.containsValue(mod)) {
+            if(!loadMap.containsKey(mod)) {
                 loadMap.put(mod,loadFlag)
             } else {
                 if(loadFlag && !loadMap[mod]) {
-                    loadFlag[mod] = loadFlag
+                    loadMap[mod] = loadFlag
                 }
             }
         }
