@@ -26,6 +26,8 @@ While built for Magiculture 2, Magiculture Integrations features a robust config
 - **Ender IO:**  Fixes crash caused by Agricraft's Ender IO Farming Station integration
 ### **Animania**
 - **Dispenser Logic:** Fixes seed placement dispenser logic when Botania or Quark is loaded
+### **Familiar Fauna**
+- **Gender Fix:** Fixes Deer and Turkeys always spawning as male when spawned through birthing
 ### **Pam's Harvestcraft**
 - **Bark Harvest:** Fixes bark harvesting launching harvested drops in random directions
 - **Machines:** Pam's Harvestcraft machines (grinder, market, et cetera) are no longer registered as burnable furnace fuel
@@ -149,5 +151,6 @@ While built for Magiculture 2, Magiculture Integrations features a robust config
 - **Ritual of the Crusher:** Ritual fires the BlockHarvestEvent, exposing block drops to tweaker mods
 - **Reap of the Harvest Moon:** Ritual fires the BlockHarvestEvent, exposing block drops to tweaker mods
 - **Ritual of Magnetism:** Ritual no longer leaves empty cavities in the stone when pulling up ores
+- **Sentient Armor Removal:** Prevents non-creative players from unequipping Sentient Armor (fixes an item voiding bug)
 ### **Nature's Aura**
 - **Lax Spirit of Birthing:** Reduces the requirements needed to spawn a Spirit of Birthing, fixing an issue that prevented some modded animals from spawning them when giving birth in high aura chunks
