@@ -76,6 +76,14 @@ public class MIConfigTweaks {
         @Config.Comment("Maximum Explosive Powder uses before being consumed.")
         public int explosivePowderMaxUses = 64;
 
+        @Config.RequiresMcRestart
+        @Config.Name("Prevent Sentient Armor Removal")
+        @Config.Comment({
+                "Prevents non-creative players from removing equipped Sentient Armor pieces. This fixes enchantments",
+                "and armor voiding when using the sentient gem to unequip sentient armor."
+        })
+        public boolean sentientArmorRemovalTweak = true;
+
         @Config.Name("Ritual of the Crusher Tweaks")
         public RitualCrusherTweaks ritualCrusherTweaks = new RitualCrusherTweaks();
         @Config.Name("Reap of the Harvest Moon Tweaks")

@@ -10,9 +10,14 @@ import amerifrance.guideapi.page.PageText;
 import com.invadermonky.magicultureintegrations.api.mods.IntegrationModule;
 import com.invadermonky.magicultureintegrations.api.mods.bloodmagic.BloodMagicUtils;
 import com.invadermonky.magicultureintegrations.config.MIConfigIntegrations;
+import com.invadermonky.magicultureintegrations.config.MIConfigTweaks;
+import com.invadermonky.magicultureintegrations.integrations.bloodmagic.events.BMClientEventHandler;
 import com.invadermonky.magicultureintegrations.integrations.bloodmagic.mods.*;
 import com.invadermonky.magicultureintegrations.util.ModIds;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 import java.util.Map;
@@ -45,6 +50,13 @@ public class InitBloodMagic extends IntegrationModule {
         this.integrations.addIntegration(ModIds.roots, BMRoots.class);
         this.integrations.addIntegration(ModIds.rustic, BMRustic.class);
         this.integrations.addIntegration(ModIds.thaumic_additions, BMThaumicAdditions.class);
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void preInitClient() {
+        if(MIConfigTweaks.blood_magic.sentientArmorRemovalTweak)
+            MinecraftForge.EVENT_BUS.register(new BMClientEventHandler());
     }
 
     @Override
