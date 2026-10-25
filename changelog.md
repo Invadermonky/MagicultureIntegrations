@@ -1,4 +1,11 @@
 # Changelog
+## 1.12.2-2.3.4
+### Added
+- Added fix for Familiar Fauna Deer and Turkeys always spawning as male
+- Added restriction preventing non-creative mode players from removing equipped Blood Magic Sentient Armor (fixes some armor desync issues)
+
+---
+
 ## 1.12.2-2.3.3
 ### Changed
 - New Crimson Revelations features now require mod version 1.5.3
