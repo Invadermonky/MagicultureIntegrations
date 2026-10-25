@@ -21,6 +21,7 @@ public class MIConfigFixes {
     public static AgricraftFixes agricraft = new AgricraftFixes();
     @Config.Name("Animania")
     public static AnimaniaFixes animania = new AnimaniaFixes();
+    public static FamiliarFaunaFixes familiar_fauna = new FamiliarFaunaFixes();
     @Config.Name("Harvestcraft")
     public static HarvestcraftFixes harvestcraft = new HarvestcraftFixes();
 
@@ -47,6 +48,13 @@ public class MIConfigFixes {
         @Config.Name("Fix Dispenser Logic")
         @Config.Comment("Fixes seed placement dispenser logic when Botania or Quark is loaded")
         public boolean fixDispenserLogic = true;
+    }
+
+    public static class FamiliarFaunaFixes {
+        @Config.RequiresMcRestart
+        @Config.Name("Fix Birthing Gender")
+        @Config.Comment("Fixes Familiar Fauna Deer and Turkeys always spawning as male when birthed.")
+        public boolean fixGenderBirthing = true;
     }
 
     public static class HarvestcraftFixes {

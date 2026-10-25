@@ -8,6 +8,7 @@ import com.invadermonky.magicultureintegrations.integrations.astralsorcery.InitA
 import com.invadermonky.magicultureintegrations.integrations.bloodmagic.InitBloodMagic;
 import com.invadermonky.magicultureintegrations.integrations.botania.InitBotania;
 import com.invadermonky.magicultureintegrations.integrations.enderio.InitEnderIO;
+import com.invadermonky.magicultureintegrations.integrations.familiarfauna.InitFamiliarFauna;
 import com.invadermonky.magicultureintegrations.integrations.harvestcraft.InitHarvestcraft;
 import com.invadermonky.magicultureintegrations.integrations.immersiveengineering.InitImmersiveEngineering;
 import com.invadermonky.magicultureintegrations.integrations.industrialforegoing.InitIndustrialForegoing;
@@ -34,6 +35,7 @@ public class InitIntegrations {
         loadModule(ModIds.bloodmagic, InitBloodMagic.class);
         loadModule(ModIds.botania, InitBotania.class);
         loadModule(ModIds.enderio, InitEnderIO.class);
+        loadModule(ModIds.familiar_fauna, InitFamiliarFauna.class);
         loadModule(ModIds.harvestcraft, InitHarvestcraft.class);
         loadModule(ModIds.immersive_engineering, InitImmersiveEngineering.class);
         loadModule(ModIds.industrial_foregoing, InitIndustrialForegoing.class);
